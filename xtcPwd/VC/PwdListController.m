@@ -99,8 +99,8 @@
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"cancel"
                                                       style:UIAlertActionStyleCancel
                                                     handler:nil] ;
-    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"current TYPE"
-                                                                       message:@"choose a type"
+    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"CHOOSE TYPE"
+                                                                       message:@"Choose the type, the list will be change ."
                                                                 preferredStyle:UIAlertControllerStyleActionSheet] ;
     [alertCtrl addAction:action0] ;
     [alertCtrl addAction:action1] ;
@@ -126,8 +126,8 @@
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"cancel"
                                                       style:UIAlertActionStyleCancel
                                                     handler:nil] ;
-    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"ADD an item"
-                                                                       message:@"choose a type"
+    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"ADD"
+                                                                       message:@"Select type that will be added ."
                                                                 preferredStyle:UIAlertControllerStyleActionSheet] ;
     [alertCtrl addAction:action1] ;
     [alertCtrl addAction:action2] ;
@@ -207,23 +207,41 @@ static const int pageNumber = 10 ;
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        PwdItem *item = self.dataList[indexPath.row] ;
-        BOOL bDel = [item deleteModel] ;
-        if (!bDel)
-        {
-            [SVProgressHUD showErrorWithStatus:@"delete fail"] ;
-            return ;
-        }
-        
-        NSMutableArray *tmplist = [self.dataList mutableCopy] ;
-        [tmplist removeObjectAtIndex:indexPath.row] ;
-        self.dataList = tmplist ;
-        [self.table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                          withRowAnimation:UITableViewRowAnimationFade] ;
+        @weakify(self)
+        UIAlertAction *action0 = [UIAlertAction actionWithTitle:@"Confirm"
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:^(UIAlertAction * _Nonnull action) {
+                                                            @strongify(self)
+                                                            [self doDelete:indexPath] ;
+                                                        }] ;
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"cancel"
+                                                          style:UIAlertActionStyleCancel
+                                                        handler:nil] ;
+        UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"Remove"
+                                                                           message:@"Are you sure to remove this item ???"
+                                                                    preferredStyle:UIAlertControllerStyleAlert] ;
+        [alertCtrl addAction:action0] ;
+        [alertCtrl addAction:action1] ;
+        [self presentViewController:alertCtrl animated:YES completion:nil] ;
     }
 }
 
-
+- (void)doDelete:(NSIndexPath *)indexPath
+{
+    PwdItem *item = self.dataList[indexPath.row] ;
+    BOOL bDel = [item deleteModel] ;
+    if (!bDel)
+    {
+        [SVProgressHUD showErrorWithStatus:@"delete fail"] ;
+        return ;
+    }
+    
+    NSMutableArray *tmplist = [self.dataList mutableCopy] ;
+    [tmplist removeObjectAtIndex:indexPath.row] ;
+    self.dataList = tmplist ;
+    [self.table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                      withRowAnimation:UITableViewRowAnimationFade] ;
+}
 
 
 

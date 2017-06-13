@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  EditViewController.h
 //  xtcPwd
 //
 //  Created by teason23 on 2017/6/13.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface EditViewController : UIViewController
 
 @end
-

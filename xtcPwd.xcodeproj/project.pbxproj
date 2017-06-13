@@ -9,23 +9,73 @@
 /* Begin PBXBuildFile section */
 		8FFC6CF11EEF735A00F55173 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF01EEF735A00F55173 /* main.m */; };
 		8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF31EEF735A00F55173 /* AppDelegate.m */; };
-		8FFC6CF71EEF735A00F55173 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF61EEF735A00F55173 /* ViewController.m */; };
 		8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF81EEF735A00F55173 /* Main.storyboard */; };
 		8FFC6CFC1EEF735A00F55173 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FFC6CFB1EEF735A00F55173 /* Assets.xcassets */; };
 		8FFC6CFF1EEF735A00F55173 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FFC6CFD1EEF735A00F55173 /* LaunchScreen.storyboard */; };
+		8FFC6D121EEF73AD00F55173 /* NSObject+Reflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D081EEF73AD00F55173 /* NSObject+Reflection.m */; };
+		8FFC6D131EEF73AD00F55173 /* NSObject+XTFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D0A1EEF73AD00F55173 /* NSObject+XTFMDB.m */; };
+		8FFC6D141EEF73AD00F55173 /* XTDBModel+autoSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D0C1EEF73AD00F55173 /* XTDBModel+autoSql.m */; };
+		8FFC6D151EEF73AD00F55173 /* XTDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D0E1EEF73AD00F55173 /* XTDBModel.m */; };
+		8FFC6D161EEF73AD00F55173 /* XTFMDBBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D111EEF73AD00F55173 /* XTFMDBBase.m */; };
+		8FFC6D191EEF74D900F55173 /* PwdListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D181EEF74D900F55173 /* PwdListController.m */; };
+		8FFC6D1D1EEF7A3B00F55173 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D1C1EEF7A3B00F55173 /* DetailViewController.m */; };
+		8FFC6D201EEF7A4B00F55173 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D1F1EEF7A4B00F55173 /* EditViewController.m */; };
+		8FFC6D241EEF7A8000F55173 /* PwdItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D231EEF7A8000F55173 /* PwdItem.m */; };
+		8FFC6D271EEF7EBD00F55173 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D261EEF7EBD00F55173 /* ListCell.m */; };
+		8FFC6D391EEF832500F55173 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D2C1EEF832500F55173 /* Base64.m */; };
+		8FFC6D3A1EEF832500F55173 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D2F1EEF832500F55173 /* NSString+MD5.m */; };
+		8FFC6D3B1EEF832500F55173 /* RootRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D321EEF832500F55173 /* RootRefreshFooter.m */; };
+		8FFC6D3C1EEF832500F55173 /* RootRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D341EEF832500F55173 /* RootRefreshHeader.m */; };
+		8FFC6D3D1EEF832500F55173 /* RootTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D361EEF832500F55173 /* RootTableCell.m */; };
+		8FFC6D3E1EEF832500F55173 /* RootTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D381EEF832500F55173 /* RootTableView.m */; };
+		E85C29A9CA170FFA68285991 /* libPods-xtcPwd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4460BB02A9066CE9B3F329EA /* libPods-xtcPwd.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4460BB02A9066CE9B3F329EA /* libPods-xtcPwd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xtcPwd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.debug.xcconfig"; sourceTree = "<group>"; };
+		6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.release.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.release.xcconfig"; sourceTree = "<group>"; };
 		8FFC6CEC1EEF735A00F55173 /* xtcPwd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xtcPwd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFC6CF01EEF735A00F55173 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8FFC6CF21EEF735A00F55173 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8FFC6CF31EEF735A00F55173 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8FFC6CF51EEF735A00F55173 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8FFC6CF61EEF735A00F55173 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8FFC6CF91EEF735A00F55173 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8FFC6CFB1EEF735A00F55173 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8FFC6CFE1EEF735A00F55173 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8FFC6D001EEF735A00F55173 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FFC6D071EEF73AD00F55173 /* NSObject+Reflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Reflection.h"; sourceTree = "<group>"; };
+		8FFC6D081EEF73AD00F55173 /* NSObject+Reflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Reflection.m"; sourceTree = "<group>"; };
+		8FFC6D091EEF73AD00F55173 /* NSObject+XTFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XTFMDB.h"; sourceTree = "<group>"; };
+		8FFC6D0A1EEF73AD00F55173 /* NSObject+XTFMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XTFMDB.m"; sourceTree = "<group>"; };
+		8FFC6D0B1EEF73AD00F55173 /* XTDBModel+autoSql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XTDBModel+autoSql.h"; sourceTree = "<group>"; };
+		8FFC6D0C1EEF73AD00F55173 /* XTDBModel+autoSql.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XTDBModel+autoSql.m"; sourceTree = "<group>"; };
+		8FFC6D0D1EEF73AD00F55173 /* XTDBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTDBModel.h; sourceTree = "<group>"; };
+		8FFC6D0E1EEF73AD00F55173 /* XTDBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTDBModel.m; sourceTree = "<group>"; };
+		8FFC6D0F1EEF73AD00F55173 /* XTFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTFMDB.h; sourceTree = "<group>"; };
+		8FFC6D101EEF73AD00F55173 /* XTFMDBBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTFMDBBase.h; sourceTree = "<group>"; };
+		8FFC6D111EEF73AD00F55173 /* XTFMDBBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTFMDBBase.m; sourceTree = "<group>"; };
+		8FFC6D171EEF74D900F55173 /* PwdListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PwdListController.h; path = VC/PwdListController.h; sourceTree = "<group>"; };
+		8FFC6D181EEF74D900F55173 /* PwdListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PwdListController.m; path = VC/PwdListController.m; sourceTree = "<group>"; };
+		8FFC6D1B1EEF7A3B00F55173 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = VC/DetailViewController.h; sourceTree = "<group>"; };
+		8FFC6D1C1EEF7A3B00F55173 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = VC/DetailViewController.m; sourceTree = "<group>"; };
+		8FFC6D1E1EEF7A4B00F55173 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditViewController.h; path = VC/EditViewController.h; sourceTree = "<group>"; };
+		8FFC6D1F1EEF7A4B00F55173 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditViewController.m; path = VC/EditViewController.m; sourceTree = "<group>"; };
+		8FFC6D221EEF7A8000F55173 /* PwdItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PwdItem.h; path = Model/PwdItem.h; sourceTree = "<group>"; };
+		8FFC6D231EEF7A8000F55173 /* PwdItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PwdItem.m; path = Model/PwdItem.m; sourceTree = "<group>"; };
+		8FFC6D251EEF7EBD00F55173 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListCell.h; path = VC/ListCell.h; sourceTree = "<group>"; };
+		8FFC6D261EEF7EBD00F55173 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCell.m; path = VC/ListCell.m; sourceTree = "<group>"; };
+		8FFC6D2B1EEF832500F55173 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		8FFC6D2C1EEF832500F55173 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		8FFC6D2E1EEF832500F55173 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		8FFC6D2F1EEF832500F55173 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		8FFC6D311EEF832500F55173 /* RootRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootRefreshFooter.h; sourceTree = "<group>"; };
+		8FFC6D321EEF832500F55173 /* RootRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootRefreshFooter.m; sourceTree = "<group>"; };
+		8FFC6D331EEF832500F55173 /* RootRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootRefreshHeader.h; sourceTree = "<group>"; };
+		8FFC6D341EEF832500F55173 /* RootRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootRefreshHeader.m; sourceTree = "<group>"; };
+		8FFC6D351EEF832500F55173 /* RootTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTableCell.h; sourceTree = "<group>"; };
+		8FFC6D361EEF832500F55173 /* RootTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableCell.m; sourceTree = "<group>"; };
+		8FFC6D371EEF832500F55173 /* RootTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTableView.h; sourceTree = "<group>"; };
+		8FFC6D381EEF832500F55173 /* RootTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +83,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E85C29A9CA170FFA68285991 /* libPods-xtcPwd.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		103B394664DFEE2E8762589E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4460BB02A9066CE9B3F329EA /* libPods-xtcPwd.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		675E837E288704CCB2A32852 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */,
+				6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8FFC6CE31EEF735A00F55173 = {
 			isa = PBXGroup;
 			children = (
 				8FFC6CEE1EEF735A00F55173 /* xtcPwd */,
 				8FFC6CED1EEF735A00F55173 /* Products */,
+				675E837E288704CCB2A32852 /* Pods */,
+				103B394664DFEE2E8762589E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +128,12 @@
 		8FFC6CEE1EEF735A00F55173 /* xtcPwd */ = {
 			isa = PBXGroup;
 			children = (
+				8FFC6D281EEF832500F55173 /* Util */,
+				8FFC6D061EEF73AD00F55173 /* XTFMDB */,
 				8FFC6CF21EEF735A00F55173 /* AppDelegate.h */,
 				8FFC6CF31EEF735A00F55173 /* AppDelegate.m */,
-				8FFC6CF51EEF735A00F55173 /* ViewController.h */,
-				8FFC6CF61EEF735A00F55173 /* ViewController.m */,
+				8FFC6D211EEF7A5A00F55173 /* Model */,
+				8FFC6D1A1EEF74E000F55173 /* VC */,
 				8FFC6CF81EEF735A00F55173 /* Main.storyboard */,
 				8FFC6CFB1EEF735A00F55173 /* Assets.xcassets */,
 				8FFC6CFD1EEF735A00F55173 /* LaunchScreen.storyboard */,
@@ -79,6 +151,99 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8FFC6D061EEF73AD00F55173 /* XTFMDB */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC6D071EEF73AD00F55173 /* NSObject+Reflection.h */,
+				8FFC6D081EEF73AD00F55173 /* NSObject+Reflection.m */,
+				8FFC6D091EEF73AD00F55173 /* NSObject+XTFMDB.h */,
+				8FFC6D0A1EEF73AD00F55173 /* NSObject+XTFMDB.m */,
+				8FFC6D0B1EEF73AD00F55173 /* XTDBModel+autoSql.h */,
+				8FFC6D0C1EEF73AD00F55173 /* XTDBModel+autoSql.m */,
+				8FFC6D0D1EEF73AD00F55173 /* XTDBModel.h */,
+				8FFC6D0E1EEF73AD00F55173 /* XTDBModel.m */,
+				8FFC6D0F1EEF73AD00F55173 /* XTFMDB.h */,
+				8FFC6D101EEF73AD00F55173 /* XTFMDBBase.h */,
+				8FFC6D111EEF73AD00F55173 /* XTFMDBBase.m */,
+			);
+			path = XTFMDB;
+			sourceTree = "<group>";
+		};
+		8FFC6D1A1EEF74E000F55173 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC6D171EEF74D900F55173 /* PwdListController.h */,
+				8FFC6D181EEF74D900F55173 /* PwdListController.m */,
+				8FFC6D251EEF7EBD00F55173 /* ListCell.h */,
+				8FFC6D261EEF7EBD00F55173 /* ListCell.m */,
+				8FFC6D1B1EEF7A3B00F55173 /* DetailViewController.h */,
+				8FFC6D1C1EEF7A3B00F55173 /* DetailViewController.m */,
+				8FFC6D1E1EEF7A4B00F55173 /* EditViewController.h */,
+				8FFC6D1F1EEF7A4B00F55173 /* EditViewController.m */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		8FFC6D211EEF7A5A00F55173 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC6D221EEF7A8000F55173 /* PwdItem.h */,
+				8FFC6D231EEF7A8000F55173 /* PwdItem.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8FFC6D281EEF832500F55173 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC6D291EEF832500F55173 /* Base64+MD5 */,
+				8FFC6D301EEF832500F55173 /* root */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		8FFC6D291EEF832500F55173 /* Base64+MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC6D2A1EEF832500F55173 /* Base64 */,
+				8FFC6D2D1EEF832500F55173 /* MD5 */,
+			);
+			path = "Base64+MD5";
+			sourceTree = "<group>";
+		};
+		8FFC6D2A1EEF832500F55173 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC6D2B1EEF832500F55173 /* Base64.h */,
+				8FFC6D2C1EEF832500F55173 /* Base64.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
+		8FFC6D2D1EEF832500F55173 /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC6D2E1EEF832500F55173 /* NSString+MD5.h */,
+				8FFC6D2F1EEF832500F55173 /* NSString+MD5.m */,
+			);
+			path = MD5;
+			sourceTree = "<group>";
+		};
+		8FFC6D301EEF832500F55173 /* root */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC6D311EEF832500F55173 /* RootRefreshFooter.h */,
+				8FFC6D321EEF832500F55173 /* RootRefreshFooter.m */,
+				8FFC6D331EEF832500F55173 /* RootRefreshHeader.h */,
+				8FFC6D341EEF832500F55173 /* RootRefreshHeader.m */,
+				8FFC6D351EEF832500F55173 /* RootTableCell.h */,
+				8FFC6D361EEF832500F55173 /* RootTableCell.m */,
+				8FFC6D371EEF832500F55173 /* RootTableView.h */,
+				8FFC6D381EEF832500F55173 /* RootTableView.m */,
+			);
+			path = root;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +251,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8FFC6D031EEF735A00F55173 /* Build configuration list for PBXNativeTarget "xtcPwd" */;
 			buildPhases = (
+				86FEF2FAD42281ACBDD164F4 /* [CP] Check Pods Manifest.lock */,
 				8FFC6CE81EEF735A00F55173 /* Sources */,
 				8FFC6CE91EEF735A00F55173 /* Frameworks */,
 				8FFC6CEA1EEF735A00F55173 /* Resources */,
+				2573ACA2A1345FA521431AC0 /* [CP] Embed Pods Frameworks */,
+				3B376957006CE01CEB03E838 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,14 +314,77 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2573ACA2A1345FA521431AC0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B376957006CE01CEB03E838 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86FEF2FAD42281ACBDD164F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8FFC6CE81EEF735A00F55173 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FFC6CF71EEF735A00F55173 /* ViewController.m in Sources */,
+				8FFC6D391EEF832500F55173 /* Base64.m in Sources */,
+				8FFC6D151EEF73AD00F55173 /* XTDBModel.m in Sources */,
+				8FFC6D3D1EEF832500F55173 /* RootTableCell.m in Sources */,
+				8FFC6D271EEF7EBD00F55173 /* ListCell.m in Sources */,
+				8FFC6D241EEF7A8000F55173 /* PwdItem.m in Sources */,
+				8FFC6D191EEF74D900F55173 /* PwdListController.m in Sources */,
+				8FFC6D1D1EEF7A3B00F55173 /* DetailViewController.m in Sources */,
+				8FFC6D3B1EEF832500F55173 /* RootRefreshFooter.m in Sources */,
+				8FFC6D3A1EEF832500F55173 /* NSString+MD5.m in Sources */,
 				8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */,
+				8FFC6D201EEF7A4B00F55173 /* EditViewController.m in Sources */,
+				8FFC6D3C1EEF832500F55173 /* RootRefreshHeader.m in Sources */,
+				8FFC6D121EEF73AD00F55173 /* NSObject+Reflection.m in Sources */,
+				8FFC6D131EEF73AD00F55173 /* NSObject+XTFMDB.m in Sources */,
 				8FFC6CF11EEF735A00F55173 /* main.m in Sources */,
+				8FFC6D141EEF73AD00F55173 /* XTDBModel+autoSql.m in Sources */,
+				8FFC6D161EEF73AD00F55173 /* XTFMDBBase.m in Sources */,
+				8FFC6D3E1EEF832500F55173 /* RootTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +504,7 @@
 		};
 		8FFC6D041EEF735A00F55173 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = E3XZ878L8N;
@@ -285,6 +517,7 @@
 		};
 		8FFC6D051EEF735A00F55173 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = E3XZ878L8N;
@@ -314,6 +547,7 @@
 				8FFC6D051EEF735A00F55173 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

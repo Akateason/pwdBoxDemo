@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class PwdItem ;
 @interface DetailViewController : UIViewController
-
+@property (nonatomic,strong) PwdItem *item ;
 @end

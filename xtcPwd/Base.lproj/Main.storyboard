@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YPZ-VP-Oph">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YPZ-VP-Oph" customClass="RootTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -76,7 +76,8 @@
                         <outlet property="addItem" destination="HfD-MB-gZJ" id="3lt-XO-V1U"/>
                         <outlet property="table" destination="YPZ-VP-Oph" id="9bb-Vw-zYu"/>
                         <outlet property="typeItem" destination="qhn-CW-xsC" id="MDA-Jx-yGY"/>
-                        <segue destination="vBA-Sz-g7d" kind="push" id="UTa-Tb-sO4"/>
+                        <segue destination="vBA-Sz-g7d" kind="push" identifier="list2detail" id="UTa-Tb-sO4"/>
+                        <segue destination="Mxh-bk-22Y" kind="push" identifier="list2add" id="yOl-wv-2d7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -101,8 +102,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBw-xa-V03">
-                                <rect key="frame" x="16" y="182" width="83" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pwd :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBw-xa-V03">
+                                <rect key="frame" x="16" y="182" width="41.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -166,15 +167,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="h2z-wh-RA3">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="ABG-8h-pfc"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="ABG-8h-pfc">
+                            <connections>
+                                <action selector="editOnClick:" destination="vBA-Sz-g7d" id="VY9-2V-1zT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Mxh-bk-22Y" kind="push" id="c3X-ud-nIX"/>
+                        <outlet property="editItem" destination="ABG-8h-pfc" id="HTa-xT-sj0"/>
+                        <outlet property="lbAccount" destination="8XA-8u-2nx" id="lsH-hj-rn8"/>
+                        <outlet property="lbDetail" destination="Hwa-eK-AW0" id="6Tk-hp-IKu"/>
+                        <outlet property="lbName" destination="ieK-mm-XOi" id="CWf-Rj-EsT"/>
+                        <outlet property="lbPwd" destination="HCt-Ok-LWy" id="jbP-SZ-fVT"/>
+                        <segue destination="Mxh-bk-22Y" kind="push" identifier="detail2edit" id="c3X-ud-nIX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Vb-eX-70C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1860" y="123.68815592203899"/>
+            <point key="canvasLocation" x="2585" y="-296"/>
         </scene>
         <!--Edit View Controller-->
         <scene sceneID="zhc-Ed-5Dc">
@@ -194,8 +204,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaH-g1-Eje">
-                                <rect key="frame" x="16" y="182" width="83" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pwd :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaH-g1-Eje">
+                                <rect key="frame" x="16" y="182" width="41.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -274,12 +284,23 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ypi-5I-xbD">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="rq7-CZ-Xq5"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="rq7-CZ-Xq5">
+                            <connections>
+                                <action selector="doneItemOnClick:" destination="Mxh-bk-22Y" id="hNq-WD-xPR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="accountTf" destination="EAo-5x-csG" id="KF3-wB-bAr"/>
+                        <outlet property="detailTv" destination="ak2-Tw-3XB" id="Q1V-ah-72m"/>
+                        <outlet property="doneItem" destination="rq7-CZ-Xq5" id="eu3-Ac-ctW"/>
+                        <outlet property="nameTf" destination="YL7-Fa-hd4" id="JdU-AV-32d"/>
+                        <outlet property="passwordTf" destination="cwU-0q-SPK" id="YDc-iM-lic"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zy5-ve-azj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2584.8000000000002" y="123.68815592203899"/>
+            <point key="canvasLocation" x="2585" y="638"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wff-Wd-KpT">
@@ -297,7 +318,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nzp-2v-ZP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112.8" y="777.66116941529242"/>
+            <point key="canvasLocation" x="175" y="124"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="c3X-ud-nIX"/>
+    </inferredMetricsTieBreakers>
 </document>

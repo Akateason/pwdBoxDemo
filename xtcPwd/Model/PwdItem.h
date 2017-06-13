@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
 } TypeOfPwdItem;
 
 @interface PwdItem : XTDBModel
+
 @property (nonatomic,strong) NSString *name ;
 @property (nonatomic,strong) NSString *account ;
 @property (nonatomic,strong) NSString *password ;
@@ -22,6 +23,12 @@ typedef enum : NSUInteger {
 @property (nonatomic)        int      typeOfPwdItem ;
 
 - (NSString *)encodePwd:(NSString *)password ;
-- (NSString *)decodePwd:(NSString *)password ;
+- (NSString *)decodePwd ;
+
+- (instancetype)initWithName:(NSString *)name
+                     account:(NSString *)account
+                    password:(NSString *)password
+                      detail:(NSString *)detail
+                        type:(TypeOfPwdItem)type ;
 
 @end

@@ -29,14 +29,14 @@
     return self;
 }
 
-- (NSString *)encodePwd:(NSString *)password
+- (NSString *)encodePwd:(NSString *)pwd
 {
-    return [password base64EncodedString] ;
+    return [pwd base64EncodedString] ;
 }
 
-- (NSString *)decodePwd:(NSString *)password
+- (NSString *)decodePwd
 {
-    return [password base64DecodedString] ;
+    return [_password base64DecodedString] ;
 }
 
 @end

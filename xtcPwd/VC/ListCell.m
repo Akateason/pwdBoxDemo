@@ -7,14 +7,20 @@
 //
 
 #import "ListCell.h"
+#import "UIColor+AllColors.h"
 
 @implementation ListCell
-+ (CGFloat)cellHeight { return 48. ; }
+
++ (CGFloat)cellHeight { return 52.f ; }
 
 - (void)awakeFromNib
 {
-    [super awakeFromNib];
+    [super awakeFromNib] ;
     // Initialization code
+    self.backgroundColor = [UIColor clearColor] ;
+    self.selectionStyle = 0 ;
+    self.backView.backgroundColor = [UIColor xt_light] ;
+    self.backView.layer.cornerRadius = 5 ;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

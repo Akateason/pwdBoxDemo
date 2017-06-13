@@ -28,6 +28,12 @@
 		8FFC6D3C1EEF832500F55173 /* RootRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D341EEF832500F55173 /* RootRefreshHeader.m */; };
 		8FFC6D3D1EEF832500F55173 /* RootTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D361EEF832500F55173 /* RootTableCell.m */; };
 		8FFC6D3E1EEF832500F55173 /* RootTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D381EEF832500F55173 /* RootTableView.m */; };
+		8FFC6D471EEFC6D700F55173 /* UIColor+AllColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D411EEFC6D700F55173 /* UIColor+AllColors.m */; };
+		8FFC6D481EEFC6D700F55173 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D431EEFC6D700F55173 /* UIColor+HexString.m */; };
+		8FFC6D491EEFC6D700F55173 /* xtAllColorsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FFC6D441EEFC6D700F55173 /* xtAllColorsList.plist */; };
+		8FFC6D4A1EEFC6D700F55173 /* XTColorFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D461EEFC6D700F55173 /* XTColorFetcher.m */; };
+		8FFC6D4E1EEFC82100F55173 /* XTJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D4D1EEFC82100F55173 /* XTJson.m */; };
+		8FFC6D511EEFC9AD00F55173 /* UIImage+AddFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D501EEFC9AD00F55173 /* UIImage+AddFunction.m */; };
 		E85C29A9CA170FFA68285991 /* libPods-xtcPwd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4460BB02A9066CE9B3F329EA /* libPods-xtcPwd.a */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +82,17 @@
 		8FFC6D361EEF832500F55173 /* RootTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableCell.m; sourceTree = "<group>"; };
 		8FFC6D371EEF832500F55173 /* RootTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTableView.h; sourceTree = "<group>"; };
 		8FFC6D381EEF832500F55173 /* RootTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableView.m; sourceTree = "<group>"; };
+		8FFC6D401EEFC6D700F55173 /* UIColor+AllColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AllColors.h"; sourceTree = "<group>"; };
+		8FFC6D411EEFC6D700F55173 /* UIColor+AllColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AllColors.m"; sourceTree = "<group>"; };
+		8FFC6D421EEFC6D700F55173 /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
+		8FFC6D431EEFC6D700F55173 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
+		8FFC6D441EEFC6D700F55173 /* xtAllColorsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = xtAllColorsList.plist; sourceTree = "<group>"; };
+		8FFC6D451EEFC6D700F55173 /* XTColorFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTColorFetcher.h; sourceTree = "<group>"; };
+		8FFC6D461EEFC6D700F55173 /* XTColorFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTColorFetcher.m; sourceTree = "<group>"; };
+		8FFC6D4C1EEFC82100F55173 /* XTJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTJson.h; sourceTree = "<group>"; };
+		8FFC6D4D1EEFC82100F55173 /* XTJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTJson.m; sourceTree = "<group>"; };
+		8FFC6D4F1EEFC9AD00F55173 /* UIImage+AddFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AddFunction.h"; sourceTree = "<group>"; };
+		8FFC6D501EEFC9AD00F55173 /* UIImage+AddFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AddFunction.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +213,10 @@
 		8FFC6D281EEF832500F55173 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				8FFC6D4F1EEFC9AD00F55173 /* UIImage+AddFunction.h */,
+				8FFC6D501EEFC9AD00F55173 /* UIImage+AddFunction.m */,
+				8FFC6D4B1EEFC82100F55173 /* XTJson */,
+				8FFC6D3F1EEFC6D700F55173 /* color */,
 				8FFC6D291EEF832500F55173 /* Base64+MD5 */,
 				8FFC6D301EEF832500F55173 /* root */,
 			);
@@ -242,6 +263,29 @@
 				8FFC6D381EEF832500F55173 /* RootTableView.m */,
 			);
 			path = root;
+			sourceTree = "<group>";
+		};
+		8FFC6D3F1EEFC6D700F55173 /* color */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC6D401EEFC6D700F55173 /* UIColor+AllColors.h */,
+				8FFC6D411EEFC6D700F55173 /* UIColor+AllColors.m */,
+				8FFC6D421EEFC6D700F55173 /* UIColor+HexString.h */,
+				8FFC6D431EEFC6D700F55173 /* UIColor+HexString.m */,
+				8FFC6D441EEFC6D700F55173 /* xtAllColorsList.plist */,
+				8FFC6D451EEFC6D700F55173 /* XTColorFetcher.h */,
+				8FFC6D461EEFC6D700F55173 /* XTColorFetcher.m */,
+			);
+			path = color;
+			sourceTree = "<group>";
+		};
+		8FFC6D4B1EEFC82100F55173 /* XTJson */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC6D4C1EEFC82100F55173 /* XTJson.h */,
+				8FFC6D4D1EEFC82100F55173 /* XTJson.m */,
+			);
+			path = XTJson;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +352,7 @@
 			files = (
 				8FFC6CFF1EEF735A00F55173 /* LaunchScreen.storyboard in Resources */,
 				8FFC6CFC1EEF735A00F55173 /* Assets.xcassets in Resources */,
+				8FFC6D491EEFC6D700F55173 /* xtAllColorsList.plist in Resources */,
 				8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,17 +413,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FFC6D391EEF832500F55173 /* Base64.m in Sources */,
+				8FFC6D4E1EEFC82100F55173 /* XTJson.m in Sources */,
 				8FFC6D151EEF73AD00F55173 /* XTDBModel.m in Sources */,
 				8FFC6D3D1EEF832500F55173 /* RootTableCell.m in Sources */,
 				8FFC6D271EEF7EBD00F55173 /* ListCell.m in Sources */,
 				8FFC6D241EEF7A8000F55173 /* PwdItem.m in Sources */,
+				8FFC6D511EEFC9AD00F55173 /* UIImage+AddFunction.m in Sources */,
 				8FFC6D191EEF74D900F55173 /* PwdListController.m in Sources */,
+				8FFC6D471EEFC6D700F55173 /* UIColor+AllColors.m in Sources */,
 				8FFC6D1D1EEF7A3B00F55173 /* DetailViewController.m in Sources */,
 				8FFC6D3B1EEF832500F55173 /* RootRefreshFooter.m in Sources */,
 				8FFC6D3A1EEF832500F55173 /* NSString+MD5.m in Sources */,
+				8FFC6D481EEFC6D700F55173 /* UIColor+HexString.m in Sources */,
 				8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */,
 				8FFC6D201EEF7A4B00F55173 /* EditViewController.m in Sources */,
 				8FFC6D3C1EEF832500F55173 /* RootRefreshHeader.m in Sources */,
+				8FFC6D4A1EEFC6D700F55173 /* XTColorFetcher.m in Sources */,
 				8FFC6D121EEF73AD00F55173 /* NSObject+Reflection.m in Sources */,
 				8FFC6D131EEF73AD00F55173 /* NSObject+XTFMDB.m in Sources */,
 				8FFC6CF11EEF735A00F55173 /* main.m in Sources */,

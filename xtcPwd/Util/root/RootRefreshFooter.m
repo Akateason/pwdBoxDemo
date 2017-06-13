@@ -46,7 +46,7 @@ extern float const kTABLE_HEADER_IMAGES_COUNT   ;
 {
     [super prepare];
     
-    NSArray *idleImages = @[[self.gifImageList firstObject]] ;
+    NSArray *idleImages = self.gifImageList ;//@[[self.gifImageList firstObject]] ;
     NSArray *pullingImages = self.gifImageList ;
     NSArray *refreshingImages = self.gifImageList ;
     [self setImages:idleImages forState:MJRefreshStateIdle];

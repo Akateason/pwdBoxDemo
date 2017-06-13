@@ -14,6 +14,7 @@
 #import "RootTableView.h"
 #import "ReactiveObjC.h"
 #import "SVProgressHUD.h"
+#import "UIColor+AllColors.h"
 
 @interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *typeItem;
@@ -37,6 +38,7 @@
     self.table.dataSource   = self ;
     self.table.xt_Delegate  = self ;
     [self.table pullDownRefreshHeaderInBackGround:YES] ;
+    self.table.backgroundColor = [UIColor xt_d_red] ;
 }
 
 - (void)didReceiveMemoryWarning {

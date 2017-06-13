@@ -9,6 +9,7 @@
 #import "EditViewController.h"
 #import "PwdItem.h"
 #import "SVProgressHUD.h"
+#import "UIColor+AllColors.h"
 
 @interface EditViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem    *doneItem   ;
@@ -23,8 +24,20 @@
 #pragma mark -
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [super viewDidLoad] ;
+    
+    self.view.backgroundColor = [UIColor xt_d_red] ;
+    _nameTf.textColor = [UIColor xt_dart] ;
+    _accountTf.textColor = [UIColor xt_dart] ;
+    _passwordTf.textColor = [UIColor xt_dart] ;
+    _detailTv.textColor = [UIColor xt_dart] ;
+    _nameTf.backgroundColor = [UIColor xt_light] ;
+    _accountTf.backgroundColor = [UIColor xt_light] ;
+    _passwordTf.backgroundColor = [UIColor xt_light] ;
+    _detailTv.backgroundColor = [UIColor xt_light] ;
     // Do any additional setup after loading the view.
+    
+    
     if (self.typeWillBeAdd != 0)
     { // add mode
         self.title = @"ADD" ;

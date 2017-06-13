@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "XTFMDB.h"
+#import "UIColor+AllColors.h"
+#import "UIImage+AddFunction.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +21,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[XTFMDBBase sharedInstance] configureDB:@"teasonsDB"] ;
+    
+    
+    //2 nav style
+    UIImage *img = [UIImage imageWithColor:[UIColor xt_dart]
+                                      size:CGSizeMake(320.0, 64.0)] ;
+    [[UINavigationBar appearance] setBackgroundImage:img
+                                       forBarMetrics:UIBarMetricsDefault] ;
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}] ;
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]] ;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent] ;
     return YES;
 }
 

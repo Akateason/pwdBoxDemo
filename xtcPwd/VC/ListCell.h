@@ -10,5 +10,6 @@
 
 @interface ListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UIView *backView;
 + (CGFloat)cellHeight ;
 @end

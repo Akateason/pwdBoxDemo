@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "EditViewController.h"
 #import "PwdItem.h"
+#import "UIColor+AllColors.h"
 
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *lbName;
@@ -31,6 +32,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor xt_d_red] ;
+    _lbName.textColor = [UIColor xt_dart] ;
+    _lbAccount.textColor = [UIColor xt_dart] ;
+    _lbPwd.textColor = [UIColor xt_dart] ;
+    _lbDetail.textColor = [UIColor xt_dart] ;
+
+    
+    
     if (!self.item) return ;
 }
 

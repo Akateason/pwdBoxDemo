@@ -180,6 +180,12 @@ static const int pageNumber = 10 ;
 {
     PwdItem *item = self.dataList[indexPath.row] ;
     cell.name.text = item.name ;
+    
+    cell.layer.transform = CATransform3DMakeScale(0.76, 0.76, 1) ;
+    [UIView animateWithDuration:.25
+                     animations:^{
+                         cell.layer.transform = CATransform3DIdentity ;
+                     }] ;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

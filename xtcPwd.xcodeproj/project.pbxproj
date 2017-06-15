@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
 		8FFC6CF11EEF735A00F55173 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF01EEF735A00F55173 /* main.m */; };
 		8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF31EEF735A00F55173 /* AppDelegate.m */; };
 		8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF81EEF735A00F55173 /* Main.storyboard */; };
@@ -41,6 +42,8 @@
 		4460BB02A9066CE9B3F329EA /* libPods-xtcPwd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xtcPwd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.debug.xcconfig"; sourceTree = "<group>"; };
 		6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.release.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.release.xcconfig"; sourceTree = "<group>"; };
+		8FBE48791EF2764C005F0E74 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserViewController.h; path = VC/UserViewController.h; sourceTree = "<group>"; };
+		8FBE487A1EF2764C005F0E74 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserViewController.m; path = VC/UserViewController.m; sourceTree = "<group>"; };
 		8FFC6CEC1EEF735A00F55173 /* xtcPwd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xtcPwd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFC6CF01EEF735A00F55173 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8FFC6CF21EEF735A00F55173 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				8FFC6D1C1EEF7A3B00F55173 /* DetailViewController.m */,
 				8FFC6D1E1EEF7A4B00F55173 /* EditViewController.h */,
 				8FFC6D1F1EEF7A4B00F55173 /* EditViewController.m */,
+				8FBE48791EF2764C005F0E74 /* UserViewController.h */,
+				8FBE487A1EF2764C005F0E74 /* UserViewController.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				8FFC6D131EEF73AD00F55173 /* NSObject+XTFMDB.m in Sources */,
 				8FFC6CF11EEF735A00F55173 /* main.m in Sources */,
 				8FFC6D141EEF73AD00F55173 /* XTDBModel+autoSql.m in Sources */,
+				8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */,
 				8FFC6D161EEF73AD00F55173 /* XTFMDBBase.m in Sources */,
 				8FFC6D3E1EEF832500F55173 /* RootTableView.m in Sources */,
 			);

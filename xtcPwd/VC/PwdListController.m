@@ -15,11 +15,14 @@
 #import "ReactiveObjC.h"
 #import "SVProgressHUD.h"
 #import "UIColor+AllColors.h"
+#import "UIImage+AddFunction.h"
 
 @interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate>
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *typeItem;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addItem;
+@property (weak, nonatomic) IBOutlet UIButton *btUser;
+@property (weak, nonatomic) IBOutlet UIButton *btSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *btAdd;
 @property (weak, nonatomic) IBOutlet RootTableView *table;
+@property (weak, nonatomic) IBOutlet UILabel *titleLb;
 
 @property (nonatomic,copy) NSArray *dataList ;
 @property (nonatomic) TypeOfPwdItem pwdType ;
@@ -34,11 +37,30 @@
     
     [super viewDidLoad] ;
     // Do any additional setup after loading the view.
+    self.titleLb.textColor = [UIColor whiteColor] ;
+    self.titleLb.text = @"All" ;
+    //
+    [self.btUser setImage:[[UIImage imageNamed:@"user"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
+    [self.btSwitch setImage:[[UIImage imageNamed:@"switch"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
+    [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
+    
+    
     self.table.delegate     = self ;
     self.table.dataSource   = self ;
     self.table.xt_Delegate  = self ;
     [self.table pullDownRefreshHeaderInBackGround:YES] ;
     self.table.backgroundColor = [UIColor xt_d_red] ;
+    self.view.backgroundColor  = [UIColor xt_dart] ;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:NO] ;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:NO] ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,17 +75,17 @@
     {
         case typeNone:
         {
-            self.title = @"All" ;
+            self.titleLb.text = @"All" ;
         }
             break;
         case typeWebsite:
         {
-            self.title = @"Website" ;
+            self.titleLb.text = @"Website" ;
         }
             break;
         case typeCard:
         {
-            self.title = @"Card" ;
+            self.titleLb.text = @"Card" ;
         }
             break;
         default:
@@ -73,6 +95,11 @@
 }
 
 #pragma mark --
+- (IBAction)userOnClick:(id)sender
+{
+    [self performSegueWithIdentifier:@"all2user" sender:nil] ;
+}
+
 - (IBAction)typeItemOnClick:(id)sender
 {
     UIAlertAction *action0 = [UIAlertAction actionWithTitle:@"all"
@@ -137,7 +164,7 @@
 
 
 #pragma mark --
-static const int pageNumber = 10 ;
+static const int pageNumber = 20 ;
 - (void)loadNew:(void(^)(void))endRefresh
 {
     int lastOneId = 0 ;
@@ -150,6 +177,13 @@ static const int pageNumber = 10 ;
 {
     int lastOneId = ((PwdItem *)[self.dataList lastObject]).pkid ;
     NSArray *listBack = [PwdItem selectWhere:[self sqlWhereStringWithLastId:lastOneId]] ;
+    if (!listBack.count)
+    {
+        [SVProgressHUD showInfoWithStatus:@"no items ..."] ;
+        endRefresh() ;
+        return ;
+    }
+    
     NSMutableArray *templist = [self.dataList mutableCopy] ;
     [templist addObjectsFromArray:listBack] ;
     self.dataList = templist ;
@@ -272,6 +306,10 @@ static const int pageNumber = 10 ;
     {
         DetailViewController *detailVC = [segue destinationViewController] ;
         detailVC.item = sender ;
+    }
+    else if ([segue.identifier isEqualToString:@"all2user"])
+    {
+        
     }
 }
 

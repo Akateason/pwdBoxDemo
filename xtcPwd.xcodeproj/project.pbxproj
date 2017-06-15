@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
+		8FBE48A71EF29C0F005F0E74 /* 密码1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE489F1EF29C0F005F0E74 /* 密码1.png */; };
+		8FBE48A81EF29C0F005F0E74 /* 密码1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A01EF29C0F005F0E74 /* 密码1@2x.png */; };
+		8FBE48A91EF29C0F005F0E74 /* 密码2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A11EF29C0F005F0E74 /* 密码2.png */; };
+		8FBE48AA1EF29C0F005F0E74 /* 密码2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A21EF29C0F005F0E74 /* 密码2@2x.png */; };
+		8FBE48AB1EF29C0F005F0E74 /* 密码3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A31EF29C0F005F0E74 /* 密码3.png */; };
+		8FBE48AC1EF29C0F005F0E74 /* 密码3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A41EF29C0F005F0E74 /* 密码3@2x.png */; };
+		8FBE48AD1EF29C0F005F0E74 /* JXGesturePasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48A61EF29C0F005F0E74 /* JXGesturePasswordView.m */; };
 		8FFC6CF11EEF735A00F55173 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF01EEF735A00F55173 /* main.m */; };
 		8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF31EEF735A00F55173 /* AppDelegate.m */; };
 		8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF81EEF735A00F55173 /* Main.storyboard */; };
@@ -44,6 +51,14 @@
 		6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.release.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.release.xcconfig"; sourceTree = "<group>"; };
 		8FBE48791EF2764C005F0E74 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserViewController.h; path = VC/UserViewController.h; sourceTree = "<group>"; };
 		8FBE487A1EF2764C005F0E74 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserViewController.m; path = VC/UserViewController.m; sourceTree = "<group>"; };
+		8FBE489F1EF29C0F005F0E74 /* 密码1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码1.png"; sourceTree = "<group>"; };
+		8FBE48A01EF29C0F005F0E74 /* 密码1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码1@2x.png"; sourceTree = "<group>"; };
+		8FBE48A11EF29C0F005F0E74 /* 密码2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码2.png"; sourceTree = "<group>"; };
+		8FBE48A21EF29C0F005F0E74 /* 密码2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码2@2x.png"; sourceTree = "<group>"; };
+		8FBE48A31EF29C0F005F0E74 /* 密码3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码3.png"; sourceTree = "<group>"; };
+		8FBE48A41EF29C0F005F0E74 /* 密码3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码3@2x.png"; sourceTree = "<group>"; };
+		8FBE48A51EF29C0F005F0E74 /* JXGesturePasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXGesturePasswordView.h; sourceTree = "<group>"; };
+		8FBE48A61EF29C0F005F0E74 /* JXGesturePasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXGesturePasswordView.m; sourceTree = "<group>"; };
 		8FFC6CEC1EEF735A00F55173 /* xtcPwd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xtcPwd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFC6CF01EEF735A00F55173 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8FFC6CF21EEF735A00F55173 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -125,6 +140,29 @@
 				6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8FBE489D1EF29C0F005F0E74 /* GestureSecret */ = {
+			isa = PBXGroup;
+			children = (
+				8FBE489E1EF29C0F005F0E74 /* images */,
+				8FBE48A51EF29C0F005F0E74 /* JXGesturePasswordView.h */,
+				8FBE48A61EF29C0F005F0E74 /* JXGesturePasswordView.m */,
+			);
+			path = GestureSecret;
+			sourceTree = "<group>";
+		};
+		8FBE489E1EF29C0F005F0E74 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8FBE489F1EF29C0F005F0E74 /* 密码1.png */,
+				8FBE48A01EF29C0F005F0E74 /* 密码1@2x.png */,
+				8FBE48A11EF29C0F005F0E74 /* 密码2.png */,
+				8FBE48A21EF29C0F005F0E74 /* 密码2@2x.png */,
+				8FBE48A31EF29C0F005F0E74 /* 密码3.png */,
+				8FBE48A41EF29C0F005F0E74 /* 密码3@2x.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		8FFC6CE31EEF735A00F55173 = {
@@ -218,6 +256,7 @@
 		8FFC6D281EEF832500F55173 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				8FBE489D1EF29C0F005F0E74 /* GestureSecret */,
 				8FFC6D4F1EEFC9AD00F55173 /* UIImage+AddFunction.h */,
 				8FFC6D501EEFC9AD00F55173 /* UIImage+AddFunction.m */,
 				8FFC6D4B1EEFC82100F55173 /* XTJson */,
@@ -355,8 +394,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FBE48AA1EF29C0F005F0E74 /* 密码2@2x.png in Resources */,
+				8FBE48A91EF29C0F005F0E74 /* 密码2.png in Resources */,
+				8FBE48A71EF29C0F005F0E74 /* 密码1.png in Resources */,
+				8FBE48AB1EF29C0F005F0E74 /* 密码3.png in Resources */,
 				8FFC6CFF1EEF735A00F55173 /* LaunchScreen.storyboard in Resources */,
 				8FFC6CFC1EEF735A00F55173 /* Assets.xcassets in Resources */,
+				8FBE48A81EF29C0F005F0E74 /* 密码1@2x.png in Resources */,
+				8FBE48AC1EF29C0F005F0E74 /* 密码3@2x.png in Resources */,
 				8FFC6D491EEFC6D700F55173 /* xtAllColorsList.plist in Resources */,
 				8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */,
 			);
@@ -434,6 +479,7 @@
 				8FFC6D201EEF7A4B00F55173 /* EditViewController.m in Sources */,
 				8FFC6D3C1EEF832500F55173 /* RootRefreshHeader.m in Sources */,
 				8FFC6D4A1EEFC6D700F55173 /* XTColorFetcher.m in Sources */,
+				8FBE48AD1EF29C0F005F0E74 /* JXGesturePasswordView.m in Sources */,
 				8FFC6D121EEF73AD00F55173 /* NSObject+Reflection.m in Sources */,
 				8FFC6D131EEF73AD00F55173 /* NSObject+XTFMDB.m in Sources */,
 				8FFC6CF11EEF735A00F55173 /* main.m in Sources */,

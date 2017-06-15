@@ -16,8 +16,10 @@
 #import "SVProgressHUD.h"
 #import "UIColor+AllColors.h"
 #import "UIImage+AddFunction.h"
+#import "JXGesturePasswordView.h"
 
-@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate>
+
+@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate,JXGesturePasswordViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btUser;
 @property (weak, nonatomic) IBOutlet UIButton *btSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
@@ -39,18 +41,25 @@
     // Do any additional setup after loading the view.
     self.titleLb.textColor = [UIColor whiteColor] ;
     self.titleLb.text = @"All" ;
-    //
+    [self setupUIs] ;
+    [self gesturePwdView] ;
+}
+
+- (void)setupUIs
+{
+    self.view.backgroundColor  = [UIColor xt_dart] ;
     [self.btUser setImage:[[UIImage imageNamed:@"user"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     [self.btSwitch setImage:[[UIImage imageNamed:@"switch"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
-    
-    
+}
+
+- (void)setupTable
+{
     self.table.delegate     = self ;
     self.table.dataSource   = self ;
     self.table.xt_Delegate  = self ;
     [self.table pullDownRefreshHeaderInBackGround:YES] ;
     self.table.backgroundColor = [UIColor xt_d_red] ;
-    self.view.backgroundColor  = [UIColor xt_dart] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -66,6 +75,47 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark --
+- (void)gesturePwdView
+{
+    NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults] ;
+    NSString *gesPwd = [userDefaultes objectForKey:@"gesturePwd"] ;
+    if (gesPwd != nil) {
+        JXGesturePasswordView *gesturePasswordView = [[JXGesturePasswordView alloc] init] ;
+        gesturePasswordView.center = self.view.center ;
+        gesturePasswordView.delegate = self ;
+        [self.view addSubview:gesturePasswordView] ;
+    }
+}
+
+- (void)gesturePasswordView:(JXGesturePasswordView *)gesturePasswordView
+      didFinishDrawPassword:(NSString *)password
+{
+    if ([password length] <= 4) {
+        [SVProgressHUD showErrorWithStatus:@"you have to make more than 4 Numbers"] ;
+        return ;
+    }
+    
+    NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults] ;
+    NSString *gesPwd = [userDefaultes objectForKey:@"gesturePwd"] ;
+    if ([password isEqualToString:gesPwd])
+    {
+        [SVProgressHUD showSuccessWithStatus:@"success"] ;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [gesturePasswordView removeFromSuperview] ;
+            
+            [self setupTable] ;
+            
+        }) ;
+    }
+    else
+    {
+        [SVProgressHUD showErrorWithStatus:@"password is wrong !"] ;
+    }
 }
 
 #pragma mark --
@@ -91,7 +141,6 @@
         default:
             break;
     }
-
 }
 
 #pragma mark --
@@ -133,7 +182,9 @@
     [alertCtrl addAction:action1] ;
     [alertCtrl addAction:action2] ;
     [alertCtrl addAction:action3] ;
-    [self presentViewController:alertCtrl animated:YES completion:nil] ;
+    [self presentViewController:alertCtrl
+                       animated:YES
+                     completion:nil] ;
 }
 
 - (IBAction)addItemOnClick:(id)sender
@@ -159,7 +210,9 @@
     [alertCtrl addAction:action1] ;
     [alertCtrl addAction:action2] ;
     [alertCtrl addAction:action3] ;
-    [self presentViewController:alertCtrl animated:YES completion:nil] ;
+    [self presentViewController:alertCtrl
+                       animated:YES
+                     completion:nil] ;
 }
 
 

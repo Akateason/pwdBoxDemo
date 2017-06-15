@@ -7,9 +7,13 @@
 //
 
 #import "UserViewController.h"
+#import "UIColor+AllColors.h"
+#import "JXGesturePasswordView.h"
+#import "SVProgressHUD.h"
 
-@interface UserViewController ()
+@interface UserViewController () <JXGesturePasswordViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btClose;
+@property (weak, nonatomic) IBOutlet UIButton *btForgetGesture;
 
 @end
 
@@ -17,8 +21,13 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [super viewDidLoad] ;
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor xt_d_red] ;
+    
+    [_btForgetGesture setTitleColor:[UIColor xt_dart] forState:0] ;
+    _btForgetGesture.layer.cornerRadius = 5. ;
+    _btForgetGesture.backgroundColor = [UIColor xt_light] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -35,6 +44,38 @@
 {
     [self.navigationController popViewControllerAnimated:YES] ;
 }
+
+
+- (IBAction)forgetOpenGesture:(id)sender
+{
+    JXGesturePasswordView *gesturePasswordView = [[JXGesturePasswordView alloc] init] ;
+    gesturePasswordView.backgroundColor = [UIColor xt_d_red] ;
+    gesturePasswordView.center = self.view.center;
+    gesturePasswordView.delegate = self;
+    [self.view addSubview:gesturePasswordView];
+}
+
+
+- (void)gesturePasswordView:(JXGesturePasswordView *)gesturePasswordView
+      didFinishDrawPassword:(NSString *)password
+{
+    if ([password length] <= 4) {
+        [SVProgressHUD showErrorWithStatus:@"you have to make more than 4 Numbers"] ;
+        return ;
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults] ;
+    [userDefaults setObject:password forKey:@"gesturePwd"] ;
+    [userDefaults synchronize] ;
+    [SVProgressHUD showSuccessWithStatus:@"set gesture success !"] ;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [gesturePasswordView removeFromSuperview] ;
+    }) ;
+    
+}
+
+
 
 /*
 #pragma mark - Navigation

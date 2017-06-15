@@ -15,6 +15,8 @@
 		8FBE48AB1EF29C0F005F0E74 /* 密码3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A31EF29C0F005F0E74 /* 密码3.png */; };
 		8FBE48AC1EF29C0F005F0E74 /* 密码3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A41EF29C0F005F0E74 /* 密码3@2x.png */; };
 		8FBE48AD1EF29C0F005F0E74 /* JXGesturePasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48A61EF29C0F005F0E74 /* JXGesturePasswordView.m */; };
+		8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */; };
+		8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B21EF29F15005F0E74 /* PingTransition.m */; };
 		8FFC6CF11EEF735A00F55173 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF01EEF735A00F55173 /* main.m */; };
 		8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF31EEF735A00F55173 /* AppDelegate.m */; };
 		8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF81EEF735A00F55173 /* Main.storyboard */; };
@@ -59,6 +61,10 @@
 		8FBE48A41EF29C0F005F0E74 /* 密码3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码3@2x.png"; sourceTree = "<group>"; };
 		8FBE48A51EF29C0F005F0E74 /* JXGesturePasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXGesturePasswordView.h; sourceTree = "<group>"; };
 		8FBE48A61EF29C0F005F0E74 /* JXGesturePasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXGesturePasswordView.m; sourceTree = "<group>"; };
+		8FBE48AF1EF29F15005F0E74 /* PingReverseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingReverseTransition.h; sourceTree = "<group>"; };
+		8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingReverseTransition.m; sourceTree = "<group>"; };
+		8FBE48B11EF29F15005F0E74 /* PingTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingTransition.h; sourceTree = "<group>"; };
+		8FBE48B21EF29F15005F0E74 /* PingTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingTransition.m; sourceTree = "<group>"; };
 		8FFC6CEC1EEF735A00F55173 /* xtcPwd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xtcPwd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFC6CF01EEF735A00F55173 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8FFC6CF21EEF735A00F55173 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -165,6 +171,18 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		8FBE48AE1EF29F15005F0E74 /* transition */ = {
+			isa = PBXGroup;
+			children = (
+				8FBE48AF1EF29F15005F0E74 /* PingReverseTransition.h */,
+				8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */,
+				8FBE48B11EF29F15005F0E74 /* PingTransition.h */,
+				8FBE48B21EF29F15005F0E74 /* PingTransition.m */,
+			);
+			name = transition;
+			path = VC/transition;
+			sourceTree = "<group>";
+		};
 		8FFC6CE31EEF735A00F55173 = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +248,7 @@
 		8FFC6D1A1EEF74E000F55173 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				8FBE48AE1EF29F15005F0E74 /* transition */,
 				8FFC6D171EEF74D900F55173 /* PwdListController.h */,
 				8FFC6D181EEF74D900F55173 /* PwdListController.m */,
 				8FFC6D251EEF7EBD00F55173 /* ListCell.h */,
@@ -463,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FFC6D391EEF832500F55173 /* Base64.m in Sources */,
+				8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */,
 				8FFC6D4E1EEFC82100F55173 /* XTJson.m in Sources */,
 				8FFC6D151EEF73AD00F55173 /* XTDBModel.m in Sources */,
 				8FFC6D3D1EEF832500F55173 /* RootTableCell.m in Sources */,
@@ -487,6 +507,7 @@
 				8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */,
 				8FFC6D161EEF73AD00F55173 /* XTFMDBBase.m in Sources */,
 				8FFC6D3E1EEF832500F55173 /* RootTableView.m in Sources */,
+				8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

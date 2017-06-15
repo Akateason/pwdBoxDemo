@@ -10,8 +10,10 @@
 #import "UIColor+AllColors.h"
 #import "JXGesturePasswordView.h"
 #import "SVProgressHUD.h"
+#import "PingReverseTransition.h"
+#import "UIImage+AddFunction.h"
 
-@interface UserViewController () <JXGesturePasswordViewDelegate>
+@interface UserViewController () <JXGesturePasswordViewDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btClose;
 @property (weak, nonatomic) IBOutlet UIButton *btForgetGesture;
 
@@ -19,11 +21,14 @@
 
 @implementation UserViewController
 
+#pragma mark -
 - (void)viewDidLoad
 {
     [super viewDidLoad] ;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor xt_d_red] ;
+    
+    [_btClose setImage:[[UIImage imageNamed:@"close"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     
     [_btForgetGesture setTitleColor:[UIColor xt_dart] forState:0] ;
     _btForgetGesture.layer.cornerRadius = 5. ;
@@ -33,6 +38,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
+    self.navigationController.delegate = self ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,11 +46,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -
 - (IBAction)btCloseOnClick:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES] ;
 }
-
 
 - (IBAction)forgetOpenGesture:(id)sender
 {
@@ -55,7 +61,7 @@
     [self.view addSubview:gesturePasswordView];
 }
 
-
+#pragma mark - JXGesturePasswordViewDelegate
 - (void)gesturePasswordView:(JXGesturePasswordView *)gesturePasswordView
       didFinishDrawPassword:(NSString *)password
 {
@@ -71,10 +77,26 @@
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [gesturePasswordView removeFromSuperview] ;
+        [self.navigationController popViewControllerAnimated:YES] ;
     }) ;
     
 }
 
+#pragma mark - UINavigationControllerDelegate
+- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC
+{
+    if (operation == UINavigationControllerOperationPop)
+    {
+        PingReverseTransition *pingInvert = [PingReverseTransition new];
+        return pingInvert;
+    }
+    else{
+        return nil;
+    }
+}
 
 
 /*

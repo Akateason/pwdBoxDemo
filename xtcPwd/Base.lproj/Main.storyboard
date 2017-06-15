@@ -149,10 +149,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIe-Rj-Zfn">
-                                <rect key="frame" x="329" y="23" width="30" height="30"/>
+                                <rect key="frame" x="16" y="23" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="dsf-Gs-KAR"/>
-                                    <constraint firstAttribute="height" constant="30" id="xW3-VS-lga"/>
+                                    <constraint firstAttribute="height" constant="30" id="3EW-h8-LAf"/>
+                                    <constraint firstAttribute="width" constant="30" id="S25-w5-Fka"/>
                                 </constraints>
                                 <state key="normal" image="close"/>
                                 <connections>
@@ -173,12 +173,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KIe-Rj-Zfn" firstAttribute="top" secondItem="28i-79-YAL" secondAttribute="bottom" constant="3" id="Hlt-el-EL6"/>
+                            <constraint firstItem="KIe-Rj-Zfn" firstAttribute="top" secondItem="28i-79-YAL" secondAttribute="bottom" constant="3" id="W8V-nY-tzI"/>
                             <constraint firstItem="FkG-Q3-9Xh" firstAttribute="centerX" secondItem="8Rj-KB-CT6" secondAttribute="centerX" id="jfl-Bd-6wa"/>
                             <constraint firstItem="FkG-Q3-9Xh" firstAttribute="centerY" secondItem="8Rj-KB-CT6" secondAttribute="centerY" id="nax-Ih-7j4"/>
-                            <constraint firstAttribute="trailing" secondItem="KIe-Rj-Zfn" secondAttribute="trailing" constant="16" id="sPJ-R2-95R"/>
+                            <constraint firstItem="KIe-Rj-Zfn" firstAttribute="leading" secondItem="8Rj-KB-CT6" secondAttribute="leading" constant="16" id="s3E-qR-mWe"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="iNU-MX-w5E"/>
                     <connections>
                         <outlet property="btClose" destination="KIe-Rj-Zfn" id="Fgx-Jv-SyP"/>
@@ -463,6 +464,6 @@
         <image name="user" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c3X-ud-nIX"/>
+        <segue reference="yOl-wv-2d7"/>
     </inferredMetricsTieBreakers>
 </document>

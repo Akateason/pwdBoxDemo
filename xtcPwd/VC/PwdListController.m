@@ -17,10 +17,10 @@
 #import "UIColor+AllColors.h"
 #import "UIImage+AddFunction.h"
 #import "JXGesturePasswordView.h"
+#import "PingTransition.h"
 
+@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate,JXGesturePasswordViewDelegate,UINavigationControllerDelegate>
 
-@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate,JXGesturePasswordViewDelegate>
-@property (weak, nonatomic) IBOutlet UIButton *btUser;
 @property (weak, nonatomic) IBOutlet UIButton *btSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
 @property (weak, nonatomic) IBOutlet RootTableView *table;
@@ -65,6 +65,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
+    self.navigationController.delegate = self ;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -334,6 +335,22 @@ static const int pageNumber = 20 ;
     self.dataList = tmplist ;
     [self.table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                       withRowAnimation:UITableViewRowAnimationFade] ;
+}
+
+
+#pragma mark - UINavigationControllerDelegate
+- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC
+{
+    if (operation == UINavigationControllerOperationPush) {
+        PingTransition *ping = [PingTransition new];
+        return ping;
+    }
+    else {
+        return nil;
+    }
 }
 
 

@@ -65,7 +65,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
-    self.navigationController.delegate = self ;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -379,7 +378,7 @@ static const int pageNumber = 20 ;
     }
     else if ([segue.identifier isEqualToString:@"all2user"])
     {
-        
+        self.navigationController.delegate = self ;
     }
 }
 

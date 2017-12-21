@@ -12,27 +12,60 @@
 #import "ListCell.h"
 #import "PwdItem.h"
 #import "RootTableView.h"
-#import "ReactiveObjC.h"
+#import <ReactiveObjC.h>
 #import "SVProgressHUD.h"
 #import "UIColor+AllColors.h"
 #import "UIImage+AddFunction.h"
 #import "JXGesturePasswordView.h"
 #import "PingTransition.h"
 
-@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate,JXGesturePasswordViewDelegate,UINavigationControllerDelegate>
+@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate,JXGesturePasswordViewDelegate,UINavigationControllerDelegate,UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *btSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
 @property (weak, nonatomic) IBOutlet RootTableView *table;
 @property (weak, nonatomic) IBOutlet UILabel *titleLb;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableTop;
+@property (weak, nonatomic) IBOutlet UIButton *btSch;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (nonatomic,copy) NSArray *dataList ;
 @property (nonatomic) TypeOfPwdItem pwdType ;
+
 @end
 
 @implementation PwdListController
 
 #pragma mark --
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (![searchText length]) return ;
+    
+    self.dataList = [PwdItem selectWhere:[NSString stringWithFormat:@"name like '%%%@%%'",searchText]] ;
+    [self.table reloadData] ;
+}
+
+#pragma mark --
+
+- (IBAction)searchBt:(UIButton *)sender {
+    [self putSearchBt] ;
+}
+
+- (void)putSearchBt {
+    self.btSch.selected = !self.btSch.selected ;
+    self.tableTop.constant = self.btSch.selected ? (64 + 44) : 64 ;
+    if (self.btSch.selected) {
+        [self.searchBar becomeFirstResponder] ;
+    }
+    else {
+        [self.searchBar resignFirstResponder] ;
+    }
+}
+
+
+
+#pragma mark --
+
 - (void)viewDidLoad
 {
     [PwdItem createTable] ;
@@ -43,6 +76,7 @@
     self.titleLb.text = @"All" ;
     [self setupUIs] ;
     [self gesturePwdView] ;
+    self.searchBar.delegate = self ;
 }
 
 - (void)setupUIs
@@ -88,6 +122,9 @@
         gesturePasswordView.delegate = self ;
         [self.view addSubview:gesturePasswordView] ;
     }
+    else {
+        [self performSegueWithIdentifier:@"all2user" sender:nil] ;
+    }
 }
 
 - (void)gesturePasswordView:(JXGesturePasswordView *)gesturePasswordView
@@ -109,7 +146,7 @@
             [gesturePasswordView removeFromSuperview] ;
             
             [self setupTable] ;
-            
+            self.btSch.hidden = NO ;
         }) ;
     }
     else
@@ -217,9 +254,16 @@
 
 
 #pragma mark --
+
 static const int pageNumber = 20 ;
+
 - (void)loadNew:(void(^)(void))endRefresh
 {
+//    if (self.dataList.count) {
+//        endRefresh() ;
+//        return ;
+//    }
+    
     int lastOneId = 0 ;
     NSArray *listBack = [PwdItem selectWhere:[self sqlWhereStringWithLastId:lastOneId]] ;
     self.dataList = listBack ;
@@ -282,6 +326,10 @@ static const int pageNumber = 20 ;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.searchBar isFirstResponder]) {
+        [self putSearchBt] ;
+        return ;
+    }
     PwdItem *item = self.dataList[indexPath.row] ;
     [self performSegueWithIdentifier:@"list2detail" sender:item] ;
 }

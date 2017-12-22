@@ -10,33 +10,39 @@
 #import "PwdItem.h"
 #import "SVProgressHUD.h"
 #import "UIColor+AllColors.h"
+#import "MyTextField.h"
 
 @interface EditViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem    *doneItem   ;
-@property (weak, nonatomic) IBOutlet UITextField        *nameTf     ;
-@property (weak, nonatomic) IBOutlet UITextField        *accountTf  ;
-@property (weak, nonatomic) IBOutlet UITextField        *passwordTf ;
+@property (weak, nonatomic) IBOutlet MyTextField        *nameTf     ;
+@property (weak, nonatomic) IBOutlet MyTextField        *accountTf  ;
+@property (weak, nonatomic) IBOutlet MyTextField        *passwordTf ;
 @property (weak, nonatomic) IBOutlet UITextView         *detailTv   ;
 @end
 
 @implementation EditViewController
 
 #pragma mark -
+
 - (void)viewDidLoad
 {
     [super viewDidLoad] ;
     
-    self.view.backgroundColor = [UIColor xt_d_red] ;
+    self.view.backgroundColor = [UIColor xt_light] ;
     _nameTf.textColor = [UIColor xt_dart] ;
     _accountTf.textColor = [UIColor xt_dart] ;
     _passwordTf.textColor = [UIColor xt_dart] ;
     _detailTv.textColor = [UIColor xt_dart] ;
-    _nameTf.backgroundColor = [UIColor xt_light] ;
-    _accountTf.backgroundColor = [UIColor xt_light] ;
-    _passwordTf.backgroundColor = [UIColor xt_light] ;
-    _detailTv.backgroundColor = [UIColor xt_light] ;
-    // Do any additional setup after loading the view.
     
+    _nameTf.backgroundColor = [UIColor whiteColor] ;
+    _accountTf.backgroundColor = [UIColor whiteColor] ;
+    _passwordTf.backgroundColor = [UIColor whiteColor] ;
+    _detailTv.backgroundColor = [UIColor whiteColor] ;
+    
+    _nameTf.layer.cornerRadius = 5. ;
+    _accountTf.layer.cornerRadius = 5. ;
+    _passwordTf.layer.cornerRadius = 5. ;
+    _detailTv.layer.cornerRadius = 5. ;
     
     if (self.typeWillBeAdd != 0)
     { // add mode
@@ -51,6 +57,13 @@
         
         self.title = @"EDIT" ;
     }
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBG:)];
+    [self.view addGestureRecognizer:tapGesture];
+}
+
+- (void)tapBG:(UITapGestureRecognizer *)gesture {
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +71,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - 
+#pragma mark -
+
 - (IBAction)doneItemOnClick:(id)sender
 {
     if (!_nameTf.text.length || !_accountTf.text.length || !_passwordTf.text.length) {

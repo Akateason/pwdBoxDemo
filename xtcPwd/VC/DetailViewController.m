@@ -50,18 +50,21 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor xt_d_red] ;
-    _lbName.textColor = [UIColor xt_dart] ;
-    _lbAccount.textColor = [UIColor xt_dart] ;
-    _lbPwd.textColor = [UIColor xt_dart] ;
-    _lbDetail.textColor = [UIColor xt_dart] ;
-
-    [_btCopy setTitleColor:[UIColor xt_dart] forState:0] ;
-    [_btShow setTitleColor:[UIColor xt_dart] forState:0] ;
+    self.view.backgroundColor = [UIColor whiteColor] ; //[UIColor xt_light] ;
+    
+    UIColor *wordsColor = [UIColor blackColor] ;
+    
+    _lbName.textColor = wordsColor ;
+    _lbAccount.textColor = wordsColor ;
+    _lbPwd.textColor = wordsColor ;
+    _lbDetail.textColor = wordsColor ;
+    
+    [_btCopy setTitleColor:[UIColor whiteColor] forState:0] ;
+    [_btShow setTitleColor:[UIColor whiteColor] forState:0] ;
     _btCopy.layer.cornerRadius = 5. ;
     _btShow.layer.cornerRadius = 5. ;
-    _btCopy.backgroundColor = [UIColor xt_light] ;
-    _btShow.backgroundColor = [UIColor xt_light] ;
+    _btCopy.backgroundColor = [UIColor xt_dart] ;
+    _btShow.backgroundColor = [UIColor xt_dart] ;
     
     if (!self.item) return ;
 }

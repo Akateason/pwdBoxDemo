@@ -26,13 +26,13 @@
 {
     [super viewDidLoad] ;
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor xt_d_red] ;
+    self.view.backgroundColor = [UIColor xt_dart] ;
     
     [_btClose setImage:[[UIImage imageNamed:@"close"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     
-    [_btForgetGesture setTitleColor:[UIColor xt_dart] forState:0] ;
-    _btForgetGesture.layer.cornerRadius = 5. ;
-    _btForgetGesture.backgroundColor = [UIColor xt_light] ;
+//    [_btForgetGesture setTitleColor:[UIColor xt_dart] forState:0] ;
+//    _btForgetGesture.layer.cornerRadius = 5. ;
+//    _btForgetGesture.backgroundColor = [UIColor xt_light] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated

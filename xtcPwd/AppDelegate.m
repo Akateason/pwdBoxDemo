@@ -10,6 +10,8 @@
 #import "XTFMDB.h"
 #import "UIColor+AllColors.h"
 #import "UIImage+AddFunction.h"
+#import <SVProgressHUD.h>
+#import "PwdItem.h"
 
 @interface AppDelegate ()
 
@@ -18,11 +20,20 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     [[XTFMDBBase sharedInstance] configureDB:@"teasonsDB"] ;
+    [PwdItem createTable] ;
+    [[XTFMDBBase sharedInstance] dbUpgradeTable:PwdItem.class
+                                      paramsAdd:@[@"createTime",@"updateTime",@"isDel",@"readCount"]
+                                        version:2] ;
     
+    [self setupUI] ;
     
+    return YES ;
+}
+
+- (void)setupUI {
     //2 nav style
     UIImage *img = [UIImage imageWithColor:[UIColor xt_dart]
                                       size:CGSizeMake(320.0, 64.0)] ;
@@ -31,7 +42,15 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}] ;
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]] ;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent] ;
-    return YES;
+    [[UINavigationBar appearance] setTranslucent:NO] ;
+    
+    // svpro
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark] ;
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone] ;
+    [SVProgressHUD setMaximumDismissTimeInterval:1.] ;
+    [SVProgressHUD setCornerRadius:10] ;
+    [SVProgressHUD setBackgroundColor:[UIColor darkGrayColor]] ;
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]] ;
 }
 
 

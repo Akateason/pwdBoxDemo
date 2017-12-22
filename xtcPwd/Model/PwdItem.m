@@ -7,6 +7,7 @@
 //
 
 #import "PwdItem.h"
+#import "NSString+Extend.h"
 #import "Base64.h"
 
 @implementation PwdItem

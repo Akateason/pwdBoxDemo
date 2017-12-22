@@ -7,11 +7,17 @@ target 'xtcPwd' do
 
   # Pods for xtcPwd
 
+pod 'AFNetworking'
 pod 'Masonry'
+pod 'SDWebImage'
 pod 'SVProgressHUD'
 pod 'ReactiveObjC'
-pod ‘MJRefresh’
-pod ‘YYModel’
-pod ‘FMDB’
+pod 'UITableView+FDTemplateLayoutCell'
+pod 'MJRefresh'
+pod 'YYModel'
+pod 'FMDB'
+pod 'SSZipArchive'
+pod 'Valet'
+pod 'FDFullscreenPopGesture', '1.1'
 
 end

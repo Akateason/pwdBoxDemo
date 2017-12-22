@@ -18,13 +18,18 @@
 #import "UIImage+AddFunction.h"
 #import "JXGesturePasswordView.h"
 #import "PingTransition.h"
+#import "XTSegment.h"
+#import <Masonry.h>
+#import "ScreenHeader.h"
+#import <UINavigationController+FDFullscreenPopGesture.h>
 
-@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate,JXGesturePasswordViewDelegate,UINavigationControllerDelegate,UISearchBarDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *btSwitch;
+@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate,JXGesturePasswordViewDelegate,UINavigationControllerDelegate,UISearchBarDelegate,XTSegmentDelegate>
+
+@property (strong, nonatomic) XTSegment *segment ;
+@property (weak, nonatomic) IBOutlet UIView *topContainer;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
 @property (weak, nonatomic) IBOutlet RootTableView *table;
-@property (weak, nonatomic) IBOutlet UILabel *titleLb;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableTop;
 @property (weak, nonatomic) IBOutlet UIButton *btSch;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -62,18 +67,21 @@
     }
 }
 
+#pragma mark - XTSegmentDelegate <NSObject>
 
+- (void)clickSegmentWith:(int)index {
+    self.pwdType = index ;
+    [self.table pullDownRefreshHeader] ;
+}
 
 #pragma mark --
 
-- (void)viewDidLoad
-{
-    [PwdItem createTable] ;
+- (void)viewDidLoad {
     
     [super viewDidLoad] ;
-    // Do any additional setup after loading the view.
-    self.titleLb.textColor = [UIColor whiteColor] ;
-    self.titleLb.text = @"All" ;
+    [self.navigationController setNavigationBarHidden:YES animated:NO] ;
+    self.fd_prefersNavigationBarHidden = YES ;
+    
     [self setupUIs] ;
     [self gesturePwdView] ;
     self.searchBar.delegate = self ;
@@ -81,9 +89,24 @@
 
 - (void)setupUIs
 {
-    self.view.backgroundColor  = [UIColor xt_dart] ;
+    self.topContainer.backgroundColor = nil ;
+    self.segment = ({
+        XTSegment *segment = [[XTSegment alloc] initWithDataList:@[@"ALL",@"WEBSITE",@"CARD"]
+                                                           imgBg:nil
+                                                            size:self.topContainer.frame.size
+                                                     normalColor:[UIColor lightGrayColor]
+                                                     selectColor:[UIColor whiteColor]
+                                                            font:[UIFont systemFontOfSize:16.]] ;
+        [self.topContainer addSubview:segment] ;
+        [segment mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.topContainer) ;
+        }] ;
+        segment.delegate = self ;
+        segment ;
+    }) ;
+    
+    self.view.backgroundColor = [UIColor xt_dart] ;
     [self.btUser setImage:[[UIImage imageNamed:@"user"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
-    [self.btSwitch setImage:[[UIImage imageNamed:@"switch"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
 }
 
@@ -93,17 +116,19 @@
     self.table.dataSource   = self ;
     self.table.xt_Delegate  = self ;
     [self.table pullDownRefreshHeaderInBackGround:YES] ;
-    self.table.backgroundColor = [UIColor xt_d_red] ;
+    self.table.backgroundColor = [UIColor whiteColor] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:NO] ;
+    [super viewWillAppear:animated] ;
+//    [self.navigationController setNavigationBarHidden:YES animated:NO] ;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:NO] ;
+    [super viewWillDisappear:animated] ;
+//    [self.navigationController setNavigationBarHidden:NO animated:NO] ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,6 +137,7 @@
 }
 
 #pragma mark --
+
 - (void)gesturePwdView
 {
     NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults] ;
@@ -156,72 +182,10 @@
 }
 
 #pragma mark --
-- (void)changeTitleDisplay
-{
-    switch (self.pwdType)
-    {
-        case typeNone:
-        {
-            self.titleLb.text = @"All" ;
-        }
-            break;
-        case typeWebsite:
-        {
-            self.titleLb.text = @"Website" ;
-        }
-            break;
-        case typeCard:
-        {
-            self.titleLb.text = @"Card" ;
-        }
-            break;
-        default:
-            break;
-    }
-}
 
-#pragma mark --
 - (IBAction)userOnClick:(id)sender
 {
     [self performSegueWithIdentifier:@"all2user" sender:nil] ;
-}
-
-- (IBAction)typeItemOnClick:(id)sender
-{
-    UIAlertAction *action0 = [UIAlertAction actionWithTitle:@"all"
-                                                      style:UIAlertActionStyleDefault
-                                                    handler:^(UIAlertAction * _Nonnull action) {
-                                                        self.pwdType = typeNone ;
-                                                        [self.table pullDownRefreshHeader] ;
-                                                        [self changeTitleDisplay] ;
-                                                    }] ;
-    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"website"
-                                                      style:UIAlertActionStyleDefault
-                                                    handler:^(UIAlertAction * _Nonnull action) {
-                                                        self.pwdType = typeWebsite ;
-                                                        [self.table pullDownRefreshHeader] ;
-                                                        [self changeTitleDisplay] ;
-                                                    }] ;
-    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"card"
-                                                      style:UIAlertActionStyleDefault
-                                                    handler:^(UIAlertAction * _Nonnull action) {
-                                                        self.pwdType = typeCard ;
-                                                        [self.table pullDownRefreshHeader] ;
-                                                        [self changeTitleDisplay] ;
-                                                    }] ;
-    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"cancel"
-                                                      style:UIAlertActionStyleCancel
-                                                    handler:nil] ;
-    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"CHOOSE TYPE"
-                                                                       message:@"Choose the type, the list will be change ."
-                                                                preferredStyle:UIAlertControllerStyleActionSheet] ;
-    [alertCtrl addAction:action0] ;
-    [alertCtrl addAction:action1] ;
-    [alertCtrl addAction:action2] ;
-    [alertCtrl addAction:action3] ;
-    [self presentViewController:alertCtrl
-                       animated:YES
-                     completion:nil] ;
 }
 
 - (IBAction)addItemOnClick:(id)sender
@@ -259,11 +223,6 @@ static const int pageNumber = 20 ;
 
 - (void)loadNew:(void(^)(void))endRefresh
 {
-//    if (self.dataList.count) {
-//        endRefresh() ;
-//        return ;
-//    }
-    
     int lastOneId = 0 ;
     NSArray *listBack = [PwdItem selectWhere:[self sqlWhereStringWithLastId:lastOneId]] ;
     self.dataList = listBack ;
@@ -297,6 +256,7 @@ static const int pageNumber = 20 ;
 }
 
 #pragma mark --
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.dataList.count ;
@@ -386,6 +346,7 @@ static const int pageNumber = 20 ;
 
 
 #pragma mark - UINavigationControllerDelegate
+
 - (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                    animationControllerForOperation:(UINavigationControllerOperation)operation
                                                 fromViewController:(UIViewController *)fromVC
@@ -400,11 +361,8 @@ static const int pageNumber = 20 ;
     }
 }
 
-
-
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender
 {

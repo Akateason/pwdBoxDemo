@@ -22,9 +22,8 @@
     self.name.textColor = [UIColor xt_text_dark] ;
     self.account.textColor = [UIColor xt_text_light] ;
     
-    self.image.layer.cornerRadius = 4. ;
+    self.image.layer.cornerRadius = self.image.frame.size.width / 6. ;
     self.image.layer.masksToBounds = YES ;
-//    self.image.alpha = .8 ;
 }
 
 - (void)configure:(PwdItem *)model {

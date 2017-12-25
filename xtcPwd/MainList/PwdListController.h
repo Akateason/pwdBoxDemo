@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PwdListController : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *btUser;
+@property (weak, nonatomic) IBOutlet UIButton *btUser ;
+@property (weak, nonatomic) IBOutlet UITableView *table ;
+@property (nonatomic,assign) CGRect finalCellRect ;
 @end

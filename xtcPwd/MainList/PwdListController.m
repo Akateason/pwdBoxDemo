@@ -22,14 +22,14 @@
 #import <Masonry.h>
 #import "ScreenHeader.h"
 #import <UINavigationController+FDFullscreenPopGesture.h>
-
+#import "UserViewController.h"
+#import "CellPositiveTransition.h"
 
 @interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,XTSegmentDelegate>
 
 @property (strong, nonatomic) XTSegment *segment ;
 @property (weak, nonatomic) IBOutlet UIView *topContainer;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
-@property (weak, nonatomic) IBOutlet UITableView *table;
 
 @property (nonatomic,copy) NSArray *dataList ;
 @property (nonatomic) TypeOfPwdItem pwdType ;
@@ -56,6 +56,12 @@
 - (void)clickSegmentWith:(int)index {
     self.pwdType = index ;
     [self refreshTable] ;
+    switch (self.pwdType) {
+        case typeNone:      self.title = @"ALL" ;       break ;
+        case typeWebsite:   self.title = @"Website" ;   break ;
+        case typeCard:      self.title = @"Card" ;      break ;
+        default: break ;
+    }
 }
 
 #pragma mark - life
@@ -65,10 +71,16 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
     self.fd_prefersNavigationBarHidden = YES ;
     
+    
     [self setupUIs] ;
 //    [self gesturePwdView] ;
     [self setupTable] ;
     [self refreshTable] ;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated] ;
+    self.navigationController.delegate = self ;
 }
 
 - (void)setupUIs
@@ -183,9 +195,21 @@
     [cell configure:item] ;
     
     cell.image.alpha = 0. ;
-    [UIView animateWithDuration:0.4
+    [UIView animateWithDuration:0.2
                      animations:^{
                          cell.image.alpha = 0.8 ;
+                     }
+                     completion:^(BOOL finished) {
+                         cell.image.layer.transform = indexPath.row % 2 ? CATransform3DMakeTranslation(-10, 0, 0) : CATransform3DMakeTranslation(10, 0, 0) ;
+                         [UIView animateWithDuration:.4
+                                               delay:0
+                              usingSpringWithDamping:.5
+                               initialSpringVelocity:0
+                                             options:UIViewAnimationOptionAllowUserInteraction
+                                          animations:^{
+                                              cell.image.layer.transform = CATransform3DIdentity ;
+                                          }
+                                          completion:nil] ;
                      }] ;
     
     cell.layer.transform = CATransform3DMakeScale(0.76, 0.76, 1) ;
@@ -194,17 +218,6 @@
                          cell.layer.transform = CATransform3DIdentity ;
                      }] ;
 
-    cell.image.layer.transform = indexPath.row % 2 ? CATransform3DMakeTranslation(-10, 0, 0) : CATransform3DMakeTranslation(10, 0, 0) ;
-    [UIView animateWithDuration:.8
-                          delay:.25
-         usingSpringWithDamping:0.2
-          initialSpringVelocity:0
-                        options:UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         cell.image.layer.transform = CATransform3DIdentity ;
-                     }
-                     completion:nil] ;
-    
     cell.name.alpha = 0. ;
     cell.account.alpha = 0. ;
     [UIView animateWithDuration:1.6
@@ -284,8 +297,14 @@
                                                   toViewController:(UIViewController *)toVC
 {
     if (operation == UINavigationControllerOperationPush) {
-        PingTransition *ping = [PingTransition new];
-        return ping;
+        if ([toVC isKindOfClass:[UserViewController class]]) {
+            return [PingTransition new] ;
+        }
+        else if ([toVC isKindOfClass:[DetailViewController class]]) {
+            return [CellPositiveTransition new] ;
+        }
+        
+        return nil ;
     }
     else {
         return nil;

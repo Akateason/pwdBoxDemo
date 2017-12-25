@@ -285,10 +285,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="byy-Fj-i52">
-                                <rect key="frame" x="163" y="50" width="50" height="50"/>
+                                <rect key="frame" x="158" y="50" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="82z-HJ-4FP"/>
-                                    <constraint firstAttribute="height" constant="50" id="fRr-HV-oha"/>
+                                    <constraint firstAttribute="width" constant="60" id="82z-HJ-4FP"/>
+                                    <constraint firstAttribute="height" constant="60" id="fRr-HV-oha"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JoO-5L-iZL">
@@ -441,10 +441,10 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ak2-Tw-3XB">
-                                <rect key="frame" x="132" y="198" width="225" height="267"/>
+                                <rect key="frame" x="132" y="198" width="225" height="151"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="267" id="7kR-E4-bRQ"/>
+                                    <constraint firstAttribute="height" constant="151" id="7kR-E4-bRQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

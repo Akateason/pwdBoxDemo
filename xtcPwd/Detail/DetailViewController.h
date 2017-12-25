@@ -10,4 +10,5 @@
 @class PwdItem ;
 @interface DetailViewController : UIViewController
 @property (nonatomic,strong) PwdItem *item ;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
 @end

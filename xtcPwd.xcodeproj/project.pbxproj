@@ -93,6 +93,8 @@
 		8F560B0A1FF0981100E726F9 /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B021FF0981000E726F9 /* ChineseToPinyinResource.m */; };
 		8F560B0B1FF0981100E726F9 /* PinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B031FF0981000E726F9 /* PinyinFormatter.m */; };
 		8F560B0C1FF0981100E726F9 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8F560B061FF0981000E726F9 /* unicode_to_hanyu_pinyin.txt */; };
+		8F560B141FF0CA8E00E726F9 /* CellPositiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B131FF0CA8E00E726F9 /* CellPositiveTransition.m */; };
+		8F560B171FF0EB5B00E726F9 /* CellNegativeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B161FF0EB5B00E726F9 /* CellNegativeTransition.m */; };
 		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
 		8FBE48A71EF29C0F005F0E74 /* 密码1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE489F1EF29C0F005F0E74 /* 密码1.png */; };
 		8FBE48A81EF29C0F005F0E74 /* 密码1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A01EF29C0F005F0E74 /* 密码1@2x.png */; };
@@ -304,6 +306,10 @@
 		8F560B031FF0981000E726F9 /* PinyinFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinFormatter.m; sourceTree = "<group>"; };
 		8F560B041FF0981000E726F9 /* PinYin4Objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYin4Objc.h; sourceTree = "<group>"; };
 		8F560B061FF0981000E726F9 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
+		8F560B121FF0CA8E00E726F9 /* CellPositiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellPositiveTransition.h; sourceTree = "<group>"; };
+		8F560B131FF0CA8E00E726F9 /* CellPositiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellPositiveTransition.m; sourceTree = "<group>"; };
+		8F560B151FF0EB5B00E726F9 /* CellNegativeTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellNegativeTransition.h; sourceTree = "<group>"; };
+		8F560B161FF0EB5B00E726F9 /* CellNegativeTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellNegativeTransition.m; sourceTree = "<group>"; };
 		8FBE48791EF2764C005F0E74 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		8FBE487A1EF2764C005F0E74 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		8FBE489F1EF29C0F005F0E74 /* 密码1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码1.png"; sourceTree = "<group>"; };
@@ -856,9 +862,10 @@
 		8F560B0D1FF0BE6400E726F9 /* MainList */ = {
 			isa = PBXGroup;
 			children = (
-				8FBE48AE1EF29F15005F0E74 /* transition */,
 				8FFC6D171EEF74D900F55173 /* PwdListController.h */,
 				8FFC6D181EEF74D900F55173 /* PwdListController.m */,
+				8F560B111FF0CA5200E726F9 /* transition_tablecell */,
+				8FBE48AE1EF29F15005F0E74 /* transition_leftbt */,
 				8FFC6D251EEF7EBD00F55173 /* ListCell.h */,
 				8FFC6D261EEF7EBD00F55173 /* ListCell.m */,
 			);
@@ -892,6 +899,17 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		8F560B111FF0CA5200E726F9 /* transition_tablecell */ = {
+			isa = PBXGroup;
+			children = (
+				8F560B121FF0CA8E00E726F9 /* CellPositiveTransition.h */,
+				8F560B131FF0CA8E00E726F9 /* CellPositiveTransition.m */,
+				8F560B151FF0EB5B00E726F9 /* CellNegativeTransition.h */,
+				8F560B161FF0EB5B00E726F9 /* CellNegativeTransition.m */,
+			);
+			path = transition_tablecell;
+			sourceTree = "<group>";
+		};
 		8FBE489D1EF29C0F005F0E74 /* GestureSecret */ = {
 			isa = PBXGroup;
 			children = (
@@ -915,7 +933,7 @@
 			path = images;
 			sourceTree = "<group>";
 		};
-		8FBE48AE1EF29F15005F0E74 /* transition */ = {
+		8FBE48AE1EF29F15005F0E74 /* transition_leftbt */ = {
 			isa = PBXGroup;
 			children = (
 				8FBE48AF1EF29F15005F0E74 /* PingReverseTransition.h */,
@@ -923,7 +941,7 @@
 				8FBE48B11EF29F15005F0E74 /* PingTransition.h */,
 				8FBE48B21EF29F15005F0E74 /* PingTransition.m */,
 			);
-			path = transition;
+			path = transition_leftbt;
 			sourceTree = "<group>";
 		};
 		8FFC6CE31EEF735A00F55173 = {
@@ -947,13 +965,13 @@
 		8FFC6CEE1EEF735A00F55173 /* xtcPwd */ = {
 			isa = PBXGroup;
 			children = (
-				8F56098B1FEC8DA600E726F9 /* XTkit */,
-				8FFC6D281EEF832500F55173 /* Util */,
 				8FFC6CF21EEF735A00F55173 /* AppDelegate.h */,
 				8FFC6CF31EEF735A00F55173 /* AppDelegate.m */,
 				8FFC6D211EEF7A5A00F55173 /* Model */,
 				8FFC6D1A1EEF74E000F55173 /* VC */,
+				8FFC6D281EEF832500F55173 /* Util */,
 				8FFC6CF81EEF735A00F55173 /* Main.storyboard */,
+				8F56098B1FEC8DA600E726F9 /* XTkit */,
 				8FFC6CFB1EEF735A00F55173 /* Assets.xcassets */,
 				8FFC6CFD1EEF735A00F55173 /* LaunchScreen.storyboard */,
 				8FFC6D001EEF735A00F55173 /* Info.plist */,
@@ -1148,12 +1166,14 @@
 				8F560ACE1FEC8DA700E726F9 /* MyTextField.m in Sources */,
 				8F560A881FEC8DA700E726F9 /* UIFont+FontAdapter.m in Sources */,
 				8F560A9D1FEC8DA700E726F9 /* UIButton+Badges.m in Sources */,
+				8F560B171FF0EB5B00E726F9 /* CellNegativeTransition.m in Sources */,
 				8F560AC71FEC8DA700E726F9 /* MyTabbarCtrller.m in Sources */,
 				8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */,
 				8F560AA01FEC8DA700E726F9 /* XTFileManager.m in Sources */,
 				8F560ACB1FEC8DA700E726F9 /* RootRefreshHeader.m in Sources */,
 				8F560A8B1FEC8DA700E726F9 /* NSNumber+Round.m in Sources */,
 				8F560AA91FEC8DA700E726F9 /* IsFirstTime.m in Sources */,
+				8F560B141FF0CA8E00E726F9 /* CellPositiveTransition.m in Sources */,
 				8F560AD51FEC8DA700E726F9 /* XTNetReloader.m in Sources */,
 				8F560A911FEC8DA700E726F9 /* UIViewController+Storyboard.m in Sources */,
 				8F560A841FEC8DA700E726F9 /* XTDBModel+autoSql.m in Sources */,

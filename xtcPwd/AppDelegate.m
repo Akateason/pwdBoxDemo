@@ -25,8 +25,9 @@
     [[XTFMDBBase sharedInstance] configureDB:@"teasonsDB"] ;
     [PwdItem createTable] ;
     [[XTFMDBBase sharedInstance] dbUpgradeTable:PwdItem.class
-                                      paramsAdd:@[@"createTime",@"updateTime",@"isDel",@"readCount"]
+                                      paramsAdd:@[@"readCount",@"pinyin"]
                                         version:2] ;
+    [PwdItem addPinyinIfNeeded] ;
     
     [self setupUI] ;
     
@@ -35,7 +36,7 @@
 
 - (void)setupUI {
     //2 nav style
-    UIImage *img = [UIImage imageWithColor:[UIColor xt_dart]
+    UIImage *img = [UIImage imageWithColor:[UIColor xt_main]
                                       size:CGSizeMake(320.0, 64.0)] ;
     [[UINavigationBar appearance] setBackgroundImage:img
                                        forBarMetrics:UIBarMetricsDefault] ;

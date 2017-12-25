@@ -24,15 +24,12 @@
 #import <UINavigationController+FDFullscreenPopGesture.h>
 
 
-@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,RootTableViewDelegate,JXGesturePasswordViewDelegate,UINavigationControllerDelegate,UISearchBarDelegate,XTSegmentDelegate>
+@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,XTSegmentDelegate>
 
 @property (strong, nonatomic) XTSegment *segment ;
 @property (weak, nonatomic) IBOutlet UIView *topContainer;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
-@property (weak, nonatomic) IBOutlet RootTableView *table;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableTop;
-@property (weak, nonatomic) IBOutlet UIButton *btSch;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
 @property (nonatomic,copy) NSArray *dataList ;
 @property (nonatomic) TypeOfPwdItem pwdType ;
@@ -41,50 +38,37 @@
 
 @implementation PwdListController
 
-#pragma mark --
+#pragma mark - search
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if (![searchText length]) return ;
-    
-    self.dataList = [PwdItem selectWhere:[NSString stringWithFormat:@"name like '%%%@%%'",searchText]] ;
-    [self.table reloadData] ;
-}
-
-#pragma mark --
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+//    if (![searchText length]) return ;
+//
+//    self.dataList = [PwdItem selectWhere:[NSString stringWithFormat:@"name like '%%%@%%'",searchText]] ;
+//    [self.table reloadData] ;
+//}
 
 - (IBAction)searchBt:(UIButton *)sender {
-    [self putSearchBt] ;
-}
-
-- (void)putSearchBt {
-    self.btSch.selected = !self.btSch.selected ;
-    self.tableTop.constant = self.btSch.selected ? (64 + 44) : 64 ;
-    if (self.btSch.selected) {
-        [self.searchBar becomeFirstResponder] ;
-    }
-    else {
-        [self.searchBar resignFirstResponder] ;
-    }
+//    [self putSearchBt] ;
 }
 
 #pragma mark - XTSegmentDelegate <NSObject>
 
 - (void)clickSegmentWith:(int)index {
     self.pwdType = index ;
-    [self.table pullDownRefreshHeader] ;
+    [self refreshTable] ;
 }
 
-#pragma mark --
+#pragma mark - life
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad] ;
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
     self.fd_prefersNavigationBarHidden = YES ;
     
     [self setupUIs] ;
-    [self gesturePwdView] ;
-    self.searchBar.delegate = self ;
+//    [self gesturePwdView] ;
+    [self setupTable] ;
+    [self refreshTable] ;
 }
 
 - (void)setupUIs
@@ -94,7 +78,7 @@
         XTSegment *segment = [[XTSegment alloc] initWithDataList:@[@"ALL",@"WEBSITE",@"CARD"]
                                                            imgBg:nil
                                                             size:self.topContainer.frame.size
-                                                     normalColor:[UIColor lightGrayColor]
+                                                     normalColor:[UIColor colorWithWhite:.8 alpha:.8]
                                                      selectColor:[UIColor whiteColor]
                                                             font:[UIFont systemFontOfSize:16.]] ;
         [self.topContainer addSubview:segment] ;
@@ -105,7 +89,7 @@
         segment ;
     }) ;
     
-    self.view.backgroundColor = [UIColor xt_dart] ;
+    self.view.backgroundColor = [UIColor xt_main] ;
     [self.btUser setImage:[[UIImage imageNamed:@"user"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
 }
@@ -114,21 +98,11 @@
 {
     self.table.delegate     = self ;
     self.table.dataSource   = self ;
-    self.table.xt_Delegate  = self ;
-    [self.table pullDownRefreshHeaderInBackGround:YES] ;
     self.table.backgroundColor = [UIColor whiteColor] ;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated] ;
-//    [self.navigationController setNavigationBarHidden:YES animated:NO] ;
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated] ;
-//    [self.navigationController setNavigationBarHidden:NO animated:NO] ;
+    self.table.separatorStyle = UITableViewCellSeparatorStyleNone ;
+    self.table.estimatedRowHeight = 0 ;
+    self.table.estimatedSectionHeaderHeight = 0 ;
+    self.table.estimatedSectionFooterHeight = 0 ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -136,60 +110,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark --
+#pragma mark - actions
 
-- (void)gesturePwdView
-{
-    NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults] ;
-    NSString *gesPwd = [userDefaultes objectForKey:@"gesturePwd"] ;
-    if (gesPwd != nil) {
-        JXGesturePasswordView *gesturePasswordView = [[JXGesturePasswordView alloc] init] ;
-        gesturePasswordView.center = self.view.center ;
-        gesturePasswordView.delegate = self ;
-        [self.view addSubview:gesturePasswordView] ;
-    }
-    else {
-        [self performSegueWithIdentifier:@"all2user" sender:nil] ;
-    }
-}
-
-- (void)gesturePasswordView:(JXGesturePasswordView *)gesturePasswordView
-      didFinishDrawPassword:(NSString *)password
-{
-    if ([password length] <= 4) {
-        [SVProgressHUD showErrorWithStatus:@"you have to make more than 4 Numbers"] ;
-        return ;
-    }
-    
-    NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults] ;
-    NSString *gesPwd = [userDefaultes objectForKey:@"gesturePwd"] ;
-    if ([password isEqualToString:gesPwd])
-    {
-        [SVProgressHUD showSuccessWithStatus:@"success"] ;
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            [gesturePasswordView removeFromSuperview] ;
-            
-            [self setupTable] ;
-            self.btSch.hidden = NO ;
-        }) ;
-    }
-    else
-    {
-        [SVProgressHUD showErrorWithStatus:@"password is wrong !"] ;
-    }
-}
-
-#pragma mark --
-
-- (IBAction)userOnClick:(id)sender
-{
+- (IBAction)userOnClick:(id)sender {
     [self performSegueWithIdentifier:@"all2user" sender:nil] ;
 }
 
-- (IBAction)addItemOnClick:(id)sender
-{
+- (IBAction)addItemOnClick:(id)sender {
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"website"
                                                       style:UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction * _Nonnull action) {
@@ -216,46 +143,29 @@
                      completion:nil] ;
 }
 
-
 #pragma mark --
 
-static const int pageNumber = 20 ;
-
-- (void)loadNew:(void(^)(void))endRefresh
-{
-    int lastOneId = 0 ;
-    NSArray *listBack = [PwdItem selectWhere:[self sqlWhereStringWithLastId:lastOneId]] ;
-    self.dataList = listBack ;
-    endRefresh() ;
+- (void)refreshTable {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) ;
+    dispatch_async(queue, ^{
+        NSArray *listBack = [PwdItem findWithSql:[self sqlWhereString]] ;
+        self.dataList = listBack ;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.table reloadData] ;
+        }) ;
+    }) ;
 }
 
-- (void)loadMore:(void(^)(void))endRefresh
-{
-    int lastOneId = ((PwdItem *)[self.dataList lastObject]).pkid ;
-    NSArray *listBack = [PwdItem selectWhere:[self sqlWhereStringWithLastId:lastOneId]] ;
-    if (!listBack.count)
-    {
-        [SVProgressHUD showInfoWithStatus:@"no items ..."] ;
-        endRefresh() ;
-        return ;
-    }
-    
-    NSMutableArray *templist = [self.dataList mutableCopy] ;
-    [templist addObjectsFromArray:listBack] ;
-    self.dataList = templist ;
-    endRefresh() ;
-}
-
-- (NSString *)sqlWhereStringWithLastId:(int)lastOneId
-{
+- (NSString *)sqlWhereString {
     return !self.pwdType
     ?
-    [NSString stringWithFormat:@"pkid > %d LIMIT %d",lastOneId,pageNumber]
+    @"SELECT * FROM PwdItem ORDER BY pinyin ASC"
     :
-    [NSString stringWithFormat:@"pkid > %d AND typeOfPwdItem == %d LIMIT %d",lastOneId,(int)self.pwdType,pageNumber] ;
+    [NSString stringWithFormat:@"SELECT * FROM PwdItem WHERE typeOfPwdItem == %d ORDER BY pinyin ASC",(int)self.pwdType] ;
 }
 
-#pragma mark --
+#pragma mark - table
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -270,12 +180,37 @@ static const int pageNumber = 20 ;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(ListCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PwdItem *item = self.dataList[indexPath.row] ;
-    cell.name.text = item.name ;
+    [cell configure:item] ;
+    
+    cell.image.alpha = 0. ;
+    [UIView animateWithDuration:0.4
+                     animations:^{
+                         cell.image.alpha = 0.8 ;
+                     }] ;
     
     cell.layer.transform = CATransform3DMakeScale(0.76, 0.76, 1) ;
     [UIView animateWithDuration:.25
                      animations:^{
                          cell.layer.transform = CATransform3DIdentity ;
+                     }] ;
+
+    cell.image.layer.transform = indexPath.row % 2 ? CATransform3DMakeTranslation(-10, 0, 0) : CATransform3DMakeTranslation(10, 0, 0) ;
+    [UIView animateWithDuration:.8
+                          delay:.25
+         usingSpringWithDamping:0.2
+          initialSpringVelocity:0
+                        options:UIViewAnimationOptionAllowUserInteraction
+                     animations:^{
+                         cell.image.layer.transform = CATransform3DIdentity ;
+                     }
+                     completion:nil] ;
+    
+    cell.name.alpha = 0. ;
+    cell.account.alpha = 0. ;
+    [UIView animateWithDuration:1.6
+                     animations:^{
+                         cell.name.alpha = 1. ;
+                         cell.account.alpha = 1. ;
                      }] ;
 }
 
@@ -286,10 +221,6 @@ static const int pageNumber = 20 ;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.searchBar isFirstResponder]) {
-        [self putSearchBt] ;
-        return ;
-    }
     PwdItem *item = self.dataList[indexPath.row] ;
     [self performSegueWithIdentifier:@"list2detail" sender:item] ;
 }
@@ -374,7 +305,7 @@ static const int pageNumber = 20 ;
         addVC.addItemSuccessBlock = ^{
             @strongify(self)
             self.pwdType = typeNone ;
-            [self.table pullDownRefreshHeaderInBackGround:YES] ;
+            [self refreshTable] ;
         } ;
     }
     else if ([segue.identifier isEqualToString:@"list2detail"])
@@ -387,6 +318,5 @@ static const int pageNumber = 20 ;
         self.navigationController.delegate = self ;
     }
 }
-
 
 @end

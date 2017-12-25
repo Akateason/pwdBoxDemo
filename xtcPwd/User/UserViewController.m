@@ -26,7 +26,7 @@
 {
     [super viewDidLoad] ;
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor xt_dart] ;
+    self.view.backgroundColor = [UIColor xt_main] ;
     
     [_btClose setImage:[[UIImage imageNamed:@"close"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     
@@ -55,7 +55,7 @@
 - (IBAction)forgetOpenGesture:(id)sender
 {
     JXGesturePasswordView *gesturePasswordView = [[JXGesturePasswordView alloc] init] ;
-    gesturePasswordView.backgroundColor = [UIColor xt_d_red] ;
+//    gesturePasswordView.backgroundColor = [UIColor xt_d_red] ;
     gesturePasswordView.center = self.view.center;
     gesturePasswordView.delegate = self;
     [self.view addSubview:gesturePasswordView];

@@ -17,13 +17,14 @@ typedef enum : NSUInteger {
 @interface PwdItem : XTDBModel
 
 //ADD IN v1
-@property (nonatomic,strong) NSString *name ;
-@property (nonatomic,strong) NSString *account ;
-@property (nonatomic,strong) NSString *password ;
-@property (nonatomic,strong) NSString *detailInfo ;
+@property (nonatomic,copy)   NSString *name ;
+@property (nonatomic,copy)   NSString *account ;
+@property (nonatomic,copy)   NSString *password ;
+@property (nonatomic,copy)   NSString *detailInfo ;
 @property (nonatomic)        int      typeOfPwdItem ;
 //ADD IN v2
 @property (nonatomic)        int      readCount ;
+@property (nonatomic,copy)   NSString *pinyin ;
 
 - (NSString *)encodePwd:(NSString *)password ;
 - (NSString *)decodePwd ;
@@ -33,5 +34,7 @@ typedef enum : NSUInteger {
                     password:(NSString *)password
                       detail:(NSString *)detail
                         type:(TypeOfPwdItem)type ;
+
++ (void)addPinyinIfNeeded ;
 
 @end

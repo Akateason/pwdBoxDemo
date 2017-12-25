@@ -7,6 +7,7 @@
 //
 
 #import "JXGesturePasswordView.h"
+#import "UIColor+AllColors.h"
 
 #pragma mark - 节点Model
 @interface JXNodeModel : NSObject

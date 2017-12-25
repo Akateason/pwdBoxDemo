@@ -20,12 +20,13 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem;
 @property (weak, nonatomic) IBOutlet UIButton *btCopy;
 @property (weak, nonatomic) IBOutlet UIButton *btShow;
-
+@property (weak, nonatomic) IBOutlet UIImageView *image;
 @end
 
 @implementation DetailViewController
 
 #pragma mark -
+
 - (IBAction)editOnClick:(id)sender
 {
     [self performSegueWithIdentifier:@"detail2edit" sender:self.item] ;
@@ -50,9 +51,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor] ; //[UIColor xt_light] ;
+    self.view.backgroundColor = [UIColor xt_bg] ;
     
-    UIColor *wordsColor = [UIColor blackColor] ;
+    UIColor *wordsColor = [UIColor xt_text_dark] ;
     
     _lbName.textColor = wordsColor ;
     _lbAccount.textColor = wordsColor ;
@@ -63,9 +64,13 @@
     [_btShow setTitleColor:[UIColor whiteColor] forState:0] ;
     _btCopy.layer.cornerRadius = 5. ;
     _btShow.layer.cornerRadius = 5. ;
-    _btCopy.backgroundColor = [UIColor xt_dart] ;
-    _btShow.backgroundColor = [UIColor xt_dart] ;
+    _btCopy.backgroundColor = [UIColor xt_main] ;
+    _btShow.backgroundColor = [UIColor xt_main] ;
     
+    self.image.layer.cornerRadius = 4. ;
+    self.image.layer.masksToBounds = YES ;
+    self.image.alpha = .8 ;
+
     if (!self.item) return ;
 }
 
@@ -82,6 +87,9 @@
     _lbDetail.text = self.item.detailInfo ;
     
     self.title = self.item.name ;
+    
+    self.item.readCount ++ ;
+    [self.item update] ;
 }
 
 - (NSString *)makePwdHidden

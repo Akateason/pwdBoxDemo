@@ -6,10 +6,11 @@
 //  Copyright © 2017年 teason. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "RootTableCell.h"
 
-@interface ListCell : UITableViewCell
+@interface ListCell : RootTableCell
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *account;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UIView *backView;
-+ (CGFloat)cellHeight ;
 @end

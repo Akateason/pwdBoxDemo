@@ -9,6 +9,7 @@
 #import "PwdItem.h"
 #import "NSString+Extend.h"
 #import "Base64.h"
+#import "PinYin4Objc.h"
 
 @implementation PwdItem
 
@@ -38,6 +39,23 @@
 - (NSString *)decodePwd
 {
     return [_password base64DecodedString] ;
+}
+
++ (void)addPinyinIfNeeded {
+    NSArray *listNoPinyin = [PwdItem findWithSql:@"SELECT * FROM PwdItem WHERE pinyin IS NULL"] ;
+    [listNoPinyin enumerateObjectsUsingBlock:^(PwdItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
+
+        HanyuPinyinOutputFormat *outputFormat = [[HanyuPinyinOutputFormat alloc] init];
+        [outputFormat setToneType:ToneTypeWithoutTone];
+        [outputFormat setVCharType:VCharTypeWithV];
+        [outputFormat setCaseType:CaseTypeLowercase];
+        NSString *outputPinyin = [PinyinHelper toHanyuPinyinStringWithNSString:item.name
+                                                   withHanyuPinyinOutputFormat:outputFormat
+                                                                  withNSString:@" "] ;
+        item.pinyin = outputPinyin ;
+    }] ;
+    
+    [PwdItem updateList:listNoPinyin] ;
 }
 
 @end

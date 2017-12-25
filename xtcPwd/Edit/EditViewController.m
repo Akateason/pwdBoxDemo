@@ -28,11 +28,12 @@
 {
     [super viewDidLoad] ;
     
-    self.view.backgroundColor = [UIColor xt_light] ;
-    _nameTf.textColor = [UIColor xt_dart] ;
-    _accountTf.textColor = [UIColor xt_dart] ;
-    _passwordTf.textColor = [UIColor xt_dart] ;
-    _detailTv.textColor = [UIColor xt_dart] ;
+    self.view.backgroundColor = [UIColor xt_bg] ;
+    
+    _nameTf.textColor = [UIColor xt_main] ;
+    _accountTf.textColor = [UIColor xt_main] ;
+    _passwordTf.textColor = [UIColor xt_main] ;
+    _detailTv.textColor = [UIColor xt_main] ;
     
     _nameTf.backgroundColor = [UIColor whiteColor] ;
     _accountTf.backgroundColor = [UIColor whiteColor] ;

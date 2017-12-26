@@ -95,14 +95,8 @@
 		8F560B0C1FF0981100E726F9 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8F560B061FF0981000E726F9 /* unicode_to_hanyu_pinyin.txt */; };
 		8F560B141FF0CA8E00E726F9 /* CellPositiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B131FF0CA8E00E726F9 /* CellPositiveTransition.m */; };
 		8F560B171FF0EB5B00E726F9 /* CellNegativeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B161FF0EB5B00E726F9 /* CellNegativeTransition.m */; };
+		8F560B1E1FF214A400E726F9 /* FilterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B1D1FF214A400E726F9 /* FilterVC.m */; };
 		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
-		8FBE48A71EF29C0F005F0E74 /* 密码1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE489F1EF29C0F005F0E74 /* 密码1.png */; };
-		8FBE48A81EF29C0F005F0E74 /* 密码1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A01EF29C0F005F0E74 /* 密码1@2x.png */; };
-		8FBE48A91EF29C0F005F0E74 /* 密码2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A11EF29C0F005F0E74 /* 密码2.png */; };
-		8FBE48AA1EF29C0F005F0E74 /* 密码2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A21EF29C0F005F0E74 /* 密码2@2x.png */; };
-		8FBE48AB1EF29C0F005F0E74 /* 密码3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A31EF29C0F005F0E74 /* 密码3.png */; };
-		8FBE48AC1EF29C0F005F0E74 /* 密码3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE48A41EF29C0F005F0E74 /* 密码3@2x.png */; };
-		8FBE48AD1EF29C0F005F0E74 /* JXGesturePasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48A61EF29C0F005F0E74 /* JXGesturePasswordView.m */; };
 		8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */; };
 		8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B21EF29F15005F0E74 /* PingTransition.m */; };
 		8FFC6CF11EEF735A00F55173 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF01EEF735A00F55173 /* main.m */; };
@@ -310,16 +304,10 @@
 		8F560B131FF0CA8E00E726F9 /* CellPositiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellPositiveTransition.m; sourceTree = "<group>"; };
 		8F560B151FF0EB5B00E726F9 /* CellNegativeTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellNegativeTransition.h; sourceTree = "<group>"; };
 		8F560B161FF0EB5B00E726F9 /* CellNegativeTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellNegativeTransition.m; sourceTree = "<group>"; };
+		8F560B1C1FF214A400E726F9 /* FilterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterVC.h; sourceTree = "<group>"; };
+		8F560B1D1FF214A400E726F9 /* FilterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterVC.m; sourceTree = "<group>"; };
 		8FBE48791EF2764C005F0E74 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		8FBE487A1EF2764C005F0E74 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
-		8FBE489F1EF29C0F005F0E74 /* 密码1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码1.png"; sourceTree = "<group>"; };
-		8FBE48A01EF29C0F005F0E74 /* 密码1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码1@2x.png"; sourceTree = "<group>"; };
-		8FBE48A11EF29C0F005F0E74 /* 密码2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码2.png"; sourceTree = "<group>"; };
-		8FBE48A21EF29C0F005F0E74 /* 密码2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码2@2x.png"; sourceTree = "<group>"; };
-		8FBE48A31EF29C0F005F0E74 /* 密码3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码3.png"; sourceTree = "<group>"; };
-		8FBE48A41EF29C0F005F0E74 /* 密码3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码3@2x.png"; sourceTree = "<group>"; };
-		8FBE48A51EF29C0F005F0E74 /* JXGesturePasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXGesturePasswordView.h; sourceTree = "<group>"; };
-		8FBE48A61EF29C0F005F0E74 /* JXGesturePasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXGesturePasswordView.m; sourceTree = "<group>"; };
 		8FBE48AF1EF29F15005F0E74 /* PingReverseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingReverseTransition.h; sourceTree = "<group>"; };
 		8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingReverseTransition.m; sourceTree = "<group>"; };
 		8FBE48B11EF29F15005F0E74 /* PingTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingTransition.h; sourceTree = "<group>"; };
@@ -910,27 +898,13 @@
 			path = transition_tablecell;
 			sourceTree = "<group>";
 		};
-		8FBE489D1EF29C0F005F0E74 /* GestureSecret */ = {
+		8F560B181FF2146300E726F9 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				8FBE489E1EF29C0F005F0E74 /* images */,
-				8FBE48A51EF29C0F005F0E74 /* JXGesturePasswordView.h */,
-				8FBE48A61EF29C0F005F0E74 /* JXGesturePasswordView.m */,
+				8F560B1C1FF214A400E726F9 /* FilterVC.h */,
+				8F560B1D1FF214A400E726F9 /* FilterVC.m */,
 			);
-			path = GestureSecret;
-			sourceTree = "<group>";
-		};
-		8FBE489E1EF29C0F005F0E74 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				8FBE489F1EF29C0F005F0E74 /* 密码1.png */,
-				8FBE48A01EF29C0F005F0E74 /* 密码1@2x.png */,
-				8FBE48A11EF29C0F005F0E74 /* 密码2.png */,
-				8FBE48A21EF29C0F005F0E74 /* 密码2@2x.png */,
-				8FBE48A31EF29C0F005F0E74 /* 密码3.png */,
-				8FBE48A41EF29C0F005F0E74 /* 密码3@2x.png */,
-			);
-			path = images;
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		8FBE48AE1EF29F15005F0E74 /* transition_leftbt */ = {
@@ -992,6 +966,7 @@
 			isa = PBXGroup;
 			children = (
 				8F560B0D1FF0BE6400E726F9 /* MainList */,
+				8F560B181FF2146300E726F9 /* Filter */,
 				8F560B0E1FF0BE8000E726F9 /* Detail */,
 				8F560B0F1FF0BE8D00E726F9 /* Edit */,
 				8F560B101FF0BE9D00E726F9 /* User */,
@@ -1012,7 +987,6 @@
 			isa = PBXGroup;
 			children = (
 				8F560AF81FF0981000E726F9 /* PinYin4Objc */,
-				8FBE489D1EF29C0F005F0E74 /* GestureSecret */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1079,16 +1053,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FBE48AA1EF29C0F005F0E74 /* 密码2@2x.png in Resources */,
 				8F560B0C1FF0981100E726F9 /* unicode_to_hanyu_pinyin.txt in Resources */,
-				8FBE48A91EF29C0F005F0E74 /* 密码2.png in Resources */,
-				8FBE48A71EF29C0F005F0E74 /* 密码1.png in Resources */,
-				8FBE48AB1EF29C0F005F0E74 /* 密码3.png in Resources */,
 				8F560AB11FEC8DA700E726F9 /* xtAllColorsList.plist in Resources */,
 				8FFC6CFF1EEF735A00F55173 /* LaunchScreen.storyboard in Resources */,
 				8FFC6CFC1EEF735A00F55173 /* Assets.xcassets in Resources */,
-				8FBE48A81EF29C0F005F0E74 /* 密码1@2x.png in Resources */,
-				8FBE48AC1EF29C0F005F0E74 /* 密码3@2x.png in Resources */,
 				8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1181,6 +1149,7 @@
 				8F560A861FEC8DA700E726F9 /* NSObject+XTFMDB.m in Sources */,
 				8F560AAF1FEC8DA700E726F9 /* XTColorFetcher.m in Sources */,
 				8F560AED1FEC8FD200E726F9 /* NSString+MD5.m in Sources */,
+				8F560B1E1FF214A400E726F9 /* FilterVC.m in Sources */,
 				8FFC6D271EEF7EBD00F55173 /* ListCell.m in Sources */,
 				8F560B071FF0981100E726F9 /* NSString+PinYin4Cocoa.m in Sources */,
 				8F560ACD1FEC8DA700E726F9 /* MyTabbar.m in Sources */,
@@ -1235,7 +1204,6 @@
 				8F560ACA1FEC8DA700E726F9 /* RootRefreshFooter.m in Sources */,
 				8F560AB51FEC8DA700E726F9 /* XTReqSessionManager.m in Sources */,
 				8F560A851FEC8DA700E726F9 /* XTDBModel.m in Sources */,
-				8FBE48AD1EF29C0F005F0E74 /* JXGesturePasswordView.m in Sources */,
 				8F560AC41FEC8DA700E726F9 /* RootTableCell.m in Sources */,
 				8F560A981FEC8DA700E726F9 /* NSObject+Runtime.m in Sources */,
 				8F560A8D1FEC8DA700E726F9 /* UIViewController+HowToUse.m in Sources */,

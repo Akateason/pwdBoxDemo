@@ -16,7 +16,6 @@
 #import "SVProgressHUD.h"
 #import "UIColor+AllColors.h"
 #import "UIImage+AddFunction.h"
-#import "JXGesturePasswordView.h"
 #import "PingTransition.h"
 #import "XTSegment.h"
 #import <Masonry.h>
@@ -28,8 +27,10 @@
 @interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,XTSegmentDelegate>
 
 @property (strong, nonatomic) XTSegment *segment ;
-@property (weak, nonatomic) IBOutlet UIView *topContainer;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
+@property (weak, nonatomic) IBOutlet UIButton *btSearch;
 
 @property (nonatomic,copy) NSArray *dataList ;
 @property (nonatomic) TypeOfPwdItem pwdType ;
@@ -47,9 +48,8 @@
 //    [self.table reloadData] ;
 //}
 
-- (IBAction)searchBt:(UIButton *)sender {
-//    [self putSearchBt] ;
-}
+
+
 
 #pragma mark - XTSegmentDelegate <NSObject>
 
@@ -62,6 +62,7 @@
         case typeCard:      self.title = @"Card" ;      break ;
         default: break ;
     }
+    self.titleLabel.text = self.title ;
 }
 
 #pragma mark - life
@@ -85,32 +86,34 @@
 
 - (void)setupUIs
 {
-    self.topContainer.backgroundColor = nil ;
-    self.segment = ({
-        XTSegment *segment = [[XTSegment alloc] initWithDataList:@[@"ALL",@"WEBSITE",@"CARD"]
-                                                           imgBg:nil
-                                                            size:self.topContainer.frame.size
-                                                     normalColor:[UIColor colorWithWhite:.8 alpha:.8]
-                                                     selectColor:[UIColor whiteColor]
-                                                            font:[UIFont systemFontOfSize:16.]] ;
-        [self.topContainer addSubview:segment] ;
-        [segment mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.topContainer) ;
-        }] ;
-        segment.delegate = self ;
-        segment ;
-    }) ;
+//    self.topContainer.backgroundColor = nil ;
+//    self.segment = ({
+//        XTSegment *segment = [[XTSegment alloc] initWithDataList:@[@"ALL",@"WEBSITE",@"CARD"]
+//                                                           imgBg:nil
+//                                                            size:self.topContainer.frame.size
+//                                                     normalColor:[UIColor colorWithWhite:.8 alpha:.8]
+//                                                     selectColor:[UIColor whiteColor]
+//                                                            font:[UIFont systemFontOfSize:16.]] ;
+//        [self.topContainer addSubview:segment] ;
+//        [segment mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.edges.equalTo(self.topContainer) ;
+//        }] ;
+//        segment.delegate = self ;
+//        segment ;
+//    }) ;
     
     self.view.backgroundColor = [UIColor xt_main] ;
     [self.btUser setImage:[[UIImage imageNamed:@"user"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
-    [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
+    [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[UIColor xt_main]] forState:0] ;
+    [self.btSearch setImage:[[UIImage imageNamed:@"searchBt"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
+    
 }
 
 - (void)setupTable
 {
     self.table.delegate     = self ;
     self.table.dataSource   = self ;
-    self.table.backgroundColor = [UIColor whiteColor] ;
+    self.table.backgroundColor = [UIColor xt_bg] ; // [UIColor whiteColor] ;
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone ;
     self.table.estimatedRowHeight = 0 ;
     self.table.estimatedSectionHeaderHeight = 0 ;
@@ -123,6 +126,10 @@
 }
 
 #pragma mark - actions
+
+- (IBAction)searchBtOnClick:(id)sender {
+    [self performSegueWithIdentifier:@"home2filter" sender:nil] ;
+}
 
 - (IBAction)userOnClick:(id)sender {
     [self performSegueWithIdentifier:@"all2user" sender:nil] ;

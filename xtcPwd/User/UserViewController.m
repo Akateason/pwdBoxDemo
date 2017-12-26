@@ -8,35 +8,61 @@
 
 #import "UserViewController.h"
 #import "UIColor+AllColors.h"
-#import "JXGesturePasswordView.h"
 #import "SVProgressHUD.h"
 #import "PingReverseTransition.h"
 #import "UIImage+AddFunction.h"
+#import <UINavigationController+FDFullscreenPopGesture.h>
 
-@interface UserViewController () <JXGesturePasswordViewDelegate,UINavigationControllerDelegate>
+@interface UserViewController () <UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btClose;
-@property (weak, nonatomic) IBOutlet UIButton *btForgetGesture;
-
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cateBts;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *sortBts;
+@property (weak, nonatomic) IBOutlet UIButton *sortChangeBt;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBt;
+@property (weak, nonatomic) IBOutlet UIButton *confirmBt;
 @end
 
 @implementation UserViewController
 
 #pragma mark -
-- (void)viewDidLoad
-{
+
+- (void)viewDidLoad {
     [super viewDidLoad] ;
-    // Do any additional setup after loading the view.
+    self.fd_interactivePopDisabled = YES ;
+    
     self.view.backgroundColor = [UIColor xt_main] ;
     
-    [_btClose setImage:[[UIImage imageNamed:@"close"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
+    [_btClose setImage:[[UIImage imageNamed:@"face"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     
-//    [_btForgetGesture setTitleColor:[UIColor xt_dart] forState:0] ;
-//    _btForgetGesture.layer.cornerRadius = 5. ;
-//    _btForgetGesture.backgroundColor = [UIColor xt_light] ;
+    for (UIButton *bt in _cateBts) {
+        [bt setTitleColor:[UIColor xt_main] forState:0] ;
+        bt.layer.cornerRadius = bt.frame.size.width / 2. ;
+    }
+    
+    for (UIButton *bt in _sortBts) {
+        [bt setTitleColor:[UIColor xt_main] forState:0] ;
+        bt.layer.cornerRadius = bt.frame.size.width / 2. ;
+    }
+    
+    _sortChangeBt.backgroundColor = [UIColor xt_main] ;
+    [_sortChangeBt setTitleColor:[UIColor whiteColor] forState:0] ;
+    _sortChangeBt.layer.borderColor = [UIColor whiteColor].CGColor ;
+    _sortChangeBt.layer.borderWidth = 1. ;
+    _sortChangeBt.layer.cornerRadius = 15. ;
+    _sortChangeBt.layer.masksToBounds = YES ;
+    
+    _cancelBt.layer.borderColor = [UIColor whiteColor].CGColor ;
+    _cancelBt.layer.borderWidth = 1. ;
+    _cancelBt.layer.cornerRadius = 15. ;
+    _cancelBt.layer.masksToBounds = YES ;
+    
+    _confirmBt.layer.cornerRadius = 15. ;
+    _confirmBt.layer.masksToBounds = YES ;
+    _confirmBt.backgroundColor = [UIColor whiteColor] ;
+    [_confirmBt setTitleColor:[UIColor xt_main] forState:0] ;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
     self.navigationController.delegate = self ;
 }
@@ -46,43 +72,23 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark -
-- (IBAction)btCloseOnClick:(id)sender
-{
+#pragma mark - acitons
+
+- (IBAction)btCloseOnClick:(id)sender {
     [self.navigationController popViewControllerAnimated:YES] ;
 }
 
-- (IBAction)forgetOpenGesture:(id)sender
-{
-    JXGesturePasswordView *gesturePasswordView = [[JXGesturePasswordView alloc] init] ;
-//    gesturePasswordView.backgroundColor = [UIColor xt_d_red] ;
-    gesturePasswordView.center = self.view.center;
-    gesturePasswordView.delegate = self;
-    [self.view addSubview:gesturePasswordView];
+- (IBAction)confirmBtOnClcik:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES] ;
 }
 
-#pragma mark - JXGesturePasswordViewDelegate
-- (void)gesturePasswordView:(JXGesturePasswordView *)gesturePasswordView
-      didFinishDrawPassword:(NSString *)password
-{
-    if ([password length] <= 4) {
-        [SVProgressHUD showErrorWithStatus:@"you have to make more than 4 Numbers"] ;
-        return ;
-    }
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults] ;
-    [userDefaults setObject:password forKey:@"gesturePwd"] ;
-    [userDefaults synchronize] ;
-    [SVProgressHUD showSuccessWithStatus:@"set gesture success !"] ;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [gesturePasswordView removeFromSuperview] ;
-        [self.navigationController popViewControllerAnimated:YES] ;
-    }) ;
-    
+- (IBAction)cancelBtOnClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES] ;
 }
+
 
 #pragma mark - UINavigationControllerDelegate
+
 - (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                    animationControllerForOperation:(UINavigationControllerOperation)operation
                                                 fromViewController:(UIViewController *)fromVC

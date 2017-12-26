@@ -15,9 +15,9 @@
 + (CGFloat)cellHeight { return 62.f ; }
 
 - (void)prepare {
-    self.backgroundColor = [UIColor clearColor] ;
+    self.backgroundColor = [UIColor xt_bg] ; // [UIColor clearColor] ;
     self.selectionStyle = 0 ;
-    self.backView.backgroundColor = [UIColor xt_bg] ;
+    self.backView.backgroundColor = [UIColor whiteColor] ; // [UIColor xt_bg] ;
     self.backView.layer.cornerRadius = 5 ;
     self.name.textColor = [UIColor xt_text_dark] ;
     self.account.textColor = [UIColor xt_text_light] ;

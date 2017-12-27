@@ -95,7 +95,13 @@
 		8F560B0C1FF0981100E726F9 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8F560B061FF0981000E726F9 /* unicode_to_hanyu_pinyin.txt */; };
 		8F560B141FF0CA8E00E726F9 /* CellPositiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B131FF0CA8E00E726F9 /* CellPositiveTransition.m */; };
 		8F560B171FF0EB5B00E726F9 /* CellNegativeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B161FF0EB5B00E726F9 /* CellNegativeTransition.m */; };
-		8F560B1E1FF214A400E726F9 /* FilterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B1D1FF214A400E726F9 /* FilterVC.m */; };
+		8F560B211FF3281800E726F9 /* FilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B201FF3281800E726F9 /* FilterCondition.m */; };
+		8F560B241FF3457F00E726F9 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B231FF3457F00E726F9 /* SearchVC.m */; };
+		8F560B2B1FF34ADE00E726F9 /* SearchPositiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B2A1FF34ADE00E726F9 /* SearchPositiveTransition.m */; };
+		8F560B2E1FF371B300E726F9 /* SearchNegativeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B2D1FF371B200E726F9 /* SearchNegativeTransition.m */; };
+		8F560B331FF3891C00E726F9 /* AddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B321FF3891C00E726F9 /* AddVC.m */; };
+		8F560B371FF38B6100E726F9 /* AddTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B361FF38B6100E726F9 /* AddTransition.m */; };
+		8F560B3A1FF38CB600E726F9 /* PresentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B391FF38CB600E726F9 /* PresentController.m */; };
 		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
 		8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */; };
 		8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B21EF29F15005F0E74 /* PingTransition.m */; };
@@ -304,8 +310,20 @@
 		8F560B131FF0CA8E00E726F9 /* CellPositiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellPositiveTransition.m; sourceTree = "<group>"; };
 		8F560B151FF0EB5B00E726F9 /* CellNegativeTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellNegativeTransition.h; sourceTree = "<group>"; };
 		8F560B161FF0EB5B00E726F9 /* CellNegativeTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellNegativeTransition.m; sourceTree = "<group>"; };
-		8F560B1C1FF214A400E726F9 /* FilterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterVC.h; sourceTree = "<group>"; };
-		8F560B1D1FF214A400E726F9 /* FilterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterVC.m; sourceTree = "<group>"; };
+		8F560B1F1FF3281800E726F9 /* FilterCondition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FilterCondition.h; path = Model/FilterCondition.h; sourceTree = "<group>"; };
+		8F560B201FF3281800E726F9 /* FilterCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FilterCondition.m; path = Model/FilterCondition.m; sourceTree = "<group>"; };
+		8F560B221FF3457E00E726F9 /* SearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SearchVC.h; path = /Users/teaason/Documents/projectxtc/xtcPwd/xtcPwd/Search/SearchVC.h; sourceTree = "<absolute>"; };
+		8F560B231FF3457F00E726F9 /* SearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SearchVC.m; path = /Users/teaason/Documents/projectxtc/xtcPwd/xtcPwd/Search/SearchVC.m; sourceTree = "<absolute>"; };
+		8F560B291FF34ADE00E726F9 /* SearchPositiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchPositiveTransition.h; sourceTree = "<group>"; };
+		8F560B2A1FF34ADE00E726F9 /* SearchPositiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchPositiveTransition.m; sourceTree = "<group>"; };
+		8F560B2C1FF371B200E726F9 /* SearchNegativeTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchNegativeTransition.h; sourceTree = "<group>"; };
+		8F560B2D1FF371B200E726F9 /* SearchNegativeTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchNegativeTransition.m; sourceTree = "<group>"; };
+		8F560B311FF3891C00E726F9 /* AddVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddVC.h; sourceTree = "<group>"; };
+		8F560B321FF3891C00E726F9 /* AddVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddVC.m; sourceTree = "<group>"; };
+		8F560B351FF38B6100E726F9 /* AddTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTransition.h; sourceTree = "<group>"; };
+		8F560B361FF38B6100E726F9 /* AddTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTransition.m; sourceTree = "<group>"; };
+		8F560B381FF38CB600E726F9 /* PresentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresentController.h; sourceTree = "<group>"; };
+		8F560B391FF38CB600E726F9 /* PresentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresentController.m; sourceTree = "<group>"; };
 		8FBE48791EF2764C005F0E74 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		8FBE487A1EF2764C005F0E74 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		8FBE48AF1EF29F15005F0E74 /* PingReverseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingReverseTransition.h; sourceTree = "<group>"; };
@@ -852,10 +870,12 @@
 			children = (
 				8FFC6D171EEF74D900F55173 /* PwdListController.h */,
 				8FFC6D181EEF74D900F55173 /* PwdListController.m */,
-				8F560B111FF0CA5200E726F9 /* transition_tablecell */,
-				8FBE48AE1EF29F15005F0E74 /* transition_leftbt */,
 				8FFC6D251EEF7EBD00F55173 /* ListCell.h */,
 				8FFC6D261EEF7EBD00F55173 /* ListCell.m */,
+				8F560B2F1FF3887300E726F9 /* transition_bottom */,
+				8F560B281FF34ABA00E726F9 /* transition_rightbt */,
+				8F560B111FF0CA5200E726F9 /* transition_tablecell */,
+				8FBE48AE1EF29F15005F0E74 /* transition_leftbt */,
 			);
 			path = MainList;
 			sourceTree = "<group>";
@@ -898,13 +918,52 @@
 			path = transition_tablecell;
 			sourceTree = "<group>";
 		};
-		8F560B181FF2146300E726F9 /* Filter */ = {
+		8F560B181FF2146300E726F9 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				8F560B1C1FF214A400E726F9 /* FilterVC.h */,
-				8F560B1D1FF214A400E726F9 /* FilterVC.m */,
+				8F560B221FF3457E00E726F9 /* SearchVC.h */,
+				8F560B231FF3457F00E726F9 /* SearchVC.m */,
 			);
-			path = Filter;
+			path = Search;
+			sourceTree = "<group>";
+		};
+		8F560B281FF34ABA00E726F9 /* transition_rightbt */ = {
+			isa = PBXGroup;
+			children = (
+				8F560B291FF34ADE00E726F9 /* SearchPositiveTransition.h */,
+				8F560B2A1FF34ADE00E726F9 /* SearchPositiveTransition.m */,
+				8F560B2C1FF371B200E726F9 /* SearchNegativeTransition.h */,
+				8F560B2D1FF371B200E726F9 /* SearchNegativeTransition.m */,
+			);
+			path = transition_rightbt;
+			sourceTree = "<group>";
+		};
+		8F560B2F1FF3887300E726F9 /* transition_bottom */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = transition_bottom;
+			sourceTree = "<group>";
+		};
+		8F560B301FF3890600E726F9 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				8F560B311FF3891C00E726F9 /* AddVC.h */,
+				8F560B321FF3891C00E726F9 /* AddVC.m */,
+				8F560B341FF38B4C00E726F9 /* transition */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		8F560B341FF38B4C00E726F9 /* transition */ = {
+			isa = PBXGroup;
+			children = (
+				8F560B351FF38B6100E726F9 /* AddTransition.h */,
+				8F560B361FF38B6100E726F9 /* AddTransition.m */,
+				8F560B381FF38CB600E726F9 /* PresentController.h */,
+				8F560B391FF38CB600E726F9 /* PresentController.m */,
+			);
+			path = transition;
 			sourceTree = "<group>";
 		};
 		8FBE48AE1EF29F15005F0E74 /* transition_leftbt */ = {
@@ -965,8 +1024,9 @@
 		8FFC6D1A1EEF74E000F55173 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				8F560B301FF3890600E726F9 /* Add */,
 				8F560B0D1FF0BE6400E726F9 /* MainList */,
-				8F560B181FF2146300E726F9 /* Filter */,
+				8F560B181FF2146300E726F9 /* Search */,
 				8F560B0E1FF0BE8000E726F9 /* Detail */,
 				8F560B0F1FF0BE8D00E726F9 /* Edit */,
 				8F560B101FF0BE9D00E726F9 /* User */,
@@ -979,6 +1039,8 @@
 			children = (
 				8FFC6D221EEF7A8000F55173 /* PwdItem.h */,
 				8FFC6D231EEF7A8000F55173 /* PwdItem.m */,
+				8F560B1F1FF3281800E726F9 /* FilterCondition.h */,
+				8F560B201FF3281800E726F9 /* FilterCondition.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1124,6 +1186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F560A831FEC8DA700E726F9 /* XTDBVersion.m in Sources */,
+				8F560B3A1FF38CB600E726F9 /* PresentController.m in Sources */,
 				8F560A9B1FEC8DA700E726F9 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				8F560AE11FEC8DA700E726F9 /* UIImage+ImageEffects.m in Sources */,
 				8F560AD21FEC8DA700E726F9 /* XTBarrageView.m in Sources */,
@@ -1146,14 +1209,16 @@
 				8F560A911FEC8DA700E726F9 /* UIViewController+Storyboard.m in Sources */,
 				8F560A841FEC8DA700E726F9 /* XTDBModel+autoSql.m in Sources */,
 				8F560AE51FEC8DA700E726F9 /* CenterTableView.m in Sources */,
+				8F560B331FF3891C00E726F9 /* AddVC.m in Sources */,
 				8F560A861FEC8DA700E726F9 /* NSObject+XTFMDB.m in Sources */,
 				8F560AAF1FEC8DA700E726F9 /* XTColorFetcher.m in Sources */,
 				8F560AED1FEC8FD200E726F9 /* NSString+MD5.m in Sources */,
-				8F560B1E1FF214A400E726F9 /* FilterVC.m in Sources */,
 				8FFC6D271EEF7EBD00F55173 /* ListCell.m in Sources */,
 				8F560B071FF0981100E726F9 /* NSString+PinYin4Cocoa.m in Sources */,
 				8F560ACD1FEC8DA700E726F9 /* MyTabbar.m in Sources */,
+				8F560B2B1FF34ADE00E726F9 /* SearchPositiveTransition.m in Sources */,
 				8F560AB21FEC8DA700E726F9 /* UIColor+HexString.m in Sources */,
+				8F560B241FF3457F00E726F9 /* SearchVC.m in Sources */,
 				8F560AB31FEC8DA700E726F9 /* XTRequest.m in Sources */,
 				8F560A9A1FEC8DA700E726F9 /* UIViewController+TabbarHidden.m in Sources */,
 				8F560A9F1FEC8DA700E726F9 /* XTArchive.m in Sources */,
@@ -1163,6 +1228,7 @@
 				8F560AA51FEC8DA700E726F9 /* XTVerification.m in Sources */,
 				8F560AE31FEC8DA700E726F9 /* XTTableViewRootHandler.m in Sources */,
 				8F560A891FEC8DA700E726F9 /* UIButton+Countdown.m in Sources */,
+				8F560B2E1FF371B300E726F9 /* SearchNegativeTransition.m in Sources */,
 				8F560AC61FEC8DA700E726F9 /* RootCtrl.m in Sources */,
 				8F560AD71FEC8DA700E726F9 /* PlaceHolderTextView.m in Sources */,
 				8F560AE01FEC8DA700E726F9 /* ParallaxHeaderView.m in Sources */,
@@ -1196,6 +1262,7 @@
 				8F560AD61FEC8DA700E726F9 /* XTStretchSegment.m in Sources */,
 				8F560AC81FEC8DA700E726F9 /* MyTextView.m in Sources */,
 				8F560AD01FEC8DA700E726F9 /* XTSegment.m in Sources */,
+				8F560B211FF3281800E726F9 /* FilterCondition.m in Sources */,
 				8F560A921FEC8DA700E726F9 /* NSDate+XTTick.m in Sources */,
 				8F560A8E1FEC8DA700E726F9 /* UIImageView+QNExtention.m in Sources */,
 				8F560AC51FEC8DA700E726F9 /* MyWebController.m in Sources */,
@@ -1203,6 +1270,7 @@
 				8F560AA11FEC8DA700E726F9 /* ShareDigit.m in Sources */,
 				8F560ACA1FEC8DA700E726F9 /* RootRefreshFooter.m in Sources */,
 				8F560AB51FEC8DA700E726F9 /* XTReqSessionManager.m in Sources */,
+				8F560B371FF38B6100E726F9 /* AddTransition.m in Sources */,
 				8F560A851FEC8DA700E726F9 /* XTDBModel.m in Sources */,
 				8F560AC41FEC8DA700E726F9 /* RootTableCell.m in Sources */,
 				8F560A981FEC8DA700E726F9 /* NSObject+Runtime.m in Sources */,

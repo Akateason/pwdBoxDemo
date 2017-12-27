@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class FilterCondition ;
+
+@protocol FilterDelegate <NSObject>
+- (void)confirmWithFilter:(FilterCondition *)condition ;
+@end
 
 @interface UserViewController : UIViewController
-
+@property (weak,nonatomic) id <FilterDelegate> delegate ;
 @end

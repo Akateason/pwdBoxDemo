@@ -17,20 +17,19 @@
 #import "UIColor+AllColors.h"
 #import "UIImage+AddFunction.h"
 #import "PingTransition.h"
-#import "XTSegment.h"
 #import <Masonry.h>
 #import "ScreenHeader.h"
 #import <UINavigationController+FDFullscreenPopGesture.h>
 #import "UserViewController.h"
 #import "CellPositiveTransition.h"
+#import "FilterCondition.h"
+#import "SearchPositiveTransition.h"
+#import "SearchVC.h"
 
-@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,XTSegmentDelegate>
-
-@property (strong, nonatomic) XTSegment *segment ;
+@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,FilterDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
-@property (weak, nonatomic) IBOutlet UIButton *btSearch;
 
 @property (nonatomic,copy) NSArray *dataList ;
 @property (nonatomic) TypeOfPwdItem pwdType ;
@@ -48,14 +47,11 @@
 //    [self.table reloadData] ;
 //}
 
+#pragma mark - FilterDelegate <NSObject>
 
-
-
-#pragma mark - XTSegmentDelegate <NSObject>
-
-- (void)clickSegmentWith:(int)index {
-    self.pwdType = index ;
-    [self refreshTable] ;
+- (void)confirmWithFilter:(FilterCondition *)condition {
+    self.pwdType = condition.filterCate ;
+    
     switch (self.pwdType) {
         case typeNone:      self.title = @"ALL" ;       break ;
         case typeWebsite:   self.title = @"Website" ;   break ;
@@ -63,6 +59,7 @@
         default: break ;
     }
     self.titleLabel.text = self.title ;
+    [self refreshTable] ;
 }
 
 #pragma mark - life
@@ -72,11 +69,16 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
     self.fd_prefersNavigationBarHidden = YES ;
     
+    [[FilterCondition sharedSingleton] setup] ;
     
     [self setupUIs] ;
-//    [self gesturePwdView] ;
     [self setupTable] ;
     [self refreshTable] ;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated] ;
+    _btAdd.hidden = NO ;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -84,33 +86,14 @@
     self.navigationController.delegate = self ;
 }
 
-- (void)setupUIs
-{
-//    self.topContainer.backgroundColor = nil ;
-//    self.segment = ({
-//        XTSegment *segment = [[XTSegment alloc] initWithDataList:@[@"ALL",@"WEBSITE",@"CARD"]
-//                                                           imgBg:nil
-//                                                            size:self.topContainer.frame.size
-//                                                     normalColor:[UIColor colorWithWhite:.8 alpha:.8]
-//                                                     selectColor:[UIColor whiteColor]
-//                                                            font:[UIFont systemFontOfSize:16.]] ;
-//        [self.topContainer addSubview:segment] ;
-//        [segment mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.edges.equalTo(self.topContainer) ;
-//        }] ;
-//        segment.delegate = self ;
-//        segment ;
-//    }) ;
-    
+- (void)setupUIs {
     self.view.backgroundColor = [UIColor xt_main] ;
     [self.btUser setImage:[[UIImage imageNamed:@"user"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[UIColor xt_main]] forState:0] ;
     [self.btSearch setImage:[[UIImage imageNamed:@"searchBt"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
-    
 }
 
-- (void)setupTable
-{
+- (void)setupTable {
     self.table.delegate     = self ;
     self.table.dataSource   = self ;
     self.table.backgroundColor = [UIColor xt_bg] ; // [UIColor whiteColor] ;
@@ -121,14 +104,13 @@
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning] ;
 }
 
 #pragma mark - actions
 
 - (IBAction)searchBtOnClick:(id)sender {
-    [self performSegueWithIdentifier:@"home2filter" sender:nil] ;
+    [self performSegueWithIdentifier:@"home2search" sender:nil] ;
 }
 
 - (IBAction)userOnClick:(id)sender {
@@ -136,30 +118,33 @@
 }
 
 - (IBAction)addItemOnClick:(id)sender {
-    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"website"
-                                                      style:UIAlertActionStyleDefault
-                                                    handler:^(UIAlertAction * _Nonnull action) {
-                                                        [self performSegueWithIdentifier:@"list2add"
-                                                                                  sender:@(typeWebsite)] ;
-                                                    }] ;
-    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"card"
-                                                      style:UIAlertActionStyleDefault
-                                                    handler:^(UIAlertAction * _Nonnull action) {
-                                                        [self performSegueWithIdentifier:@"list2add"
-                                                                                  sender:@(typeCard)] ;
-                                                    }] ;
-    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"cancel"
-                                                      style:UIAlertActionStyleCancel
-                                                    handler:nil] ;
-    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"ADD"
-                                                                       message:@"Select type that will be added ."
-                                                                preferredStyle:UIAlertControllerStyleActionSheet] ;
-    [alertCtrl addAction:action1] ;
-    [alertCtrl addAction:action2] ;
-    [alertCtrl addAction:action3] ;
-    [self presentViewController:alertCtrl
-                       animated:YES
-                     completion:nil] ;
+    [self performSegueWithIdentifier:@"home2add" sender:nil] ;
+    
+//    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"website"
+//                                                      style:UIAlertActionStyleDefault
+//                                                    handler:^(UIAlertAction * _Nonnull action) {
+//                                                        [self performSegueWithIdentifier:@"list2add"
+//                                                                                  sender:@(typeWebsite)] ;
+//                                                    }] ;
+//    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"card"
+//                                                      style:UIAlertActionStyleDefault
+//                                                    handler:^(UIAlertAction * _Nonnull action) {
+//                                                        [self performSegueWithIdentifier:@"list2add"
+//                                                                                  sender:@(typeCard)] ;
+//                                                    }] ;
+//    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"cancel"
+//                                                      style:UIAlertActionStyleCancel
+//                                                    handler:nil] ;
+//    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"ADD"
+//                                                                       message:@"Select type that will be added ."
+//                                                                preferredStyle:UIAlertControllerStyleActionSheet] ;
+//    [alertCtrl addAction:action1] ;
+//    [alertCtrl addAction:action2] ;
+//    [alertCtrl addAction:action3] ;
+//    [self presentViewController:alertCtrl
+//                       animated:YES
+//                     completion:nil] ;
+    
 }
 
 #pragma mark --
@@ -177,11 +162,23 @@
 }
 
 - (NSString *)sqlWhereString {
+    
+    NSString *orderBy = @"pinyin" ;
+    switch ([FilterCondition sharedSingleton].sortByType) {
+        case sortByType_spell: orderBy = @"pinyin" ; break;
+        case sortByType_time: orderBy = @"updateTime" ; break;
+        case sortByType_read: orderBy = @"readCount" ; break;
+        default:
+            break;
+    }
+    
+    NSString *ascOrDesc = [FilterCondition sharedSingleton].isAscOrDesc ? @"ASC" : @"DESC" ;
+    
     return !self.pwdType
     ?
-    @"SELECT * FROM PwdItem ORDER BY pinyin ASC"
+    STR_FORMAT(@"SELECT * FROM PwdItem ORDER BY %@ %@",orderBy,ascOrDesc)
     :
-    [NSString stringWithFormat:@"SELECT * FROM PwdItem WHERE typeOfPwdItem == %d ORDER BY pinyin ASC",(int)self.pwdType] ;
+    STR_FORMAT(@"SELECT * FROM PwdItem WHERE typeOfPwdItem == %d ORDER BY %@ %@",(int)self.pwdType,orderBy,ascOrDesc) ;
 }
 
 #pragma mark - table
@@ -295,7 +292,6 @@
                       withRowAnimation:UITableViewRowAnimationFade] ;
 }
 
-
 #pragma mark - UINavigationControllerDelegate
 
 - (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
@@ -308,13 +304,17 @@
             return [PingTransition new] ;
         }
         else if ([toVC isKindOfClass:[DetailViewController class]]) {
+            _btAdd.hidden = YES ;
             return [CellPositiveTransition new] ;
+        }
+        else if ([toVC isKindOfClass:[SearchVC class]]) {
+            return [SearchPositiveTransition new] ;
         }
         
         return nil ;
     }
     else {
-        return nil;
+        return nil ;
     }
 }
 
@@ -323,25 +323,22 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"list2add"])
-    {
+    if ([segue.identifier isEqualToString:@"list2add"]) {
         EditViewController *addVC = [segue destinationViewController] ;
         addVC.typeWillBeAdd = [sender intValue] ;
         @weakify(self)
         addVC.addItemSuccessBlock = ^{
             @strongify(self)
-            self.pwdType = typeNone ;
             [self refreshTable] ;
         } ;
     }
-    else if ([segue.identifier isEqualToString:@"list2detail"])
-    {
+    else if ([segue.identifier isEqualToString:@"list2detail"]) {
         DetailViewController *detailVC = [segue destinationViewController] ;
         detailVC.item = sender ;
     }
-    else if ([segue.identifier isEqualToString:@"all2user"])
-    {
-        self.navigationController.delegate = self ;
+    else if ([segue.identifier isEqualToString:@"all2user"]) {
+        UserViewController *userVC = [segue destinationViewController] ;
+        userVC.delegate = self ;
     }
 }
 

@@ -62,7 +62,7 @@
     edgePanGestureRecognizer.edges = UIRectEdgeLeft ;
     [self.view addGestureRecognizer:edgePanGestureRecognizer] ;
     
-    self.view.backgroundColor = [UIColor xt_bg] ;
+    self.view.backgroundColor = [UIColor whiteColor] ; //[UIColor xt_bg] ;
     
     UIColor *wordsColor = [UIColor xt_text_dark] ;
     _lbName.textColor = wordsColor ;
@@ -142,7 +142,7 @@
         else {
             [self.percentDrivenTransition cancelInteractiveTransition] ;
         }
-        self.percentDrivenTransition = nil;
+        self.percentDrivenTransition = nil ;
     }
 }
 

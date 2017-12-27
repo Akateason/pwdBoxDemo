@@ -38,7 +38,7 @@
     cell.image.hidden = YES ;
     
     UIView *backView = [UIView new] ;
-    backView.backgroundColor = [UIColor xt_bg] ;
+    backView.backgroundColor = [UIColor whiteColor] ;
     backView.layer.cornerRadius = 5 ;
     backView.frame = [containerView convertRect:cell.backView.frame
                                        fromView:cell.backView.superview] ;

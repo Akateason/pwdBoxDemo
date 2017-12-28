@@ -96,7 +96,6 @@
 		8F560B141FF0CA8E00E726F9 /* CellPositiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B131FF0CA8E00E726F9 /* CellPositiveTransition.m */; };
 		8F560B171FF0EB5B00E726F9 /* CellNegativeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B161FF0EB5B00E726F9 /* CellNegativeTransition.m */; };
 		8F560B211FF3281800E726F9 /* FilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B201FF3281800E726F9 /* FilterCondition.m */; };
-		8F560B241FF3457F00E726F9 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B231FF3457F00E726F9 /* SearchVC.m */; };
 		8F560B2B1FF34ADE00E726F9 /* SearchPositiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B2A1FF34ADE00E726F9 /* SearchPositiveTransition.m */; };
 		8F560B2E1FF371B300E726F9 /* SearchNegativeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B2D1FF371B200E726F9 /* SearchNegativeTransition.m */; };
 		8F560B331FF3891C00E726F9 /* AddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B321FF3891C00E726F9 /* AddVC.m */; };
@@ -105,6 +104,7 @@
 		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
 		8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */; };
 		8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B21EF29F15005F0E74 /* PingTransition.m */; };
+		8FC14CFB1FF3FBB40024F86E /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC14CFA1FF3FBB40024F86E /* SearchVC.m */; };
 		8FFC6CF11EEF735A00F55173 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF01EEF735A00F55173 /* main.m */; };
 		8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF31EEF735A00F55173 /* AppDelegate.m */; };
 		8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF81EEF735A00F55173 /* Main.storyboard */; };
@@ -312,8 +312,6 @@
 		8F560B161FF0EB5B00E726F9 /* CellNegativeTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellNegativeTransition.m; sourceTree = "<group>"; };
 		8F560B1F1FF3281800E726F9 /* FilterCondition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FilterCondition.h; path = Model/FilterCondition.h; sourceTree = "<group>"; };
 		8F560B201FF3281800E726F9 /* FilterCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FilterCondition.m; path = Model/FilterCondition.m; sourceTree = "<group>"; };
-		8F560B221FF3457E00E726F9 /* SearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SearchVC.h; path = /Users/teaason/Documents/projectxtc/xtcPwd/xtcPwd/Search/SearchVC.h; sourceTree = "<absolute>"; };
-		8F560B231FF3457F00E726F9 /* SearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SearchVC.m; path = /Users/teaason/Documents/projectxtc/xtcPwd/xtcPwd/Search/SearchVC.m; sourceTree = "<absolute>"; };
 		8F560B291FF34ADE00E726F9 /* SearchPositiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchPositiveTransition.h; sourceTree = "<group>"; };
 		8F560B2A1FF34ADE00E726F9 /* SearchPositiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchPositiveTransition.m; sourceTree = "<group>"; };
 		8F560B2C1FF371B200E726F9 /* SearchNegativeTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchNegativeTransition.h; sourceTree = "<group>"; };
@@ -330,6 +328,8 @@
 		8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingReverseTransition.m; sourceTree = "<group>"; };
 		8FBE48B11EF29F15005F0E74 /* PingTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingTransition.h; sourceTree = "<group>"; };
 		8FBE48B21EF29F15005F0E74 /* PingTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingTransition.m; sourceTree = "<group>"; };
+		8FC14CF91FF3FBB40024F86E /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
+		8FC14CFA1FF3FBB40024F86E /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 		8FFC6CEC1EEF735A00F55173 /* xtcPwd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xtcPwd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFC6CF01EEF735A00F55173 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8FFC6CF21EEF735A00F55173 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -872,7 +872,6 @@
 				8FFC6D181EEF74D900F55173 /* PwdListController.m */,
 				8FFC6D251EEF7EBD00F55173 /* ListCell.h */,
 				8FFC6D261EEF7EBD00F55173 /* ListCell.m */,
-				8F560B2F1FF3887300E726F9 /* transition_bottom */,
 				8F560B281FF34ABA00E726F9 /* transition_rightbt */,
 				8F560B111FF0CA5200E726F9 /* transition_tablecell */,
 				8FBE48AE1EF29F15005F0E74 /* transition_leftbt */,
@@ -921,8 +920,8 @@
 		8F560B181FF2146300E726F9 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				8F560B221FF3457E00E726F9 /* SearchVC.h */,
-				8F560B231FF3457F00E726F9 /* SearchVC.m */,
+				8FC14CF91FF3FBB40024F86E /* SearchVC.h */,
+				8FC14CFA1FF3FBB40024F86E /* SearchVC.m */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -936,13 +935,6 @@
 				8F560B2D1FF371B200E726F9 /* SearchNegativeTransition.m */,
 			);
 			path = transition_rightbt;
-			sourceTree = "<group>";
-		};
-		8F560B2F1FF3887300E726F9 /* transition_bottom */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = transition_bottom;
 			sourceTree = "<group>";
 		};
 		8F560B301FF3890600E726F9 /* Add */ = {
@@ -1087,7 +1079,7 @@
 				TargetAttributes = {
 					8FFC6CEB1EEF735A00F55173 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = E3XZ878L8N;
+						DevelopmentTeam = 5D74XHX7AD;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1218,7 +1210,6 @@
 				8F560ACD1FEC8DA700E726F9 /* MyTabbar.m in Sources */,
 				8F560B2B1FF34ADE00E726F9 /* SearchPositiveTransition.m in Sources */,
 				8F560AB21FEC8DA700E726F9 /* UIColor+HexString.m in Sources */,
-				8F560B241FF3457F00E726F9 /* SearchVC.m in Sources */,
 				8F560AB31FEC8DA700E726F9 /* XTRequest.m in Sources */,
 				8F560A9A1FEC8DA700E726F9 /* UIViewController+TabbarHidden.m in Sources */,
 				8F560A9F1FEC8DA700E726F9 /* XTArchive.m in Sources */,
@@ -1245,6 +1236,7 @@
 				8F560AB01FEC8DA700E726F9 /* UIColor+AllColors.m in Sources */,
 				8F560A901FEC8DA700E726F9 /* UILabel+Badges.m in Sources */,
 				8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */,
+				8FC14CFB1FF3FBB40024F86E /* SearchVC.m in Sources */,
 				8F560AA61FEC8DA700E726F9 /* CommonFunc.m in Sources */,
 				8F560ACC1FEC8DA700E726F9 /* MySearchBar.m in Sources */,
 				8FFC6D201EEF7A4B00F55173 /* EditViewController.m in Sources */,
@@ -1410,7 +1402,7 @@
 			baseConfigurationReference = 584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = E3XZ878L8N;
+				DEVELOPMENT_TEAM = 5D74XHX7AD;
 				INFOPLIST_FILE = xtcPwd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teason.xtcPwd;
@@ -1423,7 +1415,7 @@
 			baseConfigurationReference = 6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = E3XZ878L8N;
+				DEVELOPMENT_TEAM = 5D74XHX7AD;
 				INFOPLIST_FILE = xtcPwd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teason.xtcPwd;

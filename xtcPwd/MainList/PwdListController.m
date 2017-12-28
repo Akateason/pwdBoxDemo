@@ -25,8 +25,9 @@
 #import "FilterCondition.h"
 #import "SearchPositiveTransition.h"
 #import "SearchVC.h"
+#import "AddVC.h"
 
-@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,FilterDelegate>
+@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,FilterDelegate,AddVCDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
@@ -47,6 +48,12 @@
 //    [self.table reloadData] ;
 //}
 
+#pragma mark - AddVCDelegate <NSObject>
+
+- (void)addPwdItem:(TypeOfPwdItem)type {
+    [self performSegueWithIdentifier:@"list2add" sender:@(type)] ;
+}
+
 #pragma mark - FilterDelegate <NSObject>
 
 - (void)confirmWithFilter:(FilterCondition *)condition {
@@ -64,6 +71,10 @@
 
 #pragma mark - life
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self] ;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad] ;
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
@@ -74,6 +85,11 @@
     [self setupUIs] ;
     [self setupTable] ;
     [self refreshTable] ;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshTable)
+                                                 name:@"AddFinishNote"
+                                               object:nil] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -119,32 +135,6 @@
 
 - (IBAction)addItemOnClick:(id)sender {
     [self performSegueWithIdentifier:@"home2add" sender:nil] ;
-    
-//    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"website"
-//                                                      style:UIAlertActionStyleDefault
-//                                                    handler:^(UIAlertAction * _Nonnull action) {
-//                                                        [self performSegueWithIdentifier:@"list2add"
-//                                                                                  sender:@(typeWebsite)] ;
-//                                                    }] ;
-//    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"card"
-//                                                      style:UIAlertActionStyleDefault
-//                                                    handler:^(UIAlertAction * _Nonnull action) {
-//                                                        [self performSegueWithIdentifier:@"list2add"
-//                                                                                  sender:@(typeCard)] ;
-//                                                    }] ;
-//    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"cancel"
-//                                                      style:UIAlertActionStyleCancel
-//                                                    handler:nil] ;
-//    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"ADD"
-//                                                                       message:@"Select type that will be added ."
-//                                                                preferredStyle:UIAlertControllerStyleActionSheet] ;
-//    [alertCtrl addAction:action1] ;
-//    [alertCtrl addAction:action2] ;
-//    [alertCtrl addAction:action3] ;
-//    [self presentViewController:alertCtrl
-//                       animated:YES
-//                     completion:nil] ;
-    
 }
 
 #pragma mark --
@@ -323,22 +313,21 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"list2add"]) {
-        EditViewController *addVC = [segue destinationViewController] ;
-        addVC.typeWillBeAdd = [sender intValue] ;
-        @weakify(self)
-        addVC.addItemSuccessBlock = ^{
-            @strongify(self)
-            [self refreshTable] ;
-        } ;
-    }
-    else if ([segue.identifier isEqualToString:@"list2detail"]) {
+    if ([segue.identifier isEqualToString:@"list2detail"]) {
         DetailViewController *detailVC = [segue destinationViewController] ;
         detailVC.item = sender ;
     }
     else if ([segue.identifier isEqualToString:@"all2user"]) {
         UserViewController *userVC = [segue destinationViewController] ;
         userVC.delegate = self ;
+    }
+    else if ([segue.identifier isEqualToString:@"home2add"]) {
+        AddVC *addVC = [segue destinationViewController] ;
+        addVC.delegate = self ;
+    }
+    else if ([segue.identifier isEqualToString:@"list2add"]) {
+        EditViewController *editVC = [segue destinationViewController] ;
+        editVC.typeWillBeAdd = [sender intValue] ;
     }
 }
 

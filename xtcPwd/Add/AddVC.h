@@ -7,7 +7,12 @@
 //
 
 #import "RootCtrl.h"
+#import "PwdItem.h"
+
+@protocol AddVCDelegate <NSObject>
+- (void)addPwdItem:(TypeOfPwdItem)type ;
+@end
 
 @interface AddVC : RootCtrl
-
+@property (weak,nonatomic) id <AddVCDelegate> delegate ;
 @end

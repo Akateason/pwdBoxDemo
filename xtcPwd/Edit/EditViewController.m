@@ -101,7 +101,7 @@
     int idItem = [item insert] ;
     if (idItem) {
         [self.navigationController popViewControllerAnimated:YES] ;
-        self.addItemSuccessBlock() ;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AddFinishNote" object:nil] ;
     }
     else {
         [SVProgressHUD showErrorWithStatus:@"add fail"] ;

@@ -13,7 +13,7 @@
 #define offsetX      8.
 
 @interface PresentController ()
-@property(nonatomic,strong)id <UIViewControllerTransitionCoordinator>transitionCoordinator;
+@property(nonatomic,strong) id <UIViewControllerTransitionCoordinator>transitionCoordinator;
 @property (nonatomic,strong)UIView *bgView;
 @property (nonatomic,strong)UIVisualEffectView *blurView;
 @property (nonatomic,strong)UIView *contview;

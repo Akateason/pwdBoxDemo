@@ -27,7 +27,7 @@
 #import "SearchVC.h"
 #import "AddVC.h"
 
-@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,FilterDelegate,AddVCDelegate>
+@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
@@ -39,14 +39,33 @@
 
 @implementation PwdListController
 
-#pragma mark - search
+#pragma mark - SearchVCDelegate <NSObject>
 
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-//    if (![searchText length]) return ;
-//
-//    self.dataList = [PwdItem selectWhere:[NSString stringWithFormat:@"name like '%%%@%%'",searchText]] ;
-//    [self.table reloadData] ;
-//}
+- (void)searchConfirmAndGoto:(PwdItem *)item {
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        __block NSUInteger index = 0 ;
+        [self.dataList enumerateObjectsUsingBlock:^(PwdItem *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.name isEqualToString:item.name]) {
+                index = idx ;
+                *stop = YES ;
+            }
+        }] ;
+        
+        [self.table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]
+                          atScrollPosition:UITableViewScrollPositionMiddle
+                                  animated:YES] ;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.table selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]
+                                    animated:YES
+                              scrollPosition:UITableViewScrollPositionNone] ;
+            [self tableView:self.table didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]] ;
+        }) ;
+        
+    }) ;
+    
+}
 
 #pragma mark - AddVCDelegate <NSObject>
 
@@ -328,6 +347,10 @@
     else if ([segue.identifier isEqualToString:@"list2add"]) {
         EditViewController *editVC = [segue destinationViewController] ;
         editVC.typeWillBeAdd = [sender intValue] ;
+    }
+    else if ([segue.identifier isEqualToString:@"home2search"]) {
+        SearchVC *searchvc = [segue destinationViewController] ;
+        searchvc.delegate = self ;
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F04A0892005CFCE00021908 /* SearchVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F04A0882005CFCE00021908 /* SearchVCCell.m */; };
 		8F560A831FEC8DA700E726F9 /* XTDBVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F56098D1FEC8DA600E726F9 /* XTDBVersion.m */; };
 		8F560A841FEC8DA700E726F9 /* XTDBModel+autoSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F56098F1FEC8DA600E726F9 /* XTDBModel+autoSql.m */; };
 		8F560A851FEC8DA700E726F9 /* XTDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5609911FEC8DA600E726F9 /* XTDBModel.m */; };
@@ -122,6 +123,8 @@
 		4460BB02A9066CE9B3F329EA /* libPods-xtcPwd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xtcPwd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.debug.xcconfig"; sourceTree = "<group>"; };
 		6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.release.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.release.xcconfig"; sourceTree = "<group>"; };
+		8F04A0872005CFCE00021908 /* SearchVCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchVCCell.h; sourceTree = "<group>"; };
+		8F04A0882005CFCE00021908 /* SearchVCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchVCCell.m; sourceTree = "<group>"; };
 		8F56098D1FEC8DA600E726F9 /* XTDBVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTDBVersion.m; sourceTree = "<group>"; };
 		8F56098E1FEC8DA600E726F9 /* XTFMDBBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTFMDBBase.h; sourceTree = "<group>"; };
 		8F56098F1FEC8DA600E726F9 /* XTDBModel+autoSql.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XTDBModel+autoSql.m"; sourceTree = "<group>"; };
@@ -922,6 +925,8 @@
 			children = (
 				8FC14CF91FF3FBB40024F86E /* SearchVC.h */,
 				8FC14CFA1FF3FBB40024F86E /* SearchVC.m */,
+				8F04A0872005CFCE00021908 /* SearchVCCell.h */,
+				8F04A0882005CFCE00021908 /* SearchVCCell.m */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1016,8 +1021,8 @@
 		8FFC6D1A1EEF74E000F55173 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				8F560B301FF3890600E726F9 /* Add */,
 				8F560B0D1FF0BE6400E726F9 /* MainList */,
+				8F560B301FF3890600E726F9 /* Add */,
 				8F560B181FF2146300E726F9 /* Search */,
 				8F560B0E1FF0BE8000E726F9 /* Detail */,
 				8F560B0F1FF0BE8D00E726F9 /* Edit */,
@@ -1209,6 +1214,7 @@
 				8F560B071FF0981100E726F9 /* NSString+PinYin4Cocoa.m in Sources */,
 				8F560ACD1FEC8DA700E726F9 /* MyTabbar.m in Sources */,
 				8F560B2B1FF34ADE00E726F9 /* SearchPositiveTransition.m in Sources */,
+				8F04A0892005CFCE00021908 /* SearchVCCell.m in Sources */,
 				8F560AB21FEC8DA700E726F9 /* UIColor+HexString.m in Sources */,
 				8F560AB31FEC8DA700E726F9 /* XTRequest.m in Sources */,
 				8F560A9A1FEC8DA700E726F9 /* UIViewController+TabbarHidden.m in Sources */,

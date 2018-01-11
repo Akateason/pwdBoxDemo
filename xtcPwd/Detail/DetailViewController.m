@@ -54,8 +54,13 @@
 {
     [super viewDidLoad] ;
     
-    self.fd_interactivePopDisabled = YES ;
+    [self setupUI] ;
+    if (!self.item) return ;
+}
 
+- (void)setupUI {
+    self.fd_interactivePopDisabled = YES ;
+    
     self.navigationController.delegate = self ;
     // 滑动手势 控制比例的pop动作
     UIScreenEdgePanGestureRecognizer *edgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc]initWithTarget:self action:@selector(edgePanGestureAction:)] ;
@@ -79,8 +84,7 @@
     
     self.image.layer.cornerRadius = self.image.frame.size.width / 6. ;
     self.image.layer.masksToBounds = YES ;
-    
-    if (!self.item) return ;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated

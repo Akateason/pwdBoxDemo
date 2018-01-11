@@ -11,34 +11,86 @@
 #import "UIImage+AddFunction.h"
 #import "SearchNegativeTransition.h"
 #import "PwdListController.h"
+#import "SearchVCCell.h"
+#import "PwdItem.h"
+#import "DetailViewController.h"
 
-@interface SearchVC () <UINavigationControllerDelegate>
+@interface SearchVC () <UINavigationControllerDelegate,UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIButton *searchClearButton;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextfield;
 @property (weak, nonatomic) IBOutlet UIImageView *imageClose;
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenTransition;
-
+@property (copy, nonatomic) NSArray *resultList ;
 @end
 
 @implementation SearchVC
 
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES] ;
+- (IBAction)btClearOnClick:(id)sender {
+    self.searchTextfield.text = @"" ;
+    self.resultList = @[] ;
+    [self.table reloadData] ;
 }
 
-#pragma mark - <UINavigationControllerDelegate>
+#pragma mark - UITextFieldDelegate <NSObject>
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"%@",textField.text) ;
+    [textField resignFirstResponder] ;
+    return YES ;
+}
+
+#pragma mark - table
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.resultList.count ;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SearchVCCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchVCCell"] ;
+    [cell configure:self.resultList[indexPath.row]] ;
+    return cell ;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [SearchVCCell cellHeight] ;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
+    
+    [self.navigationController popViewControllerAnimated:YES] ;
+    [self.delegate searchConfirmAndGoto:self.resultList[indexPath.row]] ;
+//    [self performSegueWithIdentifier:@"search2detail"
+//                              sender:self.resultList[indexPath.row]] ;
+    
+}
+
+#pragma mark - life
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-
+    [super viewDidLoad] ;
+    
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
     self.fd_prefersNavigationBarHidden = YES ;
     self.fd_interactivePopDisabled = YES ;
     self.navigationController.delegate = self ;
-
+    
     self.view.backgroundColor = [UIColor xt_main] ;
+    self.searchTextfield.delegate = self ;
+    self.searchTextfield.textColor = [UIColor xt_text_dark] ;
+    self.table.dataSource = self ;
+    self.table.delegate = self ;
+    self.table.backgroundColor = [UIColor xt_main] ;
+    
+    [self.searchTextfield addTarget:self action:@selector(tfTextChange:) forControlEvents:UIControlEventEditingChanged];
+
     self.topBackView.backgroundColor = [UIColor xt_main] ;
     self.searchBackView.backgroundColor = [UIColor whiteColor] ;
     self.imageClose.image = [[UIImage imageNamed:@"close2"] imageWithTintColor:[UIColor xt_main]] ;
@@ -50,6 +102,18 @@
     UIScreenEdgePanGestureRecognizer *edgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc]initWithTarget:self action:@selector(edgePanGestureAction:)] ;
     edgePanGestureRecognizer.edges = UIRectEdgeLeft ;
     [self.view addGestureRecognizer:edgePanGestureRecognizer] ;
+}
+
+- (void)tfTextChange:(UITextField *)textField {
+    if (!textField.text.length) {
+        self.resultList = @[] ;
+        [self.table reloadData] ;
+        return ;
+    }
+    
+    NSArray *list = [PwdItem selectWhere:STR_FORMAT(@"name like '%%%@%%' or account like '%%%@%%' ;",textField.text,textField.text)] ;
+    self.resultList = [list copy] ;
+    [self.table reloadData] ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,14 +176,12 @@
     }
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//    DetailViewController *detailVC = [segue destinationViewController] ;
+//    detailVC.item = sender ;
 }
-*/
+
 
 @end

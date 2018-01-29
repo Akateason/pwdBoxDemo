@@ -142,6 +142,8 @@
     [super didReceiveMemoryWarning] ;
 }
 
+
+
 #pragma mark - actions
 
 - (IBAction)searchBtOnClick:(id)sender {
@@ -191,6 +193,36 @@
 }
 
 #pragma mark - table
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [UIView animateWithDuration:.6
+                     animations:^{
+                         self.btAdd.alpha = .4 ;
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }] ;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [UIView animateWithDuration:.6
+                     animations:^{
+                         self.btAdd.alpha = 1 ;
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }] ;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [UIView animateWithDuration:.6
+                     animations:^{
+                         self.btAdd.alpha = 1 ;
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }] ;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

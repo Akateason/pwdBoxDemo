@@ -9,7 +9,7 @@
 #import "RootRefreshHeader.h"
 
 NSString *const kTABLE_HEADER_IMAGES            =   @"refresh" ;
-float const     kTABLE_HEADER_IMAGES_COUNT      =   5          ;
+float const     kTABLE_HEADER_IMAGES_COUNT      =   7          ;
 
 @interface RootRefreshHeader ()
 @property (nonatomic,strong) NSArray *gifImageList ;
@@ -48,9 +48,16 @@ float const     kTABLE_HEADER_IMAGES_COUNT      =   5          ;
     NSArray *pullingImages      = self.gifImageList ;
     NSArray *refreshingImages   = self.gifImageList ;
     
-    [self setImages:idleImages forState:MJRefreshStateIdle] ;
-    [self setImages:pullingImages forState:MJRefreshStatePulling] ;
-    [self setImages:refreshingImages forState:MJRefreshStateRefreshing] ;
+    float duration = .4 ;
+    [self setImages:idleImages
+           duration:duration
+           forState:MJRefreshStateIdle] ;
+    [self setImages:pullingImages
+           duration:duration
+           forState:MJRefreshStatePulling] ;
+    [self setImages:refreshingImages
+           duration:duration
+           forState:MJRefreshStateRefreshing] ;
 
     
 //    // 设置控件的高度

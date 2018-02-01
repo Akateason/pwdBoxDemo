@@ -67,9 +67,6 @@
     
     [self.navigationController popViewControllerAnimated:YES] ;
     [self.delegate searchConfirmAndGoto:self.resultList[indexPath.row]] ;
-//    [self performSegueWithIdentifier:@"search2detail"
-//                              sender:self.resultList[indexPath.row]] ;
-    
 }
 
 #pragma mark - life
@@ -77,6 +74,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad] ;
     
+    [self setupUI] ;
+    [self.searchTextfield becomeFirstResponder] ;
+}
+
+- (void)setupUI {
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
     self.fd_prefersNavigationBarHidden = YES ;
     self.fd_interactivePopDisabled = YES ;
@@ -90,7 +92,7 @@
     self.table.backgroundColor = [UIColor xt_main] ;
     
     [self.searchTextfield addTarget:self action:@selector(tfTextChange:) forControlEvents:UIControlEventEditingChanged];
-
+    
     self.topBackView.backgroundColor = [UIColor xt_main] ;
     self.searchBackView.backgroundColor = [UIColor whiteColor] ;
     self.imageClose.image = [[UIImage imageNamed:@"close2"] imageWithTintColor:[UIColor xt_main]] ;
@@ -102,6 +104,7 @@
     UIScreenEdgePanGestureRecognizer *edgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc]initWithTarget:self action:@selector(edgePanGestureAction:)] ;
     edgePanGestureRecognizer.edges = UIRectEdgeLeft ;
     [self.view addGestureRecognizer:edgePanGestureRecognizer] ;
+
 }
 
 - (void)tfTextChange:(UITextField *)textField {

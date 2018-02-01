@@ -25,6 +25,8 @@ typedef enum : NSUInteger {
 //ADD IN v2
 @property (nonatomic)        int      readCount ;
 @property (nonatomic,copy)   NSString *pinyin ;
+//ADD IN V3
+@property (copy,nonatomic)   NSString *imageUrl ;
 
 - (NSString *)encodePwd:(NSString *)password ;
 - (NSString *)decodePwd ;

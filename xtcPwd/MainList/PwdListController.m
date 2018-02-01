@@ -27,11 +27,11 @@
 #import "SearchVC.h"
 #import "AddVC.h"
 
-@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate>
+@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,DetailViewControllerDelegate,RootTableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
-
+@property (weak, nonatomic) IBOutlet RootTableView *table ;
 @property (nonatomic,copy) NSArray *dataList ;
 @property (nonatomic) TypeOfPwdItem pwdType ;
 
@@ -85,8 +85,24 @@
         default: break ;
     }
     self.titleLabel.text = self.title ;
-    [self refreshTable] ;
+    [self.table pullDownRefreshHeader] ;
 }
+
+#pragma mark - DetailViewControllerDelegate <NSObject>
+
+- (void)oneItemUpdated:(PwdItem *)aItem {
+    NSMutableArray *tmpList = [self.dataList mutableCopy] ;
+    [self.dataList enumerateObjectsUsingBlock:^(PwdItem *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (aItem.pkid == obj.pkid) {
+            [tmpList replaceObjectAtIndex:idx withObject:aItem] ;
+            *stop = YES ;
+        }
+    }] ;
+    self.dataList = tmpList ;
+    
+    [self.table reloadData] ;
+}
+
 
 #pragma mark - life
 
@@ -103,10 +119,10 @@
     
     [self setupUIs] ;
     [self setupTable] ;
-    [self refreshTable] ;
+    [self.table pullDownRefreshHeaderInBackGround:YES] ;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(refreshTable)
+                                             selector:@selector(loadNew:)
                                                  name:@"AddFinishNote"
                                                object:nil] ;
 }
@@ -131,6 +147,8 @@
 - (void)setupTable {
     self.table.delegate     = self ;
     self.table.dataSource   = self ;
+    self.table.xt_Delegate = self ;
+    self.table.mj_footer = nil ;
     self.table.backgroundColor = [UIColor xt_bg] ; // [UIColor whiteColor] ;
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone ;
     self.table.estimatedRowHeight = 0 ;
@@ -158,19 +176,7 @@
     [self performSegueWithIdentifier:@"home2add" sender:nil] ;
 }
 
-#pragma mark --
-
-- (void)refreshTable {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) ;
-    dispatch_async(queue, ^{
-        NSArray *listBack = [PwdItem findWithSql:[self sqlWhereString]] ;
-        self.dataList = listBack ;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.table reloadData] ;
-        }) ;
-    }) ;
-}
+#pragma mark - util
 
 - (NSString *)sqlWhereString {
     
@@ -198,31 +204,35 @@
     [UIView animateWithDuration:.6
                      animations:^{
                          self.btAdd.alpha = .4 ;
+                         self.btAdd.layer.transform = CATransform3DMakeTranslation(0, 60, 0) ;
                      }
-                     completion:^(BOOL finished) {
-                         
-                     }] ;
+                     completion:nil] ;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [UIView animateWithDuration:.6
                      animations:^{
                          self.btAdd.alpha = 1 ;
+                         self.btAdd.layer.transform = CATransform3DIdentity ;
                      }
-                     completion:^(BOOL finished) {
-                         
-                     }] ;
+                     completion:nil] ;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [UIView animateWithDuration:.6
                      animations:^{
                          self.btAdd.alpha = 1 ;
+                         self.btAdd.layer.transform = CATransform3DIdentity ;
                      }
-                     completion:^(BOOL finished) {
-                         
-                     }] ;
+                     completion:nil] ;
 }
+
+- (void)loadNew:(void(^)(void))endRefresh {
+    NSArray *listBack = [PwdItem findWithSql:[self sqlWhereString]] ;
+    self.dataList = listBack ;
+    endRefresh() ;
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -366,6 +376,7 @@
 {
     if ([segue.identifier isEqualToString:@"list2detail"]) {
         DetailViewController *detailVC = [segue destinationViewController] ;
+        detailVC.delegate = self ;
         detailVC.item = sender ;
     }
     else if ([segue.identifier isEqualToString:@"all2user"]) {

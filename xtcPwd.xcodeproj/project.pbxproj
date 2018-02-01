@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */; };
+		7DBF8FCC2022F7080030C3D5 /* BYImageValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FCB2022F7080030C3D5 /* BYImageValue.m */; };
 		8F04A0892005CFCE00021908 /* SearchVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F04A0882005CFCE00021908 /* SearchVCCell.m */; };
 		8F560A831FEC8DA700E726F9 /* XTDBVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F56098D1FEC8DA600E726F9 /* XTDBVersion.m */; };
 		8F560A841FEC8DA700E726F9 /* XTDBModel+autoSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F56098F1FEC8DA600E726F9 /* XTDBModel+autoSql.m */; };
@@ -123,6 +125,10 @@
 		4460BB02A9066CE9B3F329EA /* libPods-xtcPwd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xtcPwd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.debug.xcconfig"; sourceTree = "<group>"; };
 		6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.release.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.release.xcconfig"; sourceTree = "<group>"; };
+		7DBF8FC72022F32E0030C3D5 /* ReqUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReqUtil.h; sourceTree = "<group>"; };
+		7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReqUtil.m; sourceTree = "<group>"; };
+		7DBF8FCA2022F7080030C3D5 /* BYImageValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYImageValue.h; sourceTree = "<group>"; };
+		7DBF8FCB2022F7080030C3D5 /* BYImageValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYImageValue.m; sourceTree = "<group>"; };
 		8F04A0872005CFCE00021908 /* SearchVCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchVCCell.h; sourceTree = "<group>"; };
 		8F04A0882005CFCE00021908 /* SearchVCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchVCCell.m; sourceTree = "<group>"; };
 		8F56098D1FEC8DA600E726F9 /* XTDBVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTDBVersion.m; sourceTree = "<group>"; };
@@ -997,10 +1003,10 @@
 			children = (
 				8FFC6CF21EEF735A00F55173 /* AppDelegate.h */,
 				8FFC6CF31EEF735A00F55173 /* AppDelegate.m */,
+				8FFC6CF81EEF735A00F55173 /* Main.storyboard */,
 				8FFC6D211EEF7A5A00F55173 /* Model */,
 				8FFC6D1A1EEF74E000F55173 /* VC */,
 				8FFC6D281EEF832500F55173 /* Util */,
-				8FFC6CF81EEF735A00F55173 /* Main.storyboard */,
 				8F56098B1FEC8DA600E726F9 /* XTkit */,
 				8FFC6CFB1EEF735A00F55173 /* Assets.xcassets */,
 				8FFC6CFD1EEF735A00F55173 /* LaunchScreen.storyboard */,
@@ -1038,6 +1044,10 @@
 				8FFC6D231EEF7A8000F55173 /* PwdItem.m */,
 				8F560B1F1FF3281800E726F9 /* FilterCondition.h */,
 				8F560B201FF3281800E726F9 /* FilterCondition.m */,
+				7DBF8FC72022F32E0030C3D5 /* ReqUtil.h */,
+				7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */,
+				7DBF8FCA2022F7080030C3D5 /* BYImageValue.h */,
+				7DBF8FCB2022F7080030C3D5 /* BYImageValue.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1084,7 +1094,7 @@
 				TargetAttributes = {
 					8FFC6CEB1EEF735A00F55173 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 5D74XHX7AD;
+						DevelopmentTeam = 83SLLMU85B;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1216,6 +1226,7 @@
 				8F560B2B1FF34ADE00E726F9 /* SearchPositiveTransition.m in Sources */,
 				8F04A0892005CFCE00021908 /* SearchVCCell.m in Sources */,
 				8F560AB21FEC8DA700E726F9 /* UIColor+HexString.m in Sources */,
+				7DBF8FCC2022F7080030C3D5 /* BYImageValue.m in Sources */,
 				8F560AB31FEC8DA700E726F9 /* XTRequest.m in Sources */,
 				8F560A9A1FEC8DA700E726F9 /* UIViewController+TabbarHidden.m in Sources */,
 				8F560A9F1FEC8DA700E726F9 /* XTArchive.m in Sources */,
@@ -1277,6 +1288,7 @@
 				8F560ACF1FEC8DA700E726F9 /* XTlineSpaceLabel.m in Sources */,
 				8F560B0A1FF0981100E726F9 /* ChineseToPinyinResource.m in Sources */,
 				8FFC6CF11EEF735A00F55173 /* main.m in Sources */,
+				7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */,
 				8F560A961FEC8DA700E726F9 /* NSObject+Reflection.m in Sources */,
 				8F560A971FEC8DA700E726F9 /* UIImage+AddFunction.m in Sources */,
 				8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */,
@@ -1408,7 +1420,7 @@
 			baseConfigurationReference = 584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5D74XHX7AD;
+				DEVELOPMENT_TEAM = 83SLLMU85B;
 				INFOPLIST_FILE = xtcPwd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teason.xtcPwd;
@@ -1421,7 +1433,7 @@
 			baseConfigurationReference = 6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5D74XHX7AD;
+				DEVELOPMENT_TEAM = 83SLLMU85B;
 				INFOPLIST_FILE = xtcPwd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teason.xtcPwd;

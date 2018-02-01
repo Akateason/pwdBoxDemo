@@ -12,6 +12,7 @@
 #import "UIImage+AddFunction.h"
 #import <SVProgressHUD.h>
 #import "PwdItem.h"
+#import "XTReq.h"
 
 @interface AppDelegate ()
 
@@ -22,16 +23,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[XTFMDBBase sharedInstance] configureDB:@"teasonsDB"] ;
-    [PwdItem createTable] ;
-    [[XTFMDBBase sharedInstance] dbUpgradeTable:PwdItem.class
-                                      paramsAdd:@[@"readCount",@"pinyin"]
-                                        version:2] ;
-    [PwdItem addPinyinIfNeeded] ;
-    
+    [self setupDB] ;
     [self setupUI] ;
     
     return YES ;
+}
+
+- (void)setupDB {
+    [[XTFMDBBase sharedInstance] configureDB:@"teasonsDB"] ;
+    [PwdItem createTable] ;
+    //upgrade v2
+    [[XTFMDBBase sharedInstance] dbUpgradeTable:PwdItem.class
+                                      paramsAdd:@[@"readCount",@"pinyin"]
+                                        version:2] ;
+    //upgrade v3
+    [[XTFMDBBase sharedInstance] dbUpgradeTable:PwdItem.class
+                                      paramsAdd:@[@"imageUrl"]
+                                        version:3] ;
+    // pin Yin
+    [PwdItem addPinyinIfNeeded] ;
+    
+    // req cache
+    [XTResponseDBModel createTable] ;
 }
 
 - (void)setupUI {

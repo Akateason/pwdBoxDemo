@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "ListCell.h"
 #import "UIColor+AllColors.h"
+#import "RootTableView.h"
 
 @implementation CellPositiveTransition
 
@@ -76,8 +77,9 @@
                          [UIView animateWithDuration:.8
                                           animations:^{
                                               [containerView layoutIfNeeded] ;
-                                              backView.frame = [containerView convertRect:toVC.view.frame
-                                                                                         fromView:toVC.view.superview] ;
+                                              
+                                              backView.frame = [containerView convertRect:toVC.bgView.frame
+                                                                                 fromView:toVC.bgView.superview] ;
                                               
                                               snapShotImageView.frame = [containerView convertRect:toVC.image.frame
                                                                                           fromView:toVC.image.superview] ;

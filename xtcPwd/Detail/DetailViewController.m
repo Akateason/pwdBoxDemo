@@ -14,6 +14,10 @@
 #import "CellNegativeTransition.h"
 #import "PwdListController.h"
 #import <UINavigationController+FDFullscreenPopGesture.h>
+#import "ReqUtil.h"
+#import "BYImageValue.h"
+#import <UIImageView+WebCache.h>
+#import <ReactiveObjC.h>
 
 @interface DetailViewController () <UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lbName;
@@ -23,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem;
 @property (weak, nonatomic) IBOutlet UIButton *btCopy;
 @property (weak, nonatomic) IBOutlet UIButton *btShow;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UIImageView *image ;
 
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenTransition;
 @end
@@ -67,7 +73,9 @@
     edgePanGestureRecognizer.edges = UIRectEdgeLeft ;
     [self.view addGestureRecognizer:edgePanGestureRecognizer] ;
     
-    self.view.backgroundColor = [UIColor whiteColor] ; //[UIColor xt_bg] ;
+    self.view.backgroundColor = [UIColor xt_bg] ;
+    self.bgView.backgroundColor = [UIColor whiteColor] ;
+    self.bgView.layer.cornerRadius = 5. ;
     
     UIColor *wordsColor = [UIColor xt_text_dark] ;
     _lbName.textColor = wordsColor ;
@@ -84,7 +92,8 @@
     
     self.image.layer.cornerRadius = self.image.frame.size.width / 6. ;
     self.image.layer.masksToBounds = YES ;
-
+    self.image.layer.borderWidth = .5 ;
+    self.image.layer.borderColor = [UIColor xt_text_light].CGColor ;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -98,11 +107,31 @@
     _lbAccount.text = self.item.account ;
     _lbPwd.text = [self makePwdHidden] ;
     _lbDetail.text = self.item.detailInfo ;
-    
+    [_image sd_setImageWithURL:[NSURL URLWithString:self.item.imageUrl]
+     placeholderImage:[UIImage imageNamed:@"logo"]] ;
     self.title = self.item.name ;
-    
     self.item.readCount ++ ;
     [self.item update] ;
+    
+    if (self.item.imageUrl.length) {
+        return ;
+    }
+    
+    @weakify(self)
+    [ReqUtil searchImageWithName:self.item.name
+                           count:1
+                          offset:0
+                      completion:^(NSArray *list) {
+                          @strongify(self)
+                          if (!list) return ;
+                          
+                          BYImageValue *imageValue = [list firstObject] ;
+                          self.item.imageUrl = imageValue.thumbnailUrl ;
+                          [self.item update] ;
+                          
+                          [_image sd_setImageWithURL:[NSURL URLWithString:self.item.imageUrl]] ;
+                          [self.delegate oneItemUpdated:self.item] ;
+                      }] ;
 }
 
 - (NSString *)makePwdHidden

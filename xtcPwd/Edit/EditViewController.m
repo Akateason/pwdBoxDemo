@@ -11,6 +11,7 @@
 #import "SVProgressHUD.h"
 #import "UIColor+AllColors.h"
 #import "MyTextField.h"
+#import <UIImageView+WebCache.h>
 
 @interface EditViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem    *doneItem   ;
@@ -18,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet MyTextField        *accountTf  ;
 @property (weak, nonatomic) IBOutlet MyTextField        *passwordTf ;
 @property (weak, nonatomic) IBOutlet UITextView         *detailTv   ;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 @end
 
 @implementation EditViewController
@@ -30,6 +33,8 @@
     
     self.view.backgroundColor = [UIColor xt_bg] ;
     
+    _imageView.layer.cornerRadius = _imageView.frame.size.width / 6. ;
+    _imageView.layer.masksToBounds = YES ;
     _nameTf.textColor = [UIColor xt_main] ;
     _accountTf.textColor = [UIColor xt_main] ;
     _passwordTf.textColor = [UIColor xt_main] ;
@@ -55,7 +60,8 @@
         _accountTf.text = self.itemWillBeEdit.account ;
         _passwordTf.text = [self.itemWillBeEdit decodePwd] ;
         _detailTv.text = self.itemWillBeEdit.detailInfo ;
-        
+        [_imageView sd_setImageWithURL:[NSURL URLWithString:self.itemWillBeEdit.imageUrl]
+                      placeholderImage:[UIImage imageNamed:@"logo"]] ;
         self.title = @"EDIT" ;
     }
     

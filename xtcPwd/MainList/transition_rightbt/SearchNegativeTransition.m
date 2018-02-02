@@ -37,7 +37,7 @@
     
     UIImageView *btImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"searchBt"] imageWithTintColor:[UIColor whiteColor]]] ;
     btImageView.frame = CGRectMake(APP_WIDTH - 16 - 30,
-                                   23,
+                                   XT_IS_IPHONE_X ? 23 + APP_SAFEAREA_STATUSBAR_FLEX : 23,
                                    30, 30) ;
     btImageView.layer.cornerRadius = 15 ;
     btImageView.alpha = 0 ;
@@ -53,7 +53,7 @@
                      animations:^{
                          fromVC.view.alpha = 0.0f ;
                          topBar.frame = CGRectMake(APP_WIDTH - 16 - 30 ,
-                                                   23,
+                                                   XT_IS_IPHONE_X ? 23 + APP_SAFEAREA_STATUSBAR_FLEX : 23,
                                                    30,
                                                    30) ;
                          btImageView.alpha = 1 ;

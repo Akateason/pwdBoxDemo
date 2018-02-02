@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *searchTextfield;
 @property (weak, nonatomic) IBOutlet UIImageView *imageClose;
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topbarHeight;
 
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenTransition;
 @property (copy, nonatomic) NSArray *resultList ;
@@ -84,6 +85,7 @@
     self.fd_interactivePopDisabled = YES ;
     self.navigationController.delegate = self ;
     
+    self.topbarHeight.constant = APP_NAVIGATIONBAR_HEIGHT + APP_STATUSBAR_HEIGHT ;
     self.view.backgroundColor = [UIColor xt_main] ;
     self.searchTextfield.delegate = self ;
     self.searchTextfield.textColor = [UIColor xt_text_dark] ;

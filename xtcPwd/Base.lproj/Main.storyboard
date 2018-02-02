@@ -150,6 +150,7 @@
                         <outlet property="btUser" destination="TMj-pH-Le3" id="OeZ-9H-93a"/>
                         <outlet property="table" destination="YPZ-VP-Oph" id="9bb-Vw-zYu"/>
                         <outlet property="titleLabel" destination="6MJ-bN-cQc" id="QUi-0Q-k05"/>
+                        <outlet property="topNavFlex" destination="UpZ-8C-pnq" id="sy9-gd-S1Z"/>
                         <segue destination="vBA-Sz-g7d" kind="push" identifier="list2detail" id="UTa-Tb-sO4"/>
                         <segue destination="Mxh-bk-22Y" kind="push" identifier="list2add" id="yOl-wv-2d7"/>
                         <segue destination="vBM-4y-Gua" kind="push" identifier="all2user" id="r8W-Fj-tpj"/>
@@ -776,6 +777,7 @@
                         <outlet property="searchTextfield" destination="n4k-1j-ZZi" id="zBt-qi-j6x"/>
                         <outlet property="table" destination="m9Y-CL-Ed0" id="pmv-qK-dqo"/>
                         <outlet property="topBackView" destination="kUH-Fe-CGq" id="o5u-Es-nIi"/>
+                        <outlet property="topbarHeight" destination="veQ-bJ-djG" id="6Lk-5w-6yO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G9h-KN-hJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>

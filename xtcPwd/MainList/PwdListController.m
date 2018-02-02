@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
 @property (weak, nonatomic) IBOutlet RootTableView *table ;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topNavFlex;
 @property (nonatomic,copy) NSArray *dataList ;
 @property (nonatomic) TypeOfPwdItem pwdType ;
 
@@ -138,6 +139,7 @@
 }
 
 - (void)setupUIs {
+    self.topNavFlex.constant = APP_NAVIGATIONBAR_HEIGHT + APP_STATUSBAR_HEIGHT ;
     self.view.backgroundColor = [UIColor xt_main] ;
     [self.btUser setImage:[[UIImage imageNamed:@"user"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[UIColor xt_main]] forState:0] ;

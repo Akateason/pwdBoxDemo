@@ -59,7 +59,8 @@
 
 - (void)setupCollectionView {
     XTDrawerFlowLayout *layout = [[XTDrawerFlowLayout alloc] init] ;
-    layout.itemSize = CGSizeMake(APP_WIDTH, APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT) ;
+    layout.itemSize = CGSizeMake(APP_WIDTH,
+                                 APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX) ;
 //    layout.firstItemTransform = 0.2 ;
     self.collectionView.collectionViewLayout = layout ;
     self.collectionView.dataSource = self ;

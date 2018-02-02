@@ -48,7 +48,7 @@ float const     kTABLE_HEADER_IMAGES_COUNT      =   49         ;
     NSArray *pullingImages      = self.gifImageList ;
     NSArray *refreshingImages   = self.gifImageList ;
     
-    float duration = .6 ;
+    float duration = .65 ;
     [self setImages:idleImages
            duration:duration
            forState:MJRefreshStateIdle] ;

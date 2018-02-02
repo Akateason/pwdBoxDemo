@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */; };
 		7DBF8FCC2022F7080030C3D5 /* BYImageValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FCB2022F7080030C3D5 /* BYImageValue.m */; };
+		7DBF8FD320240D8D0030C3D5 /* DetailCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */; };
+		7DBF8FD420240D8D0030C3D5 /* DetailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD220240D8D0030C3D5 /* DetailCollectionCell.xib */; };
 		8F04A0892005CFCE00021908 /* SearchVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F04A0882005CFCE00021908 /* SearchVCCell.m */; };
 		8F560A831FEC8DA700E726F9 /* XTDBVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F56098D1FEC8DA600E726F9 /* XTDBVersion.m */; };
 		8F560A841FEC8DA700E726F9 /* XTDBModel+autoSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F56098F1FEC8DA600E726F9 /* XTDBModel+autoSql.m */; };
@@ -129,6 +131,9 @@
 		7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReqUtil.m; sourceTree = "<group>"; };
 		7DBF8FCA2022F7080030C3D5 /* BYImageValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYImageValue.h; sourceTree = "<group>"; };
 		7DBF8FCB2022F7080030C3D5 /* BYImageValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYImageValue.m; sourceTree = "<group>"; };
+		7DBF8FD020240D8D0030C3D5 /* DetailCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailCollectionCell.h; sourceTree = "<group>"; };
+		7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailCollectionCell.m; sourceTree = "<group>"; };
+		7DBF8FD220240D8D0030C3D5 /* DetailCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionCell.xib; sourceTree = "<group>"; };
 		8F04A0872005CFCE00021908 /* SearchVCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchVCCell.h; sourceTree = "<group>"; };
 		8F04A0882005CFCE00021908 /* SearchVCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchVCCell.m; sourceTree = "<group>"; };
 		8F56098D1FEC8DA600E726F9 /* XTDBVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTDBVersion.m; sourceTree = "<group>"; };
@@ -893,6 +898,9 @@
 			children = (
 				8FFC6D1B1EEF7A3B00F55173 /* DetailViewController.h */,
 				8FFC6D1C1EEF7A3B00F55173 /* DetailViewController.m */,
+				7DBF8FD020240D8D0030C3D5 /* DetailCollectionCell.h */,
+				7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */,
+				7DBF8FD220240D8D0030C3D5 /* DetailCollectionCell.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1122,6 +1130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DBF8FD420240D8D0030C3D5 /* DetailCollectionCell.xib in Resources */,
 				8F560B0C1FF0981100E726F9 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				8F560AB11FEC8DA700E726F9 /* xtAllColorsList.plist in Resources */,
 				8FFC6CFF1EEF735A00F55173 /* LaunchScreen.storyboard in Resources */,
@@ -1241,6 +1250,7 @@
 				8F560AD71FEC8DA700E726F9 /* PlaceHolderTextView.m in Sources */,
 				8F560AE01FEC8DA700E726F9 /* ParallaxHeaderView.m in Sources */,
 				8F560A9C1FEC8DA700E726F9 /* UIResponder+ChainHandler.m in Sources */,
+				7DBF8FD320240D8D0030C3D5 /* DetailCollectionCell.m in Sources */,
 				8F560A8A1FEC8DA700E726F9 /* UIView+Sizes.m in Sources */,
 				8FFC6D191EEF74D900F55173 /* PwdListController.m in Sources */,
 				8F560A941FEC8DA700E726F9 /* UILabel+FontAdapter.m in Sources */,

@@ -229,6 +229,7 @@
 
 - (void)loadNew:(void(^)(void))endRefresh {
     NSArray *listBack = [PwdItem findWithSql:[self sqlWhereString]] ;
+    sleep(1) ;
     self.dataList = listBack ;
     endRefresh() ;
 }

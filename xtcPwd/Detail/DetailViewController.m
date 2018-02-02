@@ -16,51 +16,41 @@
 #import <UINavigationController+FDFullscreenPopGesture.h>
 #import "ReqUtil.h"
 #import "BYImageValue.h"
-#import <UIImageView+WebCache.h>
 #import <ReactiveObjC.h>
+#import "DetailCollectionCell.h"
 
-@interface DetailViewController () <UINavigationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *lbName;
-@property (weak, nonatomic) IBOutlet UILabel *lbAccount;
-@property (weak, nonatomic) IBOutlet UILabel *lbPwd;
-@property (weak, nonatomic) IBOutlet UILabel *lbDetail;
+@interface DetailViewController () <UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem;
-@property (weak, nonatomic) IBOutlet UIButton *btCopy;
-@property (weak, nonatomic) IBOutlet UIButton *btShow;
-@property (weak, nonatomic) IBOutlet UIView *bgView;
-@property (weak, nonatomic) IBOutlet UIImageView *image ;
+@property (weak, nonatomic, readwrite) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenTransition;
 @end
 
 @implementation DetailViewController
 
-#pragma mark -
+#pragma mark - action
 
 - (IBAction)editOnClick:(id)sender
 {
     [self performSegueWithIdentifier:@"detail2edit" sender:self.item] ;
 }
 
-- (IBAction)copyOnClick:(id)sender
-{
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard] ;
-    pasteboard.string = [self.item decodePwd] ;
-    [SVProgressHUD showInfoWithStatus:@"Already Copied To The Clipboard"] ;
-}
 
-- (IBAction)showOnClick:(id)sender
-{
-    _lbPwd.text = [self.item decodePwd] ;
-}
-
-#pragma mark -
+#pragma mark - life
 
 - (void)viewDidLoad
 {
     [super viewDidLoad] ;
     
     [self setupUI] ;
+    
+    self.collectionView.dataSource = self ;
+    self.collectionView.delegate = self ;
+    [self.collectionView registerNib:[UINib nibWithNibName:@"DetailCollectionCell" bundle:nil]
+          forCellWithReuseIdentifier:@"DetailCollectionCell"] ;
+    self.collectionView.backgroundColor = [UIColor xt_bg] ;
+    self.collectionView.pagingEnabled = YES ;
+
     if (!self.item) return ;
 }
 
@@ -73,46 +63,13 @@
     edgePanGestureRecognizer.edges = UIRectEdgeLeft ;
     [self.view addGestureRecognizer:edgePanGestureRecognizer] ;
     
-    self.view.backgroundColor = [UIColor xt_bg] ;
-    self.bgView.backgroundColor = [UIColor whiteColor] ;
-    self.bgView.layer.cornerRadius = 5. ;
-    
-    UIColor *wordsColor = [UIColor xt_text_dark] ;
-    _lbName.textColor = wordsColor ;
-    _lbAccount.textColor = wordsColor ;
-    _lbPwd.textColor = wordsColor ;
-    _lbDetail.textColor = wordsColor ;
-    
-    [_btCopy setTitleColor:[UIColor whiteColor] forState:0] ;
-    [_btShow setTitleColor:[UIColor whiteColor] forState:0] ;
-    _btCopy.layer.cornerRadius = 5. ;
-    _btShow.layer.cornerRadius = 5. ;
-    _btCopy.backgroundColor = [UIColor xt_main] ;
-    _btShow.backgroundColor = [UIColor xt_main] ;
-    
-    self.image.layer.cornerRadius = self.image.frame.size.width / 6. ;
-    self.image.layer.masksToBounds = YES ;
-    self.image.layer.borderWidth = .5 ;
-    self.image.layer.borderColor = [UIColor xt_text_light].CGColor ;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated] ;
     
-    // fetch from db .
-    self.item = [PwdItem findFirstWhere:[NSString stringWithFormat:@"pkid == %d",self.item.pkid]] ;
-    
-    _lbName.text = self.item.name ;
-    _lbAccount.text = self.item.account ;
-    _lbPwd.text = [self makePwdHidden] ;
-    _lbDetail.text = self.item.detailInfo ;
-    [_image sd_setImageWithURL:[NSURL URLWithString:self.item.imageUrl]
-     placeholderImage:[UIImage imageNamed:@"logo"]] ;
     self.title = self.item.name ;
-    self.item.readCount ++ ;
-    [self.item update] ;
-    
     if (self.item.imageUrl.length) {
         return ;
     }
@@ -129,26 +86,40 @@
                           self.item.imageUrl = imageValue.thumbnailUrl ;
                           [self.item update] ;
                           
-                          [_image sd_setImageWithURL:[NSURL URLWithString:self.item.imageUrl]] ;
+                          [self.collectionView reloadData] ;
+//                          [_image sd_setImageWithURL:[NSURL URLWithString:self.item.imageUrl]] ;
                           [self.delegate oneItemUpdated:self.item] ;
                       }] ;
 }
 
-- (NSString *)makePwdHidden
-{
-    int count = (int)[[self.item decodePwd] length] ;
-    NSString *itemStr = @"*" ;
-    NSMutableString *tmpStr = [@"" mutableCopy] ;
-    for (int i = 0; i < count; i++) {
-        [tmpStr appendString:itemStr] ;
-    }
-    return tmpStr ;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - collection
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 3 ;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    DetailCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailCollectionCell"
+                                                                           forIndexPath:indexPath] ;
+    cell.item = self.item ;
+    return cell ;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(APP_WIDTH ,
+                      APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT) ;
+}
+
+
 
 #pragma mark - gesture action
 

@@ -16,6 +16,5 @@
 @interface DetailViewController : UIViewController
 @property (weak,nonatomic) id <DetailViewControllerDelegate> delegate ;
 @property (nonatomic,strong) PwdItem *item ;
-@property (weak, nonatomic,readonly) IBOutlet UIImageView *image ;
-@property (weak, nonatomic,readonly) IBOutlet UIView *bgView;
+@property (weak, nonatomic, readonly) IBOutlet UICollectionView *collectionView;
 @end

@@ -9,7 +9,7 @@
 #import "RootRefreshHeader.h"
 
 NSString *const kTABLE_HEADER_IMAGES            =   @"refresh" ;
-float const     kTABLE_HEADER_IMAGES_COUNT      =   7          ;
+float const     kTABLE_HEADER_IMAGES_COUNT      =   49         ;
 
 @interface RootRefreshHeader ()
 @property (nonatomic,strong) NSArray *gifImageList ;
@@ -24,7 +24,7 @@ float const     kTABLE_HEADER_IMAGES_COUNT      =   7          ;
     if (!_gifImageList)
     {
         NSMutableArray *tempList = [NSMutableArray array] ;
-        for (int i = 1; i <= kTABLE_HEADER_IMAGES_COUNT; i++)
+        for (int i = 0; i <= kTABLE_HEADER_IMAGES_COUNT; i++)
         {
             if ([UIImage imageNamed:[NSString stringWithFormat:@"%@%d",kTABLE_HEADER_IMAGES,i]]) {
                 UIImage *imgTemp = [UIImage imageNamed:[NSString stringWithFormat:@"%@%d",kTABLE_HEADER_IMAGES,i]] ;
@@ -48,7 +48,7 @@ float const     kTABLE_HEADER_IMAGES_COUNT      =   7          ;
     NSArray *pullingImages      = self.gifImageList ;
     NSArray *refreshingImages   = self.gifImageList ;
     
-    float duration = .4 ;
+    float duration = .6 ;
     [self setImages:idleImages
            duration:duration
            forState:MJRefreshStateIdle] ;

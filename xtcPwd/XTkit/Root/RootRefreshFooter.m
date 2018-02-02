@@ -28,7 +28,7 @@ extern float const kTABLE_HEADER_IMAGES_COUNT   ;
     if (!_gifImageList)
     {
         NSMutableArray *tempList = [NSMutableArray array] ;
-        for (int i = 1; i <= kTABLE_HEADER_IMAGES_COUNT; i++)
+        for (int i = 0; i <= kTABLE_HEADER_IMAGES_COUNT; i++)
         {
             UIImage *imgTemp = [UIImage imageNamed:[NSString stringWithFormat:@"%@%d",kTABLE_HEADER_IMAGES,i]] ;
             if (imgTemp) {

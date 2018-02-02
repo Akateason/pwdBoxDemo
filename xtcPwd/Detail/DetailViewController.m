@@ -18,8 +18,9 @@
 #import "BYImageValue.h"
 #import <ReactiveObjC.h>
 #import "DetailCollectionCell.h"
+#import "XTRoundLayout.h"
 
-@interface DetailViewController () <UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface DetailViewController () <UINavigationControllerDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem;
 @property (weak, nonatomic, readwrite) IBOutlet UICollectionView *collectionView;
 
@@ -30,28 +31,32 @@
 
 #pragma mark - action
 
-- (IBAction)editOnClick:(id)sender
-{
+- (IBAction)editOnClick:(id)sender {
     [self performSegueWithIdentifier:@"detail2edit" sender:self.item] ;
 }
 
 
 #pragma mark - life
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad] ;
     
     [self setupUI] ;
-    
+    [self setupCollectionView] ;
+}
+
+- (void)setupCollectionView {
+    XTRoundLayout *layout = [[XTRoundLayout alloc] init] ;
+    layout.itemSize = CGSizeMake(APP_WIDTH, APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT) ;
+    layout.firstItemTransform = 0.07 ;
+    self.collectionView.collectionViewLayout = layout ;
     self.collectionView.dataSource = self ;
-    self.collectionView.delegate = self ;
+//    self.collectionView.delegate = self ;
     [self.collectionView registerNib:[UINib nibWithNibName:@"DetailCollectionCell" bundle:nil]
           forCellWithReuseIdentifier:@"DetailCollectionCell"] ;
     self.collectionView.backgroundColor = [UIColor xt_bg] ;
     self.collectionView.pagingEnabled = YES ;
-
-    if (!self.item) return ;
+    self.collectionView.showsVerticalScrollIndicator = NO ;
 }
 
 - (void)setupUI {
@@ -62,17 +67,13 @@
     UIScreenEdgePanGestureRecognizer *edgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc]initWithTarget:self action:@selector(edgePanGestureAction:)] ;
     edgePanGestureRecognizer.edges = UIRectEdgeLeft ;
     [self.view addGestureRecognizer:edgePanGestureRecognizer] ;
-    
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated] ;
     
     self.title = self.item.name ;
-    if (self.item.imageUrl.length) {
-        return ;
-    }
+    if (self.item.imageUrl.length) return ;
     
     @weakify(self)
     [ReqUtil searchImageWithName:self.item.name
@@ -112,14 +113,6 @@
     cell.item = self.item ;
     return cell ;
 }
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return CGSizeMake(APP_WIDTH ,
-                      APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT) ;
-}
-
-
 
 #pragma mark - gesture action
 

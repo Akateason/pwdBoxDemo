@@ -32,7 +32,7 @@
     // Initialization code
     self.layer.cornerRadius = 5. ;
     
-    self.backgroundColor = [UIColor xt_bg] ;
+    self.backgroundColor = nil ;
     self.bgView.backgroundColor = [UIColor whiteColor] ;
     self.bgView.layer.cornerRadius = 5. ;
     

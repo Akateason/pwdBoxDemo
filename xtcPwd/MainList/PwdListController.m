@@ -86,7 +86,7 @@
         default: break ;
     }
     self.titleLabel.text = self.title ;
-    [self.table pullDownRefreshHeader] ;
+    [self.table loadNewInfo] ;
 }
 
 #pragma mark - DetailViewControllerDelegate <NSObject>
@@ -116,12 +116,12 @@
     
     [self setupUIs] ;
     [self setupTable] ;
-    [self.table pullDownRefreshHeaderInBackGround:YES] ;
+    [self.table loadNewInfoInBackGround:YES] ;
     
     @weakify(self)
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"AddFinishNote" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
         @strongify(self)
-        [self.table pullDownRefreshHeaderInBackGround:YES] ;
+        [self.table loadNewInfoInBackGround:YES] ;
     }] ;
 }
 

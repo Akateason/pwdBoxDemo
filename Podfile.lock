@@ -18,6 +18,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - iCarousel (1.8.3)
   - Masonry (1.0.2)
   - MJRefresh (3.1.12)
   - ReactiveObjC (3.0.0)
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - AFNetworking
   - FDFullscreenPopGesture (= 1.1)
   - FMDB
+  - iCarousel
   - Masonry
   - MJRefresh
   - ReactiveObjC
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
@@ -58,6 +61,6 @@ SPEC CHECKSUMS:
   Valet: 14463ef24fab8fd5809044ecedb61484b799fdd6
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 44b5f7e47475c599c2fd0bc3b159990db7dd4d4e
+PODFILE CHECKSUM: a396125bb9bb1d98c494f183352fe5faa6140a47
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0.rc.1

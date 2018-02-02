@@ -20,12 +20,13 @@
 #import "DetailCollectionCell.h"
 #import "XTDrawerFlowLayout.h"
 
-@interface DetailViewController () <UINavigationControllerDelegate,UICollectionViewDataSource>
+
+@interface DetailViewController () <UINavigationControllerDelegate,iCarouselDataSource,iCarouselDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem;
-@property (weak, nonatomic, readwrite) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) iCarousel *carousel ;
 
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenTransition;
-@property (assign, nonatomic) NSInteger currentIndex ;
+@property (assign, nonatomic) NSInteger indexSended ;
 @property (copy, nonatomic)   NSArray   *dataSource ;
 @end
 
@@ -34,14 +35,14 @@
 #pragma mark - action
 
 - (IBAction)editOnClick:(id)sender {
-    [self performSegueWithIdentifier:@"detail2edit" sender:self.dataSource[self.currentIndex]] ;
+    [self performSegueWithIdentifier:@"detail2edit" sender:self.dataSource[self.carousel.currentItemIndex]] ;
 }
 
 - (void)selectedIndexInHomeList:(NSInteger)index
                            list:(NSArray *)list
 {
     self.dataSource = [list copy] ;
-    self.currentIndex = index ;
+    self.indexSended = index ;
 }
 
 #pragma mark - life
@@ -50,26 +51,27 @@
     [super viewDidLoad] ;
     
     [self setupUI] ;
-    [self setupCollectionView] ;
-    
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.currentIndex inSection:0]
-                                atScrollPosition:UICollectionViewScrollPositionNone
-                                        animated:NO] ;
+    [self setupCarousel] ;
 }
 
-- (void)setupCollectionView {
-    XTDrawerFlowLayout *layout = [[XTDrawerFlowLayout alloc] init] ;
-    layout.itemSize = CGSizeMake(APP_WIDTH,
-                                 APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX) ;
-//    layout.firstItemTransform = 0.2 ;
-    self.collectionView.collectionViewLayout = layout ;
-    self.collectionView.dataSource = self ;
-//    self.collectionView.delegate = self ;
-    [self.collectionView registerNib:[UINib nibWithNibName:@"DetailCollectionCell" bundle:nil]
-          forCellWithReuseIdentifier:@"DetailCollectionCell"] ;
-    self.collectionView.backgroundColor = [UIColor xt_bg] ;
-    self.collectionView.pagingEnabled = YES ;
-    self.collectionView.showsVerticalScrollIndicator = NO ;
+- (void)setupCarousel {
+    self.carousel = [[iCarousel alloc] init] ;
+    _carousel.backgroundColor = [UIColor xt_bg] ;
+    _carousel.dataSource = self ;
+    _carousel.delegate = self ;
+    _carousel.type = iCarouselTypeRotary ;
+    _carousel.pagingEnabled = YES ;
+    _carousel.vertical = YES ;
+    _carousel.scrollSpeed = 1.2 ;
+    _carousel.decelerationRate = .6 ;
+    [self.view addSubview:_carousel] ;
+    [_carousel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view) ;
+        make.bottom.equalTo(@(- APP_SAFEAREA_TABBAR_FLEX)) ;
+        make.left.right.equalTo(self.view) ;
+    }] ;
+    
+    [self.carousel scrollToItemAtIndex:self.indexSended animated:NO] ;
 }
 
 - (void)setupUI {
@@ -85,9 +87,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated] ;
     
-    PwdItem *currentItem = self.dataSource[self.currentIndex] ;
+    PwdItem *currentItem = self.dataSource[self.carousel.currentItemIndex] ;
     self.title = currentItem.name ;
-    if (currentItem) return ;
+    if (currentItem.imageUrl.length) return ;
     
     @weakify(self)
     [ReqUtil searchImageWithName:currentItem.name
@@ -101,7 +103,7 @@
                           currentItem.imageUrl = imageValue.thumbnailUrl ;
                           [currentItem update] ;
                           
-                          [self.collectionView reloadData] ;
+                          [self.carousel reloadData] ;
 //                          [_image sd_setImageWithURL:[NSURL URLWithString:self.item.imageUrl]] ;
                           [self.delegate oneItemUpdated:currentItem] ;
                       }] ;
@@ -112,23 +114,38 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - collection
+#pragma mark - carousel
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView
-     numberOfItemsInSection:(NSInteger)section
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     return self.dataSource.count ;
 }
 
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                           cellForItemAtIndexPath:(NSIndexPath *)indexPath
+static const float kFlexOfSide = 0 ;
+
+- (UIView *)carousel:(iCarousel *)carousel
+  viewForItemAtIndex:(NSInteger)index
+         reusingView:(nullable UIView *)view
 {
-    DetailCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailCollectionCell"
-                                                                           forIndexPath:indexPath] ;
-    cell.item = self.dataSource[indexPath.row] ;
-    self.currentIndex = indexPath.row ;
+    DetailCollectionCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailCollectionCell" owner:self options:nil] lastObject] ;
+    cell.item = self.dataSource[index] ;
+    
+    cell.frame = (CGRect) {
+        CGPointZero,
+        CGSizeMake(
+                   APP_WIDTH - kFlexOfSide ,
+                   APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
+                   )
+    } ;
     return cell ;
 }
+
+- (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel
+{
+    PwdItem *item = self.dataSource[carousel.currentItemIndex] ;
+    self.title = item.name ;
+}
+
 
 #pragma mark - gesture action
 

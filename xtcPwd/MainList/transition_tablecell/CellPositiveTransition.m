@@ -55,8 +55,9 @@
     // 设置第二个控制器的位置、透明度
     toVC.view.frame = [transitionContext finalFrameForViewController:toVC] ;
     toVC.view.alpha = 0 ;
-    [toVC.collectionView layoutIfNeeded] ;
-    DetailCollectionCell *currentCell = (DetailCollectionCell *)[toVC.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toVC.currentIndex inSection:0]] ;
+    [toVC.carousel layoutIfNeeded] ;
+    DetailCollectionCell *currentCell = (DetailCollectionCell *)[toVC.carousel currentItemView] ;
+        
     currentCell.image.hidden = YES ;
     
     // 把动画前后的两个ViewController加到容器中,顺序很重要,snapShotView在上方

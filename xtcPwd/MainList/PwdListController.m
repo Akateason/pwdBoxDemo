@@ -107,10 +107,6 @@
 
 #pragma mark - life
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self] ;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad] ;
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
@@ -122,10 +118,11 @@
     [self setupTable] ;
     [self.table pullDownRefreshHeaderInBackGround:YES] ;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(loadNew:)
-                                                 name:@"AddFinishNote"
-                                               object:nil] ;
+    @weakify(self)
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"AddFinishNote" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        @strongify(self)
+        [self.table pullDownRefreshHeaderInBackGround:YES] ;
+    }] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class PwdItem ;
+#import <iCarousel.h>
+@class PwdItem, iCarousel ;
 
 @protocol DetailViewControllerDelegate <NSObject>
 - (void)oneItemUpdated:(PwdItem *)aItem ;
@@ -15,7 +16,6 @@
 
 @interface DetailViewController : UIViewController
 @property (weak,nonatomic) id <DetailViewControllerDelegate> delegate ;
-@property (weak, nonatomic, readonly) IBOutlet UICollectionView *collectionView;
-@property (assign, nonatomic, readonly) NSInteger currentIndex ;
+@property (strong, nonatomic, readonly) iCarousel *carousel ;
 - (void)selectedIndexInHomeList:(NSInteger)index list:(NSArray *)list ;
 @end

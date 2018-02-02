@@ -35,6 +35,8 @@
     self.backgroundColor = nil ;
     self.bgView.backgroundColor = [UIColor whiteColor] ;
     self.bgView.layer.cornerRadius = 5. ;
+//    self.bgView.layer.borderWidth = .5 ;
+//    self.bgView.layer.borderColor = [UIColor xt_text_light].CGColor ;
     
     UIColor *wordsColor = [UIColor xt_text_dark] ;
     _lbName.textColor = wordsColor ;

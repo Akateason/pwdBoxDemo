@@ -18,13 +18,15 @@
 #import "BYImageValue.h"
 #import <ReactiveObjC.h>
 #import "DetailCollectionCell.h"
-#import "XTRoundLayout.h"
+#import "XTDrawerFlowLayout.h"
 
 @interface DetailViewController () <UINavigationControllerDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem;
 @property (weak, nonatomic, readwrite) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenTransition;
+@property (assign, nonatomic) NSInteger currentIndex ;
+@property (copy, nonatomic)   NSArray   *dataSource ;
 @end
 
 @implementation DetailViewController
@@ -32,9 +34,15 @@
 #pragma mark - action
 
 - (IBAction)editOnClick:(id)sender {
-    [self performSegueWithIdentifier:@"detail2edit" sender:self.item] ;
+    [self performSegueWithIdentifier:@"detail2edit" sender:self.dataSource[self.currentIndex]] ;
 }
 
+- (void)selectedIndexInHomeList:(NSInteger)index
+                           list:(NSArray *)list
+{
+    self.dataSource = [list copy] ;
+    self.currentIndex = index ;
+}
 
 #pragma mark - life
 
@@ -43,12 +51,16 @@
     
     [self setupUI] ;
     [self setupCollectionView] ;
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.currentIndex inSection:0]
+                                atScrollPosition:UICollectionViewScrollPositionNone
+                                        animated:NO] ;
 }
 
 - (void)setupCollectionView {
-    XTRoundLayout *layout = [[XTRoundLayout alloc] init] ;
+    XTDrawerFlowLayout *layout = [[XTDrawerFlowLayout alloc] init] ;
     layout.itemSize = CGSizeMake(APP_WIDTH, APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT) ;
-    layout.firstItemTransform = 0.07 ;
+//    layout.firstItemTransform = 0.2 ;
     self.collectionView.collectionViewLayout = layout ;
     self.collectionView.dataSource = self ;
 //    self.collectionView.delegate = self ;
@@ -60,10 +72,10 @@
 }
 
 - (void)setupUI {
+    // fd
     self.fd_interactivePopDisabled = YES ;
-    
+    // gesture
     self.navigationController.delegate = self ;
-    // 滑动手势 控制比例的pop动作
     UIScreenEdgePanGestureRecognizer *edgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc]initWithTarget:self action:@selector(edgePanGestureAction:)] ;
     edgePanGestureRecognizer.edges = UIRectEdgeLeft ;
     [self.view addGestureRecognizer:edgePanGestureRecognizer] ;
@@ -72,11 +84,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated] ;
     
-    self.title = self.item.name ;
-    if (self.item.imageUrl.length) return ;
+    PwdItem *currentItem = self.dataSource[self.currentIndex] ;
+    self.title = currentItem.name ;
+    if (currentItem) return ;
     
     @weakify(self)
-    [ReqUtil searchImageWithName:self.item.name
+    [ReqUtil searchImageWithName:currentItem.name
                            count:1
                           offset:0
                       completion:^(NSArray *list) {
@@ -84,15 +97,14 @@
                           if (!list) return ;
                           
                           BYImageValue *imageValue = [list firstObject] ;
-                          self.item.imageUrl = imageValue.thumbnailUrl ;
-                          [self.item update] ;
+                          currentItem.imageUrl = imageValue.thumbnailUrl ;
+                          [currentItem update] ;
                           
                           [self.collectionView reloadData] ;
 //                          [_image sd_setImageWithURL:[NSURL URLWithString:self.item.imageUrl]] ;
-                          [self.delegate oneItemUpdated:self.item] ;
+                          [self.delegate oneItemUpdated:currentItem] ;
                       }] ;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -101,23 +113,25 @@
 
 #pragma mark - collection
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section
 {
-    return 3 ;
+    return self.dataSource.count ;
 }
 
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                           cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailCollectionCell"
                                                                            forIndexPath:indexPath] ;
-    cell.item = self.item ;
+    cell.item = self.dataSource[indexPath.row] ;
+    self.currentIndex = indexPath.row ;
     return cell ;
 }
 
 #pragma mark - gesture action
 
-- (void)edgePanGestureAction:(UIScreenEdgePanGestureRecognizer *)recognizer
-{
+- (void)edgePanGestureAction:(UIScreenEdgePanGestureRecognizer *)recognizer {
     //计算手指滑的物理距离（滑了多远，与起始位置无关）
     CGFloat progress = [recognizer translationInView:self.view].x / (self.view.bounds.size.width) ;
     progress = MIN(1.0, MAX(0.0, progress));//把这个百分比限制在0~1之间

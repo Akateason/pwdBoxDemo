@@ -15,6 +15,7 @@
 
 @interface DetailViewController : UIViewController
 @property (weak,nonatomic) id <DetailViewControllerDelegate> delegate ;
-@property (nonatomic,strong) PwdItem *item ;
 @property (weak, nonatomic, readonly) IBOutlet UICollectionView *collectionView;
+@property (assign, nonatomic, readonly) NSInteger currentIndex ;
+- (void)selectedIndexInHomeList:(NSInteger)index list:(NSArray *)list ;
 @end

@@ -1,5 +1,5 @@
 //
-//  XTRoundLayout.h
+//  XTDrawerFlowLayout.h
 //  xtcPwd
 //
 //  Created by xtc on 2018/2/2.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XTRoundLayout : UICollectionViewFlowLayout
-@property (nonatomic, assign) CGFloat firstItemTransform;
+@interface XTDrawerFlowLayout : UICollectionViewFlowLayout
+
 @end

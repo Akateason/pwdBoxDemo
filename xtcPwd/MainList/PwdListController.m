@@ -290,8 +290,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PwdItem *item = self.dataList[indexPath.row] ;
-    [self performSegueWithIdentifier:@"list2detail" sender:item] ;
+    [self performSegueWithIdentifier:@"list2detail" sender:@(indexPath.row)] ;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -378,7 +377,8 @@
     if ([segue.identifier isEqualToString:@"list2detail"]) {
         DetailViewController *detailVC = [segue destinationViewController] ;
         detailVC.delegate = self ;
-        detailVC.item = sender ;
+        [detailVC selectedIndexInHomeList:[sender integerValue]
+                                     list:self.dataList] ;
     }
     else if ([segue.identifier isEqualToString:@"all2user"]) {
         UserViewController *userVC = [segue destinationViewController] ;

@@ -27,7 +27,7 @@
     DetailViewController *fromVC = (DetailViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey] ;
     UIView *containerView = [transitionContext containerView] ;
     
-    DetailCollectionCell *currentCell = (DetailCollectionCell *)[fromVC.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] ;
+    DetailCollectionCell *currentCell = (DetailCollectionCell *)[fromVC.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:fromVC.currentIndex inSection:0]] ;
     
     //在前一个VC上创建一个截图
     UIView *snapShotView = [currentCell.image snapshotViewAfterScreenUpdates:NO] ;

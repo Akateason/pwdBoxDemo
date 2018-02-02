@@ -11,7 +11,7 @@
 		7DBF8FCC2022F7080030C3D5 /* BYImageValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FCB2022F7080030C3D5 /* BYImageValue.m */; };
 		7DBF8FD320240D8D0030C3D5 /* DetailCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */; };
 		7DBF8FD420240D8D0030C3D5 /* DetailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD220240D8D0030C3D5 /* DetailCollectionCell.xib */; };
-		7DBF8FD7202443420030C3D5 /* XTRoundLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD6202443420030C3D5 /* XTRoundLayout.m */; };
+		7DBF8FDA20246D6A0030C3D5 /* XTDrawerFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD920246D6A0030C3D5 /* XTDrawerFlowLayout.m */; };
 		8F04A0892005CFCE00021908 /* SearchVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F04A0882005CFCE00021908 /* SearchVCCell.m */; };
 		8F560A831FEC8DA700E726F9 /* XTDBVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F56098D1FEC8DA600E726F9 /* XTDBVersion.m */; };
 		8F560A841FEC8DA700E726F9 /* XTDBModel+autoSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F56098F1FEC8DA600E726F9 /* XTDBModel+autoSql.m */; };
@@ -135,8 +135,8 @@
 		7DBF8FD020240D8D0030C3D5 /* DetailCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailCollectionCell.h; sourceTree = "<group>"; };
 		7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailCollectionCell.m; sourceTree = "<group>"; };
 		7DBF8FD220240D8D0030C3D5 /* DetailCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionCell.xib; sourceTree = "<group>"; };
-		7DBF8FD5202443420030C3D5 /* XTRoundLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTRoundLayout.h; sourceTree = "<group>"; };
-		7DBF8FD6202443420030C3D5 /* XTRoundLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTRoundLayout.m; sourceTree = "<group>"; };
+		7DBF8FD820246D6A0030C3D5 /* XTDrawerFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTDrawerFlowLayout.h; sourceTree = "<group>"; };
+		7DBF8FD920246D6A0030C3D5 /* XTDrawerFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTDrawerFlowLayout.m; sourceTree = "<group>"; };
 		8F04A0872005CFCE00021908 /* SearchVCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchVCCell.h; sourceTree = "<group>"; };
 		8F04A0882005CFCE00021908 /* SearchVCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchVCCell.m; sourceTree = "<group>"; };
 		8F56098D1FEC8DA600E726F9 /* XTDBVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTDBVersion.m; sourceTree = "<group>"; };
@@ -901,8 +901,8 @@
 			children = (
 				8FFC6D1B1EEF7A3B00F55173 /* DetailViewController.h */,
 				8FFC6D1C1EEF7A3B00F55173 /* DetailViewController.m */,
-				7DBF8FD5202443420030C3D5 /* XTRoundLayout.h */,
-				7DBF8FD6202443420030C3D5 /* XTRoundLayout.m */,
+				7DBF8FD820246D6A0030C3D5 /* XTDrawerFlowLayout.h */,
+				7DBF8FD920246D6A0030C3D5 /* XTDrawerFlowLayout.m */,
 				7DBF8FD020240D8D0030C3D5 /* DetailCollectionCell.h */,
 				7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */,
 				7DBF8FD220240D8D0030C3D5 /* DetailCollectionCell.xib */,
@@ -1228,6 +1228,7 @@
 				8F560B141FF0CA8E00E726F9 /* CellPositiveTransition.m in Sources */,
 				8F560AD51FEC8DA700E726F9 /* XTNetReloader.m in Sources */,
 				8F560A911FEC8DA700E726F9 /* UIViewController+Storyboard.m in Sources */,
+				7DBF8FDA20246D6A0030C3D5 /* XTDrawerFlowLayout.m in Sources */,
 				8F560A841FEC8DA700E726F9 /* XTDBModel+autoSql.m in Sources */,
 				8F560AE51FEC8DA700E726F9 /* CenterTableView.m in Sources */,
 				8F560B331FF3891C00E726F9 /* AddVC.m in Sources */,
@@ -1274,7 +1275,6 @@
 				8FFC6D201EEF7A4B00F55173 /* EditViewController.m in Sources */,
 				8F560AB41FEC8DA700E726F9 /* XTResponseDBModel.m in Sources */,
 				8F560AA41FEC8DA700E726F9 /* XTAnimation.m in Sources */,
-				7DBF8FD7202443420030C3D5 /* XTRoundLayout.m in Sources */,
 				8F560A8F1FEC8DA700E726F9 /* UIButton+ExtendTouchRect.m in Sources */,
 				8F560A951FEC8DA700E726F9 /* UIView+CurrentController.m in Sources */,
 				8F560AD41FEC8DA700E726F9 /* XTBarrageItemView.m in Sources */,

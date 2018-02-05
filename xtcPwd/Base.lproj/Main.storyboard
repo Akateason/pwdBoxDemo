@@ -624,6 +624,10 @@
                         <outlet property="detailTv" destination="ak2-Tw-3XB" id="Q1V-ah-72m"/>
                         <outlet property="doneItem" destination="rq7-CZ-Xq5" id="eu3-Ac-ctW"/>
                         <outlet property="imageView" destination="92T-uF-cMT" id="S35-1g-tqx"/>
+                        <outlet property="lbAccount" destination="lxW-gz-HH4" id="7fw-sw-B3W"/>
+                        <outlet property="lbDetail" destination="ppC-FT-Dze" id="HLn-ed-auy"/>
+                        <outlet property="lbName" destination="0g5-2v-89l" id="KUU-XV-XBo"/>
+                        <outlet property="lbPwd" destination="LaH-g1-Eje" id="SHt-p8-Nzi"/>
                         <outlet property="nameTf" destination="YL7-Fa-hd4" id="JdU-AV-32d"/>
                         <outlet property="passwordTf" destination="cwU-0q-SPK" id="YDc-iM-lic"/>
                     </connections>

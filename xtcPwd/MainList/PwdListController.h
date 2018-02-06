@@ -11,6 +11,8 @@
 @interface PwdListController : RootCtrl
 @property (weak, nonatomic) IBOutlet UIButton *btSearch ;
 @property (weak, nonatomic) IBOutlet UIButton *btUser ;
-@property (weak, nonatomic,readonly) IBOutlet RootTableView *table ;
+@property (weak, nonatomic, readonly) IBOutlet RootTableView *table ;
+@property (weak, nonatomic, readonly) IBOutlet UIButton *btAdd;
+@property (nonatomic,copy, readonly) NSArray *dataList ;
 @property (nonatomic,assign) CGRect finalCellRect ;
 @end

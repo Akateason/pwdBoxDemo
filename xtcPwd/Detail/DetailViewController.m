@@ -77,6 +77,16 @@ static const float kFlexOfSide = 0 ;
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.sendIndex inSection:0]
                                 atScrollPosition:UICollectionViewScrollPositionNone
                                         animated:NO] ;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        HJCarouselViewLayout *layout = [[HJCarouselViewLayout alloc] initWithAnim:HJCarouselAnimCarousel1] ;
+        layout.visibleCount = 3 ;
+        layout.itemSize = CGSizeMake(
+                                     APP_WIDTH - kFlexOfSide ,
+                                     APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
+                                     ) ;
+        self.collectionView.collectionViewLayout = layout ;
+    }) ;
 }
 
 - (void)setupUI {
@@ -116,14 +126,6 @@ static const float kFlexOfSide = 0 ;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated] ;
-    
-    HJCarouselViewLayout *layout = [[HJCarouselViewLayout alloc] initWithAnim:HJCarouselAnimCarousel1] ;
-    layout.visibleCount = 3 ;
-    layout.itemSize = CGSizeMake(
-                                 APP_WIDTH - kFlexOfSide ,
-                                 APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
-                                 ) ;
-    self.collectionView.collectionViewLayout = layout ;
 }
 
 - (void)didReceiveMemoryWarning {

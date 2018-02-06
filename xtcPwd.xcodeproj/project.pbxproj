@@ -98,6 +98,7 @@
 		7D4B27B22024D203001CA91B /* XTMultipleTables.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B274D2024D203001CA91B /* XTMultipleTables.m */; };
 		7D4B27B32024D203001CA91B /* CenterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B274E2024D203001CA91B /* CenterTableView.m */; };
 		7D4B27BE20286B3D001CA91B /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */; };
+		7D4B27C12029547A001CA91B /* PwdTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27C02029547A001CA91B /* PwdTableViewHandler.m */; };
 		7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */; };
 		7DBF8FCC2022F7080030C3D5 /* BYImageValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FCB2022F7080030C3D5 /* BYImageValue.m */; };
 		7DBF8FD320240D8D0030C3D5 /* DetailCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */; };
@@ -334,6 +335,8 @@
 		7D4B27592024D203001CA91B /* FastCodeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastCodeHeader.h; sourceTree = "<group>"; };
 		7D4B27BC20286B3D001CA91B /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
 		7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
+		7D4B27BF2029547A001CA91B /* PwdTableViewHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PwdTableViewHandler.h; sourceTree = "<group>"; };
+		7D4B27C02029547A001CA91B /* PwdTableViewHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PwdTableViewHandler.m; sourceTree = "<group>"; };
 		7DBF8FC72022F32E0030C3D5 /* ReqUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReqUtil.h; sourceTree = "<group>"; };
 		7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReqUtil.m; sourceTree = "<group>"; };
 		7DBF8FCA2022F7080030C3D5 /* BYImageValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYImageValue.h; sourceTree = "<group>"; };
@@ -1006,6 +1009,8 @@
 			children = (
 				8FFC6D171EEF74D900F55173 /* PwdListController.h */,
 				8FFC6D181EEF74D900F55173 /* PwdListController.m */,
+				7D4B27BF2029547A001CA91B /* PwdTableViewHandler.h */,
+				7D4B27C02029547A001CA91B /* PwdTableViewHandler.m */,
 				8FFC6D251EEF7EBD00F55173 /* ListCell.h */,
 				8FFC6D261EEF7EBD00F55173 /* ListCell.m */,
 				8F560B281FF34ABA00E726F9 /* transition_rightbt */,
@@ -1370,6 +1375,7 @@
 				7D4B27732024D203001CA91B /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				8F560B2B1FF34ADE00E726F9 /* SearchPositiveTransition.m in Sources */,
 				7D4B27872024D203001CA91B /* XTRequest.m in Sources */,
+				7D4B27C12029547A001CA91B /* PwdTableViewHandler.m in Sources */,
 				7D4B27692024D203001CA91B /* NSDate+XTTick.m in Sources */,
 				7D4B27992024D203001CA91B /* MyWebController.m in Sources */,
 				8F04A0892005CFCE00021908 /* SearchVCCell.m in Sources */,

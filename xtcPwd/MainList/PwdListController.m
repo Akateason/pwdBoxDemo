@@ -26,16 +26,16 @@
 #import "SearchPositiveTransition.h"
 #import "SearchVC.h"
 #import "AddVC.h"
+#import "PwdTableViewHandler.h"
 
 @interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,DetailViewControllerDelegate,RootTableViewDelegate>
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topNavFlex;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
 @property (weak, nonatomic) IBOutlet RootTableView *table ;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topNavFlex;
 @property (nonatomic,copy) NSArray *dataList ;
 @property (nonatomic) TypeOfPwdItem pwdType ;
-
+@property (strong, nonatomic) PwdTableViewHandler *tableHandler ;
 @end
 
 @implementation PwdListController
@@ -61,7 +61,7 @@
             [self.table selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]
                                     animated:YES
                               scrollPosition:UITableViewScrollPositionNone] ;
-            [self tableView:self.table didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]] ;
+            [self.tableHandler tableView:self.table didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]] ;
         }) ;
         
     }) ;
@@ -104,7 +104,6 @@
     [self.table reloadData] ;
 }
 
-
 #pragma mark - life
 
 - (void)viewDidLoad {
@@ -144,9 +143,11 @@
 }
 
 - (void)setupTable {
-    self.table.delegate     = self ;
+    self.tableHandler = [[PwdTableViewHandler alloc] initWithCtrller:self] ;
+    
+    self.table.delegate     = self.tableHandler ;
     self.table.dataSource   = self ;
-    self.table.xt_Delegate = self ;
+    self.table.xt_Delegate  = self ;
     self.table.mj_footer = nil ;
     self.table.backgroundColor = [UIColor xt_bg] ; // [UIColor whiteColor] ;
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone ;
@@ -158,8 +159,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning] ;
 }
-
-
 
 #pragma mark - actions
 
@@ -199,33 +198,6 @@
 
 #pragma mark - table
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [UIView animateWithDuration:.6
-                     animations:^{
-                         self.btAdd.alpha = .4 ;
-                         self.btAdd.layer.transform = CATransform3DMakeTranslation(0, 60, 0) ;
-                     }
-                     completion:nil] ;
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [UIView animateWithDuration:.6
-                     animations:^{
-                         self.btAdd.alpha = 1 ;
-                         self.btAdd.layer.transform = CATransform3DIdentity ;
-                     }
-                     completion:nil] ;
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [UIView animateWithDuration:.6
-                     animations:^{
-                         self.btAdd.alpha = 1 ;
-                         self.btAdd.layer.transform = CATransform3DIdentity ;
-                     }
-                     completion:nil] ;
-}
-
 - (void)tableView:(RootTableView *)table loadNew:(void (^)(void))endRefresh
 {
     NSArray *listBack = [PwdItem findWithSql:[self sqlWhereString]] ;
@@ -242,104 +214,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [tableView dequeueReusableCellWithIdentifier:@"ListCell"] ;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(ListCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    PwdItem *item = self.dataList[indexPath.row] ;
-    [cell configure:item] ;
-    
-    cell.image.alpha = 0. ;
-    [UIView animateWithDuration:0.2
-                     animations:^{
-                         cell.image.alpha = 0.8 ;
-                     }
-                     completion:^(BOOL finished) {
-                         cell.image.layer.transform = indexPath.row % 2 ? CATransform3DMakeTranslation(-10, 0, 0) : CATransform3DMakeTranslation(10, 0, 0) ;
-                         [UIView animateWithDuration:.4
-                                               delay:0
-                              usingSpringWithDamping:.5
-                               initialSpringVelocity:0
-                                             options:UIViewAnimationOptionAllowUserInteraction
-                                          animations:^{
-                                              cell.image.layer.transform = CATransform3DIdentity ;
-                                          }
-                                          completion:nil] ;
-                     }] ;
-    
-    cell.layer.transform = CATransform3DMakeScale(0.76, 0.76, 1) ;
-    [UIView animateWithDuration:.25
-                     animations:^{
-                         cell.layer.transform = CATransform3DIdentity ;
-                     }] ;
-
-    cell.name.alpha = 0. ;
-    cell.account.alpha = 0. ;
-    [UIView animateWithDuration:1.6
-                     animations:^{
-                         cell.name.alpha = 1. ;
-                         cell.account.alpha = 1. ;
-                     }] ;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [ListCell cellHeight] ;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self performSegueWithIdentifier:@"list2detail" sender:@(indexPath.row)] ;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES ;
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewCellEditingStyleDelete ;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        @weakify(self)
-        UIAlertAction *action0 = [UIAlertAction actionWithTitle:@"Confirm"
-                                                          style:UIAlertActionStyleDestructive
-                                                        handler:^(UIAlertAction * _Nonnull action) {
-                                                            @strongify(self)
-                                                            [self doDelete:indexPath] ;
-                                                        }] ;
-        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"cancel"
-                                                          style:UIAlertActionStyleCancel
-                                                        handler:nil] ;
-        UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"Remove"
-                                                                           message:@"Are you sure to remove this item ???"
-                                                                    preferredStyle:UIAlertControllerStyleAlert] ;
-        [alertCtrl addAction:action0] ;
-        [alertCtrl addAction:action1] ;
-        [self presentViewController:alertCtrl animated:YES completion:nil] ;
-    }
-}
-
-- (void)doDelete:(NSIndexPath *)indexPath
-{
-    PwdItem *item = self.dataList[indexPath.row] ;
-    BOOL bDel = [item deleteModel] ;
-    if (!bDel)
-    {
-        [SVProgressHUD showErrorWithStatus:@"delete fail"] ;
-        return ;
-    }
-    
-    NSMutableArray *tmplist = [self.dataList mutableCopy] ;
-    [tmplist removeObjectAtIndex:indexPath.row] ;
-    self.dataList = tmplist ;
-    [self.table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                      withRowAnimation:UITableViewRowAnimationFade] ;
 }
 
 #pragma mark - UINavigationControllerDelegate
@@ -360,12 +234,9 @@
         else if ([toVC isKindOfClass:[SearchVC class]]) {
             return [SearchPositiveTransition new] ;
         }
-        
         return nil ;
     }
-    else {
-        return nil ;
-    }
+    else return nil ;
 }
 
 #pragma mark - Navigation

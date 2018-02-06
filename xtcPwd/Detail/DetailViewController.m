@@ -18,15 +18,16 @@
 #import "BYImageValue.h"
 #import <ReactiveObjC.h>
 #import "DetailCollectionCell.h"
-#import "XTDrawerFlowLayout.h"
+#import "HJCarouselViewLayout.h"
 
 
-@interface DetailViewController () <UINavigationControllerDelegate,iCarouselDataSource,iCarouselDelegate>
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem;
-@property (strong, nonatomic) iCarousel *carousel ;
+@interface DetailViewController () <UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem ;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (assign, nonatomic) NSInteger sendIndex ;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenTransition;
-@property (assign, nonatomic) NSInteger indexSended ;
+
 @property (copy, nonatomic)   NSArray   *dataSource ;
 @end
 
@@ -35,14 +36,20 @@
 #pragma mark - action
 
 - (IBAction)editOnClick:(id)sender {
-    [self performSegueWithIdentifier:@"detail2edit" sender:self.dataSource[self.carousel.currentItemIndex]] ;
+    [self performSegueWithIdentifier:@"detail2edit" sender:self.dataSource[self.currentIndex]] ;
 }
 
 - (void)selectedIndexInHomeList:(NSInteger)index
                            list:(NSArray *)list
 {
     self.dataSource = [list copy] ;
-    self.indexSended = index ;
+    self.sendIndex = index ;
+}
+
+#pragma mark - prop
+
+- (NSInteger)currentIndex {
+    return [self curIndexPath].row ;
 }
 
 #pragma mark - life
@@ -54,24 +61,22 @@
     [self setupCarousel] ;
 }
 
+static const float kFlexOfSide = 0 ;
+
 - (void)setupCarousel {
-    self.carousel = [[iCarousel alloc] init] ;
-    _carousel.backgroundColor = [UIColor xt_bg] ;
-    _carousel.dataSource = self ;
-    _carousel.delegate = self ;
-    _carousel.type = iCarouselTypeRotary ;
-    _carousel.pagingEnabled = YES ;
-    _carousel.vertical = YES ;
-    _carousel.scrollSpeed = 1.2 ;
-    _carousel.decelerationRate = .6 ;
-    [self.view addSubview:_carousel] ;
-    [_carousel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view) ;
-        make.bottom.equalTo(@(- APP_SAFEAREA_TABBAR_FLEX)) ;
-        make.left.right.equalTo(self.view) ;
-    }] ;
-    
-    [self.carousel scrollToItemAtIndex:self.indexSended animated:NO] ;
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init] ;
+    layout.itemSize = CGSizeMake(
+                         APP_WIDTH - kFlexOfSide ,
+                         APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
+                                 ) ;
+    [self.collectionView registerNib:[UINib nibWithNibName:@"DetailCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"DetailCollectionCell"] ;
+    self.collectionView.collectionViewLayout = layout ;
+    self.collectionView.dataSource = self ;
+    self.collectionView.delegate = self ;
+    self.collectionView.backgroundColor = [UIColor xt_bg] ;
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.sendIndex inSection:0]
+                                atScrollPosition:UICollectionViewScrollPositionNone
+                                        animated:NO] ;
 }
 
 - (void)setupUI {
@@ -87,7 +92,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated] ;
     
-    PwdItem *currentItem = self.dataSource[self.carousel.currentItemIndex] ;
+    PwdItem *currentItem = self.dataSource[self.sendIndex] ;
     self.title = currentItem.name ;
     if (currentItem.imageUrl.length) return ;
     
@@ -103,10 +108,22 @@
                           currentItem.imageUrl = imageValue.thumbnailUrl ;
                           [currentItem update] ;
                           
-                          [self.carousel reloadData] ;
+                          [self.collectionView reloadData] ;
 //                          [_image sd_setImageWithURL:[NSURL URLWithString:self.item.imageUrl]] ;
                           [self.delegate oneItemUpdated:currentItem] ;
                       }] ;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated] ;
+    
+    HJCarouselViewLayout *layout = [[HJCarouselViewLayout alloc] initWithAnim:HJCarouselAnimCarousel1] ;
+    layout.visibleCount = 3 ;
+    layout.itemSize = CGSizeMake(
+                                 APP_WIDTH - kFlexOfSide ,
+                                 APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
+                                 ) ;
+    self.collectionView.collectionViewLayout = layout ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,38 +131,49 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - carousel
+#pragma mark - UICollectionViewDataSource
 
-- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.dataSource.count ;
 }
 
-static const float kFlexOfSide = 0 ;
-
-- (UIView *)carousel:(iCarousel *)carousel
-  viewForItemAtIndex:(NSInteger)index
-         reusingView:(nullable UIView *)view
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DetailCollectionCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailCollectionCell" owner:self options:nil] lastObject] ;
-    cell.item = self.dataSource[index] ;
-    
-    cell.frame = (CGRect) {
-        CGPointZero,
-        CGSizeMake(
-                   APP_WIDTH - kFlexOfSide ,
-                   APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
-                   )
-    } ;
+    DetailCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailCollectionCell" forIndexPath:indexPath] ;
+    cell.item = self.dataSource[indexPath.row] ; ;
+    cell.indexPath = indexPath ;
     return cell ;
 }
 
-- (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel
-{
-    PwdItem *item = self.dataSource[carousel.currentItemIndex] ;
-    self.title = item.name ;
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSIndexPath *curIndexPath = [self curIndexPath] ;
+    if (indexPath.row == curIndexPath.row) return YES ;
+    
+    [self.collectionView scrollToItemAtIndexPath:indexPath
+                                atScrollPosition:UICollectionViewScrollPositionNone
+                                        animated:YES] ;
+    return NO ;
 }
 
+- (NSIndexPath *)curIndexPath {
+    NSArray *indexPaths = [self.collectionView indexPathsForVisibleItems];
+    NSIndexPath *curIndexPath = nil;
+    NSInteger curzIndex = 0;
+    for (NSIndexPath *path in indexPaths.objectEnumerator) {
+        UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:path];
+        if (!curIndexPath) {
+            curIndexPath = path;
+            curzIndex = attributes.zIndex;
+            continue;
+        }
+        if (attributes.zIndex > curzIndex) {
+            curIndexPath = path;
+            curzIndex = attributes.zIndex;
+        }
+    }
+    return curIndexPath;
+}
 
 #pragma mark - gesture action
 

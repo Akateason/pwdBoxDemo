@@ -97,6 +97,7 @@
 		7D4B27B12024D203001CA91B /* XTTableViewRootHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27492024D203001CA91B /* XTTableViewRootHandler.m */; };
 		7D4B27B22024D203001CA91B /* XTMultipleTables.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B274D2024D203001CA91B /* XTMultipleTables.m */; };
 		7D4B27B32024D203001CA91B /* CenterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B274E2024D203001CA91B /* CenterTableView.m */; };
+		7D4B27BE20286B3D001CA91B /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */; };
 		7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */; };
 		7DBF8FCC2022F7080030C3D5 /* BYImageValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FCB2022F7080030C3D5 /* BYImageValue.m */; };
 		7DBF8FD320240D8D0030C3D5 /* DetailCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */; };
@@ -331,6 +332,8 @@
 		7D4B27572024D203001CA91B /* ArchiveHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveHeader.h; sourceTree = "<group>"; };
 		7D4B27582024D203001CA91B /* PublicEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicEnum.h; sourceTree = "<group>"; };
 		7D4B27592024D203001CA91B /* FastCodeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastCodeHeader.h; sourceTree = "<group>"; };
+		7D4B27BC20286B3D001CA91B /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
+		7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
 		7DBF8FC72022F32E0030C3D5 /* ReqUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReqUtil.h; sourceTree = "<group>"; };
 		7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReqUtil.m; sourceTree = "<group>"; };
 		7DBF8FCA2022F7080030C3D5 /* BYImageValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYImageValue.h; sourceTree = "<group>"; };
@@ -954,6 +957,15 @@
 			path = header;
 			sourceTree = "<group>";
 		};
+		7D4B27BB20286B26001CA91B /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				7D4B27BC20286B3D001CA91B /* HJCarouselViewLayout.h */,
+				7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */,
+			);
+			name = Vender;
+			sourceTree = "<group>";
+		};
 		8F560AF81FF0981000E726F9 /* PinYin4Objc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1119,9 +1131,10 @@
 		8FFC6CEE1EEF735A00F55173 /* xtcPwd */ = {
 			isa = PBXGroup;
 			children = (
+				8FFC6CF81EEF735A00F55173 /* Main.storyboard */,
 				8FFC6CF21EEF735A00F55173 /* AppDelegate.h */,
 				8FFC6CF31EEF735A00F55173 /* AppDelegate.m */,
-				8FFC6CF81EEF735A00F55173 /* Main.storyboard */,
+				7D4B27BB20286B26001CA91B /* Vender */,
 				7D4B266E2024D203001CA91B /* XTkit */,
 				8FFC6D211EEF7A5A00F55173 /* Model */,
 				8FFC6D1A1EEF74E000F55173 /* VC */,
@@ -1412,6 +1425,7 @@
 				7D4B27752024D203001CA91B /* UIButton+Badges.m in Sources */,
 				8FFC6CF11EEF735A00F55173 /* main.m in Sources */,
 				7D4B278C2024D203001CA91B /* UICollectionView+Stat.m in Sources */,
+				7D4B27BE20286B3D001CA91B /* HJCarouselViewLayout.m in Sources */,
 				7D4B275E2024D203001CA91B /* XTFMDBBase.m in Sources */,
 				7D4B276C2024D203001CA91B /* UIView+CurrentController.m in Sources */,
 				7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */,

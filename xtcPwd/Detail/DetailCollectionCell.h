@@ -10,7 +10,7 @@
 @class PwdItem ;
 
 @interface DetailCollectionCell : UICollectionViewCell
-
+@property (strong, nonatomic) NSIndexPath *indexPath ;
 @property (strong, nonatomic) PwdItem *item ;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbName;

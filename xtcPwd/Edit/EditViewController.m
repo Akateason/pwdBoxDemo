@@ -39,7 +39,15 @@
     [self setupUI] ;
     [self setData] ;
     
-    RAC(self.lbName,textColor) = [RACObserve(self.nameTf, text) map:^id _Nullable(NSString *str) {
+    RAC(self.lbName,textColor) = [self.nameTf.rac_textSignal map:^id(NSString *x) {
+        return x.length ? [UIColor xt_text_light] : [UIColor redColor] ;
+    }] ;
+    
+    RAC(self.lbAccount,textColor) = [self.accountTf.rac_textSignal map:^id _Nullable(NSString *str) {
+        return [str length] ? [UIColor xt_text_light] : [UIColor redColor] ;
+    }] ;
+    
+    RAC(self.lbPwd,textColor) = [self.passwordTf.rac_textSignal map:^id _Nullable(NSString *str) {
         return [str length] ? [UIColor xt_text_light] : [UIColor redColor] ;
     }] ;
 }
@@ -91,10 +99,7 @@
         [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil] ;
     }] ;
     [self.view addGestureRecognizer:tap] ;
-
-}
-
-- (void)tapBG:(UITapGestureRecognizer *)gesture {
+    
 }
 
 - (void)didReceiveMemoryWarning {

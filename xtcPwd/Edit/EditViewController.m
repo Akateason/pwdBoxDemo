@@ -13,13 +13,14 @@
 #import "MyTextField.h"
 #import <UIImageView+WebCache.h>
 #import <ReactiveObjC.h>
+#import "PhotosVC.h"
 
 @interface EditViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *lbName;
 @property (weak, nonatomic) IBOutlet UILabel *lbAccount;
 @property (weak, nonatomic) IBOutlet UILabel *lbPwd;
 @property (weak, nonatomic) IBOutlet UILabel *lbDetail;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem    *doneItem   ;
 @property (weak, nonatomic) IBOutlet MyTextField        *nameTf     ;
 @property (weak, nonatomic) IBOutlet MyTextField        *accountTf  ;
@@ -30,6 +31,13 @@
 @end
 
 @implementation EditViewController
+
+#pragma mark -
+
+- (IBAction)imageTaped:(id)sender {
+    [self performSegueWithIdentifier:@"edit2photos"
+                              sender:self.imageView.image] ;
+}
 
 #pragma mark -
 
@@ -157,18 +165,12 @@
     }
 }
 
-#pragma mark - 
-
-
-
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // edit2photos
+    PhotosVC *photoVC = [segue destinationViewController] ;
+    photoVC.imageSend = sender ;
 }
-*/
 
 @end

@@ -10,5 +10,5 @@
 
 @interface PhotosVC : RootCtrl
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
+@property (strong, nonatomic) UIImage *imageSend ;
 @end

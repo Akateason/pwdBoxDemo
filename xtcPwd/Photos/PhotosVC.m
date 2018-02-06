@@ -7,22 +7,48 @@
 //
 
 #import "PhotosVC.h"
+#import "PhotoCollectionCell.h"
 
-@interface PhotosVC ()
+@interface PhotosVC () <UICollectionViewDataSource>
 
 @end
 
 @implementation PhotosVC
 
+#pragma mark - life
+
+static const float kCellLine = 1. ;
+
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [super viewDidLoad] ;
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init] ;
+    layout.itemSize = CGSizeMake( (APP_WIDTH - 3 * kCellLine) / 4. , 100) ;
+    layout.minimumLineSpacing = kCellLine ;
+    layout.minimumInteritemSpacing = kCellLine ;
+    
+    self.collectionView.collectionViewLayout = layout ;
+    self.collectionView.dataSource = self ;
+    [self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"PhotoCollectionCell"] ;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UICollectionViewDataSource <NSObject>
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 10 ;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PhotoCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCollectionCell" forIndexPath:indexPath] ;
+    return cell ;
+}
+
 
 /*
 #pragma mark - Navigation

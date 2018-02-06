@@ -75,8 +75,16 @@ static const float kFlexOfSide = 0 ;
     self.collectionView.delegate = self ;
     self.collectionView.backgroundColor = [UIColor xt_bg] ;
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.sendIndex inSection:0]
-                                atScrollPosition:UICollectionViewScrollPositionNone
+                                atScrollPosition:UICollectionViewScrollPositionCenteredVertically
                                         animated:NO] ;
+    @weakify(self)
+    [[RACObserve(self.collectionView, contentOffset)
+      throttle:.8]
+     subscribeNext:^(id  _Nullable x) {
+         @strongify(self)
+         PwdItem *currentItem = self.dataSource[self.currentIndex] ;
+         self.title = currentItem.name ;
+     }] ;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         HJCarouselViewLayout *layout = [[HJCarouselViewLayout alloc] initWithAnim:HJCarouselAnimCarousel1] ;
@@ -86,6 +94,9 @@ static const float kFlexOfSide = 0 ;
                                      APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
                                      ) ;
         self.collectionView.collectionViewLayout = layout ;
+        
+        [self.collectionView selectItemAtIndexPath:[self curIndexPath]
+                                          animated:NO                                    scrollPosition:UICollectionViewScrollPositionCenteredVertically] ;
     }) ;
 }
 
@@ -104,28 +115,13 @@ static const float kFlexOfSide = 0 ;
     
     PwdItem *currentItem = self.dataSource[self.sendIndex] ;
     self.title = currentItem.name ;
-    if (currentItem.imageUrl.length) return ;
-    
-    @weakify(self)
-    [ReqUtil searchImageWithName:currentItem.name
-                           count:1
-                          offset:0
-                      completion:^(NSArray *list) {
-                          @strongify(self)
-                          if (!list) return ;
-                          
-                          BYImageValue *imageValue = [list firstObject] ;
-                          currentItem.imageUrl = imageValue.thumbnailUrl ;
-                          [currentItem update] ;
-                          
-                          [self.collectionView reloadData] ;
-//                          [_image sd_setImageWithURL:[NSURL URLWithString:self.item.imageUrl]] ;
-                          [self.delegate oneItemUpdated:currentItem] ;
-                      }] ;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated] ;
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

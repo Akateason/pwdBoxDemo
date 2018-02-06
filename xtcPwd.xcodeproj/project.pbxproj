@@ -99,6 +99,9 @@
 		7D4B27B32024D203001CA91B /* CenterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B274E2024D203001CA91B /* CenterTableView.m */; };
 		7D4B27BE20286B3D001CA91B /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */; };
 		7D4B27C12029547A001CA91B /* PwdTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27C02029547A001CA91B /* PwdTableViewHandler.m */; };
+		7D4B27C520299403001CA91B /* PhotosVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27C420299403001CA91B /* PhotosVC.m */; };
+		7D4B27C920299454001CA91B /* PhotoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27C720299454001CA91B /* PhotoCollectionCell.m */; };
+		7D4B27CA20299454001CA91B /* PhotoCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D4B27C820299454001CA91B /* PhotoCollectionCell.xib */; };
 		7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */; };
 		7DBF8FCC2022F7080030C3D5 /* BYImageValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FCB2022F7080030C3D5 /* BYImageValue.m */; };
 		7DBF8FD320240D8D0030C3D5 /* DetailCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */; };
@@ -337,6 +340,11 @@
 		7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
 		7D4B27BF2029547A001CA91B /* PwdTableViewHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PwdTableViewHandler.h; sourceTree = "<group>"; };
 		7D4B27C02029547A001CA91B /* PwdTableViewHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PwdTableViewHandler.m; sourceTree = "<group>"; };
+		7D4B27C320299403001CA91B /* PhotosVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosVC.h; sourceTree = "<group>"; };
+		7D4B27C420299403001CA91B /* PhotosVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosVC.m; sourceTree = "<group>"; };
+		7D4B27C620299454001CA91B /* PhotoCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionCell.h; sourceTree = "<group>"; };
+		7D4B27C720299454001CA91B /* PhotoCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionCell.m; sourceTree = "<group>"; };
+		7D4B27C820299454001CA91B /* PhotoCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionCell.xib; sourceTree = "<group>"; };
 		7DBF8FC72022F32E0030C3D5 /* ReqUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReqUtil.h; sourceTree = "<group>"; };
 		7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReqUtil.m; sourceTree = "<group>"; };
 		7DBF8FCA2022F7080030C3D5 /* BYImageValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYImageValue.h; sourceTree = "<group>"; };
@@ -969,6 +977,18 @@
 			name = Vender;
 			sourceTree = "<group>";
 		};
+		7D4B27C2202993EC001CA91B /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				7D4B27C320299403001CA91B /* PhotosVC.h */,
+				7D4B27C420299403001CA91B /* PhotosVC.m */,
+				7D4B27C620299454001CA91B /* PhotoCollectionCell.h */,
+				7D4B27C720299454001CA91B /* PhotoCollectionCell.m */,
+				7D4B27C820299454001CA91B /* PhotoCollectionCell.xib */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
 		8F560AF81FF0981000E726F9 /* PinYin4Objc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1163,6 +1183,7 @@
 		8FFC6D1A1EEF74E000F55173 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				7D4B27C2202993EC001CA91B /* Photos */,
 				8F560B0D1FF0BE6400E726F9 /* MainList */,
 				8F560B301FF3890600E726F9 /* Add */,
 				8F560B181FF2146300E726F9 /* Search */,
@@ -1258,6 +1279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D4B27CA20299454001CA91B /* PhotoCollectionCell.xib in Resources */,
 				7DBF8FD420240D8D0030C3D5 /* DetailCollectionCell.xib in Resources */,
 				8F560B0C1FF0981100E726F9 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				7D4B27852024D203001CA91B /* xtAllColorsList.plist in Resources */,
@@ -1349,6 +1371,7 @@
 				8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */,
 				7D4B27A92024D203001CA91B /* XTBarrageItemView.m in Sources */,
 				7D4B27A72024D203001CA91B /* XTBarrageView.m in Sources */,
+				7D4B27C520299403001CA91B /* PhotosVC.m in Sources */,
 				7D4B276D2024D203001CA91B /* NSTimer+Addition.m in Sources */,
 				7D4B279A2024D203001CA91B /* RootCtrl.m in Sources */,
 				7D4B277E2024D203001CA91B /* CommonFunc.m in Sources */,
@@ -1432,6 +1455,7 @@
 				8FFC6CF11EEF735A00F55173 /* main.m in Sources */,
 				7D4B278C2024D203001CA91B /* UICollectionView+Stat.m in Sources */,
 				7D4B27BE20286B3D001CA91B /* HJCarouselViewLayout.m in Sources */,
+				7D4B27C920299454001CA91B /* PhotoCollectionCell.m in Sources */,
 				7D4B275E2024D203001CA91B /* XTFMDBBase.m in Sources */,
 				7D4B276C2024D203001CA91B /* UIView+CurrentController.m in Sources */,
 				7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */,

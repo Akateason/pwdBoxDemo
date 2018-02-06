@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,11 +24,10 @@
                         <rect key="frame" x="20" y="20" width="335" height="627"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erd-35-fcO">
-                                <rect key="frame" x="20" y="577" width="119" height="30"/>
+                                <rect key="frame" x="20" y="575" width="84" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.76212096529999995" blue="0.2249890027" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="119" id="Iba-Kb-kqg"/>
-                                    <constraint firstAttribute="height" constant="30" id="Uha-4d-reJ"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="1" constant="30" id="Uha-4d-reJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="copy pwd"/>
@@ -81,8 +81,8 @@
                                 <rect key="frame" x="138" y="70" width="60" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="4Yo-Vr-cOW"/>
-                                    <constraint firstAttribute="width" constant="60" id="kgV-Hg-Nw6"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="4Yo-Vr-cOW"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="60" id="kgV-Hg-Nw6"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRj-NN-iUc">
@@ -115,11 +115,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYk-fz-rJ3">
-                                <rect key="frame" x="196" y="577" width="119" height="30"/>
+                                <rect key="frame" x="231.5" y="575" width="83.5" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.76212096529999995" blue="0.2249890027" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="X0D-F1-tpU"/>
-                                    <constraint firstAttribute="width" constant="119" id="f2Y-ZQ-9On"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="1" constant="30" id="X0D-F1-tpU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="show pwd"/>
@@ -143,11 +142,11 @@
                             <constraint firstItem="u36-o2-Jtc" firstAttribute="top" secondItem="yRQ-Jr-2cz" secondAttribute="bottom" constant="7.5" id="EUu-VB-ATF"/>
                             <constraint firstItem="rRj-NN-iUc" firstAttribute="top" secondItem="D2T-zO-sdH" secondAttribute="bottom" id="Ec1-Yn-b7x"/>
                             <constraint firstItem="erd-35-fcO" firstAttribute="leading" secondItem="zN7-Xq-Pwd" secondAttribute="leading" constant="20" id="FIt-Y8-XPJ"/>
-                            <constraint firstItem="erd-35-fcO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u36-o2-Jtc" secondAttribute="bottom" constant="50" id="Faf-XM-U2Q"/>
                             <constraint firstItem="ttr-Ss-RIt" firstAttribute="centerX" secondItem="zN7-Xq-Pwd" secondAttribute="centerX" id="FmJ-dH-NZu"/>
                             <constraint firstItem="5pU-JC-WJb" firstAttribute="top" secondItem="YKF-dG-eoL" secondAttribute="bottom" id="Gfb-tv-ihd"/>
                             <constraint firstAttribute="bottom" secondItem="RYk-fz-rJ3" secondAttribute="bottom" constant="20" id="Gfh-10-dt4"/>
                             <constraint firstItem="fvu-oA-Yg6" firstAttribute="leading" secondItem="pzi-Ve-mDg" secondAttribute="leading" id="LHK-td-3eK"/>
+                            <constraint firstItem="erd-35-fcO" firstAttribute="width" secondItem="zN7-Xq-Pwd" secondAttribute="width" multiplier="1:4" id="MI9-Mk-waG"/>
                             <constraint firstItem="fvu-oA-Yg6" firstAttribute="trailing" secondItem="pzi-Ve-mDg" secondAttribute="trailing" id="Ojx-bk-yaq"/>
                             <constraint firstAttribute="trailing" secondItem="RYk-fz-rJ3" secondAttribute="trailing" constant="20" id="P9W-t1-5w0"/>
                             <constraint firstItem="fvu-oA-Yg6" firstAttribute="top" secondItem="rRj-NN-iUc" secondAttribute="bottom" constant="20" id="Ukr-eu-SLN"/>
@@ -163,6 +162,7 @@
                             <constraint firstItem="pzi-Ve-mDg" firstAttribute="top" secondItem="ttr-Ss-RIt" secondAttribute="bottom" constant="50" id="fsT-jc-iTH"/>
                             <constraint firstAttribute="bottom" secondItem="erd-35-fcO" secondAttribute="bottom" constant="20" id="gbf-rO-14T"/>
                             <constraint firstItem="yRQ-Jr-2cz" firstAttribute="top" secondItem="SXY-fF-ZsN" secondAttribute="bottom" constant="20" id="hQQ-FM-mil"/>
+                            <constraint firstItem="RYk-fz-rJ3" firstAttribute="width" secondItem="zN7-Xq-Pwd" secondAttribute="width" multiplier="1:4" id="i6A-3A-5LI"/>
                             <constraint firstItem="pzi-Ve-mDg" firstAttribute="leading" secondItem="zN7-Xq-Pwd" secondAttribute="leading" constant="40" id="kq4-VB-1zc"/>
                             <constraint firstItem="hdI-Q2-DMf" firstAttribute="leading" secondItem="pzi-Ve-mDg" secondAttribute="leading" id="laK-tA-sQO"/>
                             <constraint firstItem="D2T-zO-sdH" firstAttribute="top" secondItem="pzi-Ve-mDg" secondAttribute="bottom" constant="7.5" id="lmj-vY-m4H"/>

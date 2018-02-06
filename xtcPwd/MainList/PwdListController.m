@@ -28,7 +28,7 @@
 #import "AddVC.h"
 #import "PwdTableViewHandler.h"
 
-@interface PwdListController () <UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,DetailViewControllerDelegate,RootTableViewDelegate>
+@interface PwdListController () <UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,DetailViewControllerDelegate,RootTableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topNavFlex;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;

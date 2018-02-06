@@ -146,14 +146,11 @@
     self.tableHandler = [[PwdTableViewHandler alloc] initWithCtrller:self] ;
     
     self.table.delegate     = self.tableHandler ;
-    self.table.dataSource   = self ;
+    self.table.dataSource   = self.tableHandler ;
     self.table.xt_Delegate  = self ;
     self.table.mj_footer = nil ;
     self.table.backgroundColor = [UIColor xt_bg] ; // [UIColor whiteColor] ;
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone ;
-    self.table.estimatedRowHeight = 0 ;
-    self.table.estimatedSectionHeaderHeight = 0 ;
-    self.table.estimatedSectionFooterHeight = 0 ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -204,16 +201,6 @@
     sleep(1) ;
     self.dataList = listBack ;
     endRefresh() ;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.dataList.count ;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [tableView dequeueReusableCellWithIdentifier:@"ListCell"] ;
 }
 
 #pragma mark - UINavigationControllerDelegate

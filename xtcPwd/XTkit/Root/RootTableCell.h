@@ -11,6 +11,9 @@
 
 @interface RootTableCell : UITableViewCell
 
+@property (strong, nonatomic) NSIndexPath *indexPath ;
+@property (strong, nonatomic, readonly) id model ;
+
 // initial without Xib or Storyborad
 + (instancetype)cellWithTable:(UITableView *)tableView ;
 
@@ -19,6 +22,8 @@
 - (void)prepare ;
 // set model
 - (void)configure:(id)model ;
+- (void)configure:(id)model
+        indexPath:(NSIndexPath *)indexPath ;
 // height
 + (CGFloat)cellHeight ;
 

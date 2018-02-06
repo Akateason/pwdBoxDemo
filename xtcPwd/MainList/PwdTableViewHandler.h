@@ -10,7 +10,7 @@
 @class PwdListController ,UITableView ;
 #import <UIKit/UITableView.h>
 
-@interface PwdTableViewHandler : NSObject <UITableViewDelegate, UIScrollViewDelegate>
+@interface PwdTableViewHandler : NSObject <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 - (instancetype)initWithCtrller:(PwdListController *)fromCtrller ;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath ;

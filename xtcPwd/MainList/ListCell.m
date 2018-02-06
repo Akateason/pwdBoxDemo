@@ -33,7 +33,11 @@
 
 #define IMAGE_SIZE_SCALE2(_size_)        CGSizeMake(_size_.width * 2., _size_.height * 2.)
 
-- (void)configure:(PwdItem *)model {
+- (void)configure:(PwdItem *)model
+        indexPath:(NSIndexPath *)indexPath
+{
+    [super configure:model indexPath:indexPath] ;
+    
     self.name.text = model.name ;
     self.account.text = model.account ;
     self.image.image = [UIImage imageNamed:@"logo"] ;

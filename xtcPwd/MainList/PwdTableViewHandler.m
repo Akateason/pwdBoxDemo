@@ -11,6 +11,10 @@
 #import "PwdItem.h"
 #import <ReactiveObjC.h>
 #import "PwdListController.h"
+#import "ReqUtil.h"
+#import "BYImageValue.h"
+#import <UIImageView+WebCache.h>
+#import "XTkit.h"
 
 @interface PwdTableViewHandler () 
 @property (weak, nonatomic) PwdListController *fromCtrller ;
@@ -23,8 +27,61 @@
     self = [super init] ;
     if (self) {
         _fromCtrller = fromCtrller ;
+        
+        @weakify(self)
+        [[RACObserve(_fromCtrller.table, contentOffset)
+          throttle:1]
+         subscribeNext:^(id  _Nullable x) {
+             @strongify(self)
+             [self getImagesFromServer] ;
+         }] ;
     }
     return self;
+}
+
+#pragma mark - util
+
+- (void)getImagesFromServer {
+    
+    NSArray *visibleCells = self.fromCtrller.table.visibleCells ;
+    
+    for (ListCell *cell in visibleCells) {
+        PwdItem *item = cell.model ;
+        if (item.imageUrl.length) continue ;
+        
+        [ReqUtil searchImageWithName:item.name
+                               count:1
+                              offset:0
+                          completion:^(NSArray *list) {
+
+              if (!list) return ;
+              
+              BYImageValue *imageValue = [list firstObject] ;
+              item.imageUrl = imageValue.thumbnailUrl ;
+              [item update] ;
+              
+              [cell.image sd_setImageWithURL:[NSURL URLWithString:item.imageUrl]
+                                   completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                                       
+                   image = [UIImage thumbnailWithImage:image size:IMAGE_SIZE_SCALE2(cell.image.frame.size)] ;
+
+                                   }] ;
+                          }] ;
+    }
+    
+}
+
+
+#pragma mark - tableView
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.fromCtrller.dataList.count ;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [tableView dequeueReusableCellWithIdentifier:@"ListCell"] ;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -57,7 +114,8 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(ListCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PwdItem *item = self.fromCtrller.dataList[indexPath.row] ;
-    [cell configure:item] ;
+    [cell configure:item
+          indexPath:indexPath] ;
     
     cell.image.alpha = 0. ;
     [UIView animateWithDuration:0.2
@@ -144,11 +202,9 @@
     
     NSMutableArray *tmplist = [self.fromCtrller.dataList mutableCopy] ;
     [tmplist removeObjectAtIndex:indexPath.row] ;
-//    self.fromCtrller.dataList = tmplist ;
     [self.fromCtrller setValue:tmplist forKey:@"dataList"] ;
     [self.fromCtrller.table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                   withRowAnimation:UITableViewRowAnimationFade] ;
 }
-
 
 @end

@@ -171,6 +171,7 @@
     // edit2photos
     PhotosVC *photoVC = [segue destinationViewController] ;
     photoVC.imageSend = sender ;
+    photoVC.item = self.itemWillBeEdit ;
 }
 
 @end

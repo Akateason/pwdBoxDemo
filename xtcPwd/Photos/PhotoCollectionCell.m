@@ -7,12 +7,25 @@
 //
 
 #import "PhotoCollectionCell.h"
+#import "BYImageValue.h"
+#import <UIImageView+WebCache.h>
 
 @implementation PhotoCollectionCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setImgVal:(BYImageValue *)imgVal {
+    _imgVal = imgVal ;
+    
+    if (imgVal.thumbnailUrl.length) {
+        [_imageView sd_setImageWithURL:[NSURL URLWithString:imgVal.thumbnailUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            
+            
+        }] ;
+    }
 }
 
 @end

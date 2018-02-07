@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class BYImageValue ;
 
 @interface PhotoCollectionCell : UICollectionViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) BYImageValue *imgVal ;
 @end

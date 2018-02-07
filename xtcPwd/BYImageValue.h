@@ -12,6 +12,9 @@
 @property (copy, nonatomic) NSString *name ;
 @property (copy, nonatomic) NSString *thumbnailUrl ;
 @property (copy, nonatomic) NSString *contentUrl ;
+@property (assign, nonatomic) float width ;
+@property (assign, nonatomic) float height ;
+@property (assign, nonatomic) float rateH2W ;
 @end
 
 //{

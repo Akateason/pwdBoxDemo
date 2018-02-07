@@ -106,6 +106,7 @@
 		7DBF8FCC2022F7080030C3D5 /* BYImageValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FCB2022F7080030C3D5 /* BYImageValue.m */; };
 		7DBF8FD320240D8D0030C3D5 /* DetailCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */; };
 		7DBF8FD420240D8D0030C3D5 /* DetailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD220240D8D0030C3D5 /* DetailCollectionCell.xib */; };
+		7DD1B007202AD1200031E7EF /* RootCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD1B006202AD1200031E7EF /* RootCollectionView.m */; };
 		8F04A0892005CFCE00021908 /* SearchVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F04A0882005CFCE00021908 /* SearchVCCell.m */; };
 		8F560B071FF0981100E726F9 /* NSString+PinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560AFC1FF0981000E726F9 /* NSString+PinYin4Cocoa.m */; };
 		8F560B081FF0981100E726F9 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560AFF1FF0981000E726F9 /* PinyinHelper.m */; };
@@ -352,6 +353,8 @@
 		7DBF8FD020240D8D0030C3D5 /* DetailCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailCollectionCell.h; sourceTree = "<group>"; };
 		7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailCollectionCell.m; sourceTree = "<group>"; };
 		7DBF8FD220240D8D0030C3D5 /* DetailCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionCell.xib; sourceTree = "<group>"; };
+		7DD1B005202AD1200031E7EF /* RootCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootCollectionView.h; sourceTree = "<group>"; };
+		7DD1B006202AD1200031E7EF /* RootCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootCollectionView.m; sourceTree = "<group>"; };
 		8F04A0872005CFCE00021908 /* SearchVCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchVCCell.h; sourceTree = "<group>"; };
 		8F04A0882005CFCE00021908 /* SearchVCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchVCCell.m; sourceTree = "<group>"; };
 		8F560AFA1FF0981000E726F9 /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
@@ -770,6 +773,8 @@
 		7D4B27042024D203001CA91B /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				7DD1B005202AD1200031E7EF /* RootCollectionView.h */,
+				7DD1B006202AD1200031E7EF /* RootCollectionView.m */,
 				7D4B27052024D203001CA91B /* MyNavCtrller.h */,
 				7D4B27062024D203001CA91B /* RootTableView.m */,
 				7D4B27072024D203001CA91B /* RootTableCell.m */,
@@ -1442,6 +1447,7 @@
 				7D4B27A22024D203001CA91B /* MyTextField.m in Sources */,
 				7D4B277F2024D203001CA91B /* NSString+MD5.m in Sources */,
 				7D4B276E2024D203001CA91B /* NSObject+Reflection.m in Sources */,
+				7DD1B007202AD1200031E7EF /* RootCollectionView.m in Sources */,
 				7D4B27B22024D203001CA91B /* XTMultipleTables.m in Sources */,
 				7D4B27B12024D203001CA91B /* XTTableViewRootHandler.m in Sources */,
 				7D4B27892024D203001CA91B /* XTReqSessionManager.m in Sources */,

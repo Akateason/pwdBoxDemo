@@ -11,8 +11,9 @@
 #import "ReqUtil.h"
 #import "PwdItem.h"
 #import "BYImageValue.h"
+#import "RootCollectionView.h"
 
-@interface PhotosVC () <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface PhotosVC () <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,RootCollectionViewDelegate>
 @property (copy, nonatomic) NSArray *datasource ;
 @end
 
@@ -31,7 +32,9 @@ static const int   kCollumNum   = 2  ;
     self.collectionView.collectionViewLayout = layout ;
     self.collectionView.dataSource = self ;
     self.collectionView.delegate = self ;
+    self.collectionView.xt_Delegate = self ;
     [self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"PhotoCollectionCell"] ;
+    [self.collectionView loadNewInfo] ;
 }
 
 + (float)itemWid {
@@ -40,21 +43,47 @@ static const int   kCollumNum   = 2  ;
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
-    
-    [ReqUtil searchImageWithName:self.item.name
-                           count:20
-                          offset:0
-                      completion:^(NSArray *list) {
-                          
-                          _datasource = [list copy] ;
-                          
-                          [_collectionView reloadData] ;
-                      }] ;
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - RootCollectionViewDelegate <NSObject>
+
+static int kPageSize = 20 ;
+static int kPage = 0  ;
+
+- (void)collectionView:(RootCollectionView *)collection loadNew:(void(^)(void))endRefresh
+{
+    kPage = 0 ;
+    [ReqUtil searchImageWithName:self.item.name
+                           count:kPageSize
+                          offset:kPage
+                      completion:^(NSArray *list) {
+                          
+                          _datasource = [list copy] ;
+                          
+                          endRefresh() ;
+                      }] ;
+}
+
+- (void)collectionView:(RootCollectionView *)collection loadMore:(void(^)(void))endRefresh
+{
+    kPage ++ ;
+    [ReqUtil searchImageWithName:self.item.name
+                           count:kPageSize
+                          offset:kPage
+                      completion:^(NSArray *list) {
+                          
+                          NSMutableArray *tmplist = [_datasource mutableCopy] ;
+                          [tmplist addObjectsFromArray:list] ;
+                          _datasource = [tmplist copy] ;
+                          
+                          endRefresh() ;
+                      }] ;
+
 }
 
 #pragma mark - UICollectionViewDataSource <NSObject>

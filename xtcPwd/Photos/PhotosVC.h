@@ -7,10 +7,10 @@
 //
 
 #import "RootCtrl.h"
-@class PwdItem ;
+@class PwdItem,RootCollectionView ;
 
 @interface PhotosVC : RootCtrl
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet RootCollectionView *collectionView;
 @property (strong, nonatomic) UIImage *imageSend ;
 @property (strong, nonatomic) PwdItem *item ;
 @end

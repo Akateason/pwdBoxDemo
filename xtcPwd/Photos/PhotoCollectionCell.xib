@@ -13,32 +13,60 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionCell" id="gTV-IL-0wX" customClass="PhotoCollectionCell">
-            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="138" height="160"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                <rect key="frame" x="0.0" y="0.0" width="138" height="160"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZQn-h5-Wut">
-                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZQn-h5-Wut">
+                        <rect key="frame" x="8" y="8" width="122" height="122"/>
+                        <color key="backgroundColor" red="0.77703541519999997" green="0.7877374291" blue="0.81961339710000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="122" id="Xfs-VX-QcA"/>
+                            <constraint firstAttribute="height" constant="122" id="fGa-m9-U1W"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yto-fY-Oxv">
+                        <rect key="frame" x="8" y="137.5" width="122" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.77703541519999997" green="0.7877374291" blue="0.81961339710000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addP" translatesAutoresizingMaskIntoConstraints="NO" id="aFD-ze-ySg">
+                        <rect key="frame" x="98" y="120" width="15" height="15"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="E9L-qg-Ap2"/>
+                            <constraint firstAttribute="height" constant="15" id="ZC5-F7-Nlq"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="ZQn-h5-Wut" secondAttribute="trailing" id="2Jc-y8-OaA"/>
-                <constraint firstAttribute="bottom" secondItem="ZQn-h5-Wut" secondAttribute="bottom" id="JUg-4s-35G"/>
-                <constraint firstItem="ZQn-h5-Wut" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="QD3-BU-xuV"/>
-                <constraint firstItem="ZQn-h5-Wut" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="cRa-dY-lFO"/>
+                <constraint firstAttribute="trailing" secondItem="Yto-fY-Oxv" secondAttribute="trailing" constant="8" id="3JX-Mm-684"/>
+                <constraint firstItem="ZQn-h5-Wut" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="4jm-nk-Kc9"/>
+                <constraint firstItem="Yto-fY-Oxv" firstAttribute="leading" secondItem="ZQn-h5-Wut" secondAttribute="leading" id="DTr-Ds-5XV"/>
+                <constraint firstAttribute="bottom" secondItem="Yto-fY-Oxv" secondAttribute="bottom" constant="8" id="e1q-8P-2Uh"/>
+                <constraint firstItem="ZQn-h5-Wut" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="kUd-To-txx"/>
+                <constraint firstAttribute="trailing" secondItem="ZQn-h5-Wut" secondAttribute="trailing" constant="8" id="pLH-OV-HMC"/>
+                <constraint firstItem="Yto-fY-Oxv" firstAttribute="top" secondItem="ZQn-h5-Wut" secondAttribute="bottom" priority="900" constant="8" id="q7I-rd-Lja"/>
+                <constraint firstAttribute="trailing" secondItem="aFD-ze-ySg" secondAttribute="trailing" constant="25" id="uMW-3B-yb5"/>
+                <constraint firstItem="aFD-ze-ySg" firstAttribute="bottom" secondItem="ZQn-h5-Wut" secondAttribute="bottom" constant="5" id="uxr-kc-MvK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
-            <size key="customSize" width="117" height="102"/>
+            <size key="customSize" width="215" height="218"/>
             <connections>
+                <outlet property="addP" destination="aFD-ze-ySg" id="DNT-eH-NWx"/>
+                <outlet property="hei" destination="fGa-m9-U1W" id="j0m-4O-GPj"/>
                 <outlet property="imageView" destination="ZQn-h5-Wut" id="bKO-5t-kKC"/>
+                <outlet property="label" destination="Yto-fY-Oxv" id="GeR-4P-zd7"/>
+                <outlet property="wid" destination="Xfs-VX-QcA" id="TTu-5B-1bp"/>
             </connections>
-            <point key="canvasLocation" x="96" y="160"/>
+            <point key="canvasLocation" x="-20" y="92"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="logo" width="90" height="90"/>
+        <image name="addP" width="64" height="64"/>
     </resources>
 </document>

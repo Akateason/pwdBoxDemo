@@ -31,13 +31,18 @@
     [XTCacheRequest cacheGET:@"https://api.cognitive.microsoft.com/bing/v7.0/images/search"
                       header:header
                   parameters:param
+                         hud:NO
+                      policy:XTResponseCachePolicyAlwaysCache
+               timeoutIfNeed:0
                  judgeResult:^XTReqSaveJudgment(id json) {
+                     
                      id value = json[@"value"] ;
                      NSArray *list = [NSArray yy_modelArrayWithClass:[BYImageValue class] json:value] ;
                      returnImages(list) ;
                      
                      return !value ? XTReqSaveJudgment_NotSave : XTReqSaveJudgment_willSave ;
                  }] ;
+
 }
 
 @end

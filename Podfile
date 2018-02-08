@@ -19,6 +19,6 @@ pod 'FMDB'
 pod 'SSZipArchive'
 pod 'Valet'
 pod 'FDFullscreenPopGesture', '1.1'
-pod 'iCarousel'
+pod 'CHTCollectionViewWaterfallLayout'
 
 end

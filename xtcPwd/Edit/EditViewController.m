@@ -172,6 +172,17 @@
     PhotosVC *photoVC = [segue destinationViewController] ;
     photoVC.imageSend = sender ;
     photoVC.item = self.itemWillBeEdit ;
+    
+    RACReplaySubject *subject = [RACReplaySubject subject] ;
+    WEAK_SELF
+    [subject subscribeNext:^(NSString *newImageUrl) {
+        if ([newImageUrl length]) {
+            weakSelf.itemWillBeEdit.imageUrl = newImageUrl ;
+            [weakSelf setData] ;
+        }
+    }] ;
+    
+    photoVC.subject = subject ;
 }
 
 @end

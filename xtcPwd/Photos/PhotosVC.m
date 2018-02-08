@@ -12,8 +12,10 @@
 #import "PwdItem.h"
 #import "BYImageValue.h"
 #import "RootCollectionView.h"
+#import <CHTCollectionViewWaterfallLayout.h>
+#import <ReactiveObjC.h>
 
-@interface PhotosVC () <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,RootCollectionViewDelegate>
+@interface PhotosVC () <UICollectionViewDataSource,RootCollectionViewDelegate,CHTCollectionViewDelegateWaterfallLayout,UICollectionViewDelegate>
 @property (copy, nonatomic) NSArray *datasource ;
 @end
 
@@ -21,30 +23,31 @@
 
 #pragma mark - life
 
-static const float kCellLine    = 1. ;
-static const int   kCollumNum   = 2  ;
 
 - (void)prepareUI {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init] ;
-    layout.itemSize = CGSizeMake( [self.class itemWid] , 100) ;
-    layout.minimumLineSpacing = kCellLine ;
-    layout.minimumInteritemSpacing = kCellLine ;
+    
+    CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init] ;
+    layout.sectionInset = UIEdgeInsetsMake(kCellLine, kCellLine, kCellLine, kCellLine) ;
+    layout.columnCount = kCollumNum ;
+//    layout.minimumColumnSpacing = kCellLine ;
+//    layout.minimumInteritemSpacing = kCellLine ;
+//    layout.headerHeight = kCellLine ;
+//    layout.footerHeight = kCellLine ;
+    layout.itemRenderDirection = CHTCollectionViewWaterfallLayoutItemRenderDirectionShortestFirst ;
+
     self.collectionView.collectionViewLayout = layout ;
     self.collectionView.dataSource = self ;
     self.collectionView.delegate = self ;
     self.collectionView.xt_Delegate = self ;
     [self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"PhotoCollectionCell"] ;
+    self.collectionView.backgroundColor = [UIColor xt_bg] ;
     [self.collectionView loadNewInfo] ;
 }
 
-+ (float)itemWid {
-    return (APP_WIDTH - (kCollumNum - 1) * kCellLine) / kCollumNum ;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -100,10 +103,21 @@ static int kPage = 0  ;
     return cell ;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BYImageValue *imageVal = self.datasource[indexPath.row] ;
-    return CGSizeMake([self.class itemWid], [self.class itemWid] * imageVal.rateH2W) ;
+    return [PhotoCollectionCell itemSizeWithItem:imageVal] ;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    BYImageValue *imageVal = self.datasource[indexPath.row] ;
+    self.item.imageUrl = imageVal.thumbnailUrl ;
+    if ([self.item update]) {
+        [self.subject sendNext:imageVal.thumbnailUrl] ;
+        [self.subject sendCompleted] ;
+        [self.navigationController popViewControllerAnimated:YES] ;
+    }
 }
 
 

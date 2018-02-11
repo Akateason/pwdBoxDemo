@@ -28,7 +28,7 @@
 #import "AddVC.h"
 #import "PwdTableViewHandler.h"
 
-@interface PwdListController () <UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,DetailViewControllerDelegate,RootTableViewDelegate>
+@interface PwdListController () <UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,RootTableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topNavFlex;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
@@ -89,21 +89,6 @@
     [self.table loadNewInfo] ;
 }
 
-#pragma mark - DetailViewControllerDelegate <NSObject>
-
-- (void)oneItemUpdated:(PwdItem *)aItem {
-    NSMutableArray *tmpList = [self.dataList mutableCopy] ;
-    [self.dataList enumerateObjectsUsingBlock:^(PwdItem *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (aItem.pkid == obj.pkid) {
-            [tmpList replaceObjectAtIndex:idx withObject:aItem] ;
-            *stop = YES ;
-        }
-    }] ;
-    self.dataList = tmpList ;
-    
-    [self.table reloadData] ;
-}
-
 #pragma mark - life
 
 - (void)viewDidLoad {
@@ -122,6 +107,25 @@
         @strongify(self)
         [self.table loadNewInfoInBackGround:YES] ;
     }] ;
+    
+    [[[NSNotificationCenter defaultCenter]
+      rac_addObserverForName:@"NoteEditDone" object:nil]
+     subscribeNext:^(NSNotification * _Nullable noti) {
+         @strongify(self)
+
+         PwdItem *item = noti.object ;
+         NSMutableArray *tmplist = [self.dataList mutableCopy] ;
+         [self.dataList enumerateObjectsUsingBlock:^(PwdItem *aItem, NSUInteger idx, BOOL * _Nonnull stop) {
+             if (aItem.pkid == item.pkid) {
+                 [tmplist replaceObjectAtIndex:idx withObject:item] ;
+                 self.dataList = tmplist ;
+                 [self.table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationFade] ;
+                 *stop = YES ;
+             }
+         }] ;
+         
+     }] ;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -233,7 +237,6 @@
 {
     if ([segue.identifier isEqualToString:@"list2detail"]) {
         DetailViewController *detailVC = [segue destinationViewController] ;
-        detailVC.delegate = self ;
         [detailVC selectedIndexInHomeList:[sender integerValue]
                                      list:self.dataList] ;
     }

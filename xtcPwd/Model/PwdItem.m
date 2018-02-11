@@ -17,11 +17,13 @@
                      account:(NSString *)account
                     password:(NSString *)password
                       detail:(NSString *)detail
+                      imgUrl:(NSString *)imgUrl
                         type:(TypeOfPwdItem)type
 {
     self = [super init];
     if (self)
     {
+        _imageUrl = imgUrl ;
         _name = name ;
         _account = account ;
         _password = [self encodePwd:password] ;

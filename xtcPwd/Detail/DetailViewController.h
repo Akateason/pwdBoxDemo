@@ -10,12 +10,7 @@
 
 @class PwdItem ;
 
-@protocol DetailViewControllerDelegate <NSObject>
-- (void)oneItemUpdated:(PwdItem *)aItem ;
-@end
-
 @interface DetailViewController : UIViewController
-@property (weak,nonatomic) id <DetailViewControllerDelegate> delegate ;
 @property (assign, nonatomic) NSInteger currentIndex ;
 @property (weak, nonatomic, readonly) IBOutlet UICollectionView *collectionView;
 

@@ -35,6 +35,7 @@ typedef enum : NSUInteger {
                      account:(NSString *)account
                     password:(NSString *)password
                       detail:(NSString *)detail
+                      imgUrl:(NSString *)imgUrl
                         type:(TypeOfPwdItem)type ;
 
 + (void)addPinyinIfNeeded ;

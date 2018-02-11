@@ -23,7 +23,6 @@
 
 @interface DetailViewController () <UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem ;
-
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (assign, nonatomic) NSInteger sendIndex ;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenTransition;
@@ -33,11 +32,7 @@
 
 @implementation DetailViewController
 
-#pragma mark - action
-
-- (IBAction)editOnClick:(id)sender {
-    [self performSegueWithIdentifier:@"detail2edit" sender:self.dataSource[self.currentIndex]] ;
-}
+#pragma mark - util
 
 - (void)selectedIndexInHomeList:(NSInteger)index
                            list:(NSArray *)list
@@ -59,6 +54,30 @@
     
     [self setupUI] ;
     [self setupCarousel] ;
+    
+    @weakify(self)
+    [[[self.editItem rac_signalForSelector:@selector(action)]
+      throttle:.6]
+     subscribeNext:^(RACTuple * _Nullable x) {
+         @strongify(self)
+        [self performSegueWithIdentifier:@"detail2edit" sender:self.dataSource[self.currentIndex]] ;
+    }] ;
+    
+    [[[NSNotificationCenter defaultCenter]
+      rac_addObserverForName:@"NoteEditDone" object:nil]
+     subscribeNext:^(NSNotification * _Nullable noti) {
+         @strongify(self)
+         PwdItem *item = noti.object ;
+         NSMutableArray *tmplist = [self.dataSource mutableCopy] ;
+         [self.dataSource enumerateObjectsUsingBlock:^(PwdItem *aItem, NSUInteger idx, BOOL * _Nonnull stop) {
+             if (aItem.pkid == item.pkid) {
+                 [tmplist replaceObjectAtIndex:idx withObject:item] ;
+                 self.dataSource = tmplist ;
+                 [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]]] ;
+                 *stop = YES ;
+             }
+         }] ;
+     }] ;
 }
 
 static const float kFlexOfSide = 0 ;
@@ -119,7 +138,6 @@ static const float kFlexOfSide = 0 ;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UICollectionViewDataSource

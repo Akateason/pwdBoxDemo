@@ -116,6 +116,7 @@ static int kPage = 0  ;
     if ([self.item update]) {
         [self.subject sendNext:imageVal.thumbnailUrl] ;
         [self.subject sendCompleted] ;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NoteEditDone" object:self.item] ;
         [self.navigationController popViewControllerAnimated:YES] ;
     }
 }

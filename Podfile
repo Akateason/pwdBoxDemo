@@ -20,5 +20,6 @@ pod 'SSZipArchive'
 pod 'Valet'
 pod 'FDFullscreenPopGesture', '1.1'
 pod 'CHTCollectionViewWaterfallLayout'
+pod 'JKCategories'
 
 end

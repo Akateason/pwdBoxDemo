@@ -47,6 +47,14 @@
     [self setupUI] ;
     [self setData] ;
     
+    @weakify(self)
+    [[[self.doneItem rac_signalForSelector:@selector(action)]
+      throttle:.6]
+     subscribeNext:^(RACTuple * _Nullable x) {
+         @strongify(self)
+         [self doneItemOnClick] ;
+     }] ;
+    
     RAC(self.lbName,textColor) = [self.nameTf.rac_textSignal map:^id(NSString *x) {
         return x.length ? [UIColor xt_text_light] : [UIColor redColor] ;
     }] ;
@@ -117,7 +125,7 @@
 
 #pragma mark -
 
-- (IBAction)doneItemOnClick:(id)sender {
+- (void)doneItemOnClick {
     if (!_nameTf.text.length || !_accountTf.text.length || !_passwordTf.text.length) {
         [SVProgressHUD showErrorWithStatus:@"fill in required blanks : name,account,password"] ;
         return ;
@@ -138,6 +146,7 @@
                                           account:_accountTf.text
                                          password:_passwordTf.text
                                            detail:_detailTv.text
+                                           imgUrl:self.itemWillBeEdit.imageUrl
                                              type:self.typeWillBeAdd] ;
     int idItem = [item insert] ;
     if (idItem) {
@@ -154,11 +163,13 @@
                                           account:_accountTf.text
                                          password:_passwordTf.text
                                            detail:_detailTv.text
-                                             type:self.itemWillBeEdit.typeOfPwdItem] ;
+                                           imgUrl:self.itemWillBeEdit.imageUrl
+                                             type:self.typeWillBeAdd] ;
     item.pkid = self.itemWillBeEdit.pkid ;
     BOOL bSuccess = [item update] ;
     if (bSuccess) {
         [self.navigationController popViewControllerAnimated:YES] ;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NoteEditDone" object:item] ;
     }
     else {
         [SVProgressHUD showErrorWithStatus:@"edit fail"] ;

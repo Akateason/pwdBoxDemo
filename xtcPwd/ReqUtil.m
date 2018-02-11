@@ -23,7 +23,7 @@
     NSDictionary *header = @{@"Ocp-Apim-Subscription-Key":BYAPI_Token} ;
     
     XT_GET_PARAM
-    [param setObject:name forKey:@"q"] ;
+    if (name) [param setObject:name forKey:@"q"] ;
     [param setObject:@(count) forKey:@"count"] ;
     [param setObject:@(offset) forKey:@"offset"] ;
     [param setObject:@"zh-CN" forKey:@"mkt"] ;

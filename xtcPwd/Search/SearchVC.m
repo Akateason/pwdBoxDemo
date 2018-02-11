@@ -183,10 +183,6 @@
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    DetailViewController *detailVC = [segue destinationViewController] ;
-//    detailVC.item = sender ;
-}
 
 
 @end

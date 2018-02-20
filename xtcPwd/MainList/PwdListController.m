@@ -27,6 +27,9 @@
 #import "SearchVC.h"
 #import "AddVC.h"
 #import "PwdTableViewHandler.h"
+#import "AliPayViews.h"
+#import "KeychainData.h"
+#import "SetpasswordViewController.h"
 
 @interface PwdListController () <UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,RootTableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topNavFlex;
@@ -101,6 +104,7 @@
     [self setupUIs] ;
     [self setupTable] ;
     [self.table loadNewInfoInBackGround:YES] ;
+    [self pwdSetup] ;
     
     @weakify(self)
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"AddFinishNote" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
@@ -125,7 +129,18 @@
          }] ;
          
      }] ;
+}
 
+- (void)pwdSetup {
+    BOOL isSave = [KeychainData isSave]; //是否有保存
+    if (isSave) {
+        SetpasswordViewController *setpass = [[SetpasswordViewController alloc] init];
+        setpass.string = @"验证密码";
+        [self presentViewController:setpass animated:YES completion:nil];
+    }
+    else {
+        [SVProgressHUD showInfoWithStatus:@"Set your open password first"] ;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

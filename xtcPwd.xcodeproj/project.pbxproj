@@ -126,6 +126,12 @@
 		8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */; };
 		8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B21EF29F15005F0E74 /* PingTransition.m */; };
 		8FC14CFB1FF3FBB40024F86E /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC14CFA1FF3FBB40024F86E /* SearchVC.m */; };
+		8FE58A92203C095800816ACC /* AliPayViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A88203C095800816ACC /* AliPayViews.m */; };
+		8FE58A93203C095800816ACC /* KeychainData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A8A203C095800816ACC /* KeychainData.m */; };
+		8FE58A94203C095800816ACC /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A8B203C095800816ACC /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8FE58A95203C095800816ACC /* AliPayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A8C203C095800816ACC /* AliPayItem.m */; };
+		8FE58A96203C095800816ACC /* AlipaySubItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A8D203C095800816ACC /* AlipaySubItem.m */; };
+		8FE58A99203C202200816ACC /* SetpasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A98203C202200816ACC /* SetpasswordViewController.m */; };
 		8FFC6CF11EEF735A00F55173 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF01EEF735A00F55173 /* main.m */; };
 		8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF31EEF735A00F55173 /* AppDelegate.m */; };
 		8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF81EEF735A00F55173 /* Main.storyboard */; };
@@ -393,6 +399,19 @@
 		8FBE48B21EF29F15005F0E74 /* PingTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingTransition.m; sourceTree = "<group>"; };
 		8FC14CF91FF3FBB40024F86E /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
 		8FC14CFA1FF3FBB40024F86E /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
+		8FE58A87203C095800816ACC /* AlipaySubItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlipaySubItem.h; sourceTree = "<group>"; };
+		8FE58A88203C095800816ACC /* AliPayViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliPayViews.m; sourceTree = "<group>"; };
+		8FE58A89203C095800816ACC /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		8FE58A8A203C095800816ACC /* KeychainData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainData.m; sourceTree = "<group>"; };
+		8FE58A8B203C095800816ACC /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		8FE58A8C203C095800816ACC /* AliPayItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliPayItem.m; sourceTree = "<group>"; };
+		8FE58A8D203C095800816ACC /* AlipaySubItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlipaySubItem.m; sourceTree = "<group>"; };
+		8FE58A8E203C095800816ACC /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		8FE58A8F203C095800816ACC /* KeychainData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainData.h; sourceTree = "<group>"; };
+		8FE58A90203C095800816ACC /* AliPayViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliPayViews.h; sourceTree = "<group>"; };
+		8FE58A91203C095800816ACC /* AliPayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliPayItem.h; sourceTree = "<group>"; };
+		8FE58A97203C202200816ACC /* SetpasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetpasswordViewController.h; sourceTree = "<group>"; };
+		8FE58A98203C202200816ACC /* SetpasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetpasswordViewController.m; sourceTree = "<group>"; };
 		8FFC6CEC1EEF735A00F55173 /* xtcPwd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xtcPwd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFC6CF01EEF735A00F55173 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8FFC6CF21EEF735A00F55173 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -976,6 +995,7 @@
 		7D4B27BB20286B26001CA91B /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				8FE58A86203C095800816ACC /* gesturePwd */,
 				7D4B27BC20286B3D001CA91B /* HJCarouselViewLayout.h */,
 				7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */,
 			);
@@ -1071,6 +1091,8 @@
 			children = (
 				8FBE48791EF2764C005F0E74 /* UserViewController.h */,
 				8FBE487A1EF2764C005F0E74 /* UserViewController.m */,
+				8FE58A97203C202200816ACC /* SetpasswordViewController.h */,
+				8FE58A98203C202200816ACC /* SetpasswordViewController.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1138,6 +1160,24 @@
 				8FBE48B21EF29F15005F0E74 /* PingTransition.m */,
 			);
 			path = transition_leftbt;
+			sourceTree = "<group>";
+		};
+		8FE58A86203C095800816ACC /* gesturePwd */ = {
+			isa = PBXGroup;
+			children = (
+				8FE58A89203C095800816ACC /* Header.h */,
+				8FE58A87203C095800816ACC /* AlipaySubItem.h */,
+				8FE58A8D203C095800816ACC /* AlipaySubItem.m */,
+				8FE58A8F203C095800816ACC /* KeychainData.h */,
+				8FE58A8A203C095800816ACC /* KeychainData.m */,
+				8FE58A90203C095800816ACC /* AliPayViews.h */,
+				8FE58A88203C095800816ACC /* AliPayViews.m */,
+				8FE58A91203C095800816ACC /* AliPayItem.h */,
+				8FE58A8C203C095800816ACC /* AliPayItem.m */,
+				8FE58A8E203C095800816ACC /* KeychainItemWrapper.h */,
+				8FE58A8B203C095800816ACC /* KeychainItemWrapper.m */,
+			);
+			path = gesturePwd;
 			sourceTree = "<group>";
 		};
 		8FFC6CE31EEF735A00F55173 = {
@@ -1379,6 +1419,7 @@
 				7D4B27A92024D203001CA91B /* XTBarrageItemView.m in Sources */,
 				7D4B27A72024D203001CA91B /* XTBarrageView.m in Sources */,
 				7D4B27C520299403001CA91B /* PhotosVC.m in Sources */,
+				8FE58A99203C202200816ACC /* SetpasswordViewController.m in Sources */,
 				7D4B276D2024D203001CA91B /* NSTimer+Addition.m in Sources */,
 				7D4B279A2024D203001CA91B /* RootCtrl.m in Sources */,
 				7D4B277E2024D203001CA91B /* CommonFunc.m in Sources */,
@@ -1399,6 +1440,7 @@
 				7D4B279C2024D203001CA91B /* MyTextView.m in Sources */,
 				8F560B331FF3891C00E726F9 /* AddVC.m in Sources */,
 				7D4B27832024D203001CA91B /* XTColorFetcher.m in Sources */,
+				8FE58A96203C095800816ACC /* AlipaySubItem.m in Sources */,
 				8FFC6D271EEF7EBD00F55173 /* ListCell.m in Sources */,
 				8F560B071FF0981100E726F9 /* NSString+PinYin4Cocoa.m in Sources */,
 				7D4B27A02024D203001CA91B /* MySearchBar.m in Sources */,
@@ -1410,6 +1452,7 @@
 				7D4B27992024D203001CA91B /* MyWebController.m in Sources */,
 				8F04A0892005CFCE00021908 /* SearchVCCell.m in Sources */,
 				7DBF8FCC2022F7080030C3D5 /* BYImageValue.m in Sources */,
+				8FE58A93203C095800816ACC /* KeychainData.m in Sources */,
 				7D4B27642024D203001CA91B /* UIViewController+HowToUse.m in Sources */,
 				7D4B27662024D203001CA91B /* UIButton+ExtendTouchRect.m in Sources */,
 				7D4B27A32024D203001CA91B /* XTlineSpaceLabel.m in Sources */,
@@ -1436,6 +1479,7 @@
 				8F560B091FF0981100E726F9 /* HanyuPinyinOutputFormat.m in Sources */,
 				8F560B0B1FF0981100E726F9 /* PinyinFormatter.m in Sources */,
 				7D4B275C2024D203001CA91B /* XTDBModel.m in Sources */,
+				8FE58A95203C095800816ACC /* AliPayItem.m in Sources */,
 				7D4B27942024D203001CA91B /* ListEvent.m in Sources */,
 				8F560B211FF3281800E726F9 /* FilterCondition.m in Sources */,
 				7D4B279F2024D203001CA91B /* RootRefreshHeader.m in Sources */,
@@ -1461,6 +1505,7 @@
 				7D4B27712024D203001CA91B /* NSString+Extend.m in Sources */,
 				7D4B27752024D203001CA91B /* UIButton+Badges.m in Sources */,
 				8FFC6CF11EEF735A00F55173 /* main.m in Sources */,
+				8FE58A94203C095800816ACC /* KeychainItemWrapper.m in Sources */,
 				7D4B278C2024D203001CA91B /* UICollectionView+Stat.m in Sources */,
 				7D4B27BE20286B3D001CA91B /* HJCarouselViewLayout.m in Sources */,
 				7D4B27C920299454001CA91B /* PhotoCollectionCell.m in Sources */,
@@ -1471,6 +1516,7 @@
 				7D4B277D2024D203001CA91B /* XTVerification.m in Sources */,
 				7D4B27862024D203001CA91B /* UIColor+HexString.m in Sources */,
 				7D4B277A2024D203001CA91B /* PlistUtil.m in Sources */,
+				8FE58A92203C095800816ACC /* AliPayViews.m in Sources */,
 				7D4B27672024D203001CA91B /* UILabel+Badges.m in Sources */,
 				7D4B27782024D203001CA91B /* XTFileManager.m in Sources */,
 				7D4B27B32024D203001CA91B /* CenterTableView.m in Sources */,

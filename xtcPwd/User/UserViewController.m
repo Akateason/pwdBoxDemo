@@ -13,14 +13,20 @@
 #import "UIImage+AddFunction.h"
 #import <UINavigationController+FDFullscreenPopGesture.h>
 #import "FilterCondition.h"
+#import "AliPayViews.h"
+#import "KeychainData.h"
+#import "SetpasswordViewController.h"
+
 
 @interface UserViewController () <UINavigationControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *btClose;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cateBts;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *sortBts;
 @property (weak, nonatomic) IBOutlet UIButton *sortChangeBt;
 @property (weak, nonatomic) IBOutlet UIButton *cancelBt;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBt;
+@property (weak, nonatomic) IBOutlet UIButton *btOpenPwd;
 
 @end
 
@@ -44,7 +50,11 @@
 - (void)setupUI {
     self.view.backgroundColor = [UIColor xt_main] ;
     
-    [_btClose setImage:[[UIImage imageNamed:@"face"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
+    [_btClose setImage:[[UIImage imageNamed:@"face"] imageWithTintColor:[UIColor whiteColor]]
+              forState:0] ;
+    
+    [self.view setNeedsLayout] ;
+    [self.view layoutIfNeeded] ;
     
     for (UIButton *bt in _cateBts) {
         [bt setTitleColor:[UIColor xt_main] forState:UIControlStateSelected] ;
@@ -62,7 +72,7 @@
     [_sortChangeBt setTitleColor:[UIColor whiteColor] forState:0] ;
     _sortChangeBt.layer.borderColor = [UIColor whiteColor].CGColor ;
     _sortChangeBt.layer.borderWidth = 1. ;
-    _sortChangeBt.layer.cornerRadius = 15. ;
+    _sortChangeBt.layer.cornerRadius = _sortChangeBt.frame.size.height / 2. ;
     _sortChangeBt.layer.masksToBounds = YES ;
     [_sortChangeBt setTitle:@"ASC"
                    forState:UIControlStateSelected] ;
@@ -73,12 +83,16 @@
     _cancelBt.layer.borderWidth = 1. ;
     _cancelBt.layer.cornerRadius = 15. ;
     _cancelBt.layer.masksToBounds = YES ;
+    _cancelBt.backgroundColor = nil ;
     
     _confirmBt.layer.cornerRadius = 15. ;
     _confirmBt.layer.masksToBounds = YES ;
     _confirmBt.backgroundColor = [UIColor whiteColor] ;
     [_confirmBt setTitleColor:[UIColor xt_main] forState:0] ;
 
+    _btOpenPwd.backgroundColor = [UIColor whiteColor] ;
+    [_btOpenPwd setTitleColor:[UIColor xt_main] forState:0] ;
+    _btOpenPwd.layer.cornerRadius = CGRectGetWidth(_btOpenPwd.frame) / 2. ;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -92,6 +106,14 @@
 }
 
 #pragma mark - acitons
+
+- (IBAction)btOpenPwdOnClick:(id)sender {
+    BOOL isSave = [KeychainData isSave]; //是否有保存
+    [KeychainData forgotPsw] ;
+    SetpasswordViewController *setpass = [[SetpasswordViewController alloc] init];
+    setpass.string = @"重置密码";
+    [self presentViewController:setpass animated:YES completion:nil];
+}
 
 - (IBAction)btCloseOnClick:(id)sender {
     [self.navigationController popViewControllerAnimated:YES] ;

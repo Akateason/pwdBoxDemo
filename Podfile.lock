@@ -21,6 +21,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - IQKeyboardManager (5.0.6)
   - JKCategories (1.6)
   - Masonry (1.0.2)
   - MJRefresh (3.1.12)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout
   - FDFullscreenPopGesture (= 1.1)
   - FMDB
+  - IQKeyboardManager
   - JKCategories
   - Masonry
   - MJRefresh
@@ -55,6 +57,7 @@ SPEC CHECKSUMS:
   CHTCollectionViewWaterfallLayout: 9d11068fafecac106695bb5a5d6d0f738483b598
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
   JKCategories: dab1bd3f7500836c5066d09052b85c12a963db12
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -66,6 +69,6 @@ SPEC CHECKSUMS:
   Valet: 14463ef24fab8fd5809044ecedb61484b799fdd6
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 3c279daf88ae6c5fbd761552c498ef0b1213e616
+PODFILE CHECKSUM: d871205094878a9127628cab443bd4e197bff204
 
 COCOAPODS: 1.4.0

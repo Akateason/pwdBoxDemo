@@ -14,6 +14,7 @@
 #import <UIImageView+WebCache.h>
 #import <ReactiveObjC.h>
 #import "PhotosVC.h"
+#import "XTAnimation.h"
 
 @interface EditViewController ()
 
@@ -116,6 +117,21 @@
     }] ;
     [self.view addGestureRecognizer:tap] ;
     
+    if (self.itemWillBeEdit != nil) {
+        [[self rac_signalForSelector:@selector(viewDidAppear:)]
+         subscribeNext:^(RACTuple * _Nullable x) {
+             [XTAnimation shakeRandomDirectionWithDuration:1.2
+                                               AndWithView:_imageView] ;
+             [XTAnimation shakeRandomDirectionWithDuration:.8
+                                               AndWithView:_nameTf] ;
+             [XTAnimation shakeRandomDirectionWithDuration:.8
+                                               AndWithView:_accountTf] ;
+             [XTAnimation shakeRandomDirectionWithDuration:.8
+                                               AndWithView:_passwordTf] ;
+             [XTAnimation shakeRandomDirectionWithDuration:.8
+                                               AndWithView:_detailTv] ;
+         }] ;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

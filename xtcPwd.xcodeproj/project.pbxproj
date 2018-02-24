@@ -31,7 +31,6 @@
 		8F560B331FF3891C00E726F9 /* AddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B321FF3891C00E726F9 /* AddVC.m */; };
 		8F560B371FF38B6100E726F9 /* AddTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B361FF38B6100E726F9 /* AddTransition.m */; };
 		8F560B3A1FF38CB600E726F9 /* PresentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B391FF38CB600E726F9 /* PresentController.m */; };
-		8F7F007920414B47008D4399 /* xtAllColorPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F7F007820414B47008D4399 /* xtAllColorPlist.plist */; };
 		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
 		8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */; };
 		8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B21EF29F15005F0E74 /* PingTransition.m */; };
@@ -105,7 +104,6 @@
 		8F560B361FF38B6100E726F9 /* AddTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTransition.m; sourceTree = "<group>"; };
 		8F560B381FF38CB600E726F9 /* PresentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresentController.h; sourceTree = "<group>"; };
 		8F560B391FF38CB600E726F9 /* PresentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresentController.m; sourceTree = "<group>"; };
-		8F7F007820414B47008D4399 /* xtAllColorPlist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = xtAllColorPlist.plist; path = ../Pods/XTlib/xtAllColorPlist.plist; sourceTree = "<group>"; };
 		8FBE48791EF2764C005F0E74 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		8FBE487A1EF2764C005F0E74 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		8FBE48AF1EF29F15005F0E74 /* PingReverseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingReverseTransition.h; sourceTree = "<group>"; };
@@ -388,7 +386,6 @@
 				8FFC6CF81EEF735A00F55173 /* Main.storyboard */,
 				8FFC6CF21EEF735A00F55173 /* AppDelegate.h */,
 				8FFC6CF31EEF735A00F55173 /* AppDelegate.m */,
-				8F7F007820414B47008D4399 /* xtAllColorPlist.plist */,
 				7D4B27BB20286B26001CA91B /* Vender */,
 				8FFC6D211EEF7A5A00F55173 /* Model */,
 				8FFC6D1A1EEF74E000F55173 /* VC */,
@@ -508,7 +505,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F7F007920414B47008D4399 /* xtAllColorPlist.plist in Resources */,
 				7D4B27CA20299454001CA91B /* PhotoCollectionCell.xib in Resources */,
 				7DBF8FD420240D8D0030C3D5 /* DetailCollectionCell.xib in Resources */,
 				8F560B0C1FF0981100E726F9 /* unicode_to_hanyu_pinyin.txt in Resources */,
@@ -546,12 +542,14 @@
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/XTColor/XTColor/color/XTColors.plist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XTColors.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

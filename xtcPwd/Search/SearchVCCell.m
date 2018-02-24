@@ -16,7 +16,7 @@
     [super awakeFromNib] ;
 }
 
-- (void)prepare {
+- (void)prepareUI {
     self.backgroundColor = [UIColor xt_main] ;
     self.account.textColor = [UIColor colorWithWhite:1 alpha:.6] ;
 }

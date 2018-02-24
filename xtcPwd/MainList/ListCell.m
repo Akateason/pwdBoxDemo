@@ -17,7 +17,7 @@
 
 + (CGFloat)cellHeight { return 62.f ; }
 
-- (void)prepare {
+- (void)prepareUI {
     self.backgroundColor = [UIColor xt_bg] ; // [UIColor clearColor] ;
     self.selectionStyle = 0 ;
     self.backView.backgroundColor = [UIColor whiteColor] ; // [UIColor xt_bg] ;

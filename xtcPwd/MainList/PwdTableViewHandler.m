@@ -14,7 +14,7 @@
 #import "ReqUtil.h"
 #import "BYImageValue.h"
 #import <UIImageView+WebCache.h>
-#import "XTkit.h"
+#import "XTlib.h"
 
 @interface PwdTableViewHandler () 
 @property (weak, nonatomic) PwdListController *fromCtrller ;

@@ -13,7 +13,7 @@ pod 'UITableView+FDTemplateLayoutCell'
 pod 'SSZipArchive'
 pod 'FDFullscreenPopGesture', '1.1'
 pod 'CHTCollectionViewWaterfallLayout'
-pod 'JKCategories'
+# pod 'JKCategories'
 pod 'IQKeyboardManager'
 # pod 'Valet'
 

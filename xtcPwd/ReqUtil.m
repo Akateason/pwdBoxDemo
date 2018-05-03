@@ -33,7 +33,7 @@
                   parameters:param
                          hud:NO
                       policy:XTResponseCachePolicyAlwaysCache
-               timeoutIfNeed:0
+               timeoutIfNeed:0  //3600 * 24 * 7
                  judgeResult:^XTReqSaveJudgment(id json) {
                      
                      id value = json[@"value"] ;

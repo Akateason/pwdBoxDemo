@@ -14,6 +14,9 @@
 #import "PwdItem.h"
 #import "XTReq.h"
 #import <IQKeyboardManager.h>
+@import Firebase;
+//#import <Crashlytics/Crashlytics.h>
+
 
 @interface AppDelegate ()
 
@@ -24,6 +27,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [FIRApp configure] ;
+    
     [self setupDB] ;
     [self setupUI] ;
     

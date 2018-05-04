@@ -41,6 +41,8 @@
 		8FE58A95203C095800816ACC /* AliPayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A8C203C095800816ACC /* AliPayItem.m */; };
 		8FE58A96203C095800816ACC /* AlipaySubItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A8D203C095800816ACC /* AlipaySubItem.m */; };
 		8FE58A99203C202200816ACC /* SetpasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A98203C202200816ACC /* SetpasswordViewController.m */; };
+		8FF9601C209C0F5B00751522 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FF9601B209C0F5B00751522 /* GoogleService-Info.plist */; };
+		8FF9601E209C0F7400751522 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8FF9601D209C0F7400751522 /* Podfile */; };
 		8FFC6CF11EEF735A00F55173 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF01EEF735A00F55173 /* main.m */; };
 		8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF31EEF735A00F55173 /* AppDelegate.m */; };
 		8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FFC6CF81EEF735A00F55173 /* Main.storyboard */; };
@@ -125,6 +127,8 @@
 		8FE58A91203C095800816ACC /* AliPayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliPayItem.h; sourceTree = "<group>"; };
 		8FE58A97203C202200816ACC /* SetpasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetpasswordViewController.h; sourceTree = "<group>"; };
 		8FE58A98203C202200816ACC /* SetpasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetpasswordViewController.m; sourceTree = "<group>"; };
+		8FF9601B209C0F5B00751522 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8FF9601D209C0F7400751522 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		8FFC6CEC1EEF735A00F55173 /* xtcPwd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xtcPwd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFC6CF01EEF735A00F55173 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8FFC6CF21EEF735A00F55173 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -365,6 +369,7 @@
 		8FFC6CE31EEF735A00F55173 = {
 			isa = PBXGroup;
 			children = (
+				8FF9601D209C0F7400751522 /* Podfile */,
 				8FFC6CEE1EEF735A00F55173 /* xtcPwd */,
 				8FFC6CED1EEF735A00F55173 /* Products */,
 				675E837E288704CCB2A32852 /* Pods */,
@@ -393,6 +398,7 @@
 				8FFC6CFB1EEF735A00F55173 /* Assets.xcassets */,
 				8FFC6CFD1EEF735A00F55173 /* LaunchScreen.storyboard */,
 				8FFC6D001EEF735A00F55173 /* Info.plist */,
+				8FF9601B209C0F5B00751522 /* GoogleService-Info.plist */,
 				8FFC6CEF1EEF735A00F55173 /* Supporting Files */,
 			);
 			path = xtcPwd;
@@ -456,6 +462,7 @@
 				8FFC6CEA1EEF735A00F55173 /* Resources */,
 				2573ACA2A1345FA521431AC0 /* [CP] Embed Pods Frameworks */,
 				3B376957006CE01CEB03E838 /* [CP] Copy Pods Resources */,
+				8FF9601F209C108400751522 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -507,10 +514,12 @@
 			files = (
 				7D4B27CA20299454001CA91B /* PhotoCollectionCell.xib in Resources */,
 				7DBF8FD420240D8D0030C3D5 /* DetailCollectionCell.xib in Resources */,
+				8FF9601E209C0F7400751522 /* Podfile in Resources */,
 				8F560B0C1FF0981100E726F9 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				8FFC6CFF1EEF735A00F55173 /* LaunchScreen.storyboard in Resources */,
 				8FFC6CFC1EEF735A00F55173 /* Assets.xcassets in Resources */,
 				8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */,
+				8FF9601C209C0F5B00751522 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +582,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8FF9601F209C108400751522 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

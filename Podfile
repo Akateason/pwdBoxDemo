@@ -16,5 +16,8 @@ pod 'CHTCollectionViewWaterfallLayout'
 # pod 'JKCategories'
 pod 'IQKeyboardManager'
 # pod 'Valet'
+pod 'Firebase/Core'
+pod 'Fabric'
+pod 'Crashlytics'
 
 end

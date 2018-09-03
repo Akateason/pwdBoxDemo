@@ -16,7 +16,7 @@
 #import <IQKeyboardManager.h>
 @import Firebase;
 //#import <Crashlytics/Crashlytics.h>
-
+#import <XTColor.h>
 
 @interface AppDelegate ()
 
@@ -28,10 +28,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [FIRApp configure] ;
+    [XTColor configCustomPlistName:@"MyColors"] ;
     
     [self setupDB] ;
     [self setupUI] ;
-    
+
     return YES ;
 }
 

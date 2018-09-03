@@ -8,6 +8,9 @@ target 'xtcPwd' do
   # Pods for xtcPwd
 
 pod 'XTlib'
+pod 'XTlib/Animations'
+pod 'XTlib/CustomUIs'
+
 
 pod 'UITableView+FDTemplateLayoutCell'
 pod 'SSZipArchive'

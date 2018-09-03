@@ -14,6 +14,7 @@
 #import "RootCollectionView.h"
 #import <CHTCollectionViewWaterfallLayout.h>
 #import <ReactiveObjC.h>
+#import "XTColor+MyColors.h"
 
 @interface PhotosVC () <UICollectionViewDataSource,RootCollectionViewDelegate,CHTCollectionViewDelegateWaterfallLayout,UICollectionViewDelegate>
 @property (copy, nonatomic) NSArray *datasource ;
@@ -40,7 +41,7 @@
     self.collectionView.delegate = self ;
     self.collectionView.xt_Delegate = self ;
     [self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"PhotoCollectionCell"] ;
-    self.collectionView.backgroundColor = [UIColor xt_bg] ;
+    self.collectionView.backgroundColor = [XTColor xt_bg] ;
     [self.collectionView loadNewInfo] ;
 }
 

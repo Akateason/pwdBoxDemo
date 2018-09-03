@@ -31,6 +31,8 @@
 		8F560B331FF3891C00E726F9 /* AddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B321FF3891C00E726F9 /* AddVC.m */; };
 		8F560B371FF38B6100E726F9 /* AddTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B361FF38B6100E726F9 /* AddTransition.m */; };
 		8F560B3A1FF38CB600E726F9 /* PresentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B391FF38CB600E726F9 /* PresentController.m */; };
+		8F7AA6D421394F390026344A /* MyColors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F7AA6D121394F390026344A /* MyColors.plist */; };
+		8F7AA6D521394F390026344A /* XTColor+MyColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7AA6D321394F390026344A /* XTColor+MyColors.m */; };
 		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
 		8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */; };
 		8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B21EF29F15005F0E74 /* PingTransition.m */; };
@@ -106,6 +108,9 @@
 		8F560B361FF38B6100E726F9 /* AddTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTransition.m; sourceTree = "<group>"; };
 		8F560B381FF38CB600E726F9 /* PresentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresentController.h; sourceTree = "<group>"; };
 		8F560B391FF38CB600E726F9 /* PresentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresentController.m; sourceTree = "<group>"; };
+		8F7AA6D121394F390026344A /* MyColors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyColors.plist; sourceTree = "<group>"; };
+		8F7AA6D221394F390026344A /* XTColor+MyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XTColor+MyColors.h"; sourceTree = "<group>"; };
+		8F7AA6D321394F390026344A /* XTColor+MyColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XTColor+MyColors.m"; sourceTree = "<group>"; };
 		8FBE48791EF2764C005F0E74 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		8FBE487A1EF2764C005F0E74 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		8FBE48AF1EF29F15005F0E74 /* PingReverseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingReverseTransition.h; sourceTree = "<group>"; };
@@ -128,7 +133,7 @@
 		8FE58A97203C202200816ACC /* SetpasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetpasswordViewController.h; sourceTree = "<group>"; };
 		8FE58A98203C202200816ACC /* SetpasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetpasswordViewController.m; sourceTree = "<group>"; };
 		8FF9601B209C0F5B00751522 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8FF9601D209C0F7400751522 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		8FF9601D209C0F7400751522 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8FFC6CEC1EEF735A00F55173 /* xtcPwd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xtcPwd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FFC6CF01EEF735A00F55173 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8FFC6CF21EEF735A00F55173 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -391,6 +396,9 @@
 				8FFC6CF81EEF735A00F55173 /* Main.storyboard */,
 				8FFC6CF21EEF735A00F55173 /* AppDelegate.h */,
 				8FFC6CF31EEF735A00F55173 /* AppDelegate.m */,
+				8F7AA6D121394F390026344A /* MyColors.plist */,
+				8F7AA6D221394F390026344A /* XTColor+MyColors.h */,
+				8F7AA6D321394F390026344A /* XTColor+MyColors.m */,
 				7D4B27BB20286B26001CA91B /* Vender */,
 				8FFC6D211EEF7A5A00F55173 /* Model */,
 				8FFC6D1A1EEF74E000F55173 /* VC */,
@@ -515,6 +523,7 @@
 				7D4B27CA20299454001CA91B /* PhotoCollectionCell.xib in Resources */,
 				7DBF8FD420240D8D0030C3D5 /* DetailCollectionCell.xib in Resources */,
 				8FF9601E209C0F7400751522 /* Podfile in Resources */,
+				8F7AA6D421394F390026344A /* MyColors.plist in Resources */,
 				8F560B0C1FF0981100E726F9 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				8FFC6CFF1EEF735A00F55173 /* LaunchScreen.storyboard in Resources */,
 				8FFC6CFC1EEF735A00F55173 /* Assets.xcassets in Resources */,
@@ -605,6 +614,7 @@
 			files = (
 				8F560B3A1FF38CB600E726F9 /* PresentController.m in Sources */,
 				8F560B171FF0EB5B00E726F9 /* CellNegativeTransition.m in Sources */,
+				8F7AA6D521394F390026344A /* XTColor+MyColors.m in Sources */,
 				8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */,
 				7D4B27C520299403001CA91B /* PhotosVC.m in Sources */,
 				8FE58A99203C202200816ACC /* SetpasswordViewController.m in Sources */,

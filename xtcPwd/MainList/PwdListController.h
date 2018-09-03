@@ -7,6 +7,8 @@
 //
 
 #import "RootCtrl.h"
+#import "XTlib.h"
+
 @class PwdItem ;
 
 @interface PwdListController : RootCtrl

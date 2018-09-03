@@ -7,7 +7,7 @@
 //
 
 #import "UserViewController.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 #import "SVProgressHUD.h"
 #import "PingReverseTransition.h"
 #import "UIImage+AddFunction.h"
@@ -48,7 +48,7 @@
 }
 
 - (void)setupUI {
-    self.view.backgroundColor = [UIColor xt_main] ;
+    self.view.backgroundColor = [XTColor xt_main] ;
     
     [_btClose setImage:[[UIImage imageNamed:@"face"] imageWithTintColor:[UIColor whiteColor]]
               forState:0] ;
@@ -57,18 +57,18 @@
     [self.view layoutIfNeeded] ;
     
     for (UIButton *bt in _cateBts) {
-        [bt setTitleColor:[UIColor xt_main] forState:UIControlStateSelected] ;
-        [bt setTitleColor:[UIColor xt_text_light] forState:UIControlStateNormal] ;
+        [bt setTitleColor:[XTColor xt_main] forState:UIControlStateSelected] ;
+        [bt setTitleColor:[XTColor xt_text_light] forState:UIControlStateNormal] ;
         bt.layer.cornerRadius = bt.frame.size.width / 2. ;
     }
     
     for (UIButton *bt in _sortBts) {
-        [bt setTitleColor:[UIColor xt_main] forState:UIControlStateSelected] ;
-        [bt setTitleColor:[UIColor xt_text_light] forState:UIControlStateNormal] ;
+        [bt setTitleColor:[XTColor xt_main] forState:UIControlStateSelected] ;
+        [bt setTitleColor:[XTColor xt_text_light] forState:UIControlStateNormal] ;
         bt.layer.cornerRadius = bt.frame.size.width / 2. ;
     }
     
-    _sortChangeBt.backgroundColor = [UIColor xt_main] ;
+    _sortChangeBt.backgroundColor = [XTColor xt_main] ;
     [_sortChangeBt setTitleColor:[UIColor whiteColor] forState:0] ;
     _sortChangeBt.layer.borderColor = [UIColor whiteColor].CGColor ;
     _sortChangeBt.layer.borderWidth = 1. ;
@@ -88,10 +88,10 @@
     _confirmBt.layer.cornerRadius = 15. ;
     _confirmBt.layer.masksToBounds = YES ;
     _confirmBt.backgroundColor = [UIColor whiteColor] ;
-    [_confirmBt setTitleColor:[UIColor xt_main] forState:0] ;
+    [_confirmBt setTitleColor:[XTColor xt_main] forState:0] ;
 
     _btOpenPwd.backgroundColor = [UIColor whiteColor] ;
-    [_btOpenPwd setTitleColor:[UIColor xt_main] forState:0] ;
+    [_btOpenPwd setTitleColor:[XTColor xt_main] forState:0] ;
     _btOpenPwd.layer.cornerRadius = CGRectGetWidth(_btOpenPwd.frame) / 2. ;
 }
 

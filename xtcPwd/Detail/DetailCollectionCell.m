@@ -7,7 +7,7 @@
 //
 
 #import "DetailCollectionCell.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 #import <SVProgressHUD.h>
 #import "PwdItem.h"
 #import <UIImageView+WebCache.h>
@@ -38,7 +38,7 @@
 //    self.bgView.layer.borderWidth = .5 ;
 //    self.bgView.layer.borderColor = [UIColor xt_text_light].CGColor ;
     
-    UIColor *wordsColor = [UIColor xt_text_dark] ;
+    UIColor *wordsColor = [XTColor xt_text_dark] ;
     _lbName.textColor = wordsColor ;
     _lbAccount.textColor = wordsColor ;
     _lbPwd.textColor = wordsColor ;
@@ -48,13 +48,13 @@
     [_btShow setTitleColor:[UIColor whiteColor] forState:0] ;
     _btCopy.layer.cornerRadius = 5. ;
     _btShow.layer.cornerRadius = 5. ;
-    _btCopy.backgroundColor = [UIColor xt_main] ;
-    _btShow.backgroundColor = [UIColor xt_main] ;
+    _btCopy.backgroundColor = [XTColor xt_main] ;
+    _btShow.backgroundColor = [XTColor xt_main] ;
     
     self.image.layer.cornerRadius = self.image.frame.size.width / 6. ;
     self.image.layer.masksToBounds = YES ;
     self.image.layer.borderWidth = .5 ;
-    self.image.layer.borderColor = [UIColor xt_text_light].CGColor ;
+    self.image.layer.borderColor = [XTColor xt_text_light].CGColor ;
 }
 
 - (void)setItem:(PwdItem *)item {

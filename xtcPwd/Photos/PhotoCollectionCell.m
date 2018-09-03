@@ -10,7 +10,7 @@
 #import "BYImageValue.h"
 #import <UIImageView+WebCache.h>
 #import "ScreenHeader.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 #import "UIImage+AddFunction.h"
 
 @implementation PhotoCollectionCell
@@ -22,16 +22,16 @@
     self.imageView.layer.cornerRadius = 15. ;
     self.imageView.layer.masksToBounds = YES ;
     self.imageView.layer.borderWidth = .5 ;
-    self.imageView.layer.borderColor = [UIColor xt_text_light].CGColor ;
+    self.imageView.layer.borderColor = [XTColor xt_text_light].CGColor ;
     self.backgroundColor = [UIColor whiteColor] ;
 //    self.layer.borderWidth = 1. ;
 //    self.layer.borderColor = [UIColor xt_text_dark].CGColor ;
-    self.label.textColor = [UIColor xt_text_light] ;
+    self.label.textColor = [XTColor xt_text_light] ;
     self.addP.layer.cornerRadius = 15. / 2. ;
     self.addP.layer.borderColor = [UIColor whiteColor].CGColor ;
     self.addP.layer.borderWidth = 3 ;
 
-    self.addP.image = [self.addP.image imageWithTintColor:[UIColor xt_main]] ;
+    self.addP.image = [self.addP.image imageWithTintColor:[XTColor xt_main]] ;
 //    self.addP.layer.masksToBounds = YES ;
 }
 

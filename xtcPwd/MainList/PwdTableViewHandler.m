@@ -63,7 +63,7 @@
               [cell.image sd_setImageWithURL:[NSURL URLWithString:item.imageUrl]
                                    completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                                        
-                   image = [UIImage thumbnailWithImage:image size:IMAGE_SIZE_SCALE2(cell.image.frame.size)] ;
+                   image = [UIImage thumbnailWithImage:image size:GET_IMAGE_SIZE_SCALE2x(cell.image.frame.size)] ;
 
                                    }] ;
                           }] ;

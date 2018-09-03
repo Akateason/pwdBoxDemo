@@ -7,7 +7,7 @@
 
 #import "SearchVC.h"
 #import <UINavigationController+FDFullscreenPopGesture.h>
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 #import "UIImage+AddFunction.h"
 #import "SearchNegativeTransition.h"
 #import "PwdListController.h"
@@ -86,18 +86,18 @@
     self.navigationController.delegate = self ;
     
     self.topbarHeight.constant = APP_NAVIGATIONBAR_HEIGHT + APP_STATUSBAR_HEIGHT ;
-    self.view.backgroundColor = [UIColor xt_main] ;
+    self.view.backgroundColor = [XTColor xt_main] ;
     self.searchTextfield.delegate = self ;
-    self.searchTextfield.textColor = [UIColor xt_text_dark] ;
+    self.searchTextfield.textColor = [XTColor xt_text_dark] ;
     self.table.dataSource = self ;
     self.table.delegate = self ;
-    self.table.backgroundColor = [UIColor xt_main] ;
+    self.table.backgroundColor = [XTColor xt_main] ;
     
     [self.searchTextfield addTarget:self action:@selector(tfTextChange:) forControlEvents:UIControlEventEditingChanged];
     
-    self.topBackView.backgroundColor = [UIColor xt_main] ;
+    self.topBackView.backgroundColor = [XTColor xt_main] ;
     self.searchBackView.backgroundColor = [UIColor whiteColor] ;
-    self.imageClose.image = [[UIImage imageNamed:@"close2"] imageWithTintColor:[UIColor xt_main]] ;
+    self.imageClose.image = [[UIImage imageNamed:@"close2"] imageWithTintColor:[XTColor xt_main]] ;
     self.imageClose.layer.cornerRadius = 10. ;
     self.imageClose.layer.masksToBounds = YES ;
     self.searchBackView.layer.cornerRadius = self.searchClearButton.frame.size.height / 2. ;

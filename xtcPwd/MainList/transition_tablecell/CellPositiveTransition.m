@@ -10,7 +10,7 @@
 #import "PwdListController.h"
 #import "DetailViewController.h"
 #import "ListCell.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 #import "RootTableView.h"
 #import "DetailCollectionCell.h"
 

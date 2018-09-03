@@ -14,7 +14,7 @@
 #import "RootTableView.h"
 #import <ReactiveObjC.h>
 #import "SVProgressHUD.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 #import "UIImage+AddFunction.h"
 #import "PingTransition.h"
 #import <Masonry.h>
@@ -155,9 +155,9 @@
 
 - (void)setupUIs {
     self.topNavFlex.constant = APP_NAVIGATIONBAR_HEIGHT + APP_STATUSBAR_HEIGHT ;
-    self.view.backgroundColor = [UIColor xt_main] ;
+    self.view.backgroundColor = [XTColor xt_main] ;
     [self.btUser setImage:[[UIImage imageNamed:@"user"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
-    [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[UIColor xt_main]] forState:0] ;
+    [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[XTColor xt_main]] forState:0] ;
     [self.btSearch setImage:[[UIImage imageNamed:@"searchBt"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
 }
 
@@ -168,7 +168,7 @@
     self.table.dataSource   = self.tableHandler ;
     self.table.xt_Delegate  = self ;
     self.table.mj_footer = nil ;
-    self.table.backgroundColor = [UIColor xt_bg] ; // [UIColor whiteColor] ;
+    self.table.backgroundColor = [XTColor xt_bg] ; // [UIColor whiteColor] ;
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone ;
 }
 

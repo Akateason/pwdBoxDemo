@@ -9,12 +9,13 @@
 #import "EditViewController.h"
 #import "PwdItem.h"
 #import "SVProgressHUD.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 #import "MyTextField.h"
 #import <UIImageView+WebCache.h>
 #import <ReactiveObjC.h>
 #import "PhotosVC.h"
 #import "XTAnimation.h"
+#import <XTlib.h>
 
 @interface EditViewController ()
 
@@ -57,15 +58,15 @@
      }] ;
     
     RAC(self.lbName,textColor) = [self.nameTf.rac_textSignal map:^id(NSString *x) {
-        return x.length ? [UIColor xt_text_light] : [UIColor redColor] ;
+        return x.length ? [XTColor xt_text_light] : [XTColor redColor] ;
     }] ;
     
     RAC(self.lbAccount,textColor) = [self.accountTf.rac_textSignal map:^id _Nullable(NSString *str) {
-        return [str length] ? [UIColor xt_text_light] : [UIColor redColor] ;
+        return [str length] ? [XTColor xt_text_light] : [XTColor redColor] ;
     }] ;
     
     RAC(self.lbPwd,textColor) = [self.passwordTf.rac_textSignal map:^id _Nullable(NSString *str) {
-        return [str length] ? [UIColor xt_text_light] : [UIColor redColor] ;
+        return [str length] ? [XTColor xt_text_light] : [XTColor redColor] ;
     }] ;
 }
 
@@ -87,19 +88,19 @@
 }
 
 - (void)setupUI {
-    self.view.backgroundColor = [UIColor xt_bg] ;
+    self.view.backgroundColor = [XTColor xt_bg] ;
     
-    _lbName.textColor = [UIColor xt_text_light] ;
-    _lbPwd.textColor = [UIColor xt_text_light] ;
-    _lbDetail.textColor = [UIColor xt_text_light] ;
-    _lbAccount.textColor = [UIColor xt_text_light] ;
+    _lbName.textColor = [XTColor xt_text_light] ;
+    _lbPwd.textColor = [XTColor xt_text_light] ;
+    _lbDetail.textColor = [XTColor xt_text_light] ;
+    _lbAccount.textColor = [XTColor xt_text_light] ;
     
     _imageView.layer.cornerRadius = _imageView.frame.size.width / 6. ;
     _imageView.layer.masksToBounds = YES ;
-    _nameTf.textColor = [UIColor xt_main] ;
-    _accountTf.textColor = [UIColor xt_main] ;
-    _passwordTf.textColor = [UIColor xt_main] ;
-    _detailTv.textColor = [UIColor xt_main] ;
+    _nameTf.textColor = [XTColor xt_main] ;
+    _accountTf.textColor = [XTColor xt_main] ;
+    _passwordTf.textColor = [XTColor xt_main] ;
+    _detailTv.textColor = [XTColor xt_main] ;
     
     _nameTf.backgroundColor = [UIColor whiteColor] ;
     _accountTf.backgroundColor = [UIColor whiteColor] ;

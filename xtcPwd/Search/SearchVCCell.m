@@ -7,7 +7,7 @@
 //
 
 #import "SearchVCCell.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 #import "PwdItem.h"
 
 @implementation SearchVCCell
@@ -17,7 +17,7 @@
 }
 
 - (void)prepareUI {
-    self.backgroundColor = [UIColor xt_main] ;
+    self.backgroundColor = [XTColor xt_main] ;
     self.account.textColor = [UIColor colorWithWhite:1 alpha:.6] ;
 }
 

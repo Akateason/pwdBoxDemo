@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 pg. All rights reserved.
 //
 
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 
 #ifndef AliPayDemo_Header_h
 #define AliPayDemo_Header_h
@@ -63,10 +63,10 @@
 /*********************** 颜色 *************************/
 
 //背景色   深蓝色
-#define BACKGROUNDCOLOR      [UIColor xt_main]
+#define BACKGROUNDCOLOR      [XTColor xt_main]
 
 //选中颜色  浅蓝色
-#define SELECTCOLOR          [UIColor whiteColor]
+#define SELECTCOLOR          [XTColor whiteColor]
 
 
 //选错的颜色  红色

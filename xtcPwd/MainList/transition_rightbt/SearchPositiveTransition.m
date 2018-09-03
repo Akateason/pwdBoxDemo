@@ -10,7 +10,7 @@
 #import "PwdListController.h"
 #import "SearchVC.h"
 #import "UIImage+AddFunction.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 
 @implementation SearchPositiveTransition
 
@@ -51,7 +51,7 @@
     
     UIView *backView = [UIView new] ;
     backView.frame = CGRectMake(0, 0, APP_WIDTH, 64) ;
-    backView.backgroundColor = [UIColor xt_main] ;
+    backView.backgroundColor = [XTColor xt_main] ;
     
     // 把动画前后的两个ViewController加到容器中,顺序很重要,snapShotView在上方
     [containerView addSubview:backView] ;

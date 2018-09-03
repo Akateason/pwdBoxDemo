@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "XTFMDB.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 #import "UIImage+AddFunction.h"
 #import <SVProgressHUD.h>
 #import "PwdItem.h"
@@ -55,7 +55,7 @@
 
 - (void)setupUI {
     //2 nav style
-    UIImage *img = [UIImage imageWithColor:[UIColor xt_main]
+    UIImage *img = [UIImage imageWithColor:[XTColor xt_main]
                                       size:CGSizeMake(320.0, 64.0)] ;
     [[UINavigationBar appearance] setBackgroundImage:img
                                        forBarMetrics:UIBarMetricsDefault] ;

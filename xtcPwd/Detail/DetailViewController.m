@@ -9,7 +9,7 @@
 #import "DetailViewController.h"
 #import "EditViewController.h"
 #import "PwdItem.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 #import "SVProgressHUD.h"
 #import "CellNegativeTransition.h"
 #import "PwdListController.h"
@@ -92,7 +92,7 @@ static const float kFlexOfSide = 0 ;
     self.collectionView.collectionViewLayout = layout ;
     self.collectionView.dataSource = self ;
     self.collectionView.delegate = self ;
-    self.collectionView.backgroundColor = [UIColor xt_bg] ;
+    self.collectionView.backgroundColor = [XTColor xt_bg] ;
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.sendIndex inSection:0]
                                 atScrollPosition:UICollectionViewScrollPositionCenteredVertically
                                         animated:NO] ;

@@ -10,7 +10,7 @@
 #import "PwdListController.h"
 #import "SearchVC.h"
 #import "UIImage+AddFunction.h"
-#import "UIColor+AllColors.h"
+#import "XTColor+MyColors.h"
 
 @implementation SearchNegativeTransition
 
@@ -41,7 +41,7 @@
                                    30, 30) ;
     btImageView.layer.cornerRadius = 15 ;
     btImageView.alpha = 0 ;
-    btImageView.backgroundColor = [UIColor xt_main] ;
+    btImageView.backgroundColor = [XTColor xt_main] ;
     
     [containerView insertSubview:toVC.view belowSubview:fromVC.view] ;
     [containerView addSubview:topBar] ;

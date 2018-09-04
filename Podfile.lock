@@ -86,7 +86,7 @@ PODS:
   - XTFMDB (1.5.0):
     - FMDB
     - YYModel
-  - XTlib (1.2.23):
+  - XTlib (1.2.25):
     - Masonry
     - MJRefresh
     - ReactiveObjC
@@ -96,20 +96,9 @@ PODS:
     - Valet (= 2.4.2)
     - XTColor
     - XTFMDB
-    - XTlib/base (= 1.2.23)
+    - XTlib/base (= 1.2.25)
     - XTReq
-  - XTlib/Animations (1.2.23):
-    - Masonry
-    - MJRefresh
-    - ReactiveObjC
-    - RxWebViewController
-    - SDWebImage
-    - SSZipArchive
-    - Valet (= 2.4.2)
-    - XTColor
-    - XTFMDB
-    - XTReq
-  - XTlib/base (1.2.23):
+  - XTlib/Animations (1.2.25):
     - Masonry
     - MJRefresh
     - ReactiveObjC
@@ -120,7 +109,30 @@ PODS:
     - XTColor
     - XTFMDB
     - XTReq
-  - XTlib/CustomUIs (1.2.23):
+  - XTlib/base (1.2.25):
+    - Masonry
+    - MJRefresh
+    - ReactiveObjC
+    - RxWebViewController
+    - SDWebImage
+    - SSZipArchive
+    - Valet (= 2.4.2)
+    - XTColor
+    - XTFMDB
+    - XTReq
+    - XTStat
+  - XTlib/CustomUIs (1.2.25):
+    - Masonry
+    - MJRefresh
+    - ReactiveObjC
+    - RxWebViewController
+    - SDWebImage
+    - SSZipArchive
+    - Valet (= 2.4.2)
+    - XTColor
+    - XTFMDB
+    - XTReq
+  - XTlib/util (1.2.25):
     - Masonry
     - MJRefresh
     - ReactiveObjC
@@ -136,6 +148,8 @@ PODS:
     - SVProgressHUD
     - XTFMDB
     - YYModel
+  - XTStat (0.0.1):
+    - XTlib/util
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -177,8 +191,9 @@ SPEC CHECKSUMS:
   Valet: 14463ef24fab8fd5809044ecedb61484b799fdd6
   XTColor: 77dc1fb053ad58e6821d7de84fabbec361402d94
   XTFMDB: ea6aafd008968bc3a28e7378449df3a992b15e6b
-  XTlib: a51e59390e1acc58f197ea2035f0cc8d43592be5
+  XTlib: 933c745a591f60a31b4c0c175b9e24d6c8545029
   XTReq: 93321bcb9407e902d01eabe33d174a3420174f0f
+  XTStat: d36e47b8542f0593733c68b0a3490125619d852f
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
 PODFILE CHECKSUM: 10b6d74be894db592977c8a5399130bb9baa77a9

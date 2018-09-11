@@ -66,7 +66,7 @@
                               scrollPosition:UITableViewScrollPositionNone] ;
             [self.tableHandler tableView:self.table didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]] ;
         }) ;
-        
+         
     }) ;
     
 }

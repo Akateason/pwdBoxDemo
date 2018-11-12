@@ -165,7 +165,7 @@
                                            detail:_detailTv.text
                                            imgUrl:self.itemWillBeEdit.imageUrl
                                              type:self.typeWillBeAdd] ;
-    int idItem = [item insert] ;
+    int idItem = [item xt_insert] ;
     if (idItem) {
         [self.navigationController popViewControllerAnimated:YES] ;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"AddFinishNote" object:nil] ;
@@ -183,7 +183,7 @@
                                            imgUrl:self.itemWillBeEdit.imageUrl
                                              type:self.typeWillBeAdd] ;
     item.pkid = self.itemWillBeEdit.pkid ;
-    BOOL bSuccess = [item update] ;
+    BOOL bSuccess = [item xt_update] ;
     if (bSuccess) {
         [self.navigationController popViewControllerAnimated:YES] ;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NoteEditDone" object:item] ;

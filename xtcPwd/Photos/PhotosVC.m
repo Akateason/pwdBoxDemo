@@ -114,7 +114,7 @@ static int kPage = 0  ;
 {
     BYImageValue *imageVal = self.datasource[indexPath.row] ;
     self.item.imageUrl = imageVal.thumbnailUrl ;
-    if ([self.item update]) {
+    if ([self.item xt_update]) {
         [self.subject sendNext:imageVal.thumbnailUrl] ;
         [self.subject sendCompleted] ;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NoteEditDone" object:self.item] ;

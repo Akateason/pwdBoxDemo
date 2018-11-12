@@ -28,15 +28,15 @@
     [param setObject:@(offset) forKey:@"offset"] ;
     [param setObject:@"zh-CN" forKey:@"mkt"] ;
     
-    [XTCacheRequest cacheGET:@"https://api.cognitive.microsoft.com/bing/v7.0/images/search" header:header parameters:param judgeResult:^XTReqSaveJudgment(id json) {
+    [XTCacheRequest cachedReq:XTRequestMode_GET_MODE url:@"https://api.cognitive.microsoft.com/bing/v7.0/images/search" hud:NO header:header param:param body:nil policy:XTReqPolicy_NeverCache_WaitReturn overTimeIfNeed:0 judgeResult:^XTReqSaveJudgment(BOOL isNewest, id json) {
 
         id value = json[@"value"] ;
         NSArray *list = [NSArray yy_modelArrayWithClass:[BYImageValue class] json:value] ;
         returnImages(list) ;
         
         return !value ? XTReqSaveJudgment_NotSave : XTReqSaveJudgment_willSave ;
+
     }] ;
-    
 }
 
 @end

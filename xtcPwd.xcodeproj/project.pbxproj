@@ -468,7 +468,6 @@
 				8FFC6CE81EEF735A00F55173 /* Sources */,
 				8FFC6CE91EEF735A00F55173 /* Frameworks */,
 				8FFC6CEA1EEF735A00F55173 /* Resources */,
-				2573ACA2A1345FA521431AC0 /* [CP] Embed Pods Frameworks */,
 				3B376957006CE01CEB03E838 /* [CP] Copy Pods Resources */,
 				8FF9601F209C108400751522 /* ShellScript */,
 			);
@@ -492,7 +491,7 @@
 				TargetAttributes = {
 					8FFC6CEB1EEF735A00F55173 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 83SLLMU85B;
+						DevelopmentTeam = Z35T9799TW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -535,21 +534,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2573ACA2A1345FA521431AC0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3B376957006CE01CEB03E838 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -558,16 +542,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/JSPatch/JSPatch/JSPatch.js",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_ROOT}/XTColor/XTColor/color/XTColors.plist",
+				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTSegment/btBase.png",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSPatch.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XTColors.plist",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/btBase.png",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -602,8 +590,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+			shellScript = "\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -773,7 +761,7 @@
 			baseConfigurationReference = 584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 83SLLMU85B;
+				DEVELOPMENT_TEAM = Z35T9799TW;
 				INFOPLIST_FILE = xtcPwd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teason.xtcPwd;
@@ -786,7 +774,7 @@
 			baseConfigurationReference = 6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 83SLLMU85B;
+				DEVELOPMENT_TEAM = Z35T9799TW;
 				INFOPLIST_FILE = xtcPwd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teason.xtcPwd;

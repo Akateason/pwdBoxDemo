@@ -14,9 +14,8 @@
 #import "PwdItem.h"
 #import "XTReq.h"
 #import <IQKeyboardManager.h>
-@import Firebase;
-//#import <Crashlytics/Crashlytics.h>
 #import <XTColor.h>
+#import <XTDBVersion.h>
 
 @interface AppDelegate ()
 
@@ -25,7 +24,6 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [FIRApp configure] ;
     [XTColor configCustomPlistName:@"MyColors"] ;
     
     [self setupDB] ;
@@ -35,21 +33,15 @@
 }
 
 - (void)setupDB {
+    [XTFMDBBase sharedInstance].isDebugMode = YES ;
     [[XTFMDBBase sharedInstance] configureDB:@"teasonsDB"] ;
-    [PwdItem createTable] ;
-    //upgrade v2
-    [[XTFMDBBase sharedInstance] dbUpgradeTable:PwdItem.class
-                                      paramsAdd:@[@"readCount",@"pinyin"]
-                                        version:2] ;
-    //upgrade v3
-    [[XTFMDBBase sharedInstance] dbUpgradeTable:PwdItem.class
-                                      paramsAdd:@[@"imageUrl"]
-                                        version:3] ;
+    [PwdItem xt_createTable] ;
+    
     // pin Yin
     [PwdItem addPinyinIfNeeded] ;
     
     // req cache
-    [XTResponseDBModel createTable] ;
+    [XTResponseDBModel xt_createTable] ;
 }
 
 - (void)setupUI {
@@ -83,7 +75,6 @@
     keyboardManager.keyboardDistanceFromTextField = 10.0f; // 输入框距离键盘的距离
     
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -61,7 +61,7 @@
     _item = item ;
     
     // fetch from db .
-    _item = [PwdItem findFirstWhere:[NSString stringWithFormat:@"pkid == %d",item.pkid]] ;
+    _item = [PwdItem xt_findFirstWhere:[NSString stringWithFormat:@"pkid == %d",item.pkid]] ;
     
     _lbName.text = self.item.name ;
     _lbAccount.text = self.item.account ;
@@ -71,7 +71,7 @@
               placeholderImage:[UIImage imageNamed:@"logo"]] ;
     
     _item.readCount ++ ;
-    [_item update] ;
+    [_item xt_update] ;
 }
 
 - (NSString *)makePwdHidden {

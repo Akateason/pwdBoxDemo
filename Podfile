@@ -11,16 +11,14 @@ pod 'XTlib'
 pod 'XTlib/Animations'
 pod 'XTlib/CustomUIs'
 
-
 pod 'UITableView+FDTemplateLayoutCell'
 pod 'SSZipArchive'
 pod 'FDFullscreenPopGesture', '1.1'
 pod 'CHTCollectionViewWaterfallLayout'
-# pod 'JKCategories'
 pod 'IQKeyboardManager'
+# pod 'JKCategories'
 # pod 'Valet'
-pod 'Firebase/Core'
-pod 'Fabric'
-pod 'Crashlytics'
+pod 'JSPatch'
+
 
 end

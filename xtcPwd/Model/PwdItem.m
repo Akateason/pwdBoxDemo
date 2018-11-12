@@ -44,7 +44,7 @@
 }
 
 + (void)addPinyinIfNeeded {
-    NSArray *listNoPinyin = [PwdItem findWithSql:@"SELECT * FROM PwdItem WHERE pinyin IS NULL"] ;
+    NSArray *listNoPinyin = [PwdItem xt_findWithSql:@"SELECT * FROM PwdItem WHERE pinyin IS NULL"] ;
     [listNoPinyin enumerateObjectsUsingBlock:^(PwdItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
 
         HanyuPinyinOutputFormat *outputFormat = [[HanyuPinyinOutputFormat alloc] init];
@@ -57,7 +57,7 @@
         item.pinyin = outputPinyin ;
     }] ;
     
-    [PwdItem updateList:listNoPinyin] ;
+    [PwdItem xt_updateListByPkid:listNoPinyin] ;
 }
 
 @end

@@ -31,7 +31,7 @@
 #import "KeychainData.h"
 #import "SetpasswordViewController.h"
 
-@interface PwdListController () <UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,RootTableViewDelegate>
+@interface PwdListController () <UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,UITableViewXTReloaderDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topNavFlex;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
@@ -170,6 +170,8 @@
     self.table.mj_footer = nil ;
     self.table.backgroundColor = [XTColor xt_bg] ; // [UIColor whiteColor] ;
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone ;
+    
+    [self.table loadNewInfoInBackGround:YES] ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -216,7 +218,7 @@
 
 - (void)tableView:(RootTableView *)table loadNew:(void (^)(void))endRefresh
 {
-    NSArray *listBack = [PwdItem findWithSql:[self sqlWhereString]] ;
+    NSArray *listBack = [PwdItem xt_findWithSql:[self sqlWhereString]] ;
     sleep(1) ;
     self.dataList = listBack ;
     endRefresh() ;

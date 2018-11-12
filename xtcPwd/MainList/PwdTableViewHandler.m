@@ -58,7 +58,7 @@
               
               BYImageValue *imageValue = [list firstObject] ;
               item.imageUrl = imageValue.thumbnailUrl ;
-              [item update] ;
+              [item xt_update] ;
               
               [cell.image sd_setImageWithURL:[NSURL URLWithString:item.imageUrl]
                                    completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
@@ -194,7 +194,7 @@
 
 - (void)doDelete:(NSIndexPath *)indexPath {
     PwdItem *item = self.fromCtrller.dataList[indexPath.row] ;
-    BOOL bDel = [item deleteModel] ;
+    BOOL bDel = [item xt_deleteModel] ;
     if (!bDel) {
         [SVProgressHUD showErrorWithStatus:@"delete fail"] ;
         return ;

@@ -116,7 +116,7 @@
         return ;
     }
     
-    NSArray *list = [PwdItem selectWhere:STR_FORMAT(@"name like '%%%@%%' or account like '%%%@%%' ;",textField.text,textField.text)] ;
+    NSArray *list = [PwdItem xt_findWhere:STR_FORMAT(@"name like '%%%@%%' or account like '%%%@%%' ;",textField.text,textField.text)] ;
     self.resultList = [list copy] ;
     [self.table reloadData] ;
 }

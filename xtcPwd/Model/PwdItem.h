@@ -5,8 +5,8 @@
 //  Created by teason23 on 2017/6/13.
 //  Copyright © 2017年 teason. All rights reserved.
 //
-
-#import "XTDBModel.h"
+#import <XTFMDB.h>
+#import <Foundation/Foundation.h>
 
 typedef enum : NSUInteger {
     typeNone ,
@@ -14,7 +14,7 @@ typedef enum : NSUInteger {
     typeCard ,
 } TypeOfPwdItem;
 
-@interface PwdItem : XTDBModel
+@interface PwdItem : NSObject
 
 //ADD IN v1
 @property (nonatomic,copy)   NSString *name ;
@@ -27,6 +27,11 @@ typedef enum : NSUInteger {
 @property (nonatomic,copy)   NSString *pinyin ;
 //ADD IN V3
 @property (copy,nonatomic)   NSString *imageUrl ;
+//ADD IN V4
+@property (nonatomic) long long createTime ;
+@property (nonatomic) long long updateTime ;
+@property (nonatomic) BOOL      isDel ;
+
 
 - (NSString *)encodePwd:(NSString *)password ;
 - (NSString *)decodePwd ;

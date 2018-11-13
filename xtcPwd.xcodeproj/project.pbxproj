@@ -37,6 +37,7 @@
 		8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */; };
 		8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B21EF29F15005F0E74 /* PingTransition.m */; };
 		8FC14CFB1FF3FBB40024F86E /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC14CFA1FF3FBB40024F86E /* SearchVC.m */; };
+		8FC704672199292400ADCF57 /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 8FC704662199292400ADCF57 /* test.js */; };
 		8FE58A92203C095800816ACC /* AliPayViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A88203C095800816ACC /* AliPayViews.m */; };
 		8FE58A93203C095800816ACC /* KeychainData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A8A203C095800816ACC /* KeychainData.m */; };
 		8FE58A94203C095800816ACC /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE58A8B203C095800816ACC /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -119,6 +120,7 @@
 		8FBE48B21EF29F15005F0E74 /* PingTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingTransition.m; sourceTree = "<group>"; };
 		8FC14CF91FF3FBB40024F86E /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
 		8FC14CFA1FF3FBB40024F86E /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
+		8FC704662199292400ADCF57 /* test.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
 		8FE58A87203C095800816ACC /* AlipaySubItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlipaySubItem.h; sourceTree = "<group>"; };
 		8FE58A88203C095800816ACC /* AliPayViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliPayViews.m; sourceTree = "<group>"; };
 		8FE58A89203C095800816ACC /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				8FFC6D001EEF735A00F55173 /* Info.plist */,
 				8FF9601B209C0F5B00751522 /* GoogleService-Info.plist */,
 				8FFC6CEF1EEF735A00F55173 /* Supporting Files */,
+				8FC704662199292400ADCF57 /* test.js */,
 			);
 			path = xtcPwd;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FC704672199292400ADCF57 /* test.js in Resources */,
 				7D4B27CA20299454001CA91B /* PhotoCollectionCell.xib in Resources */,
 				7DBF8FD420240D8D0030C3D5 /* DetailCollectionCell.xib in Resources */,
 				8FF9601E209C0F7400751522 /* Podfile in Resources */,
@@ -590,7 +594,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "\n";
+			shellScript = "
+";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

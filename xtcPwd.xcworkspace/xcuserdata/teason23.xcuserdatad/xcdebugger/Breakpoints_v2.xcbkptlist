@@ -32,32 +32,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xtcPwd/MainList/transition_tablecell/CellPositiveTransition.m"
-            timestampString = "566198360.830471"
+            filePath = "xtcPwd/MainList/PwdListController.m"
+            timestampString = "566213663.532292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "-animateTransition:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xtcPwd/Detail/DetailViewController.m"
-            timestampString = "566200863.22745"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "-curIndexPath"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "-tableView:loadNew:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

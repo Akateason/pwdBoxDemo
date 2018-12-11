@@ -107,7 +107,6 @@
     
     [self setupUIs] ;
     [self setupTable] ;
-    [self.table xt_loadNewInfoInBackGround:YES] ;
     [self pwdSetup] ;
     
     @weakify(self)
@@ -173,7 +172,7 @@
     self.table.mj_footer = nil ;
     self.table.backgroundColor = [XTColor xt_bg] ; // [UIColor whiteColor] ;
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone ;
-    
+    [self.table xt_setup];
     [self.table xt_loadNewInfoInBackGround:YES] ;
 }
 
@@ -202,7 +201,7 @@
     NSString *orderBy = @"pinyin" ;
     switch ([FilterCondition sharedSingleton].sortByType) {
         case sortByType_spell: orderBy = @"pinyin" ; break;
-        case sortByType_time: orderBy = @"updateTime" ; break;
+        case sortByType_time: orderBy = @"xt_updateTime" ; break;
         case sortByType_read: orderBy = @"readCount" ; break;
         default:
             break;
@@ -210,11 +209,14 @@
     
     NSString *ascOrDesc = [FilterCondition sharedSingleton].isAscOrDesc ? @"ASC" : @"DESC" ;
     
-    return !self.pwdType
+    NSString *resultSql = !self.pwdType
     ?
     STR_FORMAT(@"SELECT * FROM PwdItem ORDER BY %@ %@",orderBy,ascOrDesc)
     :
     STR_FORMAT(@"SELECT * FROM PwdItem WHERE typeOfPwdItem == %d ORDER BY %@ %@",(int)self.pwdType,orderBy,ascOrDesc) ;
+    
+    NSLog(@"refresh sql: %@",resultSql);
+    return resultSql;
 }
 
 #pragma mark - table

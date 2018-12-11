@@ -13,6 +13,6 @@
 @interface DetailViewController : UIViewController
 @property (assign, nonatomic) NSInteger currentIndex ;
 @property (weak, nonatomic, readonly) IBOutlet UICollectionView *collectionView;
-
+@property (assign, nonatomic) NSInteger sendIndex ;
 - (void)selectedIndexInHomeList:(NSInteger)index list:(NSArray *)list ;
 @end

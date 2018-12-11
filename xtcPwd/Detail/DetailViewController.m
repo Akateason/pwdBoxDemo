@@ -24,10 +24,11 @@
 @interface DetailViewController () <UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem ;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (assign, nonatomic) NSInteger sendIndex ;
+
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenTransition;
 
 @property (copy, nonatomic)   NSArray   *dataSource ;
+@property (assign, nonatomic) BOOL viewDidAppearDone ;
 @end
 
 @implementation DetailViewController
@@ -93,30 +94,39 @@ static const float kFlexOfSide = 0 ;
     self.collectionView.dataSource = self ;
     self.collectionView.delegate = self ;
     self.collectionView.backgroundColor = [XTColor xt_bg] ;
+    self.collectionView.collectionViewLayout = layout ;
+    [self.collectionView setNeedsLayout] ;
+    [self.collectionView layoutIfNeeded] ;
+    
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.sendIndex inSection:0]
-                                atScrollPosition:UICollectionViewScrollPositionCenteredVertically
+                                atScrollPosition:UICollectionViewScrollPositionNone
                                         animated:NO] ;
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        HJCarouselViewLayout *clayout = [[HJCarouselViewLayout alloc] initWithAnim:HJCarouselAnimCarousel1] ;
+        clayout.visibleCount = 3 ;
+        clayout.itemSize = CGSizeMake(
+                                      APP_WIDTH - kFlexOfSide ,
+                                      APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
+                                      ) ;
+        self.collectionView.collectionViewLayout = clayout ;
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.sendIndex inSection:0]
+                                    atScrollPosition:UICollectionViewScrollPositionNone
+                                            animated:NO] ;
+    }) ;
+    
+    
     @weakify(self)
-    [[RACObserve(self.collectionView, contentOffset)
+    [[[RACObserve(self.collectionView, contentOffset) filter:^BOOL(id  _Nullable value) {
+        return self.viewDidAppearDone ;
+    }]
       throttle:.8]
      subscribeNext:^(id  _Nullable x) {
          @strongify(self)
          PwdItem *currentItem = self.dataSource[self.currentIndex] ;
          self.title = currentItem.name ;
      }] ;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        HJCarouselViewLayout *layout = [[HJCarouselViewLayout alloc] initWithAnim:HJCarouselAnimCarousel1] ;
-        layout.visibleCount = 3 ;
-        layout.itemSize = CGSizeMake(
-                                     APP_WIDTH - kFlexOfSide ,
-                                     APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
-                                     ) ;
-        self.collectionView.collectionViewLayout = layout ;
-        
-        [self.collectionView selectItemAtIndexPath:[self curIndexPath]
-                                          animated:NO                                    scrollPosition:UICollectionViewScrollPositionCenteredVertically] ;
-    }) ;
 }
 
 - (void)setupUI {
@@ -127,6 +137,8 @@ static const float kFlexOfSide = 0 ;
     UIScreenEdgePanGestureRecognizer *edgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc]initWithTarget:self action:@selector(edgePanGestureAction:)] ;
     edgePanGestureRecognizer.edges = UIRectEdgeLeft ;
     [self.view addGestureRecognizer:edgePanGestureRecognizer] ;
+    
+    self.view.backgroundColor = [XTColor xt_main];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -134,6 +146,11 @@ static const float kFlexOfSide = 0 ;
     
     PwdItem *currentItem = self.dataSource[self.sendIndex] ;
     self.title = currentItem.name ;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.viewDidAppearDone = YES;
 }
 
 - (void)didReceiveMemoryWarning {

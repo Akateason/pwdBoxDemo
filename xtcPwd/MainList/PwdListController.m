@@ -30,12 +30,12 @@
 #import "AliPayViews.h"
 #import "KeychainData.h"
 #import "SetpasswordViewController.h"
+#import <XTBase/XTBase.h>
 
 @interface PwdListController () <UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,UITableViewXTReloaderDelegate>
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topNavFlex;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *btAdd;
-@property (weak, nonatomic) IBOutlet RootTableView *table ;
+@property (weak, nonatomic) IBOutlet UITableView *table ;
 @property (nonatomic,copy) NSArray *dataList ;
 @property (nonatomic) TypeOfPwdItem pwdType ;
 @property (strong, nonatomic) PwdTableViewHandler *tableHandler ;
@@ -89,7 +89,11 @@
         default: break ;
     }
     self.titleLabel.text = self.title ;
-    [self.table loadNewInfo] ;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.table xt_loadNewInfo] ;
+    });
+    
 }
 
 #pragma mark - life
@@ -103,13 +107,13 @@
     
     [self setupUIs] ;
     [self setupTable] ;
-    [self.table loadNewInfoInBackGround:YES] ;
+    [self.table xt_loadNewInfoInBackGround:YES] ;
     [self pwdSetup] ;
     
     @weakify(self)
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"AddFinishNote" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
         @strongify(self)
-        [self.table loadNewInfoInBackGround:YES] ;
+        [self.table xt_loadNewInfoInBackGround:YES] ;
     }] ;
     
     [[[NSNotificationCenter defaultCenter]
@@ -154,7 +158,6 @@
 }
 
 - (void)setupUIs {
-    self.topNavFlex.constant = APP_NAVIGATIONBAR_HEIGHT + APP_STATUSBAR_HEIGHT ;
     self.view.backgroundColor = [XTColor xt_main] ;
     [self.btUser setImage:[[UIImage imageNamed:@"user"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
     [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[XTColor xt_main]] forState:0] ;
@@ -171,7 +174,7 @@
     self.table.backgroundColor = [XTColor xt_bg] ; // [UIColor whiteColor] ;
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone ;
     
-    [self.table loadNewInfoInBackGround:YES] ;
+    [self.table xt_loadNewInfoInBackGround:YES] ;
 }
 
 - (void)didReceiveMemoryWarning {

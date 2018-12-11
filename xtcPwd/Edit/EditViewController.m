@@ -10,7 +10,7 @@
 #import "PwdItem.h"
 #import "SVProgressHUD.h"
 #import "XTColor+MyColors.h"
-#import "MyTextField.h"
+#import <XTBase/XTTextField.h>
 #import <UIImageView+WebCache.h>
 #import <ReactiveObjC.h>
 #import "PhotosVC.h"
@@ -24,9 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbPwd;
 @property (weak, nonatomic) IBOutlet UILabel *lbDetail;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem    *doneItem   ;
-@property (weak, nonatomic) IBOutlet MyTextField        *nameTf     ;
-@property (weak, nonatomic) IBOutlet MyTextField        *accountTf  ;
-@property (weak, nonatomic) IBOutlet MyTextField        *passwordTf ;
+@property (weak, nonatomic) IBOutlet XTTextField        *nameTf     ;
+@property (weak, nonatomic) IBOutlet XTTextField        *accountTf  ;
+@property (weak, nonatomic) IBOutlet XTTextField        *passwordTf ;
 @property (weak, nonatomic) IBOutlet UITextView         *detailTv   ;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 

@@ -33,6 +33,7 @@
 		8F560B3A1FF38CB600E726F9 /* PresentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B391FF38CB600E726F9 /* PresentController.m */; };
 		8F7AA6D421394F390026344A /* MyColors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F7AA6D121394F390026344A /* MyColors.plist */; };
 		8F7AA6D521394F390026344A /* XTColor+MyColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7AA6D321394F390026344A /* XTColor+MyColors.m */; };
+		8FA74B2721CA31FD008948C5 /* BaiduWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA74B2621CA31FD008948C5 /* BaiduWebVC.m */; };
 		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
 		8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */; };
 		8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B21EF29F15005F0E74 /* PingTransition.m */; };
@@ -112,6 +113,8 @@
 		8F7AA6D121394F390026344A /* MyColors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyColors.plist; sourceTree = "<group>"; };
 		8F7AA6D221394F390026344A /* XTColor+MyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XTColor+MyColors.h"; sourceTree = "<group>"; };
 		8F7AA6D321394F390026344A /* XTColor+MyColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XTColor+MyColors.m"; sourceTree = "<group>"; };
+		8FA74B2521CA31FD008948C5 /* BaiduWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaiduWebVC.h; sourceTree = "<group>"; };
+		8FA74B2621CA31FD008948C5 /* BaiduWebVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaiduWebVC.m; sourceTree = "<group>"; };
 		8FBE48791EF2764C005F0E74 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		8FBE487A1EF2764C005F0E74 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		8FBE48AF1EF29F15005F0E74 /* PingReverseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingReverseTransition.h; sourceTree = "<group>"; };
@@ -344,6 +347,15 @@
 			path = transition;
 			sourceTree = "<group>";
 		};
+		8FA74B2421CA31D4008948C5 /* Baidu */ = {
+			isa = PBXGroup;
+			children = (
+				8FA74B2521CA31FD008948C5 /* BaiduWebVC.h */,
+				8FA74B2621CA31FD008948C5 /* BaiduWebVC.m */,
+			);
+			path = Baidu;
+			sourceTree = "<group>";
+		};
 		8FBE48AE1EF29F15005F0E74 /* transition_leftbt */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +438,7 @@
 		8FFC6D1A1EEF74E000F55173 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				8FA74B2421CA31D4008948C5 /* Baidu */,
 				8F560B0D1FF0BE6400E726F9 /* MainList */,
 				8F560B301FF3890600E726F9 /* Add */,
 				8F560B181FF2146300E726F9 /* Search */,
@@ -608,6 +621,7 @@
 				8F560B3A1FF38CB600E726F9 /* PresentController.m in Sources */,
 				8F560B171FF0EB5B00E726F9 /* CellNegativeTransition.m in Sources */,
 				8F7AA6D521394F390026344A /* XTColor+MyColors.m in Sources */,
+				8FA74B2721CA31FD008948C5 /* BaiduWebVC.m in Sources */,
 				8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */,
 				7D4B27C520299403001CA91B /* PhotosVC.m in Sources */,
 				8FE58A99203C202200816ACC /* SetpasswordViewController.m in Sources */,

@@ -51,7 +51,9 @@
                                  @strongify(self)
                                  image = [UIImage thumbnailWithImage:image size:GET_IMAGE_SIZE_SCALE2x(self.image.frame.size)] ;
                                  self.image.image = image ;
-                                 
+                                 if (!image) {
+                                     self.image.image = [UIImage imageNamed:@"logo"] ;
+                                 }
                              }] ;
     }
 }

@@ -32,7 +32,6 @@
 #import "SetpasswordViewController.h"
 #import <XTBase/XTBase.h>
 #import <ReactiveObjC.h>
-#import "BaiduWebVC.h"
 
 
 @interface PwdListController () <UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,UITableViewXTReloaderDelegate>
@@ -102,19 +101,8 @@
 #pragma mark - life
 
 - (void)viewDidLoad {
-    
-    [[self.testBt rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        
-        BaiduWebVC *webVC = [BaiduWebVC newWithSchName:[@"好的" URLEncodedString] photoSelected:^(NSString * _Nonnull imgUrlStr) {
-            NSLog(@"%@",imgUrlStr) ;
-        }] ;
-        
-        [self.navigationController pushViewController:webVC animated:YES] ;
-        
-    }] ;
-    
-    
     [super viewDidLoad] ;
+    
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
     self.fd_prefersNavigationBarHidden = YES ;
     

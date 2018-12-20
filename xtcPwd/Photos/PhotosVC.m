@@ -7,132 +7,121 @@
 //
 
 #import "PhotosVC.h"
-#import "PhotoCollectionCell.h"
-#import "ReqUtil.h"
 #import "PwdItem.h"
 #import "BYImageValue.h"
-#import "RootCollectionView.h"
-#import <CHTCollectionViewWaterfallLayout.h>
 #import <ReactiveObjC.h>
 #import "XTColor+MyColors.h"
-#import <XTBase/UICollectionView+XT.h>
 
-@interface PhotosVC () <UICollectionViewDataSource,UICollectionViewXTReloader,CHTCollectionViewDelegateWaterfallLayout,UICollectionViewDelegate>
-@property (copy, nonatomic) NSArray *datasource ;
+@interface PhotosVC () <UIWebViewDelegate>
+@property (strong, nonatomic) UIWebView *webView ;
+@property(nonatomic,strong)NSMutableArray *imgUrlArray;
+
+
 @end
 
 @implementation PhotosVC
 
-#pragma mark - life
-
-
-- (void)prepareUI {
-    
-    CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init] ;
-    layout.sectionInset = UIEdgeInsetsMake(kCellLine, kCellLine, kCellLine, kCellLine) ;
-    layout.columnCount = kCollumNum ;
-//    layout.minimumColumnSpacing = kCellLine ;
-//    layout.minimumInteritemSpacing = kCellLine ;
-//    layout.headerHeight = kCellLine ;
-//    layout.footerHeight = kCellLine ;
-    layout.itemRenderDirection = CHTCollectionViewWaterfallLayoutItemRenderDirectionShortestFirst ;
-
-    self.collectionView.collectionViewLayout = layout ;
-    self.collectionView.dataSource = self ;
-    self.collectionView.delegate = self ;
-    self.collectionView.xt_Delegate = self ;
-    [self.collectionView xt_setup] ;
-    [self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"PhotoCollectionCell"] ;
-    self.collectionView.backgroundColor = [XTColor xt_bg] ;
-    [self.collectionView xt_loadNewInfo] ;
+- (NSMutableArray *)imgUrlArray {
+    if (!_imgUrlArray) {
+        _imgUrlArray = [NSMutableArray array];
+    }
+    return _imgUrlArray;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
+    
+    self.webView = ({
+        UIWebView *webView = [[UIWebView alloc] init] ;
+        [self.view addSubview:webView] ;
+        [webView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view) ;
+        }];
+        webView ;
+    });
+    self.webView.delegate = self ;
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.mainUrlString]];
+    [self.webView loadRequest:request] ;
+    
+    [SVProgressHUD show];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated] ;
+    
+    [SVProgressHUD dismiss] ;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - RootCollectionViewDelegate <NSObject>
 
-static int kPageSize = 20 ;
-static int kPage = 0  ;
-
-- (void)collectionView:(RootCollectionView *)collection loadNew:(void(^)(void))endRefresh
-{
-    kPage = 0 ;
-    [ReqUtil searchImageWithName:self.item.name
-                           count:kPageSize
-                          offset:kPage
-                      completion:^(NSArray *list) {
-                          
-                          _datasource = [list copy] ;
-                          
-                          endRefresh() ;
-                      }] ;
+/**
+ *  开始加载webView
+ */
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    //@"正在加载"
 }
 
-- (void)collectionView:(RootCollectionView *)collection loadMore:(void(^)(void))endRefresh
-{
-    kPage ++ ;
-    [ReqUtil searchImageWithName:self.item.name
-                           count:kPageSize
-                          offset:kPage
-                      completion:^(NSArray *list) {
-                          
-                          NSMutableArray *tmplist = [_datasource mutableCopy] ;
-                          [tmplist addObjectsFromArray:list] ;
-                          _datasource = [tmplist copy] ;
-                          
-                          endRefresh() ;
-                      }] ;
-
-}
-
-#pragma mark - UICollectionViewDataSource <NSObject>
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return self.datasource.count ;
-}
-
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    PhotoCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCollectionCell" forIndexPath:indexPath] ;
-    cell.imgVal = self.datasource[indexPath.row] ;
-    return cell ;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    BYImageValue *imageVal = self.datasource[indexPath.row] ;
-    return [PhotoCollectionCell itemSizeWithItem:imageVal] ;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    BYImageValue *imageVal = self.datasource[indexPath.row] ;
-    self.item.imageUrl = imageVal.thumbnailUrl ;
-    if ([self.item xt_update]) {
-        [self.subject sendNext:imageVal.thumbnailUrl] ;
-        [self.subject sendCompleted] ;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NoteEditDone" object:self.item] ;
-        [self.navigationController popViewControllerAnimated:YES] ;
+/**
+ *  webView加载完成
+ */
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [SVProgressHUD dismiss];
+    
+    // 网页注入JS获取图片资源、添加点击事件
+    //这里是js，主要目的实现对url的获取
+    static  NSString * const jsGetImages = @"function getImages(){\
+    var objs = document.getElementsByTagName(\"img\");\
+    var imgScr = '';\
+    for(var i=0;i<objs.length;i++){\
+    imgScr = imgScr + objs[i].src + '+';\
+    };\
+    return imgScr;\
+    };";
+    [webView stringByEvaluatingJavaScriptFromString:jsGetImages];//注入js方法
+    NSString *urlResurlt = [webView stringByEvaluatingJavaScriptFromString:@"getImages()"];
+    [self.imgUrlArray setArray:[urlResurlt componentsSeparatedByString:@"+"]];
+    if (self.imgUrlArray.count >= 2) {
+        [self.imgUrlArray removeLastObject];
     }
+    //图片添加点击js
+    [webView stringByEvaluatingJavaScriptFromString:@"function registerImageClickAction(){\
+     var imgs=document.getElementsByTagName('img');\
+     var length=imgs.length;\
+     for(var i=0;i<length;i++){\
+     img=imgs[i];\
+     img.onclick=function(){\
+     window.location.href='image-preview:'+this.src}\
+     }\
+     }"];
+    [webView stringByEvaluatingJavaScriptFromString:@"registerImageClickAction();"];
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// 在这个方法中捕获到图片的点击事件和被点击图片的 url
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    // 预览图片
+    if ([request.URL.scheme isEqualToString:@"image-preview"]) {
+        NSString *path = [request.URL.absoluteString substringFromIndex:[@"image-preview:" length]];
+        self.item.imageUrl = path ;
+        if ([self.item xt_update]) {
+            [self.subject sendNext:path] ;
+            [self.subject sendCompleted] ;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NoteEditDone" object:self.item] ;
+            [self.navigationController popViewControllerAnimated:YES] ;
+        }
+        return NO;
+    }
+    
+    return YES;
 }
-*/
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [SVProgressHUD dismiss];
+    [SVProgressHUD showErrorWithStatus:@"加载失败"];
+}
+
 
 @end

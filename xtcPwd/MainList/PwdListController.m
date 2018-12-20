@@ -31,6 +31,8 @@
 #import "KeychainData.h"
 #import "SetpasswordViewController.h"
 #import <XTBase/XTBase.h>
+#import <ReactiveObjC.h>
+
 
 @interface PwdListController () <UINavigationControllerDelegate,FilterDelegate,AddVCDelegate,SearchVCDelegate,UITableViewXTReloaderDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -100,6 +102,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
+    
     [self.navigationController setNavigationBarHidden:YES animated:NO] ;
     self.fd_prefersNavigationBarHidden = YES ;
     

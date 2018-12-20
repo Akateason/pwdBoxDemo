@@ -10,8 +10,8 @@
 @class PwdItem,RACReplaySubject ;
 
 @interface PhotosVC : RootCtrl
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic) UIImage *imageSend ;
 @property (strong, nonatomic) PwdItem *item ;
 @property (strong, nonatomic) RACReplaySubject *subject ;
+@property (copy, nonatomic) NSString *mainUrlString ;
+
 @end

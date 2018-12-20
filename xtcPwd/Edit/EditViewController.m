@@ -198,8 +198,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // edit2photos
     PhotosVC *photoVC = [segue destinationViewController] ;
-    photoVC.imageSend = sender ;
     photoVC.item = self.itemWillBeEdit ;
+    photoVC.mainUrlString = [NSString stringWithFormat:@"https://image.baidu.com/search/index?tn=baiduimage&word=%@",[self.itemWillBeEdit.name URLEncodedString]] ;
     
     RACReplaySubject *subject = [RACReplaySubject subject] ;
     WEAK_SELF

@@ -17,6 +17,8 @@
 #import <XTColor.h>
 #import <XTDBVersion.h>
 #import "JPEngine.h"
+#import <AVOSCloud/AVOSCloud.h>
+
 
 @interface AppDelegate ()
 
@@ -27,6 +29,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [XTColor configCustomPlistName:@"MyColors"] ;
     
+    [self setupLeanCloud] ;
     [self setupDB] ;
     [self setupUI] ;
     
@@ -55,6 +58,16 @@
 
 
     return YES ;
+}
+    
+    
+- (void)setupLeanCloud {
+    [AVOSCloud setApplicationId:@"7M2TLnN72GdBdTWVfS0sVMHP-gzGzoHsz"
+                      clientKey:@"PUJAWqPBNabvw6dQI6Buv8sB"
+                serverURLString:@"https://7m2tlnn7.lc-cn-n1-shared.com"] ;
+
+//    [AVOSCloud setAllLogsEnabled:YES];
+
 }
 
 - (void)setupDB {

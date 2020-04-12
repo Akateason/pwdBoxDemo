@@ -15,6 +15,11 @@
 		7DBF8FD320240D8D0030C3D5 /* DetailCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD120240D8D0030C3D5 /* DetailCollectionCell.m */; };
 		7DBF8FD420240D8D0030C3D5 /* DetailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DBF8FD220240D8D0030C3D5 /* DetailCollectionCell.xib */; };
 		8F04A0892005CFCE00021908 /* SearchVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F04A0882005CFCE00021908 /* SearchVCCell.m */; };
+		8F15F29823754D1800D3FDFA /* UnsplashCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F15F28F23754D1700D3FDFA /* UnsplashCell.xib */; };
+		8F15F29923754D1800D3FDFA /* UnsplashRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F15F29023754D1800D3FDFA /* UnsplashRequest.m */; };
+		8F15F29A23754D1800D3FDFA /* UnsplashCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F15F29123754D1800D3FDFA /* UnsplashCell.m */; };
+		8F15F29B23754D1800D3FDFA /* UnsplashPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F15F29223754D1800D3FDFA /* UnsplashPhoto.m */; };
+		8F15F29C23754D1800D3FDFA /* UnsplashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F15F29623754D1800D3FDFA /* UnsplashVC.m */; };
 		8F560B071FF0981100E726F9 /* NSString+PinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560AFC1FF0981000E726F9 /* NSString+PinYin4Cocoa.m */; };
 		8F560B081FF0981100E726F9 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560AFF1FF0981000E726F9 /* PinyinHelper.m */; };
 		8F560B091FF0981100E726F9 /* HanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B011FF0981000E726F9 /* HanyuPinyinOutputFormat.m */; };
@@ -29,6 +34,7 @@
 		8F560B331FF3891C00E726F9 /* AddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B321FF3891C00E726F9 /* AddVC.m */; };
 		8F560B371FF38B6100E726F9 /* AddTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B361FF38B6100E726F9 /* AddTransition.m */; };
 		8F560B3A1FF38CB600E726F9 /* PresentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560B391FF38CB600E726F9 /* PresentController.m */; };
+		8F63F933237E961B00F83A12 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F63F932237E961B00F83A12 /* LoginVC.m */; };
 		8F7AA6D421394F390026344A /* MyColors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F7AA6D121394F390026344A /* MyColors.plist */; };
 		8F7AA6D521394F390026344A /* XTColor+MyColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7AA6D321394F390026344A /* XTColor+MyColors.m */; };
 		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
@@ -76,6 +82,16 @@
 		7DBF8FD220240D8D0030C3D5 /* DetailCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionCell.xib; sourceTree = "<group>"; };
 		8F04A0872005CFCE00021908 /* SearchVCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchVCCell.h; sourceTree = "<group>"; };
 		8F04A0882005CFCE00021908 /* SearchVCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchVCCell.m; sourceTree = "<group>"; };
+		8F15F28F23754D1700D3FDFA /* UnsplashCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnsplashCell.xib; sourceTree = "<group>"; };
+		8F15F29023754D1800D3FDFA /* UnsplashRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsplashRequest.m; sourceTree = "<group>"; };
+		8F15F29123754D1800D3FDFA /* UnsplashCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsplashCell.m; sourceTree = "<group>"; };
+		8F15F29223754D1800D3FDFA /* UnsplashPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsplashPhoto.m; sourceTree = "<group>"; };
+		8F15F29323754D1800D3FDFA /* UnsplashVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsplashVC.h; sourceTree = "<group>"; };
+		8F15F29423754D1800D3FDFA /* UnsplashRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsplashRequest.h; sourceTree = "<group>"; };
+		8F15F29523754D1800D3FDFA /* UnsplashCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsplashCell.h; sourceTree = "<group>"; };
+		8F15F29623754D1800D3FDFA /* UnsplashVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsplashVC.m; sourceTree = "<group>"; };
+		8F15F29723754D1800D3FDFA /* UnsplashPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsplashPhoto.h; sourceTree = "<group>"; };
+		8F15F29D23754FD900D3FDFA /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8F560AFA1FF0981000E726F9 /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
 		8F560AFB1FF0981000E726F9 /* HanyuPinyinOutputFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanyuPinyinOutputFormat.h; sourceTree = "<group>"; };
 		8F560AFC1FF0981000E726F9 /* NSString+PinYin4Cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin4Cocoa.m"; sourceTree = "<group>"; };
@@ -104,6 +120,8 @@
 		8F560B361FF38B6100E726F9 /* AddTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTransition.m; sourceTree = "<group>"; };
 		8F560B381FF38CB600E726F9 /* PresentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresentController.h; sourceTree = "<group>"; };
 		8F560B391FF38CB600E726F9 /* PresentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresentController.m; sourceTree = "<group>"; };
+		8F63F931237E961B00F83A12 /* LoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		8F63F932237E961B00F83A12 /* LoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		8F7AA6D121394F390026344A /* MyColors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyColors.plist; sourceTree = "<group>"; };
 		8F7AA6D221394F390026344A /* XTColor+MyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XTColor+MyColors.h"; sourceTree = "<group>"; };
 		8F7AA6D321394F390026344A /* XTColor+MyColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XTColor+MyColors.m"; sourceTree = "<group>"; };
@@ -193,10 +211,27 @@
 		7D4B27C2202993EC001CA91B /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				8F15F28E23754D1700D3FDFA /* Unsplash */,
 				7D4B27C320299403001CA91B /* PhotosVC.h */,
 				7D4B27C420299403001CA91B /* PhotosVC.m */,
 			);
 			path = Photos;
+			sourceTree = "<group>";
+		};
+		8F15F28E23754D1700D3FDFA /* Unsplash */ = {
+			isa = PBXGroup;
+			children = (
+				8F15F28F23754D1700D3FDFA /* UnsplashCell.xib */,
+				8F15F29423754D1800D3FDFA /* UnsplashRequest.h */,
+				8F15F29023754D1800D3FDFA /* UnsplashRequest.m */,
+				8F15F29523754D1800D3FDFA /* UnsplashCell.h */,
+				8F15F29123754D1800D3FDFA /* UnsplashCell.m */,
+				8F15F29723754D1800D3FDFA /* UnsplashPhoto.h */,
+				8F15F29223754D1800D3FDFA /* UnsplashPhoto.m */,
+				8F15F29323754D1800D3FDFA /* UnsplashVC.h */,
+				8F15F29623754D1800D3FDFA /* UnsplashVC.m */,
+			);
+			path = Unsplash;
 			sourceTree = "<group>";
 		};
 		8F560AF81FF0981000E726F9 /* PinYin4Objc */ = {
@@ -336,6 +371,15 @@
 			path = transition;
 			sourceTree = "<group>";
 		};
+		8F63F930237E95F800F83A12 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8F63F931237E961B00F83A12 /* LoginVC.h */,
+				8F63F932237E961B00F83A12 /* LoginVC.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		8FBE48AE1EF29F15005F0E74 /* transition_leftbt */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				8FFC6CF81EEF735A00F55173 /* Main.storyboard */,
+				8F15F29D23754FD900D3FDFA /* PrefixHeader.pch */,
 				8FFC6CF21EEF735A00F55173 /* AppDelegate.h */,
 				8FFC6CF31EEF735A00F55173 /* AppDelegate.m */,
 				8F7AA6D121394F390026344A /* MyColors.plist */,
@@ -418,6 +463,7 @@
 		8FFC6D1A1EEF74E000F55173 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				8F63F930237E95F800F83A12 /* Login */,
 				8F560B0D1FF0BE6400E726F9 /* MainList */,
 				8F560B301FF3890600E726F9 /* Add */,
 				8F560B181FF2146300E726F9 /* Search */,
@@ -486,7 +532,7 @@
 				TargetAttributes = {
 					8FFC6CEB1EEF735A00F55173 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 5D74XHX7AD;
+						DevelopmentTeam = Z35T9799TW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -496,6 +542,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -523,6 +570,7 @@
 				8FFC6CFC1EEF735A00F55173 /* Assets.xcassets in Resources */,
 				8FFC6CFA1EEF735A00F55173 /* Main.storyboard in Resources */,
 				8FF9601C209C0F5B00751522 /* GoogleService-Info.plist in Resources */,
+				8F15F29823754D1800D3FDFA /* UnsplashCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,26 +583,40 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-resources.sh",
-				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-resources.sh",
+				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
 				"${PODS_ROOT}/JSPatch/JSPatch/JSPatch.js",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/RSKImageCropper/RSKImageCropper/RSKImageCropperStrings.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_ROOT}/XTColor/XTColor/color/XTColors.plist",
+				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTPhotoAlbum/source/ab_select@2x.png",
+				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTPhotoAlbum/source/ab_selected@2x.png",
+				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTPhotoAlbum/source/ab_t_icon@2x.png",
 				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTSegment/btBase.png",
+				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTPhotoAlbum/album/XTPAlbumCell.xib",
+				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTPhotoAlbum/cameraGroup/XTPACameraGroupCell.xib",
+				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTStretchSegment/XTStretchSegCell.xib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AVOSCloud_Art.inc",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSPatch.js",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSKImageCropperStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XTColors.plist",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ab_select@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ab_selected@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ab_t_icon@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/btBase.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XTPAlbumCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XTPACameraGroupCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XTStretchSegCell.nib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		86FEF2FAD42281ACBDD164F4 /* [CP] Check Pods Manifest.lock */ = {
@@ -585,8 +647,7 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "
-";
+			shellScript = "\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -615,10 +676,13 @@
 				8FFC6D241EEF7A8000F55173 /* PwdItem.m in Sources */,
 				8F560B2E1FF371B300E726F9 /* SearchNegativeTransition.m in Sources */,
 				7DBF8FD320240D8D0030C3D5 /* DetailCollectionCell.m in Sources */,
+				8F15F29B23754D1800D3FDFA /* UnsplashPhoto.m in Sources */,
 				8FFC6D191EEF74D900F55173 /* PwdListController.m in Sources */,
 				8FFC6D1D1EEF7A3B00F55173 /* DetailViewController.m in Sources */,
 				8FFC6CF41EEF735A00F55173 /* AppDelegate.m in Sources */,
 				8FC14CFB1FF3FBB40024F86E /* SearchVC.m in Sources */,
+				8F63F933237E961B00F83A12 /* LoginVC.m in Sources */,
+				8F15F29A23754D1800D3FDFA /* UnsplashCell.m in Sources */,
 				8FFC6D201EEF7A4B00F55173 /* EditViewController.m in Sources */,
 				8F560B091FF0981100E726F9 /* HanyuPinyinOutputFormat.m in Sources */,
 				8F560B0B1FF0981100E726F9 /* PinyinFormatter.m in Sources */,
@@ -631,6 +695,8 @@
 				8FE58A94203C095800816ACC /* KeychainItemWrapper.m in Sources */,
 				7D4B27BE20286B3D001CA91B /* HJCarouselViewLayout.m in Sources */,
 				7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */,
+				8F15F29923754D1800D3FDFA /* UnsplashRequest.m in Sources */,
+				8F15F29C23754D1800D3FDFA /* UnsplashVC.m in Sources */,
 				8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */,
 				8FE58A92203C095800816ACC /* AliPayViews.m in Sources */,
 				8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */,
@@ -756,10 +822,11 @@
 			baseConfigurationReference = 584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5D74XHX7AD;
+				DEVELOPMENT_TEAM = Z35T9799TW;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/xtcPwd/PrefixHeader.pch";
 				INFOPLIST_FILE = xtcPwd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teason.xtcPwd;
+				PRODUCT_BUNDLE_IDENTIFIER = im.shimo.app.demo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -770,10 +837,11 @@
 			baseConfigurationReference = 6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5D74XHX7AD;
+				DEVELOPMENT_TEAM = Z35T9799TW;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/xtcPwd/PrefixHeader.pch";
 				INFOPLIST_FILE = xtcPwd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teason.xtcPwd;
+				PRODUCT_BUNDLE_IDENTIFIER = im.shimo.app.demo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

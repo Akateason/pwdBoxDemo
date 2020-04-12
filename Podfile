@@ -20,5 +20,9 @@ pod 'IQKeyboardManager'
 # pod 'Valet'
 pod 'JSPatch'
 
+pod 'AVOSCloud'           # 数据存储、短信、推送、云引擎等基础服务模块，必选
+# pod 'AVOSCloudIM'         # 即时通讯模块，可选
+# pod 'AVOSCloudLiveQuery'  # LiveQuery 模块，可选
+
 
 end

@@ -60,11 +60,10 @@
 		8FFC6D201EEF7A4B00F55173 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D1F1EEF7A4B00F55173 /* EditViewController.m */; };
 		8FFC6D241EEF7A8000F55173 /* PwdItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D231EEF7A8000F55173 /* PwdItem.m */; };
 		8FFC6D271EEF7EBD00F55173 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC6D261EEF7EBD00F55173 /* ListCell.m */; };
-		E85C29A9CA170FFA68285991 /* libPods-xtcPwd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4460BB02A9066CE9B3F329EA /* libPods-xtcPwd.a */; };
+		C5274072799BE6F1E165C9A4 /* Pods_xtcPwd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5ACEEF70485ED9BF2F0BA3 /* Pods_xtcPwd.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4460BB02A9066CE9B3F329EA /* libPods-xtcPwd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xtcPwd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.debug.xcconfig"; sourceTree = "<group>"; };
 		6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.release.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.release.xcconfig"; sourceTree = "<group>"; };
 		7D4B27BC20286B3D001CA91B /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
@@ -167,6 +166,7 @@
 		8FFC6D231EEF7A8000F55173 /* PwdItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PwdItem.m; path = Model/PwdItem.m; sourceTree = "<group>"; };
 		8FFC6D251EEF7EBD00F55173 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		8FFC6D261EEF7EBD00F55173 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
+		AD5ACEEF70485ED9BF2F0BA3 /* Pods_xtcPwd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xtcPwd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E85C29A9CA170FFA68285991 /* libPods-xtcPwd.a in Frameworks */,
+				C5274072799BE6F1E165C9A4 /* Pods_xtcPwd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +184,7 @@
 		103B394664DFEE2E8762589E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4460BB02A9066CE9B3F329EA /* libPods-xtcPwd.a */,
+				AD5ACEEF70485ED9BF2F0BA3 /* Pods_xtcPwd.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -509,8 +509,8 @@
 				8FFC6CE81EEF735A00F55173 /* Sources */,
 				8FFC6CE91EEF735A00F55173 /* Frameworks */,
 				8FFC6CEA1EEF735A00F55173 /* Resources */,
-				3B376957006CE01CEB03E838 /* [CP] Copy Pods Resources */,
 				8FF9601F209C108400751522 /* ShellScript */,
+				4115A30ED016EC3594CDAD7C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -532,7 +532,7 @@
 				TargetAttributes = {
 					8FFC6CEB1EEF735A00F55173 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = Z35T9799TW;
+						DevelopmentTeam = 5D74XHX7AD;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -577,46 +577,70 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3B376957006CE01CEB03E838 /* [CP] Copy Pods Resources */ = {
+		4115A30ED016EC3594CDAD7C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-resources.sh",
-				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
-				"${PODS_ROOT}/JSPatch/JSPatch/JSPatch.js",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/RSKImageCropper/RSKImageCropper/RSKImageCropperStrings.bundle",
-				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
-				"${PODS_ROOT}/XTColor/XTColor/color/XTColors.plist",
-				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTPhotoAlbum/source/ab_select@2x.png",
-				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTPhotoAlbum/source/ab_selected@2x.png",
-				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTPhotoAlbum/source/ab_t_icon@2x.png",
-				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTSegment/btBase.png",
-				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTPhotoAlbum/album/XTPAlbumCell.xib",
-				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTPhotoAlbum/cameraGroup/XTPACameraGroupCell.xib",
-				"${PODS_ROOT}/XTlib/XTlib/XTlib/Components/CustomUIs/XTStretchSegment/XTStretchSegCell.xib",
+				"${PODS_ROOT}/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/RSKImageCropper/RSKImageCropper.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/UIFontWDCustomLoader/UIFontWDCustomLoader.framework",
+				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
+				"${BUILT_PRODUCTS_DIR}/Valet/Valet.framework",
+				"${BUILT_PRODUCTS_DIR}/XTBase/XTBase.framework",
+				"${BUILT_PRODUCTS_DIR}/XTColor/XTColor.framework",
+				"${BUILT_PRODUCTS_DIR}/XTFMDB/XTFMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/XTIAP/XTIAP.framework",
+				"${BUILT_PRODUCTS_DIR}/XTReq/XTReq.framework",
+				"${BUILT_PRODUCTS_DIR}/XTRouter/XTRouter.framework",
+				"${BUILT_PRODUCTS_DIR}/XTTable/XTTable.framework",
+				"${BUILT_PRODUCTS_DIR}/XTlib/XTlib.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AVOSCloud_Art.inc",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSPatch.js",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSKImageCropperStrings.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XTColors.plist",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ab_select@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ab_selected@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ab_t_icon@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/btBase.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XTPAlbumCell.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XTPACameraGroupCell.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XTStretchSegCell.nib",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHTCollectionViewWaterfallLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKImageCropper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIFontWDCustomLoader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Valet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XTBase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XTColor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XTFMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XTIAP.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XTReq.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XTRouter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XTTable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XTlib.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-xtcPwd/Pods-xtcPwd-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		86FEF2FAD42281ACBDD164F4 /* [CP] Check Pods Manifest.lock */ = {
@@ -647,7 +671,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "\n";
+			shellScript = "
+";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -822,7 +847,7 @@
 			baseConfigurationReference = 584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Z35T9799TW;
+				DEVELOPMENT_TEAM = 5D74XHX7AD;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/xtcPwd/PrefixHeader.pch";
 				INFOPLIST_FILE = xtcPwd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -837,7 +862,7 @@
 			baseConfigurationReference = 6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Z35T9799TW;
+				DEVELOPMENT_TEAM = 5D74XHX7AD;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/xtcPwd/PrefixHeader.pch";
 				INFOPLIST_FILE = xtcPwd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

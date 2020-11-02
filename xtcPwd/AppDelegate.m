@@ -16,8 +16,8 @@
 #import <IQKeyboardManager.h>
 #import <XTColor.h>
 #import <XTDBVersion.h>
-#import "JPEngine.h"
-#import <AVOSCloud/AVOSCloud.h>
+//#import "JPEngine.h"
+//#import <AVOSCloud/AVOSCloud.h>
 
 
 @interface AppDelegate ()
@@ -32,39 +32,15 @@
     [self setupLeanCloud] ;
     [self setupDB] ;
     [self setupUI] ;
-    
-//    [JPEngine startEngine];
-    
-    // exec js directly
-//    [JPEngine evaluateScript:@"\
-//     var alertView = require('UIAlertView').alloc().init();\
-//     alertView.setTitle('Alert');\
-//     alertView.setMessage('AlertView from js'); \
-//     alertView.addButtonWithTitle('OK');\
-//     alertView.show(); \
-//     "];
-    
-    // exec js file from network
-//    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://cnbang.net/test.js"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-//        NSString *script = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        [JPEngine evaluateScript:script];
-//    }];
-    
-
-    // exec local js file
-//    NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"js"];
-//    NSString *script = [NSString stringWithContentsOfFile:sourcePath encoding:NSUTF8StringEncoding error:nil];
-//    [JPEngine evaluateScript:script];
-
 
     return YES ;
 }
     
     
 - (void)setupLeanCloud {
-    [AVOSCloud setApplicationId:@"7M2TLnN72GdBdTWVfS0sVMHP-gzGzoHsz"
-                      clientKey:@"PUJAWqPBNabvw6dQI6Buv8sB"
-                serverURLString:@"https://7m2tlnn7.lc-cn-n1-shared.com"] ;
+//    [AVOSCloud setApplicationId:@"7M2TLnN72GdBdTWVfS0sVMHP-gzGzoHsz"
+//                      clientKey:@"PUJAWqPBNabvw6dQI6Buv8sB"
+//                serverURLString:@"https://7m2tlnn7.lc-cn-n1-shared.com"] ;
 
 //    [AVOSCloud setAllLogsEnabled:YES];
 

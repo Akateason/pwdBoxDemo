@@ -99,15 +99,16 @@
     self.collectionView.collectionViewLayout = layout ;
     
     @weakify(self)
-    [[[RACObserve(self.collectionView, contentOffset) filter:^BOOL(id  _Nullable value) {
+    [[[RACObserve(self.collectionView, contentOffset)
+       filter:^BOOL(id  _Nullable value) {
         return self.viewDidAppearDone ;
     }]
-      throttle:.8]
+      throttle:.03]
      subscribeNext:^(id  _Nullable x) {
-         @strongify(self)
-         PwdItem *currentItem = self.dataSource[self.currentIndex] ;
-         self.title = currentItem.name ;
-     }] ;
+        @strongify(self)
+        PwdItem *currentItem = self.dataSource[self.currentIndex] ;
+        self.title = currentItem.name ;
+     }];
 }
 
 - (void)setupUI {
@@ -167,7 +168,6 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
 }
-
 
 #pragma mark - gesture action
 

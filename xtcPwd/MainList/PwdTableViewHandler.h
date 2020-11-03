@@ -14,5 +14,6 @@
 
 - (instancetype)initWithCtrller:(PwdListController *)fromCtrller ;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath ;
+- (void)btAddComebackAnimation;
 
 @end

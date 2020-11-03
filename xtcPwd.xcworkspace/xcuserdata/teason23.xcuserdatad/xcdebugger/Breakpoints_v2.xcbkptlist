@@ -35,23 +35,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E157D3E7-1B86-42C8-B6B4-87E96F29DFD7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xtcPwd/MainList/PwdListController.m"
-            timestampString = "566985087.444639"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "-tableView:loadNew:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "732A9EA2-6ED5-4780-845A-47EE065D38F3"
             shouldBeEnabled = "No"
             ignoreCount = "0"

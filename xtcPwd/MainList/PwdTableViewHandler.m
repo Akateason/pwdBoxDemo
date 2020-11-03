@@ -22,8 +22,7 @@
 
 @implementation PwdTableViewHandler
 
-- (instancetype)initWithCtrller:(PwdListController *)fromCtrller
-{
+- (instancetype)initWithCtrller:(PwdListController *)fromCtrller {
     self = [super init] ;
     if (self) {
         _fromCtrller = fromCtrller ;
@@ -34,7 +33,8 @@
          subscribeNext:^(id  _Nullable x) {
              @strongify(self)
              [self getImagesFromServer] ;
-         }] ;
+         }] ;                
+        
     }
     return self;
 }
@@ -74,13 +74,11 @@
 
 #pragma mark - tableView
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.fromCtrller.dataList.count ;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [tableView dequeueReusableCellWithIdentifier:@"ListCell"] ;
 }
 
@@ -88,21 +86,20 @@
     [UIView animateWithDuration:.6
                      animations:^{
                          self.fromCtrller.btAdd.alpha = .4 ;
-                         self.fromCtrller.btAdd.layer.transform = CATransform3DMakeTranslation(0, 60, 0) ;
+                         self.fromCtrller.btAdd.layer.transform = CATransform3DMakeTranslation(0, 100, 0) ;
                      }
                      completion:nil] ;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [UIView animateWithDuration:.6
-                     animations:^{
-                         self.fromCtrller.btAdd.alpha = 1 ;
-                         self.fromCtrller.btAdd.layer.transform = CATransform3DIdentity ;
-                     }
-                     completion:nil] ;
+    [self btAddComebackAnimation];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self btAddComebackAnimation];
+}
+
+- (void)btAddComebackAnimation {
     [UIView animateWithDuration:.6
                      animations:^{
                          self.fromCtrller.btAdd.alpha = 1 ;
@@ -111,8 +108,7 @@
                      completion:nil] ;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(ListCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(ListCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     PwdItem *item = self.fromCtrller.dataList[indexPath.row] ;
     [cell configure:item
           indexPath:indexPath] ;
@@ -150,28 +146,23 @@
                      }] ;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [ListCell cellHeight] ;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.fromCtrller performSegueWithIdentifier:@"list2detail" sender:@(indexPath.row)] ;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES ;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleDelete ;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         @weakify(self)
         UIAlertAction *action0 = [UIAlertAction actionWithTitle:@"Confirm"

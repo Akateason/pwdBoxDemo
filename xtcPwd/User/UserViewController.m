@@ -112,6 +112,7 @@
     [KeychainData forgotPsw] ;
     SetpasswordViewController *setpass = [[SetpasswordViewController alloc] init];
     setpass.string = @"重置密码";
+    setpass.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:setpass animated:YES completion:nil];
 }
 

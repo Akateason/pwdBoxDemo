@@ -103,20 +103,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad] ;
     
-    [self.navigationController setNavigationBarHidden:YES animated:NO] ;
-    self.fd_prefersNavigationBarHidden = YES ;
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.fd_prefersNavigationBarHidden = YES;
     
-    [[FilterCondition sharedSingleton] setup] ;
+    [[FilterCondition sharedSingleton] setup];
     
-    [self setupUIs] ;
-    [self setupTable] ;
-    [self pwdSetup] ;
+    [self setupUIs];
+    [self setupTable];
+//    [self checkUserSetGesturePassword]; // 暂时注销
     
     @weakify(self)
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"AddFinishNote" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
         @strongify(self)
-        [self.table xt_loadNewInfoInBackGround:YES] ;
-    }] ;
+        [self.table xt_loadNewInfoInBackGround:YES];
+    }];
     
     [[[NSNotificationCenter defaultCenter]
       rac_addObserverForName:@"NoteEditDone" object:nil]
@@ -137,11 +137,12 @@
      }] ;
 }
 
-- (void)pwdSetup {
+- (void)checkUserSetGesturePassword {
     BOOL isSave = [KeychainData isSave]; //是否有保存
     if (isSave) {
         SetpasswordViewController *setpass = [[SetpasswordViewController alloc] init];
         setpass.string = @"验证密码";
+        setpass.modalPresentationStyle = UIModalPresentationOverFullScreen;
         [self presentViewController:setpass animated:YES completion:nil];
     }
     else {
@@ -177,6 +178,10 @@
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone ;
     [self.table xt_setup];
     [self.table xt_loadNewInfoInBackGround:YES] ;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tableHandler btAddComebackAnimation];
+    });
 }
 
 - (void)didReceiveMemoryWarning {

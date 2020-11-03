@@ -42,14 +42,14 @@
     self.image.image = [UIImage imageNamed:@"logo"] ;
     if (model.imageUrl.length) {
         
-        @weakify(self)
+//        @weakify(self)
         [self.image sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"logo"] options:(SDWebImageRetryFailed) completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-            @strongify(self)
-            image = [UIImage thumbnailWithImage:image size:GET_IMAGE_SIZE_SCALE2x(self.image.frame.size)] ;
-            self.image.image = image ;
-            if (!image) {
-                self.image.image = [UIImage imageNamed:@"logo"] ;
-            }
+//            @strongify(self)
+//            image = [UIImage thumbnailWithImage:image size:GET_IMAGE_SIZE_SCALE2x(self.image.frame.size)] ;
+//            self.image.image = image ;
+//            if (!image) {
+//                self.image.image = [UIImage imageNamed:@"logo"] ;
+//            }
         }];
     }
 }

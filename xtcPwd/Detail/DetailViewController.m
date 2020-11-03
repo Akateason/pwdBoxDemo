@@ -19,7 +19,7 @@
 #import <ReactiveObjC.h>
 #import "DetailCollectionCell.h"
 #import "HJCarouselViewLayout.h"
-
+#import <XTTable/XTCollection.h>
 
 @interface DetailViewController () <UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem ;
@@ -45,10 +45,14 @@
 #pragma mark - prop
 
 - (NSInteger)currentIndex {
-    return [self curIndexPath].row ;
+    return self.collectionView.xt_currentIndexPath.row ;
 }
 
 #pragma mark - life
+
+- (IBAction)editAction:(id)sender {
+    [self performSegueWithIdentifier:@"detail2edit" sender:self.dataSource[self.currentIndex]] ;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
@@ -57,13 +61,6 @@
     [self setupCarousel] ;
     
     @weakify(self)
-    [[[self.editItem rac_signalForSelector:@selector(action)]
-      throttle:.6]
-     subscribeNext:^(RACTuple * _Nullable x) {
-         @strongify(self)
-        [self performSegueWithIdentifier:@"detail2edit" sender:self.dataSource[self.currentIndex]] ;
-    }] ;
-    
     [[[NSNotificationCenter defaultCenter]
       rac_addObserverForName:@"NoteEditDone" object:nil]
      subscribeNext:^(NSNotification * _Nullable noti) {
@@ -99,11 +96,10 @@ static const float kFlexOfSide = 0 ;
     [self.collectionView layoutIfNeeded] ;
     
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.sendIndex inSection:0]
-                                atScrollPosition:UICollectionViewScrollPositionNone
-                                        animated:NO] ;
+                                atScrollPosition:UICollectionViewScrollPositionCenteredVertically
+                                        animated:NO];
     
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         HJCarouselViewLayout *clayout = [[HJCarouselViewLayout alloc] initWithAnim:HJCarouselAnimCarousel1] ;
         clayout.visibleCount = 3 ;
         clayout.itemSize = CGSizeMake(
@@ -112,10 +108,9 @@ static const float kFlexOfSide = 0 ;
                                       ) ;
         self.collectionView.collectionViewLayout = clayout ;
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.sendIndex inSection:0]
-                                    atScrollPosition:UICollectionViewScrollPositionNone
-                                            animated:NO] ;
-    }) ;
-    
+                                    atScrollPosition:UICollectionViewScrollPositionCenteredVertically
+                                            animated:NO];
+    });
     
     @weakify(self)
     [[[RACObserve(self.collectionView, contentOffset) filter:^BOOL(id  _Nullable value) {
@@ -159,13 +154,11 @@ static const float kFlexOfSide = 0 ;
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.dataSource.count ;
 }
 
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DetailCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailCollectionCell" forIndexPath:indexPath] ;
     cell.item = self.dataSource[indexPath.row] ; ;
     cell.indexPath = indexPath ;
@@ -173,32 +166,13 @@ static const float kFlexOfSide = 0 ;
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSIndexPath *curIndexPath = [self curIndexPath] ;
+    NSIndexPath *curIndexPath = [collectionView xt_currentIndexPath] ;
     if (indexPath.row == curIndexPath.row) return YES ;
     
     [self.collectionView scrollToItemAtIndexPath:indexPath
-                                atScrollPosition:UICollectionViewScrollPositionNone
+                                atScrollPosition:UICollectionViewScrollPositionCenteredVertically
                                         animated:YES] ;
     return NO ;
-}
-
-- (NSIndexPath *)curIndexPath {
-    NSArray *indexPaths = [self.collectionView indexPathsForVisibleItems];
-    NSIndexPath *curIndexPath = nil;
-    NSInteger curzIndex = 0;
-    for (NSIndexPath *path in indexPaths.objectEnumerator) {
-        UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:path];
-        if (!curIndexPath) {
-            curIndexPath = path;
-            curzIndex = attributes.zIndex;
-            continue;
-        }
-        if (attributes.zIndex > curzIndex) {
-            curIndexPath = path;
-            curzIndex = attributes.zIndex;
-        }
-    }
-    return curIndexPath;
 }
 
 #pragma mark - gesture action

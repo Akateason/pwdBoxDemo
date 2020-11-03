@@ -43,20 +43,16 @@
 
 #pragma mark -
 
+- (IBAction)doneItemAction:(id)sender {
+    [self doneItemOnClick] ;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad] ;
     
     [self setupUI] ;
     [self setData] ;
-    
-    @weakify(self)
-    [[[self.doneItem rac_signalForSelector:@selector(action)]
-      throttle:.6]
-     subscribeNext:^(RACTuple * _Nullable x) {
-         @strongify(self)
-         [self doneItemOnClick] ;
-     }] ;
-    
+        
     RAC(self.lbName,textColor) = [self.nameTf.rac_textSignal map:^id(NSString *x) {
         return x.length ? [XTColor xt_text_light] : [XTColor redColor] ;
     }] ;

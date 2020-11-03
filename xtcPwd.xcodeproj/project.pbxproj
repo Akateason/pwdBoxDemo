@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D4B27BE20286B3D001CA91B /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */; };
 		7D4B27C12029547A001CA91B /* PwdTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27C02029547A001CA91B /* PwdTableViewHandler.m */; };
 		7D4B27C520299403001CA91B /* PhotosVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B27C420299403001CA91B /* PhotosVC.m */; };
 		7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF8FC82022F32E0030C3D5 /* ReqUtil.m */; };
@@ -66,8 +65,6 @@
 /* Begin PBXFileReference section */
 		584BB44BB24BE551F2224502 /* Pods-xtcPwd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.debug.xcconfig"; sourceTree = "<group>"; };
 		6D14ABF917EF77F2AA611DCF /* Pods-xtcPwd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xtcPwd.release.xcconfig"; path = "Pods/Target Support Files/Pods-xtcPwd/Pods-xtcPwd.release.xcconfig"; sourceTree = "<group>"; };
-		7D4B27BC20286B3D001CA91B /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
-		7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
 		7D4B27BF2029547A001CA91B /* PwdTableViewHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PwdTableViewHandler.h; sourceTree = "<group>"; };
 		7D4B27C02029547A001CA91B /* PwdTableViewHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PwdTableViewHandler.m; sourceTree = "<group>"; };
 		7D4B27C320299403001CA91B /* PhotosVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosVC.h; sourceTree = "<group>"; };
@@ -202,8 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				8FE58A86203C095800816ACC /* gesturePwd */,
-				7D4B27BC20286B3D001CA91B /* HJCarouselViewLayout.h */,
-				7D4B27BD20286B3D001CA91B /* HJCarouselViewLayout.m */,
 			);
 			name = Vender;
 			sourceTree = "<group>";
@@ -718,7 +713,6 @@
 				8F560B0A1FF0981100E726F9 /* ChineseToPinyinResource.m in Sources */,
 				8FFC6CF11EEF735A00F55173 /* main.m in Sources */,
 				8FE58A94203C095800816ACC /* KeychainItemWrapper.m in Sources */,
-				7D4B27BE20286B3D001CA91B /* HJCarouselViewLayout.m in Sources */,
 				7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */,
 				8F15F29923754D1800D3FDFA /* UnsplashRequest.m in Sources */,
 				8F15F29C23754D1800D3FDFA /* UnsplashVC.m in Sources */,

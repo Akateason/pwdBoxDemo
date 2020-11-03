@@ -74,6 +74,12 @@
     [_item xt_update] ;
 }
 
+//- (void)setIndexPath:(NSIndexPath *)indexPath {
+//    _indexPath = indexPath;
+//
+//    self.backgroundColor = indexPath.row % 2 ? [UIColor orangeColor] : [UIColor blueColor];
+//}
+
 - (NSString *)makePwdHidden {
     int count = (int)[[self.item decodePwd] length] ;
     NSString *itemStr = @"*" ;

@@ -47,7 +47,7 @@
 }
 
 - (void)setupDB {
-    [XTFMDBBase sharedInstance].isDebugMode = YES ;
+    // [XTFMDBBase sharedInstance].isDebugMode = YES ;
     [[XTFMDBBase sharedInstance] configureDB:@"teasonsDB"] ;
     [PwdItem xt_createTable] ;
     

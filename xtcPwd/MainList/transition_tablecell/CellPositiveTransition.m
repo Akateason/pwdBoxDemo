@@ -54,10 +54,21 @@
     
     // 设置第二个控制器的位置、透明度
     toVC.view.frame = [transitionContext finalFrameForViewController:toVC] ;
-    toVC.view.alpha = 0 ;
-    [toVC.collectionView layoutIfNeeded] ;
-    DetailCollectionCell *currentCell = (DetailCollectionCell *)[toVC.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toVC.sendIndex inSection:0]] ;
+    [toVC.collectionView layoutIfNeeded];
+    
+    
+    NSIndexPath *idp = [NSIndexPath indexPathForRow:toVC.sendIndex inSection:0];
+    DetailCollectionCell *currentCell = (DetailCollectionCell *)[toVC.collectionView cellForItemAtIndexPath:idp] ;
+    if (!currentCell) {
+        // https://stackoverflow.com/questions/37036001/custom-pop-animation-to-a-uicollectionviewcontroller-doesnt-work
+        // fix animation bug
+        [toVC.collectionView scrollToItemAtIndexPath:idp atScrollPosition:(UICollectionViewScrollPositionCenteredVertically) animated:NO];
+        [toVC.collectionView layoutIfNeeded];
+        currentCell = (DetailCollectionCell *)[toVC.collectionView cellForItemAtIndexPath:idp] ;
+    }
+    
     currentCell.image.hidden = YES ;
+    toVC.view.alpha = 0 ;
     
     // 把动画前后的两个ViewController加到容器中,顺序很重要,snapShotView在上方
     [containerView addSubview:backView] ;

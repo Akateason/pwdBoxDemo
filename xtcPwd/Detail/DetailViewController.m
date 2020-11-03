@@ -18,10 +18,12 @@
 #import "BYImageValue.h"
 #import <ReactiveObjC.h>
 #import "DetailCollectionCell.h"
-#import "HJCarouselViewLayout.h"
 #import <XTTable/XTCollection.h>
 
-@interface DetailViewController () <UINavigationControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
+@interface DetailViewController () <UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout> {
+    CGFloat statusBarHeight;
+}
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editItem ;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -58,7 +60,7 @@
     [super viewDidLoad] ;
     
     [self setupUI] ;
-    [self setupCarousel] ;
+    [self setupCollectionLayout] ;
     
     @weakify(self)
     [[[NSNotificationCenter defaultCenter]
@@ -78,39 +80,23 @@
      }] ;
 }
 
-static const float kFlexOfSide = 0 ;
-
-- (void)setupCarousel {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init] ;
-    layout.itemSize = CGSizeMake(
-                         APP_WIDTH - kFlexOfSide ,
-                         APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
-                                 ) ;
+- (void)setupCollectionLayout {
+    [self.collectionView setNeedsLayout];
+    [self.collectionView layoutIfNeeded];
+    
+    self.collectionView.pagingEnabled = YES;
     [self.collectionView registerNib:[UINib nibWithNibName:@"DetailCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"DetailCollectionCell"] ;
-    self.collectionView.collectionViewLayout = layout ;
     self.collectionView.dataSource = self ;
     self.collectionView.delegate = self ;
     self.collectionView.backgroundColor = [XTColor xt_bg] ;
+
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init] ;
+    layout.itemSize = CGSizeMake(self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+    layout.sectionInset = UIEdgeInsetsZero;
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
     self.collectionView.collectionViewLayout = layout ;
-    [self.collectionView setNeedsLayout] ;
-    [self.collectionView layoutIfNeeded] ;
-    
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.sendIndex inSection:0]
-                                atScrollPosition:UICollectionViewScrollPositionCenteredVertically
-                                        animated:NO];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        HJCarouselViewLayout *clayout = [[HJCarouselViewLayout alloc] initWithAnim:HJCarouselAnimCarousel1] ;
-        clayout.visibleCount = 3 ;
-        clayout.itemSize = CGSizeMake(
-                                      APP_WIDTH - kFlexOfSide ,
-                                      APP_HEIGHT - APP_NAVIGATIONBAR_HEIGHT - APP_STATUSBAR_HEIGHT - APP_SAFEAREA_TABBAR_FLEX - kFlexOfSide
-                                      ) ;
-        self.collectionView.collectionViewLayout = clayout ;
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.sendIndex inSection:0]
-                                    atScrollPosition:UICollectionViewScrollPositionCenteredVertically
-                                            animated:NO];
-    });
     
     @weakify(self)
     [[[RACObserve(self.collectionView, contentOffset) filter:^BOOL(id  _Nullable value) {
@@ -125,6 +111,9 @@ static const float kFlexOfSide = 0 ;
 }
 
 - (void)setupUI {
+    UIWindow *window = [[[UIApplication sharedApplication] windows] firstObject];
+    statusBarHeight = window.windowScene.statusBarManager.statusBarFrame.size.height;
+    
     // fd
     self.fd_interactivePopDisabled = YES ;
     // gesture
@@ -174,6 +163,11 @@ static const float kFlexOfSide = 0 ;
                                         animated:YES] ;
     return NO ;
 }
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+}
+
 
 #pragma mark - gesture action
 

@@ -35,9 +35,12 @@
     topBar.layer.cornerRadius = 15. ;
     fromVC.searchBackView.hidden = YES ;
     
-    UIImageView *btImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"searchBt"] imageWithTintColor:[UIColor whiteColor]]] ;
+    UIImageView *btImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"searchBt"] xt_imageWithTintColor:[UIColor whiteColor]]] ;
+    UIWindow *window = [[[UIApplication sharedApplication] windows] firstObject];
+    CGFloat statusHeight = window.windowScene.statusBarManager.statusBarFrame.size.height;
+
     btImageView.frame = CGRectMake(APP_WIDTH - 16 - 30,
-                                   XT_IS_IPHONE_X ? 23 + APP_SAFEAREA_STATUSBAR_FLEX : 23,
+                                   3 + statusHeight,
                                    30, 30) ;
     btImageView.layer.cornerRadius = 15 ;
     btImageView.alpha = 0 ;
@@ -53,9 +56,8 @@
                      animations:^{
                          fromVC.view.alpha = 0.0f ;
                          topBar.frame = CGRectMake(APP_WIDTH - 16 - 30 ,
-                                                   XT_IS_IPHONE_X ? 23 + APP_SAFEAREA_STATUSBAR_FLEX : 23,
-                                                   30,
-                                                   30) ;
+                                                   3 + statusHeight,
+                                                   30, 30) ;
                          btImageView.alpha = 1 ;
                          btImageView.layer.transform = CATransform3DIdentity ;
                      }

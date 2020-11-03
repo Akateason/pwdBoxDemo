@@ -84,8 +84,12 @@
     self.fd_prefersNavigationBarHidden = YES ;
     self.fd_interactivePopDisabled = YES ;
     self.navigationController.delegate = self ;
+        
+    UIWindow *window = [[[UIApplication sharedApplication] windows] firstObject];
+    CGFloat statusHeight = window.windowScene.statusBarManager.statusBarFrame.size.height;
+    NSLog(@"status : %lf", statusHeight );
+    self.topbarHeight.constant =  statusHeight + 44.0f;  //APP_NAVIGATIONBAR_HEIGHT + APP_STATUSBAR_HEIGHT;
     
-    self.topbarHeight.constant = APP_NAVIGATIONBAR_HEIGHT + APP_STATUSBAR_HEIGHT ;
     self.view.backgroundColor = [XTColor xt_main] ;
     self.searchTextfield.delegate = self ;
     self.searchTextfield.textColor = [XTColor xt_text_dark] ;
@@ -97,7 +101,7 @@
     
     self.topBackView.backgroundColor = [XTColor xt_main] ;
     self.searchBackView.backgroundColor = [UIColor whiteColor] ;
-    self.imageClose.image = [[UIImage imageNamed:@"close2"] imageWithTintColor:[XTColor xt_main]] ;
+    self.imageClose.image = [[UIImage imageNamed:@"close2"] xt_imageWithTintColor:[XTColor xt_main]] ;
     self.imageClose.layer.cornerRadius = 10. ;
     self.imageClose.layer.masksToBounds = YES ;
     self.searchBackView.layer.cornerRadius = self.searchClearButton.frame.size.height / 2. ;
@@ -180,9 +184,5 @@
         self.percentDrivenTransition = nil ;
     }
 }
-
-#pragma mark - Navigation
-
-
 
 @end

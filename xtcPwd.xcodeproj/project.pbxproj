@@ -36,6 +36,7 @@
 		8F63F933237E961B00F83A12 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F63F932237E961B00F83A12 /* LoginVC.m */; };
 		8F7AA6D421394F390026344A /* MyColors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F7AA6D121394F390026344A /* MyColors.plist */; };
 		8F7AA6D521394F390026344A /* XTColor+MyColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7AA6D321394F390026344A /* XTColor+MyColors.m */; };
+		8FAB8BF62551A8130053FB83 /* HJCarouselViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAB8BF42551A8130053FB83 /* HJCarouselViewLayout.m */; };
 		8FBE487B1EF2764C005F0E74 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE487A1EF2764C005F0E74 /* UserViewController.m */; };
 		8FBE48B31EF29F15005F0E74 /* PingReverseTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B01EF29F15005F0E74 /* PingReverseTransition.m */; };
 		8FBE48B41EF29F15005F0E74 /* PingTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE48B21EF29F15005F0E74 /* PingTransition.m */; };
@@ -121,6 +122,8 @@
 		8F7AA6D121394F390026344A /* MyColors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyColors.plist; sourceTree = "<group>"; };
 		8F7AA6D221394F390026344A /* XTColor+MyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XTColor+MyColors.h"; sourceTree = "<group>"; };
 		8F7AA6D321394F390026344A /* XTColor+MyColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XTColor+MyColors.m"; sourceTree = "<group>"; };
+		8FAB8BF42551A8130053FB83 /* HJCarouselViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCarouselViewLayout.m; sourceTree = "<group>"; };
+		8FAB8BF52551A8130053FB83 /* HJCarouselViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCarouselViewLayout.h; sourceTree = "<group>"; };
 		8FBE48791EF2764C005F0E74 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		8FBE487A1EF2764C005F0E74 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		8FBE48AF1EF29F15005F0E74 /* PingReverseTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingReverseTransition.h; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 		7D4B27BB20286B26001CA91B /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				8FAB8BF32551A8130053FB83 /* flowlayout */,
 				8FE58A86203C095800816ACC /* gesturePwd */,
 			);
 			name = Vender;
@@ -373,6 +377,15 @@
 				8F63F932237E961B00F83A12 /* LoginVC.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		8FAB8BF32551A8130053FB83 /* flowlayout */ = {
+			isa = PBXGroup;
+			children = (
+				8FAB8BF52551A8130053FB83 /* HJCarouselViewLayout.h */,
+				8FAB8BF42551A8130053FB83 /* HJCarouselViewLayout.m */,
+			);
+			path = flowlayout;
 			sourceTree = "<group>";
 		};
 		8FBE48AE1EF29F15005F0E74 /* transition_leftbt */ = {
@@ -713,6 +726,7 @@
 				8F560B0A1FF0981100E726F9 /* ChineseToPinyinResource.m in Sources */,
 				8FFC6CF11EEF735A00F55173 /* main.m in Sources */,
 				8FE58A94203C095800816ACC /* KeychainItemWrapper.m in Sources */,
+				8FAB8BF62551A8130053FB83 /* HJCarouselViewLayout.m in Sources */,
 				7DBF8FC92022F32E0030C3D5 /* ReqUtil.m in Sources */,
 				8F15F29923754D1800D3FDFA /* UnsplashRequest.m in Sources */,
 				8F15F29C23754D1800D3FDFA /* UnsplashVC.m in Sources */,

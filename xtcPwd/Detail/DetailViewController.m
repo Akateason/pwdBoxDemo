@@ -19,6 +19,7 @@
 #import <ReactiveObjC.h>
 #import "DetailCollectionCell.h"
 #import <XTTable/XTCollection.h>
+#import "HJCarouselViewLayout.h"
 
 @interface DetailViewController () <UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout> {
     CGFloat statusBarHeight;
@@ -97,6 +98,12 @@
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
     self.collectionView.collectionViewLayout = layout ;
+        
+    // 第三方有问题.
+//    HJCarouselViewLayout *clayout = [[HJCarouselViewLayout alloc] initWithAnim:HJCarouselAnimCarousel1] ;
+//    clayout.visibleCount = 3 ;
+//    clayout.itemSize = CGSizeMake(self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+//    self.collectionView.collectionViewLayout = clayout ;
     
     @weakify(self)
     [[[RACObserve(self.collectionView, contentOffset)

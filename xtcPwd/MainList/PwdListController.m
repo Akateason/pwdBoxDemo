@@ -161,9 +161,9 @@
 
 - (void)setupUIs {
     self.view.backgroundColor = [XTColor xt_main] ;
-    [self.btUser setImage:[[UIImage imageNamed:@"user"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
-    [self.btAdd setImage:[[UIImage imageNamed:@"add"] imageWithTintColor:[XTColor xt_main]] forState:0] ;
-    [self.btSearch setImage:[[UIImage imageNamed:@"searchBt"] imageWithTintColor:[UIColor whiteColor]] forState:0] ;
+    [self.btUser setImage:[[UIImage imageNamed:@"user"] xt_imageWithTintColor:[UIColor whiteColor]] forState:0] ;
+    [self.btAdd setImage:[[UIImage imageNamed:@"add"] xt_imageWithTintColor:[XTColor xt_main]] forState:0] ;
+    [self.btSearch setImage:[[UIImage imageNamed:@"searchBt"] xt_imageWithTintColor:[UIColor whiteColor]] forState:0] ;
 }
 
 - (void)setupTable {
